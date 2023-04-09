@@ -99,6 +99,12 @@ footer {
     background: #FAE9CD;
     font-size: 19px;
     font-family: Inter, serif;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.footer a{
+    color: #492D2D;
 }
 
 .catalog {
@@ -122,6 +128,9 @@ footer {
     margin: 0 117px 0 20px;
     text-align: left;
 }
+.contacts a{
+    color: blue;
+}
 
 .catalog h4 {
     padding-top: 5px;
@@ -133,4 +142,7 @@ footer {
     padding-top: 5px;
     margin-bottom: 10px;
     margin-left: 20px;
+}
+.wrapper{
+    padding: 200px;
 }

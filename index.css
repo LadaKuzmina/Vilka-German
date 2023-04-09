@@ -1,0 +1,44 @@
+footer {
+    height: 220px;
+    background: #FAE9CD;
+    font-size: 19px;
+    font-family: Inter, serif;
+}
+
+.catalog {
+    display: inline-block;
+    margin: 0 20px 0 57px;
+    float: left;
+}
+
+.menu {
+    display: inline-block;
+    margin: 0 100px 0 20px;
+}
+
+.list {
+    display: inline-block;
+    margin: 0 40px 0 20px;
+}
+
+.contacts {
+    display: inline-block;
+    margin: 0 117px 0 20px;
+    text-align: left;
+}
+
+.catalog h4 {
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.menu h4 {
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+}

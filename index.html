@@ -47,7 +47,132 @@
             </div>
         </div>
     </header>
+    <div class="slidesshow">
+        <div class="mySlides fade">
+            <img src="images/slide1.jpg" style="width:100%">
+        </div>
 
+        <div class="mySlides fade">
+            <img src="images/slide2.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="images/slide3.jpeg" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+<!--        переделать на .addEventListener-->
+    </div>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+    <h3>Наша продукция</h3>
+    <div class="products">
+        <div class="title">
+            <a href="#">Кровля</a>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <a href="#">Профнастил</a>
+                </li>
+                <li>
+                    <a href="#">Металлочерепица</a>
+                </li>
+                <li>
+                    <a href="#">Гибкая черепица</a>
+                </li>
+                <li>
+                    <a href="#">Натуральная черепица</a>
+                </li>
+                <li>
+                    <a href="#">Керамическая черепица</a>
+                </li>
+                <li>
+                    <a href="#">Композитная черепица</a>
+                </li>
+                <li>
+                    <a href="#">Фальцевая черепица</a>
+                </li>
+                <li>
+                    <a href="#">Одулин</a>
+                </li>
+                <li>
+                    <a href="#">Элементы безопасности</a>
+                </li>
+                <li>
+                    <a href="#">Кровельные комплектующие</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="products">
+        <div class="title">
+            <a href="#">Фасад</a>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <a href="#">Сайдинг</a>
+                </li>
+                <li>
+                    <a href="#">Фасадные панели</a>
+                </li>
+                <li>
+                    <a href="#">Софиты для кровли</a>
+                </li>
+                <li>
+                    <a href="#">Софиты для кровли</a>
+                </li>
+                <li>
+                    <a href="#">Термопанели</a>
+                </li>
+                <li>
+                    <a href="#">Доборные элементы</a>
+                </li>
+                <li>
+                    <a href="#">Подсистема для фасада</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <footer>
         <div class="footer">
             <div class="catalog">

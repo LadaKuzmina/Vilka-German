@@ -95,11 +95,11 @@ a {
     color: #492D2D;
 }
 
-footer > div{
+footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 0 10px 10px;
     /*flex-direction: row;*/
     /*margin: auto;*/
@@ -108,7 +108,7 @@ footer > div{
     width: 100%;
     background: #FAE9CD;
     font-size: 19px;
-    font-family: Inter, serif;
+    font-family: Arial, Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
     /*bottom: 0;*/
@@ -138,9 +138,22 @@ footer > div{
 
 .contacts {
     /*display: inline-block;*/
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin: 50px 117px 0 20px;
     text-align: left;
 }
+
+.icons{
+    padding-top: 159px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .contacts a {
     color: blue;
@@ -159,14 +172,16 @@ footer > div{
 }
 
 .wrapper {
-    padding: 200px;
+    padding: 100px;
 }
 
 .slidesshow {
+    padding-top: 100px;
     max-width: 750px;
     position: relative;
     margin: auto;
 }
+
 
 .mySlides {
     display: none;
@@ -177,7 +192,7 @@ footer > div{
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: -22px;
+    margin-top: 20px;
     padding: 16px;
     color: white;
     font-weight: bold;
@@ -237,20 +252,30 @@ footer > div{
     background-color: #492D2D;
     /*color: #492D2D;*/
     /*background-color: white;*/
-    width: 300px;
+    width: 250px;
     height: 150px;
     padding: 18px;
     border-radius: 10px;
-    font-family: Inter, serif;
+    font-family: Arial, Inter, serif;
+    /*Arial,*/
     font-size: 18px;
     overflow: auto;
     margin: 18px;
 
 }
 
+.measurer p {
+    font-size: 18px;
+    font-family: Arial, Inter, serif;
+}
+
 .products a {
     color: white;
     /*color: #492D2D;*/
+}
+
+.products h4 {
+    margin: 5px;
 }
 
 h3 {

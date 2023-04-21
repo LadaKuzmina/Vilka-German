@@ -1,0 +1,10 @@
+.delivery_info {
+    display: block;
+}
+
+h1, .h1 {
+    display: block;
+    font-size: 3.6rem;
+    font-weight: 600;
+    line-height: normal;
+}

@@ -1,4 +1,11 @@
+body {
+    background-color: #FAE9CDFF;
+}
+
 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
     height: 220px;
     background: #FAE9CD;
     font-size: 19px;

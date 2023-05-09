@@ -24,6 +24,7 @@
 
 body {
     background-color: #FAE9CDFF;
+    overflow-x: hidden;
 }
 
 form {
@@ -160,7 +161,7 @@ footer > div {
     margin: 50px 40px 0 20px;
 }
 
-.contacts {
+.footer .contacts {
     /*display: inline-block;*/
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 body {
     background-color: #FAE9CDFF;
+    overflow-x: hidden;
 }
 
 form {
@@ -171,12 +172,12 @@ footer > div {
     margin-left: 20px;
 }
 
-.wrapper {
-    padding: 100px;
-}
+/*.wrapper {*/
+/*    padding: 100px;*/
+/*}*/
 
 .slidesshow {
-    padding-top: 100px;
+    padding-top: 200px;
     max-width: 750px;
     position: relative;
     margin: auto;
@@ -248,6 +249,8 @@ footer > div {
 .products {
     display: inline-block;
     color: white;
+    position: relative;
+    left: 100px;
     background-color: #492D2D;
     /*color: #492D2D;*/
     /*background-color: white;*/
@@ -260,7 +263,6 @@ footer > div {
     font-size: 18px;
     overflow: auto;
     margin: 18px;
-
 }
 
 .measurer p {
@@ -280,4 +282,17 @@ footer > div {
 h3 {
     font-size: 33px;
     text-align: center;
+}
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d4aa70;
+    border-radius: 100px;
 }

@@ -195,12 +195,17 @@ footer > div {
     margin-left: 20px;
 }
 
-.wrapper {
-    padding: 100px;
-}
+/*.wrapper {*/
+/*    padding: 100px;*/
+/*}*/
 
 .map{
     position: absolute;
     left: 600px;
     top: 30px;
+}
+.information{
+    position: relative;
+    top:150px;
+    left:100px;
 }

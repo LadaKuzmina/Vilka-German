@@ -46,62 +46,149 @@
             </div>
         </div>
     </header>
-    <div class="brand">
-    <form>
-        <fieldset>
-            <legend>Бренд</legend>
-            <div>
-                <input class="check-box" type="checkbox" name="braas"> Braas
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="docke"> Docke
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="gerard"> Gerard
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="grandLine"> Grand Line
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="icopal"> Icopal
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="katepal"> Katepal
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="kriastak"> Kriastak
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="luxard"> Luxard
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="metrotile"> Metrotile
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="roofShield"> RoofShield
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="shinglas"> Shinglas
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="tegola"> Tegola
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="metalProfile"> МеталлПрофиль
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="ondulin"> Ондулин
-            </div>
-            <div>
-                <input class="check-box" type="checkbox" name="ondutis"> Ондутис
-            </div>
-        </fieldset>
-    </form>
+<!--    цвет #006F94 #6EA340 -->
+    <!-- общий блок для всех чекбоксов -->
+    <div class="check-group">
+        <h4>Бренд</h4>
+        <!-- создаём подпись и указываем, к какому элементу она относится -->
+        <label for="myCheckbox01" class="checkbox">
+
+            <!-- размещаем обычный чекбокс и задаём ему нужный класс -->
+            <!-- также указываем id, чтобы подпись смогла найти этот инбокс -->
+            <input class="checkbox__input" type="checkbox" id="myCheckbox01">
+
+            <!-- готовим виртуальное пространство для рисования -->
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <!-- рисуем красивую рамку чекбокса -->
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <!-- сразу делаем красивую галочку, но пока делаем её невидимой -->
+                <path class="tick" stroke="#aa6a2c" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+
+            <!-- подписываем наш чекбокс -->
+            <span class="checkbox__label">Braas</span>
+        </label>
+
+        <label for="myCheckbox02" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox02">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Docke</span>
+        </label>
+
+        <label for="myCheckbox03" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox03">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Gerard</span>
+        </label>
+
+        <label for="myCheckbox04" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox04">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Grand Line</span>
+        </label>
+
+        <label for="myCheckbox05" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox05">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Icopal</span>
+        </label>
+        <label for="myCheckbox06" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox06">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Katepal</span>
+        </label>
+        <label for="myCheckbox07" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox07">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Kriastak</span>
+        </label>
+        <label for="myCheckbox08" class="checkbox">
+            <input class="checkbox__input" type="checkbox" id="myCheckbox08">
+            <svg class="checkbox__icon" viewBox="0 0 22 22">
+                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3" />
+                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4" d="M4 10l5 5 9-9" />
+            </svg>
+            <span class="checkbox__label">Luxard</span>
+        </label>
+<!--        &lt;!&ndash; считаем и выводим результаты &ndash;&gt;-->
+
     </div>
-    <div class="profiled">
-        <img src="images/profnastil.webp" height="200" width="200" alt="Профнастил"/>
-        <p>Профнастил</p>
-    </div>
+
+
+    <!--    <div class="brand">-->
+<!--&lt;!&ndash;    <form>&ndash;&gt;-->
+<!--&lt;!&ndash;        <fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;            <legend>Бренд</legend>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="braas"> Braas&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="docke"> Docke&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="gerard"> Gerard&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="grandLine"> Grand Line&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="icopal"> Icopal&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="katepal"> Katepal&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="kriastak"> Kriastak&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="luxard"> Luxard&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="metrotile"> Metrotile&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="roofShield"> RoofShield&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="shinglas"> Shinglas&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="tegola"> Tegola&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="metalProfile"> МеталлПрофиль&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="ondulin"> Ондулин&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input class="check-box" type="checkbox" name="ondutis"> Ондутис&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="profiled">-->
+<!--        <img src="images/profnastil.webp" height="200" width="200" alt="Профнастил"/>-->
+<!--        <p>Профнастил</p>-->
+<!--    </div>-->
     <footer>
         <div class="footer">
             <div class="catalog">

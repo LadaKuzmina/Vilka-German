@@ -54,7 +54,7 @@ form {
     z-index: 1000;
 }
 
-.nav{
+.nav {
     display: flex;
     position: absolute;
     justify-content: space-around;
@@ -93,6 +93,17 @@ a {
 
 .nav a {
     color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
 }
 
 footer > div {

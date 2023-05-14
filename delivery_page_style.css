@@ -36,6 +36,25 @@ form {
     border-radius: 1rem;
 }
 
+.nav a.selected {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a {
+    color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
+}
+
 .nav .d3 form {
     background-color: #fff;
 }
@@ -114,10 +133,6 @@ form {
 
 a {
     text-decoration: none;
-}
-
-.nav a {
-    color: #492D2D;
 }
 
 footer > div {

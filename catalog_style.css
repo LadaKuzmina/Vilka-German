@@ -274,13 +274,14 @@ footer > div {
     stroke-dashoffset: 0;
 }
 
-.filters_h{
+.filters_h {
     position: relative;
     top: 190px;
     left: 75px;
     margin: 5px;
     font-size: 20px;
 }
+
 .check-group {
     display: block;
     position: relative;
@@ -289,78 +290,32 @@ footer > div {
     height: 175px;
     overflow: auto;
     margin: 5px;
-    /* делаем группе отдельный фон */
     background: #fff;
-    /* ограничиваем ширину блока, чтобы он не расползался */
     max-width: 13rem;
-    /* добавляем отступы */
     padding: 1.5rem;
-    /* делаем красивое скругление и тень */
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
-    /*!* сразу добавляем два счётчика, они понадобятся для подсчёта выбранных элементов *!*/
-    /*counter-reset: total;*/
-    /*counter-reset: checked;*/
 }
 
-/* делаем отступы внутри группы */
+.profiled > * + * {
+    margin-top: 0.75rem;
+}
+.width > * + *{
+    margin-top: 0.75rem;
+}
+.coating > * + *{
+    margin-top: 0.75rem;
+}
+.workWidth > * + *{
+    margin-top: 0.75rem;
+}
+.warranty > * + *{
+    margin-top: 0.75rem;
+}
 .check-group > * + * {
     margin-top: 0.75rem;
 }
 
-/*!* подсчитываем количество всех чекбоксов *!*/
-/*.check-group .checkbox {*/
-/*    counter-increment: total;*/
-/*}*/
-
-/*!* считаем только отмеченные галочки *!*/
-/*.check-group input[type=checkbox]:checked {*/
-/*    counter-increment: checked;*/
-/*}*/
-
-/*!* настраиваем внешний вид строки с результатом *!*/
-/*.check-group__result {*/
-/*    !* делаем жирный шрифт *!*/
-/*    font-weight: bold;*/
-/*    !* немного отступаем сверху *!*/
-/*    padding-top: 0.75rem;*/
-/*    !* рисуем тонкую линию над текстом *!*/
-/*    border-top: 1px solid rgba(0, 0, 0, 0.2);*/
-/*}*/
-
-/*!* обрабатываем результаты *!*/
-/*.check-group__result:after {*/
-/*    !* добавляем строку со значениями счётчиков *!*/
-/*    content: counter(checked) " / " counter(total);*/
-/*    !* добавляем отступ слева *!*/
-/*    padding-left: 1ch;*/
-/*}*/
-/*::-webkit-scrollbar {*/
-/*    height: 10px;*/
-/*    width: 6px;*/
-/*    background: #fff;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb {*/
-/*    background: #616161;*/
-/*    -webkit-border-radius: 1ex;*/
-/*    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);*/
-/*}*/
-
-/*::-webkit-scrollbar-corner {*/
-/*    background: #fff;*/
-/*}*/
-/*::-webkit-scrollbar {*/
-/*    width: 10px;*/
-/*}*/
-
-/*::-webkit-scrollbar-track {*/
-/*    background-color: darkgrey;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb {*/
-/*    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
-/*}*/
 ::-webkit-scrollbar {
     width: 16px;
 }
@@ -374,6 +329,7 @@ footer > div {
     background-color: #d4aa70;
     border-radius: 100px;
 }
+
 /*скролл второго варианта*/
 /*::-webkit-scrollbar-thumb {*/
 /*    border: 5px solid transparent;*/
@@ -381,7 +337,7 @@ footer > div {
 /*    background-color: #d4aa70;*/
 /*    background-clip: content-box;*/
 /*}*/
-.square{
+.square {
     height: 20px;
     width: 20px;
 }

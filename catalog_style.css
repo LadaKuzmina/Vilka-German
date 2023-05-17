@@ -9,7 +9,7 @@
 /*    line-height: normal;*/
 /*}*/
 
-.information {
+.servers {
     display: block;
     /*flex-direction: column;*/
     /*width: 100%;*/
@@ -141,16 +141,14 @@ footer > div {
     flex-shrink: 0;
     flex-direction: row;
     justify-content: space-between;
-    top: 400px;
-    /*че то надо делать с топом*/
     padding: 0 10px 10px;
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 120px;
+    height: 250px;
     width: 100%;
     background: #FAE9CD;
-    font-size: 19px;
+    font-size: 17px;
     font-family: Arial, Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
@@ -198,9 +196,9 @@ footer > div {
 }
 
 
-.contacts a {
-    color: blue;
-}
+/*.contacts a {*/
+/*    color: blue;*/
+/*}*/
 
 .catalog h4 {
     padding-top: 5px;

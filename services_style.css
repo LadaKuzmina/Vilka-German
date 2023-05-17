@@ -1,18 +1,7 @@
-.serves {
-    display: block;
-    /*flex-direction: column;*/
-    /*width: 100%;*/
-    height: 650px;
-    position: relative;
-    top: 80px;
-    /*left: 15px;*/
-    /*right: 30px;*/
-    font-size: 19px;
-    font-family: Inter, serif;
-}
-
 body {
-    background-color: #FAE9CDFF;
+    /*background-color: #FAE9CDFF;*/
+    background-color: #FAE9CD;
+    overflow-x: hidden;
 }
 
 form {
@@ -111,15 +100,24 @@ a {
     border-radius: 12px;
 }
 
-.nav a.active {
-    background-color: rgba(177, 152, 145, .3);
-}
-
 .nav a:hover {
     background: rgba(177, 152, 145, .3);
 }
 
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+
+.info{
+    position: absolute;
+    font-size: 40px;
+    top: 200px;
+    text-align: center;
+}
+
 footer > div {
+    margin-top: 950px;
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
@@ -128,10 +126,10 @@ footer > div {
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 120px;
+    height: 250px;
     width: 100%;
     background: #FAE9CD;
-    font-size: 19px;
+    font-size: 17px;
     font-family: Arial, Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
@@ -169,18 +167,13 @@ footer > div {
     text-align: left;
 }
 
-.icons{
+.icons {
     padding-top: 159px;
     gap: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-
-.contacts a {
-    color: blue;
 }
 
 .catalog h4 {
@@ -195,7 +188,17 @@ footer > div {
     margin-left: 20px;
 }
 
-.wrapper {
-    padding: 100px;
-}
 
+.servers {
+    display: block;
+    /*flex-direction: column;*/
+    /*width: 100%;*/
+    height: 650px;
+    position: relative;
+    top: 150px;
+    left: 100px;
+    /*left: 15px;*/
+    /*right: 30px;*/
+    font-size: 19px;
+    font-family: Inter, serif;
+}

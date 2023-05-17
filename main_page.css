@@ -111,7 +111,7 @@ a {
 .imageHouse {
     position: relative;
     top:200px;
-   text-align: center;
+    text-align: center;
     padding-bottom: 100px;
 
 }
@@ -220,7 +220,7 @@ footer > div {
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: 20px;
+    margin-top: 60px;
     padding: 16px;
     color: white;
     font-weight: bold;
@@ -297,6 +297,10 @@ footer > div {
 .measurer p {
     font-size: 18px;
     font-family: Arial, Inter, serif;
+}
+.measurer{
+    position: relative;
+    left: 100px;
 }
 
 .products a {

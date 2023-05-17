@@ -9,7 +9,7 @@
 /*    line-height: normal;*/
 /*}*/
 
-.information {
+.servers {
     display: block;
     /*flex-direction: column;*/
     /*width: 100%;*/
@@ -139,10 +139,10 @@ footer > div {
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 120px;
+    height: 250px;
     width: 100%;
     background: #FAE9CD;
-    font-size: 19px;
+    font-size: 17px;
     font-family: Arial, Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
@@ -190,9 +190,9 @@ footer > div {
 }
 
 
-.contacts a {
-    color: blue;
-}
+/*.contacts a {*/
+/*    color: blue;*/
+/*}*/
 
 .catalog h4 {
     padding-top: 5px;
@@ -215,7 +215,7 @@ footer > div {
     left: 600px;
     top: 30px;
 }
-.information{
+.servers{
     position: relative;
     top:150px;
     left:100px;

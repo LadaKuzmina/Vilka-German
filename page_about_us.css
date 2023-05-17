@@ -1,7 +1,7 @@
-.page-content .container {
-    width: 100%;
-    height: 100%;
-}
+/*.page-content .container {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
 .page-h1 {
     font-size: 33px;
@@ -24,6 +24,7 @@
 
 body {
     background-color: #FAE9CDFF;
+    overflow-x: hidden;
 }
 
 form {
@@ -33,6 +34,25 @@ form {
     background-color: #fff;
     box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
     border-radius: 1rem;
+}
+
+.nav a.selected {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a {
+    color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
 }
 
 .nav .d3 form {
@@ -115,11 +135,7 @@ a {
     text-decoration: none;
 }
 
-.nav a {
-    color: #492D2D;
-}
-
-footer > div{
+footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
@@ -128,11 +144,11 @@ footer > div{
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 120px;
+    height: 250px;
     width: 100%;
     background: #FAE9CD;
-    font-size: 19px;
-    font-family: Inter, serif;
+    font-size: 17px;
+    font-family: Arial, Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
     /*bottom: 0;*/
@@ -160,14 +176,22 @@ footer > div{
     margin: 50px 40px 0 20px;
 }
 
-.contacts {
+.footer .contacts {
     /*display: inline-block;*/
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin: 50px 117px 0 20px;
     text-align: left;
 }
 
-.contacts a {
-    color: blue;
+.icons{
+    padding-top: 159px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .catalog h4 {

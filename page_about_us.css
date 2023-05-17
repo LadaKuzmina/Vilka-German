@@ -131,7 +131,7 @@ footer > div{
     height: 120px;
     width: 100%;
     background: #FAE9CD;
-    font-size: 19px;
+    font-size: 17px;
     font-family: Inter, serif;
     /*position: fixed;*/
     /*left: 0;*/
@@ -166,9 +166,9 @@ footer > div{
     text-align: left;
 }
 
-.contacts a {
-    color: blue;
-}
+/*.contacts a {*/
+/*    color: blue;*/
+/*}*/
 
 .catalog h4 {
     padding-top: 5px;

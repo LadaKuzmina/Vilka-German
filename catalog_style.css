@@ -137,6 +137,7 @@ a {
 
 
 footer > div {
+    margin-top: 200px;
     display: flex;
     flex-shrink: 0;
     flex-direction: row;

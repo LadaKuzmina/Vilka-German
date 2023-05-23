@@ -1,29 +1,6 @@
-/*.page-content .container {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-
-.page-h1 {
-    font-size: 33px;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.page-content {
-    display: block;
-    /*flex-direction: column;*/
-    /*width: 100%;*/
-    height: 650px;
-    position: relative;
-    top: 150px;
-    left: 30px;
-    right: 30px;
-    font-size: 19px;
-    font-family: Inter, serif;
-}
-
 body {
-    background-color: #FAE9CDFF;
+    /*background-color: #FAE9CDFF;*/
+    background-color: #FAE9CD;
     overflow-x: hidden;
 }
 
@@ -34,25 +11,6 @@ form {
     background-color: #fff;
     box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
     border-radius: 1rem;
-}
-
-.nav a.selected {
-    background: rgba(177, 152, 145, .3);
-}
-
-.nav a {
-    color: #492D2D;
-    padding: 10px 20px;
-    background: white;
-    border-radius: 12px;
-}
-
-.nav a.active {
-    background-color: rgba(177, 152, 145, .3);
-}
-
-.nav a:hover {
-    background: rgba(177, 152, 145, .3);
 }
 
 .nav .d3 form {
@@ -78,7 +36,7 @@ form {
     top: 0;
     right: 0;
     border: none;
-    background: url("headerIcons/magnifier.png") scroll no-repeat center;
+    background: url("magnifier.png") scroll no-repeat center;
     width: 5.5rem;
     height: 100%;
     cursor: pointer;
@@ -135,7 +93,31 @@ a {
     text-decoration: none;
 }
 
+.nav a {
+    color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+
+.info{
+    position: absolute;
+    font-size: 40px;
+    top: 200px;
+    text-align: center;
+}
+
 footer > div {
+    margin-top: 1150px;
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
@@ -185,7 +167,7 @@ footer > div {
     text-align: left;
 }
 
-.icons{
+.icons {
     padding-top: 159px;
     gap: 15px;
     display: flex;
@@ -193,11 +175,6 @@ footer > div {
     align-items: center;
     justify-content: center;
 }
-
-
-/*.contacts a {*/
-/*    color: blue;*/
-/*}*/
 
 .catalog h4 {
     padding-top: 5px;
@@ -211,11 +188,17 @@ footer > div {
     margin-left: 20px;
 }
 
-.wrapper {
-    padding: 100px;
-}
 
-h3 {
-    font-size: 33px;
-    text-align: center;
+.servers {
+    display: block;
+    /*flex-direction: column;*/
+    /*width: 100%;*/
+    height: 650px;
+    position: relative;
+    top: 150px;
+    left: 100px;
+    /*left: 15px;*/
+    /*right: 30px;*/
+    font-size: 19px;
+    font-family: Inter, serif;
 }

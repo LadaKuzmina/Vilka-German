@@ -200,36 +200,51 @@ footer > div {
     margin-left: 20px;
 }
 
-.products {
-    top: 100px;
+.list_catalog {
+    top: 170px;
     display: inline-block;
     color: black;
     position: relative;
     left: 100px;
-    background-color: #D6AE96;
+    margin: 18px;
+}
+
+.products {
+    text-align: center;
+    top: 10px;
+    display: inline-block;
+    color: black;
+    position: relative;
+    /*left: 100px;*/
+    /*background-color: #D6AE96;*/
     /*background-color: #492D2D;*/
     /*color: #492D2D;*/
     /*background-color: white;*/
-    width: 250px;
-    height: 150px;
+    /*width: 250px;*/
+    /*height: 150px;*/
     padding: 18px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     font-family: Arial, Inter, serif;
     /*Arial,*/
     font-size: 18px;
-    overflow: auto;
+    /*overflow: auto;*/
     margin: 18px;
+}
 
+.products h4:hover {
+    color: #D6AE96;
 }
-.products h4:hover{
-    color: #FAE9CD;
-}
-.products:hover{
+
+.products img:hover {
     border: #333333 solid;
+    border-radius: 30px;
 }
-.profiled_product{
-    background-image: url("images/110461_99576_profnastil.jpg");
-}
+
+/*.products:hover {*/
+/*    border: #333333 solid;*/
+/*}*/
+
+
 .products a {
     color: black;
     /*color: #492D2D;*/

@@ -306,7 +306,7 @@ footer > div {
 }
 
 .formMeasurer {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     position: relative;
     background-color: #FAE9CD;
     /*background-color: #fff;*/
@@ -342,7 +342,10 @@ footer > div {
     transform: translateX(15px);
     width: 385px;
 }
+form{
+   max-width: 500px;
 
+}
 .formMeasurer button {
     cursor: pointer;
     padding: 10px 30px;

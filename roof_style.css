@@ -39,7 +39,7 @@ form {
     top: 0;
     right: 0;
     border: none;
-    background: url("headerIcons/magnifier.png") scroll no-repeat center;
+    background: url("header_icons/magnifier.png") scroll no-repeat center;
     width: 5.5rem;
     height: 100%;
     cursor: pointer;
@@ -47,7 +47,7 @@ form {
 
 
 .nav .d3 button:before {
-    /*content: url("headerIcons/magnifier.png");*/
+    /*content: url("header_icons/magnifier.png");*/
     /*font-size: 10px;*/
     /*color: white;*/
 }

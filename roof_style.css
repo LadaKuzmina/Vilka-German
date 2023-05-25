@@ -16,6 +16,12 @@ form {
 
 }
 
+.nav .roof {
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
 .nav .d3 form {
     background-color: #fff;
 }
@@ -27,20 +33,20 @@ form {
 }
 
 .nav .d3 input {
-    width: 50%;
-    height: 42px;
-    padding-left: 15px;
-    font-size: 15px;
+    width: 65%;
+    height: 53px;
+    padding-left: 16px;
+    font-size: 17px;
     color: black;
 }
 
 .nav .d3 button {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 5px;
     border: none;
     background: url("header_icons/magnifier.png") scroll no-repeat center;
-    width: 5.5rem;
+    width: 3.5rem;
     height: 100%;
     cursor: pointer;
 }

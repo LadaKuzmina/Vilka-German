@@ -9,28 +9,31 @@ namespace BackServer.Repositories
     {
         public IEnumerable<Product> GetAll()
         {
-            using (TestContext db = new())
-            {
-                return db.Products;
-            }
+            // using (TestContext db = new())
+            // {
+            //     return db.Products;
+            // }
+            throw new NotImplementedException();
         }
         
         public IEnumerable<Entity.Product> GetByHeadingOne(HeadingOne heading)
         {
-            using (TestContext db = new())
-            {
-                return db.Products
-                    .Where(x => x.HeadingOne == heading)
-                    .Join();
-            }
+            // using (TestContext db = new())
+            // {
+            //     return db.Products
+            //         .Where(x => x.HeadingOne == heading)
+            //         .Join();
+            // }
+            throw new NotImplementedException();
         }
         
         public IEnumerable<Entity.Product> GetByHeadingTwo(HeadingTwo heading)
         {
-            using (TestContext db = new())
-            {
-                return db.Products.Where(x => x.HeadingTwo == heading);
-            }
+            // using (TestContext db = new())
+            // {
+            //     return db.Products.Where(x => x.HeadingTwo == heading);
+            // }
+            throw new NotImplementedException();
         }
     } 
 }

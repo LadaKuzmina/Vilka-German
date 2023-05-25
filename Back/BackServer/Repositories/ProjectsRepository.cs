@@ -9,46 +9,49 @@ namespace BackServer.Repositories
     {
         public IEnumerable<Project> GetAll()
         {
-            using (TestContext db = new())
-            {
-                return db.Projects;
-            }
+            // using (TestContext db = new())
+            // {
+            //     return db.Projects;
+            // }
+            throw new NotImplementedException();
         }
 
         public bool Add(Project project)
         {
-            try
-            {
-                using (TestContext db = new())
-                {
-                    db.Projects.Add(project);
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+            // try
+            // {
+            //     using (TestContext db = new())
+            //     {
+            //         db.Projects.Add(project);
+            //         db.SaveChanges();
+            //         return true;
+            //     }
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e);
+            //     return false;
+            // }
+            throw new NotImplementedException();
         }
         
         public bool Delete(Project project)
         {
-            try
-            {
-                using (TestContext db = new())
-                {
-                    db.Projects.Remove(project);
-                    db.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
+            // try
+            // {
+            //     using (TestContext db = new())
+            //     {
+            //         db.Projects.Remove(project);
+            //         db.SaveChanges();
+            //         return true;
+            //     }
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e);
+            //     return false;
+            // }
+            throw new NotImplementedException();
         }
     }
 }

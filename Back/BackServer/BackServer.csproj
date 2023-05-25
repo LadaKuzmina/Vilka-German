@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DbEntitys\DbEntitys.csproj" />
+      <!-- <ProjectReference Include="..\DbEntitys\DbEntitys.csproj" /> -->
       <ProjectReference Include="..\DbEntity\DbEntity.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
     </ItemGroup>

@@ -12,6 +12,9 @@ form {
     box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
     border-radius: 1rem;
 }
+.head{
+
+}
 
 .nav .d3 form {
     background-color: #fff;
@@ -36,11 +39,12 @@ form {
     top: 0;
     right: 0;
     border: none;
-    background: url("magnifier.png") scroll no-repeat center;
+    background: url("headerIcons/magnifier.png") scroll no-repeat center;
     width: 5.5rem;
     height: 100%;
     cursor: pointer;
 }
+
 
 .nav .d3 button:before {
     /*content: url("headerIcons/magnifier.png");*/
@@ -215,22 +219,17 @@ footer > div {
     display: inline-block;
     color: black;
     position: relative;
-    /*left: 100px;*/
-    /*background-color: #D6AE96;*/
-    /*background-color: #492D2D;*/
-    /*color: #492D2D;*/
-    /*background-color: white;*/
-    /*width: 250px;*/
-    /*height: 150px;*/
     padding: 18px;
-    /*border-radius: 10px;*/
     font-family: Arial, Inter, serif;
     /*Arial,*/
     font-size: 18px;
-    /*overflow: auto;*/
     margin: 18px;
 }
-
+.head{
+    top:180px;
+    left: 30px;
+    position: relative;
+}
 .products h4:hover {
     color: #D6AE96;
 }

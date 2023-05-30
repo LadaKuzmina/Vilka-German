@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BackServer.Contexts;
 using DbEntity;
 
 namespace BackServer.Repositories
 {
-    public class ProjectsRepository : IRepos
+    public class ProjectsRepository
     {
+        private readonly TestContext _context;
+
+        public ProjectsRepository(TestContext context)
+        {
+            _context = context;
+        }
         public IEnumerable<Project> GetAll()
         {
-            // using (TestContext db = new())
-            // {
-            //     return db.Projects;
-            // }
-            throw new NotImplementedException();
+            return _context.Projects;
         }
 
         public bool Add(Project project)

@@ -1,5 +1,8 @@
-﻿namespace  DbEntity
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace  DbEntity
 {
+    [Keyless]
     public class ProductProperty
     {
         public int ProductId { get; set; }

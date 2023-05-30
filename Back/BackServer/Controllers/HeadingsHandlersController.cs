@@ -1,5 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+using BackServer.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace BackServer.Controllers
 {
@@ -8,16 +14,19 @@ namespace BackServer.Controllers
     public class HeadingsHandlersController : ControllerBase
     {
         private readonly ILogger<HeadingsHandlersController> _logger;
+        private readonly TestContext _context;
 
-        public HeadingsHandlersController(ILogger<HeadingsHandlersController> logger)
+        public HeadingsHandlersController(ILogger<HeadingsHandlersController> logger, TestContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet("~/GetAllHeadingsOne")]
-        public async Task<JsonContent> GetAllHeadingsOne(JsonContent json)
+        public async Task<IEnumerable<Entity.HeadingOne>> GetAllHeadingsOne()
         {
-            throw new NotImplementedException();
+            var rep = new HeadersRepositoryDb(_context);
+            return rep.GetAllHeadingsOne();
         }
         
         [HttpGet("~/GetAllHeadingsTwo")]

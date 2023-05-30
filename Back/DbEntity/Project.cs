@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 
-namespace  DbEntity
+namespace DbEntity
 {
     public class Project
     {
-        public int Id { get; }
-        public string Title { get; }
-        public string RoofType { get; }
-        public IEnumerable<Product> MaterialsUsed { get; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string RoofType { get; set; }
+        public IEnumerable<Product> MaterialsUsed { get; set; }
     }
 }

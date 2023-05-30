@@ -1,4 +1,6 @@
 using BackServer.Contexts;
+using BackServer.Repositories;
+using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,10 +16,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<TestContext>(options => 
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddSingleton<IHeadersRepository, HeadersRepositoryDb>();
+// User ID=postgres;Password=postgres;Host=localhost;Database=test
+//Host=localhost;Port=5432;Database=test;Username=postgres;Password=postgres
 var app = builder.Build();
 
-var connection = builder.Configuration.GetConnectionString("DefaultConnection");
-// builder.Services.AddDbContext<TestContext>(x => x.UseSqlServer(connection));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

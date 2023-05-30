@@ -1,13 +1,13 @@
-﻿namespace  DbEntity
+﻿namespace DbEntity
 {
     public class Product
     {
-        public int Id { get; }
-        public string Title { get; }
-        public string Description { get; }
-        public HeadingOne HeadingOne { get; }
-        public HeadingTwo HeadingTwo { get; }
-        public int Price { get; }
-        public int Quantity { get; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public HeadingOne HeadingOne { get; set; }
+        public HeadingTwo HeadingTwo { get; set; }
+        public int Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

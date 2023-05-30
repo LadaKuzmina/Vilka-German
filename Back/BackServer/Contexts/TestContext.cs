@@ -5,25 +5,21 @@ using Npgsql;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
 using DbEntity;
+using Microsoft.Extensions.Options;
 
 namespace BackServer.Contexts
 {
     public class TestContext : DbContext
     {
-        private readonly IConfiguration _configuration;
-        private readonly bool _useProfileDbConnection;
-        
-        public TestContext(IConfiguration configuration, bool useProfile = false)
+        public TestContext(DbContextOptions<TestContext> options) : base(options)
         {
-            this._configuration = configuration;
-            this._useProfileDbConnection = useProfile;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(this._configuration.GetConnectionString("DefaultConnection"));
-            DbConnection connection = this._useProfileDbConnection ? (DbConnection) new ProfiledDbConnection((DbConnection) npgsqlConnection, (IDbProfiler) MiniProfiler.Current) : (DbConnection) npgsqlConnection;
-            options.UseNpgsql(connection);
+            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseNpgsql("Host=localhost;Database=test;Username=postgres;Password=postgres");
         }
 
         public DbSet<Project> Projects { get; set; }

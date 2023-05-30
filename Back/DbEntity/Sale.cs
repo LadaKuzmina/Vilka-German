@@ -2,9 +2,9 @@
 {
     public class Sale
     {
-        public int Id { get; }
-        public string Title { get; }
-        public string Description { get; }
-        public int Percent { get; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int Percent { get; set; }
     }
 }

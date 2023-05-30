@@ -1,8 +1,10 @@
-﻿namespace  DbEntity
+﻿using System;
+
+namespace  DbEntity
 {
     public class HeadingOne
     {
-        public int Id { get; }
-        public string Title { get; }
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }

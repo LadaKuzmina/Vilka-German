@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BackServer.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Repositories;
+using BackServer.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace BackServer.Controllers
@@ -14,31 +15,31 @@ namespace BackServer.Controllers
     public class HeadingsHandlersController : ControllerBase
     {
         private readonly ILogger<HeadingsHandlersController> _logger;
-        private readonly TestContext _context;
+        private readonly IHeadersService _service;
 
-        public HeadingsHandlersController(ILogger<HeadingsHandlersController> logger, TestContext context)
+        public HeadingsHandlersController(ILogger<HeadingsHandlersController> logger, IHeadersService service)
         {
             _logger = logger;
-            _context = context;
+            _service = service;
         }
 
         [HttpGet("~/GetAllHeadingsOne")]
         public async Task<IEnumerable<Entity.HeadingOne>> GetAllHeadingsOne()
         {
-            var rep = new HeadersRepositoryDb(_context);
-            return rep.GetAllHeadingsOne();
+            await Task.Delay(5000);
+            return await _service.GetAllHeadingsOne();
         }
         
         [HttpGet("~/GetAllHeadingsTwo")]
-        public async Task<JsonContent> GetAllHeadingsTwo(JsonContent json)
+        public async Task<IEnumerable<Entity.HeadingTwo>> GetAllHeadingsTwo()
         {
-            throw new NotImplementedException();
+            return await _service.GetAllHeadingsTwo();
         }
         
         [HttpGet("~/GetHeadingsTwoByHeadingsOne")]
-        public async Task<JsonContent> GetHeadingsTwoByHeadingsOne(JsonContent json)
+        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle)
         {
-            throw new NotImplementedException();
+            return await _service.GetHeadingsTwoByHeadingsOne(headingOneTitle);
         }
 
         [HttpPost("~/AddHeadingOne")]

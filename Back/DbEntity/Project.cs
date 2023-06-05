@@ -8,6 +8,7 @@ namespace DbEntity
         public int Id { get; set; }
         public string Title { get; set; }
         public string RoofType { get; set; }
-        public IEnumerable<Product> MaterialsUsed { get; set; }
+
+        public List<ProjectMaterials> ProjectMaterials { get; set; }
     }
 }

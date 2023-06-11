@@ -353,7 +353,7 @@ footer > div {
 
 .formMeasurer input:focus {
     border: 2px solid #D6AE96;
-    transform: translateX(15px);
+    /*transform: translateX(15px);*/
     width: 385px;
 }
 form{

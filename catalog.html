@@ -49,8 +49,27 @@
     </header>
     <div class="filters_h"><b>Фильтры</b></div>
     <div class="check-group">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <div class="h"><b>Цена</b></div>
+        <div class="price-input">
+            <div class="field">
+                <span>От</span>
+                <input type="number" class="input-min" value="2500">
+            </div>
+            <div class="separator">-</div>
+            <div class="field">
+                <span>До</span>
+                <input type="number" class="input-max" value="7500">
+            </div>
+        </div>
+        <div class="slider-range">
+            <div class="progress"></div>
+        </div>
+        <div class="range-input">
+            <input type="range" class="range-min" min="0" max="10000" value="2500">
+            <input type="range" class="range-max" min="0" max="10000" value="7500">
+        </div>
     </div>
+    <!--        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">-->
     <!--    цвет #006F94 #6EA340  "#aa6a2c-->
     <div class="check-group">
         <div class="profiled">
@@ -258,5 +277,6 @@
 </div>
 </div>
 <script src="scripts/menu.js"></script>
+<script src="scripts/range.js"></script>
 </body>
 </html>

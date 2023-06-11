@@ -24,6 +24,7 @@
 
 body {
     background-color: #FAE9CDFF;
+    overflow-x: hidden;
 }
 
 form {
@@ -32,7 +33,13 @@ form {
     max-width: 35rem;
     background-color: #fff;
     box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-    border-radius: 1rem;
+    border-radius: 12px; /*1rem*/
+}
+
+.nav .roof {
+    position: relative;
+    top: 5px;
+    right: 5px;
 }
 
 .nav .d3 form {
@@ -46,26 +53,26 @@ form {
 }
 
 .nav .d3 input {
-    width: 50%;
-    height: 42px;
-    padding-left: 15px;
-    font-size: 15px;
+    width: 65%;
+    height: 53px;
+    padding-left: 16px;
+    font-size: 17px;
     color: black;
 }
 
 .nav .d3 button {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 5px;
     border: none;
-    background: url("magnifier.png") scroll no-repeat center;
-    width: 5.5rem;
+    background: url("../header_icons/magnifier.png") scroll no-repeat center;
+    width: 3.5rem;
     height: 100%;
     cursor: pointer;
 }
 
 .nav .d3 button:before {
-    /*content: url("headerIcons/magnifier.png");*/
+    /*content: url("header_icons/magnifier.png");*/
     /*font-size: 10px;*/
     /*color: white;*/
 }

@@ -246,6 +246,13 @@ footer > div {
     position: relative;
 }
 
+.navigator .sep{
+    position: relative;
+    top: -17px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .products h4:hover {
     color: #D6AE96;
 }

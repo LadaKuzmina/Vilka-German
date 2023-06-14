@@ -327,6 +327,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .slider-range {
+    top: 15px;
     height: 5px;
     position: relative;
     border-radius: 5px;
@@ -346,10 +347,56 @@ input[type="number"]::-webkit-inner-spin-button {
 .range-input {
     position: relative;
 }
+/*details > summary {*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*details > summary::-webkit-details-marker {*/
+/*    display: none;*/
+/*}*/
+
+/*details > summary::before {*/
+/*    content: '⊕ ';*/
+/*    font-size: 18px;*/
+/*}*/
+
+/*details[open] > summary::before {*/
+/*    content: '⊖ ';*/
+/*    font-size: 18px;*/
+/*}*/
+/*details > summary {*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*details > summary::-webkit-details-marker {*/
+/*    display: none;*/
+/*}*/
+
+/*details > summary::before {*/
+/*    content: "+";*/
+/*    !*border-radius: 100%;*!*/
+/*    color: black;*/
+/*    float: left;*/
+/*    font-size: 1.5em;*/
+/*    font-weight: bold;*/
+/*    margin: -5px 10px 0 0;*/
+/*    text-align: center;*/
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    !*border: black solid 2px;*!*/
+/*}*/
+
+/*details[open] > summary::before {*/
+/*    content: '-';*/
+/*}*/
+
+/*details[open] > summary {*/
+/*    margin-bottom: 0.5rem;*/
+/*}*/
 
 .range-input input {
     position: absolute;
-    top: -18px;
+    top: 7px;
     height: 5px;
     width: 100%;
     pointer-events: none;
@@ -410,6 +457,35 @@ input[type="range"]::-moz-range-thumb {
     box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
 }
 
+details[open] {
+    display: block;
+    position: relative;
+    top: 200px;
+    width: 250px;
+    height: 175px;
+    overflow: auto;
+    margin: 5px;
+    background: #fff;
+    max-width: 13rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
+}
+
+details {
+    display: block;
+    position: relative;
+    width: 210px;
+    top: 200px;
+    margin: 5px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
+}
+summary{
+    padding-bottom: 10px;
+}
 .profiled > * + * {
     margin-top: 0.75rem;
 }

@@ -6,6 +6,7 @@ using BackServer.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Repositories;
 using BackServer.Services.Interfaces;
+using Entity;
 using Microsoft.Extensions.Logging;
 
 namespace BackServer.Controllers
@@ -26,16 +27,15 @@ namespace BackServer.Controllers
         [HttpGet("~/GetAllHeadingsOne")]
         public async Task<IEnumerable<Entity.HeadingOne>> GetAllHeadingsOne()
         {
-            await Task.Delay(5000);
             return await _service.GetAllHeadingsOne();
         }
-        
+
         [HttpGet("~/GetAllHeadingsTwo")]
         public async Task<IEnumerable<Entity.HeadingTwo>> GetAllHeadingsTwo()
         {
             return await _service.GetAllHeadingsTwo();
         }
-        
+
         [HttpGet("~/GetHeadingsTwoByHeadingsOne")]
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle)
         {
@@ -43,27 +43,84 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/AddHeadingOne")]
-        public async Task<JsonContent> AddHeadingOne(JsonContent json)
+        public async Task<StatusCodeResult> AddHeadingOne(HeadingOne headingOne)
         {
-            throw new NotImplementedException();
+            var success = await _service.AddHeadingOne(headingOne);
+            if (success)
+                return Ok();
+            return BadRequest();
         }
-        
+
         [HttpPost("~/AddHeadingTwo")]
-        public async Task<JsonContent> AddHeadingTwo(JsonContent json)
+        public async Task<StatusCodeResult> AddHeadingTwo(HeadingTwo headingTwo)
         {
-            throw new NotImplementedException();
+            var success = await _service.AddHeadingTwo(headingTwo);
+            if (success)
+                return Ok();
+            return BadRequest();
         }
-        
+
+        [HttpPost("~/AddHeadingThree")]
+        public async Task<StatusCodeResult> AddHeadingThree(HeadingThree headingThree)
+        {
+            var success = await _service.AddHeadingThree(headingThree);
+            if (success)
+                return Ok();
+            return BadRequest();
+        }
+
         [HttpDelete("~/DeleteHeadingOne")]
-        public async Task<JsonContent> DeleteHeadingOne(JsonContent json)
+        public async Task<StatusCodeResult> DeleteHeadingOne(string headingOneTitle)
         {
-            throw new NotImplementedException();
+            var success = await _service.DeleteHeadingOne(headingOneTitle);
+            if (success)
+                return Ok();
+            return BadRequest();
         }
-        
+
         [HttpDelete("~/DeleteHeadingTwo")]
-        public async Task<JsonContent> DeleteHeadingTwo(JsonContent json)
+        public async Task<StatusCodeResult> DeleteHeadingTwo(string headingTwoTitle)
         {
-            throw new NotImplementedException();
+            var success = await _service.DeleteHeadingTwo(headingTwoTitle);
+            if (success)
+                return Ok();
+            return BadRequest();
+        }
+
+        [HttpDelete("~/DeleteHeadingThree")]
+        public async Task<StatusCodeResult> DeleteHeadingThree(string headingThreeTitle)
+        {
+            var success = await _service.DeleteHeadingThree(headingThreeTitle);
+            if (success)
+                return Ok();
+            return BadRequest();
+        }
+
+        [HttpPost("~/UpdateHeadingOne")]
+        public async Task<StatusCodeResult> UpdateHeadingOne(string oldHeadingOneTitle, HeadingOne headingOne)
+        {
+            var success = await _service.UpdateHeadingOne(oldHeadingOneTitle, headingOne);
+            if (success)
+                return Ok();
+            return BadRequest();
+        }
+
+        [HttpPost("~/UpdateHeadingTwo")]
+        public async Task<StatusCodeResult> UpdateHeadingTwo(string oldHeadingTwoTitle, HeadingTwo headingTwo)
+        {
+            var success = await _service.UpdateHeadingTwo(oldHeadingTwoTitle, headingTwo);
+            if (success)
+                return Ok();
+            return BadRequest();
+        }
+
+        [HttpPost("~/UpdateHeadingThree")]
+        public async Task<StatusCodeResult> UpdateHeadingThree(string oldHeadingThreeTitle, HeadingThree headingThree)
+        {
+            var success = await _service.UpdateHeadingThree(oldHeadingThreeTitle, headingThree);
+            if (success)
+                return Ok();
+            return BadRequest();
         }
     }
 }

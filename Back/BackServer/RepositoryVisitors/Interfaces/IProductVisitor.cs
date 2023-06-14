@@ -6,8 +6,9 @@ namespace BackServer.Repositories
 {
     public interface IProductVisitor
     {
-        public Task<IEnumerable<Product>> GetAll();
-        public Task<IEnumerable<Entity.Product>> GetByHeadingOne(HeadingOne heading);
-        public Task<IEnumerable<Entity.Product>> GetByHeadingTwo(HeadingTwo heading);
+        Task<IEnumerable<Product>> GetAll();
+        Task<IEnumerable<Entity.Product>> GetByHeadingOne(HeadingOne heading);
+        Task<IEnumerable<Entity.Product>> GetByHeadingTwo(HeadingTwo heading);
+        Task<IEnumerable<Product>> GetByHeadingThree(HeadingThree heading);
     }
 }

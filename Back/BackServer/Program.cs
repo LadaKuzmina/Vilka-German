@@ -20,11 +20,21 @@ builder.Services.AddDbContext<TestContext>(options =>
 
 builder.Services.AddScoped<IHeadersVisitor, HeadersVisitorDb>();
 builder.Services.AddScoped<IProductVisitor, ProductsVisitorDb>();
+builder.Services.AddScoped<IProjectVisitor, ProjectsVisitorDb>();
+builder.Services.AddScoped<IPropertyVisitor, PropertiesVisitorDb>();
+builder.Services.AddScoped<ISaleVisitor, SalesVisitorDb>();
 
 builder.Services.AddScoped<IHeadersChanger, HeadersChangerDb>();
+builder.Services.AddScoped<IProjectChanger, ProjectChangerDb>();
+builder.Services.AddScoped<IProductChanger, ProductChangerDb>();
+builder.Services.AddScoped<ISaleChanger, SaleChangerDb>();
+builder.Services.AddScoped<IPropertyChanger, PropertyChangerDb>();
 
 builder.Services.AddScoped<IHeadersService, HeadersService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IPropertyService, PropertyService>();
+builder.Services.AddScoped<ISaleService, SaleService>();
 
 // Add services to the container.
 

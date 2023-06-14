@@ -4,7 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using BackServer.Contexts;
 using DbEntity;
+using DbEntityConverter;
+using Entity;
 using Microsoft.EntityFrameworkCore;
+using HeadingThree = Entity.HeadingThree;
+using Product = Entity.Product;
 
 namespace BackServer.Repositories
 {
@@ -19,8 +23,8 @@ namespace BackServer.Repositories
 
         public async Task<IEnumerable<Entity.Product>> GetAll()
         {
-            return await _context.Products.Select(x => new Entity.Product()
-                {Description = x.Description, Price = x.Price, Quantity = x.Quantity, Title = x.Title}).ToListAsync();
+            return await _context.Products.Select(x=>ProductConverter.ToEntity(x))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Entity.Product>> GetByHeadingOne(Entity.HeadingOne heading)
@@ -37,6 +41,11 @@ namespace BackServer.Repositories
             //     .Where(x => x.HeadingTwo == heading)
             //     .Select(x => new Entity.Product()
             //         {HeadingOne = x.HeadingOne, HeadingTwo = x.HeadingTwo});
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Product>> GetByHeadingThree(HeadingThree heading)
+        {
             throw new NotImplementedException();
         }
     }

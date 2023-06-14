@@ -2,11 +2,10 @@
 
 namespace DbEntity
 {
-    [Keyless]
     public class ProjectMaterials
     {
-        public int ProjectId { get; set; }
-        public int ProductId { get; set; }
+        public int project_id { get; set; }
+        public int product_id { get; set; }
         public Project Project { get; set; }
         public Product Product { get; set; }
     }

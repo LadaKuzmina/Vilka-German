@@ -20,28 +20,26 @@ namespace BackServer.Repositories
 
         public async Task<IEnumerable<Entity.HeadingOne>> GetAllHeadingsOneAsync()
         {
-            return await _context.HeadingsOne.Select(x => new Entity.HeadingOne() {Title = x.Title}).ToListAsync();
+            return await _context.HeadingsOne
+                .Select(x=>new Entity.HeadingOne(x.Title))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Entity.HeadingTwo>> GetAllHeadingsTwoAsync()
         {
             return await _context.HeadingsTwo
-                .Select(x => new Entity.HeadingTwo()
-                {
-                    Title = x.Title,
-                    HeadingOne = new Entity.HeadingOne() {Title = x.HeadingOne.Title}
-                })
+                .Select(x => new Entity.HeadingTwo(x.Title, new Entity.HeadingOne(x.HeadingOne.Title)))
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOneAsync(string headingTitle)
+        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOneAsync(string headingOneTitle)
         {
-            if (headingTitle is null or "")
+            if (headingOneTitle is null or "")
                 return Enumerable.Empty<Entity.HeadingTwo>();
 
             return await _context.HeadingsTwo
-                .Where(x => x.HeadingOne.Title == headingTitle)
-                .Select(x => new Entity.HeadingTwo() {Title = x.Title})
+                .Where(x => x.HeadingOne.Title == headingOneTitle)
+                .Select(x => new Entity.HeadingTwo(x.Title, new Entity.HeadingOne(headingOneTitle)))
                 .ToListAsync();
         }
     }

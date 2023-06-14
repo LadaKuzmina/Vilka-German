@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BackServer.Repositories;
 using BackServer.Services.Interfaces;
 using Entity;
 using Microsoft.Extensions.Logging;
@@ -40,17 +39,41 @@ namespace BackServer.Controllers
         {
             return await _service.GetByHeadingTwo(headingTwo);
         }
+        
+        [HttpGet("~/GetProductsByHeadingThree")]
+        public async Task<IEnumerable<Product>> GetProductsByHeadingThree(HeadingThree headingThree)
+        {
+            return await _service.GetByHeadingThree(headingThree);
+        }
 
         [HttpPost("~/AddProduct")]
-        public async Task<JsonContent> AddProduct(JsonContent json)
+        public async Task<StatusCodeResult> AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            var success = await _service.Add(product);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
         }
 
         [HttpDelete("~/DeleteProduct")]
-        public async Task<JsonContent> DeleteProduct(JsonContent json)
+        public async Task<StatusCodeResult> DeleteProduct(string productTitle)
         {
-            throw new NotImplementedException();
+            var success = await _service.Delete(productTitle);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
+        }
+        
+        [HttpPost("~/UpdateProduct")]
+        public async Task<StatusCodeResult> UpdateProduct(string oldProductTitle, Product product)
+        {
+            var success = await _service.Update(oldProductTitle, product);
+            if (success)
+                return Ok();
+            
+            return BadRequest();
         }
     }
 }

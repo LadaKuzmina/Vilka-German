@@ -13,6 +13,10 @@ form {
     border-radius: 1rem;
 }
 
+.head {
+
+}
+
 .nav .d3 form {
     background-color: #fff;
 }
@@ -36,11 +40,12 @@ form {
     top: 0;
     right: 0;
     border: none;
-    background: url("magnifier.png") scroll no-repeat center;
+    background: url("headerIcons/magnifier.png") scroll no-repeat center;
     width: 5.5rem;
     height: 100%;
     cursor: pointer;
 }
+
 
 .nav .d3 button:before {
     /*content: url("headerIcons/magnifier.png");*/
@@ -200,185 +205,92 @@ footer > div {
     margin-left: 20px;
 }
 
-/*.wrapper {*/
-/*    padding: 100px;*/
-/*}*/
-
-.slidesshow {
-    padding-top: 180px;
-    max-width: 95%;
-    position: relative;
-    margin: auto;
-}
-
-
-.mySlides {
-    display: none;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: 60px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-    background-color: #717171;
-}
-
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {
-        opacity: .4
-    }
-    to {
-        opacity: 1
-    }
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-    to {
-        opacity: 1
-    }
-}
-
-.products {
+.list_catalog {
+    top: 170px;
     display: inline-block;
     color: black;
     position: relative;
     left: 100px;
-    background-color: #D6AE96;
-    /*background-color: #492D2D;*/
-    /*color: #492D2D;*/
-    /*background-color: white;*/
-    width: 250px;
-    height: 150px;
-    padding: 18px;
-    border-radius: 10px;
-    font-family: Arial, Inter, serif;
-    /*Arial,*/
-    font-size: 18px;
-    overflow: auto;
     margin: 18px;
 }
 
-.measurer p {
+.navigator {
+    position: relative;
+    top: 190px;
+    left: 30px;
     font-size: 18px;
-    font-family: Arial, Inter, serif;
-    position: relative;
-    left: 100px;
-}
-
-.measurer {
-    position: relative;
-}
-
-.formMeasurer {
-    /*margin: 0 auto;*/
-    position: relative;
-    background-color: #FAE9CD;
-    /*background-color: #fff;*/
-    left: 500px;
-    width: 100%;
-    /*width: 450px;*/
-    height: 200px;
-    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
-}
-
-.formMeasurer label {
     display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    margin: 20px;
+    flex-direction: row;
 }
-.formMeasurer label[class="check"]{
-    display: block;
+
+.link_sort {
+    text-decoration: underline;
+    font-size: 15px;
 }
-.formMeasurer input {
-    margin-top: 10px;
-    height: 30px;
-    width: 350px;
-    border-radius: 20px/20px;
-    border: none;
-    padding-left: 15px;
+
+.link_sort:hover {
+    color:#0075B2;
+}
+
+.navigator a {
+    color: #000;
+}
+
+.products {
+    text-align: center;
+    top: 10px;
+    display: inline-block;
+    color: black;
+    position: relative;
+    padding: 18px;
+    font-family: Arial, Inter, serif;
+    /*Arial,*/
     font-size: 18px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    margin: 18px;
 }
 
-.formMeasurer input:focus {
-    border: 2px solid #D6AE96;
-    /*transform: translateX(15px);*/
-    width: 385px;
+.head {
+    top: 180px;
+    left: 30px;
+    position: relative;
 }
-form{
-   max-width: 500px;
-
+.article{
+    top: 165px;
+    left: 30px;
+    position: relative;
+    font-size: 20px;
 }
-.formMeasurer button {
-    cursor: pointer;
-    padding: 10px 30px;
-    height: 50px;
-    color: #fff;
-    background: #D6AE96;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+.photo_product{
+    top: 185px;
+    left: 30px;
+    position: relative;
 }
 
-.formMeasurer input[type="checkbox"] {
-    width: 20px;
-    margin-top: 10px;
-    height: 20px;
-    /*border-radius: 20px/20px;*/
-    /*border: none;*/
-    padding-left: 15px;
+.navigator .sep {
+    position: relative;
+    top: -20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.formMeasurer input[type="checkbox"]:focus {
-    border: none;
-    transform: none;
-    width: 20px;
+.products h4:hover {
+    color: #D6AE96;
 }
 
-.formMeasurer button:hover {
-    opacity: .80;
-    font-weight: bold;
-    transform: scale(1.1);
+.products img {
+    border: transparent solid;
+    border-radius: 30px;
 }
+
+.products img:hover {
+    border: #333333 solid;
+    border-radius: 30px;
+}
+
+/*.products:hover {*/
+/*    border: #333333 solid;*/
+/*}*/
+
 
 .products a {
     color: black;

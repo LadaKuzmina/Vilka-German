@@ -1,0 +1,358 @@
+/*.page-content .container {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.page-h1 {*/
+/*    font-size: 33px;*/
+/*    font-weight: 600;*/
+/*    line-height: normal;*/
+/*}*/
+
+.servers {
+    display: block;
+    /*flex-direction: column;*/
+    /*width: 100%;*/
+    height: 650px;
+    position: relative;
+    top: 80px;
+    /*left: 15px;*/
+    /*right: 30px;*/
+    font-size: 19px;
+    font-family: Inter, serif;
+}
+
+body {
+    background-color: #FAE9CDFF;
+    overflow-x: hidden;
+}
+
+form {
+    position: relative;
+    right: 0;
+    max-width: 35rem;
+    background-color: #fff;
+    box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
+    border-radius: 1rem;
+}
+
+.nav a.selected {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a {
+    color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav .d3 form {
+    background-color: #fff;
+}
+
+.nav .d3 input, .d3 button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.nav .d3 input {
+    width: 50%;
+    height: 42px;
+    padding-left: 15px;
+    font-size: 15px;
+    color: black;
+}
+
+.nav .d3 button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: url("../../../headerIcons/magnifier.png") scroll no-repeat center;
+    width: 5.5rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.nav .d3 button:before {
+    /*content: url("headerIcons/magnifier.png");*/
+    /*font-size: 10px;*/
+    /*color: white;*/
+}
+
+.header {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 36px;
+    height: 70px;
+    left: 0;
+    top: 80px;
+    right: 0;
+    color: #492D2D;
+    background: #FFFFFF;
+    border-radius: 12px;
+}
+
+.header .info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    flex-direction: row-reverse;
+    top: 0;
+    right: 0;
+}
+
+.header .contacts {
+    list-style-type: none;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+footer > div {
+    margin-top: 200px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px 10px;
+    /*flex-direction: row;*/
+    /*margin: auto;*/
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background: #FAE9CD;
+    font-size: 17px;
+    font-family: Arial, Inter, serif;
+    /*position: fixed;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+}
+
+.footer a {
+    color: #492D2D;
+}
+
+.catalog {
+    /*display: inline-block;*/
+    margin: 0 20px 0 57px;
+    float: left;
+
+}
+
+.menu {
+    /*display: inline-block;*/
+    margin: 0 100px 0 20px;
+
+}
+
+.list {
+    /*display: inline-block;*/
+    margin: 50px 40px 0 20px;
+}
+
+.footer .contacts {
+    /*display: inline-block;*/
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 50px 117px 0 20px;
+    text-align: left;
+}
+
+.icons {
+    padding-top: 159px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*.contacts a {*/
+/*    color: blue;*/
+/*}*/
+
+.catalog h4 {
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.menu h4 {
+    padding-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+/*.wrapper {*/
+/*    padding: 100px;*/
+/*}*/
+
+/*.profiled{*/
+/*    display: inline-block;*/
+/*    color: white;*/
+/*    background-color: #492D2D;*/
+/*    !*color: #492D2D;*!*/
+/*    !*background-color: white;*!*/
+/*    width: 250px;*/
+/*    height: 150px;*/
+/*    padding: 18px;*/
+/*    border-radius: 10px;*/
+/*    font-family: Arial, Inter, serif;*/
+/*    !*Arial,*!*/
+/*    font-size: 18px;*/
+/*    margin: 18px;*/
+/*}*/
+/*.brand{*/
+/*    padding-top: 100px;*/
+/*    overflow: auto;*/
+/*}*/
+/* настройки для всего элемента с чекбоксом */
+.checkbox {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* отдельные настройки для самого чекбокса */
+.checkbox__input {
+    /* устанавливаем абсолютное позиционирование */
+    position: absolute;
+    /* задаём высоту и ширину */
+    width: 1.375em;
+    height: 1.375em;
+    /* делаем чекбокс непрозрачным, чтобы скрыть исходный элемент и заменить его потом нарисованным */
+    opacity: 0;
+    /* меняем внешний вид курсора */
+    cursor: pointer;
+}
+
+/* настройки для SVG-иконки */
+.checkbox__icon {
+    /* размеры совпадают с размерами скрытого чекбокса */
+    width: 1.375em;
+    height: 1.375em;
+    /* убираем ограничение по наименьшей ширине блока */
+    flex-shrink: 0;
+    /* разрешаем отображать содержимое за пределами блока */
+    overflow: visible;
+}
+
+/* общие настройки для нового чекбокса и галочки */
+.checkbox__icon .tick {
+    /* рисовать будем всё отрезками по 20 пикселей */
+    stroke-dasharray: 20px;
+    /* но сместим начало всех отрезков тоже на 20 пикселей, чтобы пока галочка не рисовалась */
+    stroke-dashoffset: 20px;
+    /* это даст нам плавную анимацию отрисовки галочки */
+    transition: stroke-dashoffset 0.2s ease-out;
+}
+
+/* настройки для подписи чекбокса */
+.checkbox__label {
+    /* добавляем отступ слева */
+    margin-left: 0.5em;
+}
+
+/* включаем возможность поставить галочку */
+.checkbox__input:checked + .checkbox__icon .tick {
+    /* убираем смещение для отрезков, чтобы включить анимацию галочки */
+    stroke-dashoffset: 0;
+}
+
+.filters_h {
+    position: relative;
+    top: 190px;
+    left: 75px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.check-group {
+    display: block;
+    position: relative;
+    top: 200px;
+    width: 250px;
+    height: 175px;
+    overflow: auto;
+    margin: 5px;
+    background: #fff;
+    max-width: 13rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 10, 0.2);
+}
+
+.profiled > * + * {
+    margin-top: 0.75rem;
+}
+.width > * + *{
+    margin-top: 0.75rem;
+}
+.coating > * + *{
+    margin-top: 0.75rem;
+}
+.workWidth > * + *{
+    margin-top: 0.75rem;
+}
+.warranty > * + *{
+    margin-top: 0.75rem;
+}
+.check-group > * + * {
+    margin-top: 0.75rem;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d4aa70;
+    border-radius: 100px;
+}
+
+/*скролл второго варианта*/
+/*::-webkit-scrollbar-thumb {*/
+/*    border: 5px solid transparent;*/
+/*    border-radius: 100px;*/
+/*    background-color: #d4aa70;*/
+/*    background-clip: content-box;*/
+/*}*/
+.square {
+    height: 20px;
+    width: 20px;
+}

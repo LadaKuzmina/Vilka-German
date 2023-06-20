@@ -78,7 +78,5 @@ export function createRectangleCheckboxes(elementName, checkboxesList, count, co
         spanElement.appendChild(textElement);
         labelElement.appendChild(spanElement);
         profileElement.appendChild(labelElement);
-
     }
 }
-export{}

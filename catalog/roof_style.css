@@ -46,7 +46,7 @@ form {
     top: 0;
     right: 5px;
     border: none;
-    background: url("header_icons/magnifier.png") scroll no-repeat center;
+    background: url("../header_icons/magnifier.png") scroll no-repeat center;
     width: 3.5rem;
     height: 100%;
     cursor: pointer;

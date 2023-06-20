@@ -1,10 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
-using BackServer.Contexts;
 using Microsoft.AspNetCore.Mvc;
-using BackServer.Repositories;
 using BackServer.Services.Interfaces;
 using Entity;
 using Microsoft.Extensions.Logging;
@@ -35,11 +31,23 @@ namespace BackServer.Controllers
         {
             return await _service.GetAllHeadingsTwo();
         }
+        
+        [HttpGet("~/GetAllHeadingsThree")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree()
+        {
+            return await _service.GetAllHeadingsThree();
+        }
 
         [HttpGet("~/GetHeadingsTwoByHeadingsOne")]
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOne(string headingOneTitle)
         {
             return await _service.GetHeadingsTwoByHeadingsOne(headingOneTitle);
+        }
+        
+        [HttpGet("~/GetHeadingsThreeByHeadingsTwo")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwo(string headingTwoTitle)
+        {
+            return await _service.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
 
         [HttpPost("~/AddHeadingOne")]

@@ -17,12 +17,6 @@ form {
 
 }
 
-.nav .roof {
-    position: relative;
-    top: 5px;
-    right: 5px;
-}
-
 .nav .d3 form {
     background-color: #fff;
 }
@@ -34,27 +28,27 @@ form {
 }
 
 .nav .d3 input {
-    width: 65%;
-    height: 53px;
-    padding-left: 16px;
-    font-size: 17px;
+    width: 50%;
+    height: 42px;
+    padding-left: 15px;
+    font-size: 15px;
     color: black;
 }
 
 .nav .d3 button {
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 0;
     border: none;
-    background: url("header_icons/magnifier.png") scroll no-repeat center;
-    width: 3.5rem;
+    background: url("headerIcons/magnifier.png") scroll no-repeat center;
+    width: 5.5rem;
     height: 100%;
     cursor: pointer;
 }
 
 
 .nav .d3 button:before {
-    /*content: url("header_icons/magnifier.png");*/
+    /*content: url("headerIcons/magnifier.png");*/
     /*font-size: 10px;*/
     /*color: white;*/
 }
@@ -138,7 +132,7 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    margin-top: 250px;
+    margin-top: 190px;
     justify-content: space-between;
     padding: 0 10px 10px;
     /*flex-direction: row;*/
@@ -229,6 +223,15 @@ footer > div {
     flex-direction: row;
 }
 
+.link_sort {
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.link_sort:hover {
+    color:#0075B2;
+}
+
 .navigator a {
     color: #000;
 }
@@ -251,10 +254,21 @@ footer > div {
     left: 30px;
     position: relative;
 }
-
-.navigator .sep{
+.article{
+    top: 165px;
+    left: 30px;
     position: relative;
-    top: -17px;
+    font-size: 20px;
+}
+.photo_product{
+    top: 185px;
+    left: 30px;
+    position: relative;
+}
+
+.navigator .sep {
+    position: relative;
+    top: -20px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -263,10 +277,11 @@ footer > div {
     color: #D6AE96;
 }
 
-.products img{
+.products img {
     border: transparent solid;
     border-radius: 30px;
 }
+
 .products img:hover {
     border: #333333 solid;
     border-radius: 30px;

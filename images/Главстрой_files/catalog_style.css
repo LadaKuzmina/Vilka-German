@@ -36,12 +36,6 @@ form {
     border-radius: 1rem;
 }
 
-.nav .roof {
-    position: relative;
-    top: 5px;
-    right: 5px;
-}
-
 .nav a.selected {
     background: rgba(177, 152, 145, .3);
 }
@@ -72,26 +66,26 @@ form {
 }
 
 .nav .d3 input {
-    width: 65%;
-    height: 53px;
-    padding-left: 16px;
-    font-size: 17px;
+    width: 50%;
+    height: 42px;
+    padding-left: 15px;
+    font-size: 15px;
     color: black;
 }
 
 .nav .d3 button {
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 0;
     border: none;
-    background: url("header_icons/magnifier.png") scroll no-repeat center;
-    width: 3.5rem;
+    background: url("headerIcons/magnifier.png") scroll no-repeat center;
+    width: 5.5rem;
     height: 100%;
     cursor: pointer;
 }
 
 .nav .d3 button:before {
-    /*content: url("header_icons/magnifier.png");*/
+    /*content: url("headerIcons/magnifier.png");*/
     /*font-size: 10px;*/
     /*color: white;*/
 }
@@ -146,7 +140,7 @@ a {
 }
 
 footer > div {
-    margin-top: 260px;
+    margin-top: 300px;
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
@@ -155,7 +149,7 @@ footer > div {
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 190px;
+    height: 250px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;

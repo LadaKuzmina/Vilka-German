@@ -9,7 +9,7 @@
 <div class="wrapper">
     <header class="header">
         <div class="logo">
-            <a href="index.html"><img src="../header_icons/logo.png" alt="logo" height="50" width="230"></a>
+            <a href="header_page/index.html"><img src="header_icons/logo.png" alt="logo" height="50" width="230"></a>
 
             <div class="info">
                 <ul class="contacts">
@@ -30,10 +30,10 @@
         <div class="container">
             <div class="header_inner">
                 <nav class="nav">
-                    <a class="nav_link" href="index.html"><img src="../header_icons/roof.png" alt="roof" class="roof"
-                                                               height="25" width="50"> Каталог </a>
+                    <a class="nav_link" href="header_page/index.html"><img src="header_icons/roof.png" alt="roof" class="roof"
+                                                                           height="25" width="50"> Каталог </a>
                     <a class="nav_link" href="header_page/page_about_us.html"> О нас </a>
-                    <a class="nav_link" href="header_page/page_complited_project.html"> Выполненные проекты </a>
+                    <!--                    <a class="nav_link" href="header_page/page_complited_project.html"> Выполненные проекты </a>-->
                     <a class="nav_link" href="header_page/services_page.html"> Наши услуги </a>
                     <a class="nav_link" href="header_page/delivery_page.html"> Доставка </a>
                     <a class="nav_link" href="header_page/contact_page.html"> Контакты </a>
@@ -48,47 +48,61 @@
         </div>
     </header>
     <div class="filters_h"><b>Фильтры</b></div>
-    <div class="check-group">
-        <div class="h"><b>Цена</b></div>
-        <div class="price-input">
-            <div class="field">
-                <span>От</span>
-                <input type="number" class="input-min" value="2500">
+    <details open>
+        <summary><b>Цена</b></summary>
+        <!--    <div class="check-group">-->
+<!--            <div class="h"><b>Цена</b></div>-->
+            <div class="price-input">
+                <div class="field">
+                    <span>От</span>
+                    <input type="number" class="input-min" value="2500">
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                    <span>До</span>
+                    <input type="number" class="input-max" value="7500">
+                </div>
             </div>
-            <div class="separator">-</div>
-            <div class="field">
-                <span>До</span>
-                <input type="number" class="input-max" value="7500">
+            <div class="slider-range">
+                <div class="progress"></div>
             </div>
-        </div>
-        <div class="slider-range">
-            <div class="progress"></div>
-        </div>
-        <div class="range-input">
-            <input type="range" class="range-min" min="0" max="10000" value="2500">
-            <input type="range" class="range-max" min="0" max="10000" value="7500">
-        </div>
-    </div>
+            <div class="range-input">
+                <input type="range" class="range-min" min="0" max="10000" value="2500">
+                <input type="range" class="range-max" min="0" max="10000" value="7500">
+            </div>
+    </details>
+<!--    </div>-->
     <!--        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">-->
     <!--    цвет #006F94 #6EA340  "#aa6a2c-->
-    <div class="check-group">
+<!--    <div class="check-group">-->
+    <details open>
+        <summary><b>Профнастил</b></summary>
         <div class="profiled">
-            <div class="h"><b>Профнастил</b></div>
+<!--            <div class="h"><b>Профнастил</b></div>-->
         </div>
-    </div>
-    <div class="check-group">
+    </details>
+<!--    </div>-->
+<!--    <div class="check-group">-->
+    <details open>
+        <summary><b>Толщина, мм</b></summary>
         <div class="width">
-            <div class="h"><b>Толщина, мм</b></div>
+<!--            <div class="h"><b>Толщина, мм</b></div>-->
 
         </div>
-    </div>
-    <div class="check-group">
+    </details>
+<!--    </div>-->
+<!--    <div class="check-group">-->
+    <details open>
+        <summary><b>Покрытие</b></summary>
         <div class="coating">
-            <div class="h"><b>Покрытие</b></div>
+<!--            <div class="h"><b>Покрытие</b></div>-->
         </div>
-    </div>
-    <div class="check-group">
-        <div class="h"><b>Цвет</b></div>
+    </details>
+<!--    </div>-->
+<!--    <div class="check-group">-->
+    <details open>
+        <summary><b>Цвет</b></summary>
+<!--        <div class="h"><b>Цвет</b></div>-->
         <label for="myCheckbox31" class="checkbox">
             <input class="checkbox__input" type="checkbox" id="myCheckbox31">
             <svg class="checkbox__icon" viewBox="0 0 22 22">
@@ -161,18 +175,25 @@
                 RAL 3005 Винно-красный
             </div>
         </label>
-    </div>
-    <div class="check-group">
+<!--    </div>-->
+    </details>
+    <details open>
+        <summary><b>Рабочая ширина, мм</b></summary>
+<!--    <div class="check-group">-->
         <div class="workWidth">
-            <div class="h"><b>Рабочая ширина, мм</b></div>
+<!--            <div class="h"><b>Рабочая ширина, мм</b></div>-->
         </div>
-    </div>
+    </details>
+<!--    </div>-->
 
-    <div class="check-group">
+<!--    <div class="check-group">-->
+    <details open>
+        <summary><b>Гарантия</b></summary>
         <div class="warranty">
-            <div class="h"><b>Гарантия</b></div>
+<!--            <div class="h"><b>Гарантия</b></div>-->
         </div>
-    </div>
+<!--    </div>-->
+    </details>
     <!--    <div class="check-group">-->
     <!--        <div class="h"><b>Цвет</b></div>-->
     <!--        <input class="checkbox__input" type="checkbox" id="myCheckbox31">-->
@@ -202,28 +223,28 @@
         <div class="catalog">
             <h4>Каталог</h4>
             <ul>
-                <li><a href="roof.html">Кровельные материалы </a></li>
-                <li><a href="facade.html">Фасадные материалы</a></li>
-                <li><a href="#">Водосточные системы</a></li>
-                <li><a href="dormer_windows.html">Мансардные окна</a></li>
-                <li><a href="ventilation.html">Вентиляция</a></li>
+                <li><a class="catalog_link" href="catalog/roof.html">Кровельные материалы </a></li>
+                <li><a class="catalog_link" href="catalog/facade.html">Фасадные материалы</a></li>
+                <li><a class="catalog_link" href="#">Водосточные системы</a></li>
+                <li><a class="catalog_link" href="catalog/dormer_windows.html">Мансардные окна</a></li>
+                <li><a class="catalog_link" href="catalog/ventilation.html">Вентиляция</a></li>
             </ul>
         </div>
 
         <div class="list">
             <ul>
-                <li><a href="#">Чердачные лестницы</a></li>
-                <li><a href="insulation_materials.html">Изоляционные материалы</a></li>
-                <li><a href="fences.html">Ограждения</a></li>
-                <li><a href="accessories.html">Комплектующие</a></li>
-                <li><a href="landscaping_site.html">Благоустройство</a></li>
+                <li><a class="catalog_link" href="#">Чердачные лестницы</a></li>
+                <li><a class="catalog_link" href="catalog/insulation_materials.html">Изоляционные материалы</a></li>
+                <li><a class="catalog_link" href="catalog/fences.html">Ограждения</a></li>
+                <li><a class="catalog_link" href="catalog/accessories.html">Комплектующие</a></li>
+                <li><a class="catalog_link" href="catalog/landscaping_site.html">Благоустройство</a></li>
             </ul>
         </div>
         <div class="menu">
             <h4>Меню</h4>
             <ul>
                 <li><a href="header_page/page_about_us.html">О нас</a></li>
-                <li><a href="header_page/page_complited_project.html">Выполненные проекты</a></li>
+<!--                <li><a href="header_page/page_complited_project.html">Выполненные проекты</a></li>-->
                 <li><a href="header_page/services_page.html">Наши услуги</a></li>
                 <li><a href="header_page/delivery_page.html">Доставка</a></li>
                 <li><a href="header_page/contact_page.html">Контакты</a></li>
@@ -274,8 +295,7 @@
 
     </div>
 </footer>
-</div>
-</div>
+
 <script src="scripts/menu.js"></script>
 <script src="scripts/range.js"></script>
 </body>

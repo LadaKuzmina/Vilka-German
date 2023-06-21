@@ -8,7 +8,22 @@
 /*    font-weight: 600;*/
 /*    line-height: normal;*/
 /*}*/
+@media (max-width: 1228px) {
+    .container{
+        max-width: 970px;
+    }
+}
 
+@media (max-width: 992px) {
+    .container{
+        max-width: 750px;
+    }
+}
+@media (max-width: 767px) {
+    .container{
+        max-width: none;
+    }
+}
 .servers {
     display: block;
     /*flex-direction: column;*/
@@ -146,7 +161,7 @@ footer > div {
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 250px;
+    height: 190px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;

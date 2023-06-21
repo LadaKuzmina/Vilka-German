@@ -15,11 +15,47 @@ form {
 
 .logo .text_about_company {
     display: inline-block;
-    vertical-align: top;
+    position: absolute;
+    /*vertical-align: center;*/
     font-size: 16px;
-    margin-left: 30px;
+    margin: 15px 0 0 30px;
     font-family: Arial, Inter, serif;
 }
+
+.logo .logo_photo {
+    margin-top: 8px;
+}
+
+/*.nav ul {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    list-style: none;*/
+
+/*}*/
+
+/*.nav ul li {*/
+/*    display: inline-block;*/
+/*    position: relative;*/
+/*}*/
+
+/*nav ul ul {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*}*/
+
+/*!* отображаем выпадающий список при наведении *!*/
+/*nav ul li:hover > ul {*/
+/*    display:inherit;*/
+/*}*/
+
+/*!* первый уровень выпадающего списка *!*/
+/*nav ul ul li {*/
+/*    min-width:170px;*/
+/*    float:none;*/
+/*    display:list-item;*/
+/*    position: relative;*/
+/*}*/
 
 .nav .roof {
     position: relative;

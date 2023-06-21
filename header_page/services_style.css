@@ -13,6 +13,19 @@ form {
     border-radius: 12px; /*1rem*/
 }
 
+.logo .text_about_company {
+    display: inline-block;
+    position: absolute;
+    /*vertical-align: center;*/
+    font-size: 16px;
+    margin: 15px 0 0 30px;
+    font-family: Arial, Inter, serif;
+}
+
+.logo .logo_photo {
+    margin-top: 8px;
+}
+
 .nav .roof {
     position: relative;
     top: 5px;

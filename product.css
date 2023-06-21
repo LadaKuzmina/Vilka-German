@@ -13,8 +13,42 @@ form {
     border-radius: 1rem;
 }
 
-.head {
+.logo .text_about_company {
+    display: inline-block;
+    position: absolute;
+    /*vertical-align: center;*/
+    font-size: 16px;
+    margin: 15px 0 0 30px;
+    font-family: Arial, Inter, serif;
+}
 
+.logo .logo_photo {
+    margin-top: 8px;
+}
+
+.nav .roof {
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
+.nav a.selected {
+    background: rgba(177, 152, 145, .3);
+}
+
+.nav a {
+    color: #492D2D;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+}
+
+.nav a.active {
+    background-color: rgba(177, 152, 145, .3);
+}
+
+.nav a:hover {
+    background: rgba(177, 152, 145, .3);
 }
 
 .nav .d3 form {
@@ -28,29 +62,26 @@ form {
 }
 
 .nav .d3 input {
-    width: 50%;
-    height: 42px;
-    padding-left: 15px;
-    font-size: 15px;
+    width: 65%;
+    height: 53px;
+    padding-left: 16px;
+    font-size: 17px;
     color: black;
 }
 
 .nav .d3 button {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 5px;
     border: none;
-    background: url("headerIcons/magnifier.png") scroll no-repeat center;
-    width: 5.5rem;
+    background: url("header_icons/magnifier.png") scroll no-repeat center;
+    width: 3.5rem;
     height: 100%;
     cursor: pointer;
 }
 
+.head {
 
-.nav .d3 button:before {
-    /*content: url("headerIcons/magnifier.png");*/
-    /*font-size: 10px;*/
-    /*color: white;*/
 }
 
 .header {

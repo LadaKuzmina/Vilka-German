@@ -44,7 +44,7 @@ function getAllSubheaders() {
 
     let placeHolder =
         `{
-        "Заголовки": [["Сайдинг виниловый", "https://drive.google.com/uc?export=view&id=1hzQ3RZW5ls_-aLay5dwjM2tOGDA2OgYC", "NULL"], ["Сайдинг металлический", "images/99574_sayding.png", "NULL"], ["Сайдинг фиброцементный", "images/99574_sayding.png", "NULL"], ["Софиты", "images/99570_sofity.png", "NULL"], ["Фасадные панели", "images/99568_fasadnye-paneli.png", "NULL"], ["Фасадная плитка", "images/120350_fasad-fasadnaya-plitka.png", "NULL"], ["Доборные элементы", "images/120351_fasad-dobornye-elementy.png", "NULL"], ["Подсистема для фасада", "images/120352_fasad_podsistema_dlya-fasada.png", "NULL"]]
+        "Заголовки": [["Сайдинг виниловый", "https://drive.google.com/uc?export=view&id=1hzQ3RZW5ls_-aLay5dwjM2tOGDA2OgYC", "NULL"], ["Сайдинг металлический", "../images/99574_sayding.png", "NULL"], ["Сайдинг фиброцементный", "../images/99574_sayding.png", "NULL"], ["Софиты", "../images/99570_sofity.png", "NULL"], ["Фасадные панели", "../images/99568_fasadnye-paneli.png", "NULL"], ["Фасадная плитка", "../images/120350_fasad-fasadnaya-plitka.png", "NULL"], ["Доборные элементы", "../images/120351_fasad-dobornye-elementy.png", "NULL"], ["Подсистема для фасада", "../images/120352_fasad_podsistema_dlya-fasada.png", "NULL"]]
         }`;
     let parsedJSON = JSON.parse(placeHolder);
 

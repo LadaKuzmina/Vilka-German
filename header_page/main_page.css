@@ -3,7 +3,22 @@ body {
     background-color: #FAE9CD;
     overflow-x: hidden;
 }
+@media (max-width: 1228px) {
+    .container_size{
+        max-width: 970px;
+    }
+}
 
+@media (max-width: 992px) {
+    .container_size{
+        max-width: 750px;
+    }
+}
+@media (max-width: 767px) {
+    .container_size{
+        max-width: none;
+    }
+}
 form {
     position: relative;
     right: 0;
@@ -147,7 +162,7 @@ footer > div {
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
-    height: 250px;
+    height: 190px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;
@@ -393,6 +408,7 @@ form{
     font-weight: bold;
     transform: scale(1.1);
 }
+.products
 
 .products a {
     color: black;

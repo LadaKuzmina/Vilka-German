@@ -132,7 +132,7 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    margin-top: 250px;
+    margin-top: 190px;
     justify-content: space-between;
     padding: 0 10px 10px;
     /*flex-direction: row;*/

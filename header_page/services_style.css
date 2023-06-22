@@ -4,6 +4,142 @@ body {
     overflow-x: hidden;
 }
 
+.search {
+    position: relative;
+    right: 0;
+    max-width: 35rem;
+    background-color: #fff;
+    box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
+    border-radius: 12px; /*1rem*/
+}
+
+.logo .text_about_company {
+    display: inline-block;
+    position: absolute;
+    /*vertical-align: center;*/
+    font-size: 16px;
+    margin: 15px 0 0 30px;
+    font-family: Arial, Inter, serif;
+}
+
+.logo .logo_photo {
+    margin-top: 8px;
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+}
+
+.nav ul li {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+}
+
+/* отображаем выпадающий список при наведении */
+nav ul li:hover > ul {
+    display:inherit;
+}
+
+/* первый уровень выпадающего списка */
+nav ul ul li {
+    min-width:170px;
+    float:none;
+    display:list-item;
+    position: relative;
+}
+
+.nav .roof {
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
+.nav .d3 form {
+    background-color: #fff;
+}
+
+.nav .d3 input, .d3 button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.nav .d3 input {
+    width: 65%;
+    height: 53px;
+    padding-left: 16px;
+    font-size: 17px;
+    color: black;
+}
+
+.nav .d3 button {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    border: none;
+    background: url("../header_icons/magnifier.png") scroll no-repeat center;
+    width: 3.5rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.header {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 36px;
+    height: 70px;
+    left: 0;
+    top: 80px;
+    right: 0;
+    color: #492D2D;
+    background: #FFFFFF;
+    border-radius: 12px;
+}
+
+.header .info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    flex-direction: row-reverse;
+    top: 0;
+    right: 0;
+}
+
+.header .contacts {
+    list-style-type: none;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.info {
+    position: absolute;
+    font-size: 40px;
+    top: 200px;
+    text-align: center;
+}
+
 a {
     text-decoration: none;
 }

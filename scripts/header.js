@@ -1,6 +1,6 @@
 const header = document.createElement('header');
 header.classList.add('header');
-headerStyle();
+// headerStyle();
 
 const logoDiv = document.createElement('div');
 logoDiv.classList.add('logo');
@@ -14,7 +14,7 @@ logoImg.alt = 'logo';
 logoImg.height = '50';
 logoImg.width = '230';
 logoImg.classList.add('logo_photo');
-logoImgStyle();
+// logoImgStyle();
 
 logoA.appendChild(logoImg);
 logoDiv.appendChild(logoA);
@@ -22,17 +22,17 @@ logoDiv.appendChild(logoA);
 const textAboutCompanyDiv = document.createElement('div');
 textAboutCompanyDiv.classList.add('text_about_company');
 textAboutCompanyDiv.innerHTML = 'Продажа и монтаж материалов для кровли и фасада<br>в Екатеринбурге';
-textAboutCompanyStyle();
+// textAboutCompanyStyle();
 
 logoDiv.appendChild(textAboutCompanyDiv);
 
 const infoDiv = document.createElement('div');
 infoDiv.classList.add('info');
-infoStyle();
+// infoStyle();
 
 const contactsUl = document.createElement('ul');
 contactsUl.classList.add('contacts');
-contactsStyle();
+// contactsStyle();
 
 const emailLi = document.createElement('li');
 const emailA = document.createElement('a');
@@ -90,7 +90,7 @@ headerInnerDiv.classList.add('header_inner');
 
 const nav = document.createElement('nav');
 nav.classList.add('nav');
-navStyle();
+// navStyle();
 
 const catalogLink = document.createElement('a');
 catalogLink.classList.add('nav_link');
@@ -102,7 +102,7 @@ roofImg.alt = 'roof';
 roofImg.height = '25';
 roofImg.width = '50';
 roofImg.classList.add('roof');
-roofImgStyle();
+// roofImgStyle();
 
 catalogLink.appendChild(roofImg);
 catalogLink.innerHTML += ' Каталог ';
@@ -143,16 +143,16 @@ searchDiv.classList.add('d3');
 
 const searchForm = document.createElement('form');
 searchForm.classList.add('search');
-searchFormStyle();
+// searchFormStyle();
 
 const searchInput = document.createElement('input');
 searchInput.type = 'text';
 searchInput.placeholder = 'Искать здесь...';
-searchInputStyle();
+// searchInputStyle();
 
 const searchButton = document.createElement('button');
 searchButton.type = 'submit';
-searchButtonStyle();
+// searchButtonStyle();
 
 searchForm.appendChild(searchInput);
 searchForm.appendChild(searchButton);

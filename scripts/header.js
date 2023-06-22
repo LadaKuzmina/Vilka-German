@@ -120,11 +120,11 @@ nav.appendChild(aboutUsLink);
 // completedProjectsLink.innerHTML = ' Выполненные проекты ';
 // nav.appendChild(completedProjectsLink);
 
-const servicesLink = document.createElement('a');
-servicesLink.classList.add('nav_link');
-servicesLink.href = 'services_page.html';
-servicesLink.innerHTML = ' Наши услуги ';
-nav.appendChild(servicesLink);
+// const servicesLink = document.createElement('a');
+// servicesLink.classList.add('nav_link');
+// servicesLink.href = 'services_page.html';
+// servicesLink.innerHTML = ' Наши услуги ';
+// nav.appendChild(servicesLink);
 
 const deliveryLink = document.createElement('a');
 deliveryLink.classList.add('nav_link');

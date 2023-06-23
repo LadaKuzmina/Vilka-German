@@ -36,19 +36,28 @@ function createCardOfObject(obj) {
 }
 
 function getAllSubheaders() {
-    let obj = new Object();
-    obj.Заголовок = `${document.getElementsByClassName('head')[0].textContent}`;
-    let jsonString= JSON.stringify(obj);
-
-    // Запрос на получение всех подзаголовков
-
-    let placeHolder =
-        `{
-        "Заголовки": [["Сайдинг виниловый", "https://drive.google.com/uc?export=view&id=1hzQ3RZW5ls_-aLay5dwjM2tOGDA2OgYC", "NULL"], ["Сайдинг металлический", "../images/99574_sayding.png", "NULL"], ["Сайдинг фиброцементный", "../images/99574_sayding.png", "NULL"], ["Софиты", "../images/99570_sofity.png", "NULL"], ["Фасадные панели", "../images/99568_fasadnye-paneli.png", "NULL"], ["Фасадная плитка", "../images/120350_fasad-fasadnaya-plitka.png", "NULL"], ["Доборные элементы", "../images/120351_fasad-dobornye-elementy.png", "NULL"], ["Подсистема для фасада", "../images/120352_fasad_podsistema_dlya-fasada.png", "NULL"]]
-        }`;
+    let response = httpGet(`https://localhost:7240/GetHeadingsTwoByHeadingsOne?headingOneTitle=Кровля`);
+    alert(response);
     let parsedJSON = JSON.parse(placeHolder);
 
     return parsedJSON.Заголовки;
+}
+
+function httpGet(url)
+{
+    const responsePromise = fetch(url)
+        .then((response) => {
+            return response;
+        });
+
+    let response = '';
+    const printAddress = async () => {
+        response = await responsePromise;
+    };
+
+    printAddress();
+
+    return response;
 }
 
 createCards();

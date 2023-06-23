@@ -40,7 +40,7 @@ emailA.href = 'mailto:3834520@mail.ru';
 
 const emailImg = document.createElement('img');
 emailImg.src = '../header_icons/email_logo.png';
-emailImg.alt = 'whatsapp';
+emailImg.alt = 'email';
 emailImg.height = '18';
 emailImg.width = '27';
 

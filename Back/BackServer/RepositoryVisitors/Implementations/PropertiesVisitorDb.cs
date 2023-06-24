@@ -143,12 +143,12 @@ namespace BackServer.Repositories
             switch (heading)
             {
                 case Headings.HeadingOne:
-                    sql.Append($@"JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id
+                    sql.Append($@" JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id
                                 WHERE ho.title = '{headingTitle}'
                                 GROUP BY pf.heading_one_id;");
                     break;
                 case Headings.HeadingTwo:
-                    sql.Append($@"JOIN heading_two ht on ht.heading_two_id = pf.heading_two_id
+                    sql.Append($@" JOIN heading_two ht on ht.heading_two_id = pf.heading_two_id
                                 WHERE ht.title = '{headingTitle}'
                                 GROUP BY pf.heading_two_id;");
                     break;
@@ -182,11 +182,11 @@ namespace BackServer.Repositories
             switch (heading)
             {
                 case Headings.HeadingOne:
-                    sql.Append($@"JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id
+                    sql.Append($@" JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id
                                 WHERE ho.title='{headingTitle}';");
                     break;
                 case Headings.HeadingTwo:
-                    sql.Append($@"JOIN heading_two ho on ht.heading_two_id = pf.heading_two_id
+                    sql.Append($@" JOIN heading_two ho on ht.heading_two_id = pf.heading_two_id
                                 WHERE ht.title='{headingTitle}';");
                     break;
             }

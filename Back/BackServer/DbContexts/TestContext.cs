@@ -29,13 +29,20 @@ namespace BackServer.Contexts
         public DbSet<PropertyValues> PropertyValues { get; set; }
         public DbSet<SaleProducts> SaleProducts { get; set; }
         public DbSet<ProjectMaterials> ProjectMaterials { get; set; }
-
-
+        public DbSet<ProductImages> ProductImages { get; set; }
+        public DbSet<ProjectImages> ProjectImages { get; set; }
+        
+        public DbSet<HeadingOneFilters> HeadingOneFilters { get; set; }
+        public DbSet<HeadingTwoFilters> HeadingTwoFilters { get; set; }
+        
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             HeadingOneCreating(modelBuilder);
             HeadingTwoCreating(modelBuilder);
             PropertiesCreating(modelBuilder);
+            HeadingOneFiltersCreating(modelBuilder);
+            HeadingTwoFiltersCreating(modelBuilder);
             SalesCreating(modelBuilder);
             ProjectsCreating(modelBuilder);
             PropertyValuesCreating(modelBuilder);
@@ -43,6 +50,8 @@ namespace BackServer.Contexts
             UnitMeasurementCreating(modelBuilder);
             ProductFamilyCreating(modelBuilder);
             ProductCreating(modelBuilder);
+            ProductImagesCreating(modelBuilder);
+            ProjectImagesCreating(modelBuilder);
             ProductPropertiesCreating(modelBuilder);
             SaleProductsCreating(modelBuilder);
             ProjectsMaterialsCreating(modelBuilder);
@@ -81,6 +90,44 @@ namespace BackServer.Contexts
                 entity.Property(e => e.Title).IsRequired().HasColumnName("title");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
                 entity.Property(e => e.ImageRef).HasColumnName("image_ref");
+            });
+        }
+        
+        private void HeadingOneFiltersCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<HeadingOneFilters>(e => e.ToTable("heading_one_filters"));
+            modelBuilder.Entity<HeadingOneFilters>(entity =>
+            {
+                entity.HasKey(x => new {HeadingsOneId = x.heading_one_id, PropertyId = x.property_id});
+
+                entity
+                    .HasOne(e => e.HeadingOne)
+                    .WithMany(e => e.HeadingOneFilters)
+                    .HasForeignKey("heading_one_id");
+                
+                entity
+                    .HasOne(e => e.Property)
+                    .WithMany(e => e.HeadingOneFilters)
+                    .HasForeignKey("property_id");
+            });
+        }
+        
+        private void HeadingTwoFiltersCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<HeadingTwoFilters>(e => e.ToTable("heading_two_filters"));
+            modelBuilder.Entity<HeadingTwoFilters>(entity =>
+            {
+                entity.HasKey(x => new {HeadingsTwoId = x.heading_two_id, PropertyId = x.property_id});
+
+                entity
+                    .HasOne(e => e.HeadingTwo)
+                    .WithMany(e => e.HeadingTwoFilters)
+                    .HasForeignKey("heading_two_id");
+                
+                entity
+                    .HasOne(e => e.Property)
+                    .WithMany(e => e.HeadingTwoFilters)
+                    .HasForeignKey("property_id");
             });
         }
 
@@ -125,7 +172,6 @@ namespace BackServer.Contexts
                 entity.Property(e => e.Title).IsRequired().HasColumnName("title");
                 entity.Property(e => e.RoofType).HasColumnName("roof_type");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
-                entity.Property(e => e.ImageRef).HasColumnName("image_ref");
                 entity.Property(e => e.Priority).HasColumnName("priority");
             });
         }
@@ -235,7 +281,6 @@ namespace BackServer.Contexts
                 entity.Property(e => e.Popularity).IsRequired().HasColumnName("popularity");
                 entity.Property(e => e.Available).IsRequired().HasColumnName("available");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
-                entity.Property(e => e.ImageRef).HasColumnName("image_ref");
 
                 entity.Property(e => e.product_family_id).IsRequired().HasColumnName("product_family_id");
 
@@ -248,6 +293,42 @@ namespace BackServer.Contexts
                     .HasOne(e => e.ProductFamily)
                     .WithMany(e => e.Products)
                     .HasForeignKey("product_family_id");
+            });
+        }
+        
+        private void ProductImagesCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductImages>(e => e.ToTable("product_images"));
+            modelBuilder.Entity<ProductImages>(entity =>
+            {
+                entity.HasKey(x => new {x.ImageRef, ProductId = x.product_id});
+
+                entity.Property(e => e.ImageRef).IsRequired().HasColumnName("image_ref");
+                entity.Property(e => e.IsPriority).IsRequired().HasColumnName("is_priority");
+                entity.Property(e => e.product_id).IsRequired().HasColumnName("product_id");
+
+                entity
+                    .HasOne(e => e.Product)
+                    .WithMany(e => e.ProductImages)
+                    .HasForeignKey("product_id");
+            });
+        }
+        
+        private void ProjectImagesCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProjectImages>(e => e.ToTable("project_images"));
+            modelBuilder.Entity<ProjectImages>(entity =>
+            {
+                entity.HasKey(x => new {x.ImageRef, ProjectId = x.project_id});
+
+                entity.Property(e => e.ImageRef).IsRequired().HasColumnName("image_ref");
+                entity.Property(e => e.IsPriority).IsRequired().HasColumnName("is_priority");
+                entity.Property(e => e.project_id).IsRequired().HasColumnName("project_id");
+
+                entity
+                    .HasOne(e => e.Project)
+                    .WithMany(e => e.ProjectImages)
+                    .HasForeignKey("project_id");
             });
         }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
 using Entity;
 using Microsoft.Extensions.Logging;
+using NpgsqlDbExtensions.Enums;
 
 namespace BackServer.Controllers
 {
@@ -27,30 +28,56 @@ namespace BackServer.Controllers
         {
             return await _service.GetAll();
         }
-        
-        
+
+
         [HttpGet("~/GetAvailableProducts")]
         public async Task<IEnumerable<Product>> GetAvailableProducts()
         {
             return await _service.GetAvailable();
         }
-        
-        [HttpGet("~/GetProductsByHeadingOne")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingOne(string headingOneTitle, [FromQuery]HashSet<Property> requiredProperties, int pageNumber, int countElements)
+
+        [HttpGet("~/GetProductByTitle")]
+        public async Task<Product> GetByTitle(string title)
         {
-            return await _service.GetByHeadingOne(headingOneTitle, requiredProperties.ToHashSet(), pageNumber, countElements);
+            return await _service.GetByTitle(title);
         }
-        
-        [HttpGet("~/GetProductsByHeadingTwo")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingTwo(string headingTwoTitle, int pageNumber, int countElements)
+
+        [HttpPost("~/GetPageHeadingOne")]
+        public async Task<IEnumerable<Product>> GetPageHeadingOne(string headingOneTitle,
+            ProductOrders productOrder, Property[] requiredProperties, int pageNumber, int countElements)
         {
-            return await _service.GetByHeadingTwo(headingTwoTitle, pageNumber, countElements);
+            return await _service.GetPageHeadingOne(headingOneTitle, productOrder,
+                requiredProperties.ToDictionary(x => x.Title, x => x.Values.ToHashSet()), pageNumber, countElements);
         }
-        
-        [HttpGet("~/GetProductsByHeadingThree")]
-        public async Task<IEnumerable<Product>> GetProductsByHeadingThree(string headingThreeTitle, int pageNumber, int countElements)
+
+        [HttpPost("~/GetPageHeadingTwo")]
+        public async Task<IEnumerable<Product>> GetPageHeadingTwo(string headingTwoTitle,
+            ProductOrders productOrder, Property[] requiredProperties, int pageNumber, int countElements)
         {
-            return await _service.GetByHeadingThree(headingThreeTitle, pageNumber, countElements);
+            return await _service.GetPageHeadingTwo(headingTwoTitle, productOrder,
+                requiredProperties.ToDictionary(x => x.Title, x => x.Values.ToHashSet()), pageNumber, countElements);
+        }
+
+        [HttpPost("~/GetPageHeadingThree")]
+        public async Task<IEnumerable<Product>> GetPageHeadingThree(string headingThreeTitle,
+            ProductOrders productOrder, Property[] requiredProperties, int pageNumber, int countElements)
+        {
+            return await _service.GetPageHeadingThree(headingThreeTitle, productOrder,
+                requiredProperties.ToDictionary(x => x.Title, x => x.Values.ToHashSet()), pageNumber, countElements);
+        }
+
+        [HttpGet("~/GetCountPagesHeadingOne")]
+        public async Task<int> GetCountPagesHeadingOne(string headingOneTitle, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int countElements)
+        {
+            return await _service.GetCountPagesHeadingOne(headingOneTitle, productOrder, reqProperties, countElements);
+        }
+
+        [HttpGet("~/GetCountPagesHeadingTwo")]
+        public async Task<int> GetCountPagesHeadingTwo(string headingTwoTitle, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int countElements)
+        {
+            return await _service.GetCountPagesHeadingTwo(headingTwoTitle, productOrder, reqProperties, countElements);
         }
 
         [HttpPost("~/AddProduct")]
@@ -59,7 +86,7 @@ namespace BackServer.Controllers
             var success = await _service.Add(product);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
 
@@ -69,47 +96,57 @@ namespace BackServer.Controllers
             var success = await _service.Delete(productTitles);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
-        
+
         [HttpPost("~/UpdateProduct")]
         public async Task<StatusCodeResult> UpdateProduct(string oldProductTitle, Product product)
         {
             var success = await _service.Update(oldProductTitle, product);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
         
+        [HttpPost("~/UpdateProductPopularity")]
+        public async Task<StatusCodeResult> UpdateProductPopularity(string productTitle, int newPopularity)
+        {
+            var success = await _service.UpdatePopularity(productTitle, newPopularity);
+            if (success)
+                return Ok();
+
+            return BadRequest();
+        }
+
         [HttpDelete("~/DeleteHeadingOneProducts")]
         public async Task<StatusCodeResult> DeleteHeadingOneProducts(string headingOneTitle)
         {
             var success = await _service.DeleteHeadingOneProducts(headingOneTitle);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
-        
+
         [HttpDelete("~/DeleteHeadingTwoProducts")]
         public async Task<StatusCodeResult> DeleteHeadingTwoProducts(string headingTwoTitle)
         {
             var success = await _service.DeleteHeadingTwoProducts(headingTwoTitle);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
-        
+
         [HttpDelete("~/DeleteHeadingThreeProducts")]
         public async Task<StatusCodeResult> DeleteHeadingThreeProducts(string headingThreeTitle)
         {
             var success = await _service.DeleteHeadingThreeProducts(headingThreeTitle);
             if (success)
                 return Ok();
-            
+
             return BadRequest();
         }
     }

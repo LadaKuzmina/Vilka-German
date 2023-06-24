@@ -9,11 +9,8 @@ namespace Entity
         public int Percent { get; set; }
         public string? PageLink { get; set; }
         public string? ImageRef { get; set; }
-
-        public List<Product> Products { get; set; }
+        // public List<Product> Products { get; set; }
         
-
-
         public Sale(string title, string description, int percent, string? pageLink, string? imageRef)
         {
             Title = title;

@@ -27,18 +27,21 @@ builder.Services.AddTransient<IProductVisitor, ProductsVisitorDb>();
 builder.Services.AddTransient<IProjectVisitor, ProjectsVisitorDb>();
 builder.Services.AddTransient<IPropertyVisitor, PropertiesVisitorDb>();
 builder.Services.AddTransient<ISaleVisitor, SalesVisitorDb>();
+builder.Services.AddTransient<IPhotoVisitor, PhotoVisitorDb>();
 
 builder.Services.AddTransient<IHeadersChanger, HeadersChangerDb>();
 builder.Services.AddTransient<IProjectChanger, ProjectChangerDb>();
 builder.Services.AddTransient<IProductChanger, ProductChangerDb>();
 builder.Services.AddTransient<ISaleChanger, SaleChangerDb>();
 builder.Services.AddTransient<IPropertyChanger, PropertyChangerDb>();
+builder.Services.AddTransient<IPhotoChanger, PhotoChangerDb>();
 
 builder.Services.AddTransient<IHeadersService, HeadersService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IProjectService, ProjectService>();
 builder.Services.AddTransient<IPropertyService, PropertyService>();
 builder.Services.AddTransient<ISaleService, SaleService>();
+builder.Services.AddTransient<IPhotoService, PhotoService>();
 
 
 

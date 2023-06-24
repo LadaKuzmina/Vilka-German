@@ -65,6 +65,17 @@ namespace BackServer.RepositoryChangers.Implementations
             await _context.SaveChangesAsync();
             return true;
         }
+        
+        public async Task<bool> UpdatePopularity(string productTitle, int newPopularity)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Title == productTitle);
+            if (product == null)
+                return false;
+            
+            product.Popularity = newPopularity;
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
         public async Task<bool> Update(string oldProductTitle, Product product)
         {
@@ -80,7 +91,6 @@ namespace BackServer.RepositoryChangers.Implementations
             oldProduct.Quantity = product.Quantity;
             oldProduct.Popularity = product.Popularity;
             oldProduct.Available = product.Available;
-            oldProduct.ImageRef = product.ImageRef;
             oldProduct.PageLink = product.PageLink;
 
             if (oldProductFamily.Title != product.Title)
@@ -195,9 +205,8 @@ namespace BackServer.RepositoryChangers.Implementations
             return new DbEntity.Product()
             {
                 Title = product.Title, Description = product.Description, Price = product.Price,
-                Quantity = product.Quantity, Popularity = product.Popularity, Available = product.Available,
-                ImageRef = product.ImageRef, PageLink = product.PageLink,
-                HeadingThree = headingThree, ProductFamily = productFamily
+                Quantity = product.Quantity, Popularity = product.Popularity, Available = product.Available, 
+                PageLink = product.PageLink, HeadingThree = headingThree, ProductFamily = productFamily
             };
         }
     }

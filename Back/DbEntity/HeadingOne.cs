@@ -10,5 +10,6 @@ namespace DbEntity
         public string? PageLink { get; set; }
         public List<HeadingTwo> HeadingsTwo { get; set; }
         public List<ProductFamily> ProductFamilies { get; set; }
+        public List<HeadingOneFilters> HeadingOneFilters { get; set; }
     }
 }

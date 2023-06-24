@@ -27,13 +27,18 @@ namespace BackServer.RepositoryChangers.Implementations
             }
 
             propertyDb = await _context.Properties.FirstAsync(x => x.Title == property.Title);
-            if (!await _context.PropertyValues.AnyAsync(x =>
-                x.Property.Id == propertyDb.Id && x.PropertyValue == property.Value.First()))
+            foreach (var value in property.Values)
             {
-                var propertyValues = new DbEntity.PropertyValues()
-                    {Property = propertyDb, PropertyValue = property.Value.First()};
-                await _context.PropertyValues.AddAsync(propertyValues);
+                if (!await _context.PropertyValues.AnyAsync(x =>
+                    x.Property.Id == propertyDb.Id && x.PropertyValue == value))
+                {
+                    var propertyValues = new DbEntity.PropertyValues()
+                        {Property = propertyDb, PropertyValue = value};
+                    await _context.PropertyValues.AddAsync(propertyValues);
+                    await _context.SaveChangesAsync();
+                }
             }
+
 
             await _context.SaveChangesAsync();
             return true;
@@ -72,18 +77,18 @@ namespace BackServer.RepositoryChangers.Implementations
                 return false;
 
             propertyDb.Title = property.Title;
-            if (oldProperty.Value != property.Value)
+            if (oldProperty.Values != property.Values)
             {
                 var propertyValues = await _context.PropertyValues.FirstAsync(
-                    x => x.Property.Id == propertyDb.Id && x.PropertyValue == oldProperty.Value.First());
-                propertyValues.PropertyValue = property.Value.First();
+                    x => x.Property.Id == propertyDb.Id && x.PropertyValue == oldProperty.Values.First());
+                propertyValues.PropertyValue = property.Values.First();
             }
 
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue)
+        public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue, bool isPriority)
         {
             var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
             if (property == null)
@@ -112,7 +117,7 @@ namespace BackServer.RepositoryChangers.Implementations
 
             await _context.ProductProperties.AddAsync(new ProductProperty()
             {
-                PropertyValues = propertyValues, Product = product
+                PropertyValues = propertyValues, Product = product, IsPriority = isPriority
             });
 
             await _context.SaveChangesAsync();
@@ -175,6 +180,120 @@ namespace BackServer.RepositoryChangers.Implementations
             _context.ProductProperties.RemoveRange(productProperties);
             _context.PropertyValues.RemoveRange(propertyValues);
 
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)
+        {
+            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
+            if (property == null)
+                return false;
+            
+            var headingOne = await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingOneTitle);
+            if (headingOne == null)
+                return false;
+
+            var headingOneFilter = await _context.HeadingOneFilters.FirstOrDefaultAsync(x => x.heading_one_id == headingOne.Id && x.property_id == property.Id);
+            if (headingOneFilter != null)
+                return true;
+            
+            headingOneFilter = new HeadingOneFilters() {HeadingOne = headingOne, Property = property};
+            await _context.HeadingOneFilters.AddAsync(headingOneFilter);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle)
+        {
+            var headingOneFilter = await _context.HeadingOneFilters.FirstOrDefaultAsync(x => x.HeadingOne.Title == headingOneTitle && x.Property.Title == propertyTitle);
+            if (headingOneFilter == null)
+                return true;
+
+            _context.HeadingOneFilters.Remove(headingOneFilter);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle)
+        {
+            var headingOneFilters = await _context.HeadingOneFilters.Where(x => x.HeadingOne.Title == headingOneTitle).ToArrayAsync();
+            if (headingOneFilters.Length == 0)
+                return true;
+
+            _context.HeadingOneFilters.RemoveRange(headingOneFilters);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            var headingOneFilters = await _context.HeadingOneFilters.FirstOrDefaultAsync(x => x.HeadingOne.Title == headingOneFilter && x.Property.Title == oldPropertyTitle);
+            if (headingOneFilters == null)
+                return false;
+
+            var newProperty = await _context.Properties.FirstOrDefaultAsync(x => x.Title == newPropertyTitle);
+            if (newProperty == null)
+                return false;
+            
+            headingOneFilters.Property = newProperty;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle)
+        {
+            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
+            if (property == null)
+                return false;
+            
+            var headingTwo = await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingTwoTitle);
+            if (headingTwo == null)
+                return false;
+
+            var headingOneFilter = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x => x.heading_two_id == headingTwo.Id && x.property_id == property.Id);
+            if (headingOneFilter != null)
+                return true;
+            
+            headingOneFilter = new HeadingTwoFilters() {HeadingTwo = headingTwo, Property = property};
+            await _context.HeadingTwoFilters.AddAsync(headingOneFilter);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle)
+        {
+            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x => x.HeadingTwo.Title == headingTwoTitle && x.Property.Title == propertyTitle);
+            if (headingTwoFilters == null)
+                return true;
+
+            _context.HeadingTwoFilters.Remove(headingTwoFilters);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle)
+        {
+            var headingTwoFilters = await _context.HeadingTwoFilters.Where(x => x.HeadingTwo.Title == headingTwoTitle).ToArrayAsync();
+            if (headingTwoFilters.Length == 0)
+                return true;
+
+            _context.HeadingTwoFilters.RemoveRange(headingTwoFilters);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        
+        public async Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x => x.HeadingTwo.Title == headingTwoFilter && x.Property.Title == oldPropertyTitle);
+            if (headingTwoFilters == null)
+                return false;
+
+            var newProperty = await _context.Properties.FirstOrDefaultAsync(x => x.Title == newPropertyTitle);
+            if (newProperty == null)
+                return false;
+            
+            headingTwoFilters.Property = newProperty;
             await _context.SaveChangesAsync();
             return true;
         }

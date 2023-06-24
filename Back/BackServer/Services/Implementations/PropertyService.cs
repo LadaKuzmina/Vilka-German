@@ -4,6 +4,7 @@ using BackServer.Repositories;
 using BackServer.RepositoryChangers.Interfaces;
 using BackServer.Services.Interfaces;
 using Entity;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace BackServer.Services
 {
@@ -43,9 +44,9 @@ namespace BackServer.Services
             return await _visitor.GetByHeadingTwo(headingTwoTitle);
         }
 
-        public async Task<IEnumerable<Property>> GetByHeadingThree(string headingThreeTitle)
+        public async Task<string> GetProductPropertyValue(string productTitle, string propertyTitle)
         {
-            return await _visitor.GetByHeadingThree(headingThreeTitle);
+            return await _visitor.GetProductPropertyValue(productTitle, propertyTitle);
         }
 
         public async Task<bool> Add(Property property)
@@ -53,9 +54,9 @@ namespace BackServer.Services
             return await _changer.Add(property);
         }
 
-        public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue)
+        public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue, bool isPriority)
         {
-            return await _changer.AddProductPropertyValue(productTitle, propertyTitle, propertyValue);
+            return await _changer.AddProductPropertyValue(productTitle, propertyTitle, propertyValue,isPriority);
         }
 
         public async Task<bool> Delete(string propertyTitle)
@@ -88,6 +89,46 @@ namespace BackServer.Services
         public async Task<bool> DeleteAllPropertyValues(string propertyTitle)
         {
             return await _changer.DeleteAllPropertyValues(propertyTitle);
+        }
+
+        public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)
+        {
+            return await _changer.AddFilterHeadingOne(propertyTitle, headingOneTitle);
+        }
+
+        public async Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle)
+        {
+            return await _changer.DeleteHeadingOneFilter(propertyTitle, headingOneTitle);
+        }
+
+        public async Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle)
+        {
+            return await _changer.DeleteAllHeadingOneFilters(headingOneTitle);
+        }
+
+        public async Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            return await _changer.UpdateHeadingOneFilter(headingOneFilter, oldPropertyTitle, newPropertyTitle);
+        }
+
+        public async Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle)
+        {
+            return await _changer.AddFilterHeadingTwo(propertyTitle, headingTwoTitle);
+        }
+
+        public async Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle)
+        {
+            return await _changer.DeleteHeadingTwoFilter(propertyTitle, headingTwoTitle);
+        }
+
+        public async Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle)
+        {
+            return await _changer.DeleteAllHeadingTwoFilters(headingTwoTitle);
+        }
+
+        public async Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            return await _changer.UpdateHeadingTwoFilter(headingTwoFilter, oldPropertyTitle, newPropertyTitle);
         }
     }
 }

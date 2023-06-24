@@ -12,7 +12,7 @@ namespace Entity
         public bool Available { get; set; }
         public int Quantity { get; set; }
         public string? PageLink { get; set; }
-        public string? ImageRef { get; set; }
+        public IEnumerable<string> ImageRefs { get; set; }
         public string HeadingOne { get; set; }
         public string HeadingTwo { get; set; }
         public string? HeadingThree { get; set; }
@@ -22,7 +22,7 @@ namespace Entity
         public List<Property> Properties { get; set; }
         public IEnumerable<Property> PriorityProperties { get; set; }
 
-        public Product(string title, string description, int price, int quantity, int popularity, bool available, string? pageLink, string? imageRef, string unitMeasurement)
+        public Product(string title, string description, int price, int quantity, int popularity, bool available, string? pageLink, string unitMeasurement)
         {
             Title = title;
             Description = description;
@@ -31,13 +31,16 @@ namespace Entity
             Popularity = popularity;
             Available = available;
             PageLink = pageLink;
-            ImageRef = imageRef;
             UnitMeasurement = unitMeasurement;
         }
 
         public Product(string title)
         {
             Title = title;
+        }
+
+        public Product()
+        {
         }
     }
 }

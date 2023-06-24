@@ -11,9 +11,12 @@ namespace BackServer.Services.Interfaces
         Task<IEnumerable<Entity.Property>> GetPriorityByProduct(string productTitle);
         Task<IEnumerable<Entity.Property>> GetByHeadingOne(string headingOneTitle);
         Task<IEnumerable<Entity.Property>> GetByHeadingTwo(string headingTwoTitle);
-        Task<IEnumerable<Entity.Property>> GetByHeadingThree(string headingThreeTitle);
+        Task<string> GetProductPropertyValue(string productTitle, string propertyTitle);
+        
+        
         Task<bool> Add(Entity.Property property);
-        Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue);
+        Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue,
+            bool isPriority);
         Task<bool> Delete(string propertyTitle);
         Task<bool> Update(Property oldProperty, Property property);
         Task<bool> DeleteProductPropertyValue(string productTitle, string propertyTitle,
@@ -22,5 +25,17 @@ namespace BackServer.Services.Interfaces
             string oldPropertyValue, string newPropertyValue);
         Task<bool> DeleteAllProductProperties(string productTitle);
         Task<bool> DeleteAllPropertyValues(string propertyTitle);
+        
+        
+        Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle);
+        Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle);
+        Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle);
+        Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle,
+            string newPropertyTitle);
+        Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle);
+        Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle);
+        Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle);
+        Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle,
+            string newPropertyTitle);
     }
 }

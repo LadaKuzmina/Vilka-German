@@ -86,9 +86,9 @@ namespace BackServer.Controllers
 
         [HttpPost("~/AddProductPropertyValue")]
         public async Task<StatusCodeResult> AddProductPropertyValue(string productTitle, string propertyTitle,
-            string propertyValue)
+            string propertyValue, bool isPriority)
         {
-            var success = await _service.AddProductPropertyValue(productTitle, propertyTitle, propertyValue);
+            var success = await _service.AddProductPropertyValue(productTitle, propertyTitle, propertyValue, isPriority);
             if (success)
                 return Ok();
             return BadRequest();
@@ -133,6 +133,54 @@ namespace BackServer.Controllers
             if (success)
                 return Ok();
             return BadRequest();
+        }
+        
+        [HttpPost("~/AddFilterHeadingOne")]
+        public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)
+        {
+            return await _service.AddFilterHeadingOne(propertyTitle, headingOneTitle);
+        }
+
+        [HttpDelete("~/DeleteHeadingOneFilter")]
+        public async Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle)
+        {
+            return await _service.DeleteHeadingOneFilter(propertyTitle, headingOneTitle);
+        }
+
+        [HttpDelete("~/DeleteAllHeadingOneFilters")]
+        public async Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle)
+        {
+            return await _service.DeleteAllHeadingOneFilters(headingOneTitle);
+        }
+
+        [HttpPost("~/UpdateHeadingOneFilter")]
+        public async Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            return await _service.UpdateHeadingOneFilter(headingOneFilter, oldPropertyTitle, newPropertyTitle);
+        }
+
+        [HttpPost("~/AddFilterHeadingTwo")]
+        public async Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle)
+        {
+            return await _service.AddFilterHeadingTwo(propertyTitle, headingTwoTitle);
+        }
+
+        [HttpDelete("~/DeleteHeadingTwoFilter")]
+        public async Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle)
+        {
+            return await _service.DeleteHeadingTwoFilter(propertyTitle, headingTwoTitle);
+        }
+
+        [HttpDelete("~/DeleteAllHeadingTwoFilters")]
+        public async Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle)
+        {
+            return await _service.DeleteAllHeadingTwoFilters(headingTwoTitle);
+        }
+
+        [HttpPost("~/UpdateHeadingTwoFilter")]
+        public async Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle, string newPropertyTitle)
+        {
+            return await _service.UpdateHeadingTwoFilter(headingTwoFilter, oldPropertyTitle, newPropertyTitle);
         }
     }
 }

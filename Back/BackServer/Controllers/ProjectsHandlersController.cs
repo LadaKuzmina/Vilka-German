@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using BackServer.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
 using Entity;
@@ -32,20 +34,32 @@ namespace BackServer.Controllers
         {
             return await _service.GetRange(pageNumber, countElements);
         }
-
-
+        
         [HttpGet("~/GetProductsByProject")]
         public async Task<IEnumerable<Product>> GetProductsByProject(string projectTitle)
         {
             return await _service.GetProductByProject(projectTitle);
         }
-        
+
         [HttpGet("~/GetProjectByProduct")]
         public async Task<IEnumerable<Project>> GetProjectByProduct(string productTitle)
         {
             return await _service.GetProjectByProduct(productTitle);
         }
 
+        [HttpGet("~/GetProjectCountPages")]
+        public async Task<ObjectResult> GetCountPages(int countElements)
+        {
+            try
+            {
+                var t = await _service.GetCountPages(countElements);
+                return StatusCode(200, t);
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(400, new {message = $"{e.Message}"});
+            }
+        }
 
         [HttpPost("~/AddProject")]
         public async Task<StatusCodeResult> AddProject(Project project)

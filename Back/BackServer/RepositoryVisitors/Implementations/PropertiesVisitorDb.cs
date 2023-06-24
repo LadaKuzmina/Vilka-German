@@ -153,7 +153,7 @@ namespace BackServer.Repositories
                                 GROUP BY pf.heading_two_id;");
                     break;
             }
-
+            
             if (con.State != ConnectionState.Open)
                 await con.OpenAsync();
             await using var cmd = new NpgsqlCommand(sql.ToString(), con);
@@ -186,7 +186,7 @@ namespace BackServer.Repositories
                                 WHERE ho.title='{headingTitle}';");
                     break;
                 case Headings.HeadingTwo:
-                    sql.Append($@" JOIN heading_two ho on ht.heading_two_id = pf.heading_two_id
+                    sql.Append($@" JOIN heading_two ht on ht.heading_two_id = pf.heading_two_id
                                 WHERE ht.title='{headingTitle}';");
                     break;
             }

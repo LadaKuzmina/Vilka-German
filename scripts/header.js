@@ -8,7 +8,7 @@ const dropNav = document.createElement('nav');
 dropNav.classList.add('drop_nav');
 
 const dropdown = document.createElement('div');
-dropdown.classList.add('dropdown');
+dropdown.classList.add('dropdown_mobile');
 
 const dropButton = document.createElement('button');
 dropButton.classList.add('drop_button');
@@ -23,7 +23,7 @@ roofImg.setAttribute('width', '50');
 dropButton.appendChild(roofImg);
 
 const dropdownContent = document.createElement('div');
-dropdownContent.classList.add('dropdown_content');
+dropdownContent.classList.add('mobile_content');
 
 const catalogLink = document.createElement('a');
 catalogLink.setAttribute('href', 'index.html');

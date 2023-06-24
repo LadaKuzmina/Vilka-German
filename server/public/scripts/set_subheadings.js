@@ -1,6 +1,7 @@
-function createCards() {
-    for (let heading of getAllSubheaders()) {
-        createCardOfObject(heading);
+async function createCards() {
+    for (let headingObj of await getAllSubheaders()) {
+        console.log(headingObj);
+        createCardOfObject(headingObj);
     }
 }
 
@@ -14,7 +15,7 @@ function createCardOfObject(obj) {
     imageParentElement.setAttribute("href", "#");
 
     let imageElement = document.createElement("img");
-    imageElement.setAttribute("src", `${obj[1]}`);
+    imageElement.setAttribute("src", `${obj.imageRef}`);
     imageElement.setAttribute("height", "250");
     imageElement.setAttribute("width", "250");
 
@@ -26,7 +27,7 @@ function createCardOfObject(obj) {
     headerParentElement.setAttribute("href", "#");
 
     let headerElement = document.createElement("h4");
-    headerElement.textContent = obj[0];
+    headerElement.textContent = obj.title;
 
     headerParentElement.appendChild(headerElement);
 
@@ -35,29 +36,15 @@ function createCardOfObject(obj) {
     listCatalog.appendChild(productsElement);
 }
 
-function getAllSubheaders() {
-    let response = httpGet(`https://localhost:7240/GetHeadingsTwoByHeadingsOne?headingOneTitle=Кровля`);
-    alert(response);
-    let parsedJSON = JSON.parse(placeHolder);
-
-    return parsedJSON.Заголовки;
-}
-
-function httpGet(url)
-{
-    const responsePromise = fetch(url)
-        .then((response) => {
-            return response;
-        });
-
-    let response = '';
-    const printAddress = async () => {
-        response = await responsePromise;
-    };
-
-    printAddress();
-
+async function getAllSubheaders() {
+    let response = await httpGet(`https://localhost:7240/GetHeadingsTwoByHeadingsOne?headingOneTitle=${document.getElementsByClassName('headText')[0].textContent}`);
     return response;
 }
 
-createCards();
+async function httpGet(url)
+{
+    let response = await fetch(url);
+    return response.json();
+}
+
+createCards().then();

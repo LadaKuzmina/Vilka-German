@@ -10,16 +10,104 @@ s.set("Покрытие", coatingCheckboxes);
 s.set("Рабочая ширина, мм", workWidthCheckboxes);
 s.set("Гарантия", warrantyCheckboxes)
 
-function creatCheckboxes() {
+async function createCheckboxes() {
     let count = 1;
-    for (let [name, list] of s) {
-        createRectangleCheckboxes(name, list, count);
-        count += list.length;
-    }
+    let minPrice = -1;
+    let maxPrice = -1;
 
+    for (let property of await getAllProperties()) {
+        if (property.title === "Минимальная цена")
+            minPrice = parseInt(property.value[0]);
+        else if (property.title === "Максимальная цена")
+            maxPrice = parseInt(property.value[0]);
+        else {
+            setPricesSlider(minPrice, maxPrice);
+            break;
+            createRectangleCheckboxes(property, count);
+            count += property.value.length;
+        }
+    }
 }
 
-function createRectangleCheckboxes(elementName, checkboxesList, count) {
+function setPricesSlider(minPrice, maxPrice) {
+    let price25 = minPrice + Math.round((maxPrice - minPrice) / 4);
+    let price75 = minPrice + Math.round((maxPrice - minPrice) * 3 / 4);
+
+    let wrapperElement = document.getElementsByClassName("wrapper")[0];
+
+    let detailsElement = document.createElement("details");
+    detailsElement.open = true;
+
+    let summaryElement = document.createElement("summary");
+    let bElement = document.createElement("b");
+    bElement.textContent = "Цена";
+    summaryElement.appendChild(bElement);
+
+    detailsElement.appendChild(summaryElement);
+
+    let priceInputElement = document.createElement("div");
+    priceInputElement.setAttribute("class", "price-input");
+    priceInputElement.appendChild(getInputField("От", "input-min", price25));
+
+    let separator = document.createElement("div");
+    separator.setAttribute("class", "separator");
+    separator.textContent = "-";
+    priceInputElement.appendChild(separator);
+
+    priceInputElement.appendChild(getInputField("До", "input-max", price75));
+
+    detailsElement.appendChild(priceInputElement);
+
+    let sliderRange = document.createElement("div");
+    sliderRange.setAttribute("class", "slider-range");
+    let progress = document.createElement("div");
+    progress.setAttribute("class", "progress");
+    sliderRange.appendChild(progress);
+    detailsElement.appendChild(sliderRange);
+
+    let rangeInput = document.createElement("div");
+    rangeInput.setAttribute("class", "range-input");
+    rangeInput.appendChild(getInputElement("range-min", minPrice, maxPrice, price25));
+    rangeInput.appendChild(getInputElement("range-max", minPrice, maxPrice, price75));
+
+    detailsElement.appendChild(rangeInput);
+
+    wrapperElement.appendChild(detailsElement);
+
+    let rangeScript = document.createElement("script");
+    rangeScript.setAttribute("src", "../scripts/range.js");
+    document.body.appendChild(rangeScript);
+}
+
+function getInputField(spanText, className, price) {
+    let fieldElement = document.createElement("div");
+    fieldElement.setAttribute("class", "field");
+
+    let spanElement = document.createElement("span");
+    spanElement.textContent = spanText;
+    fieldElement.appendChild(spanElement);
+
+    let inputElement = document.createElement("input");
+    inputElement.setAttribute("type", "number");
+    inputElement.setAttribute("class", className);
+    inputElement.setAttribute("value", `${price}`);
+    fieldElement.appendChild(inputElement);
+
+    return fieldElement;
+}
+
+function getInputElement(className, min, max, value) {
+    let inputElement = document.createElement("input");
+    inputElement.setAttribute("type", "range");
+    inputElement.setAttribute("class", className);
+    inputElement.setAttribute("min", `${min}`);
+    inputElement.setAttribute("max", `${max}`);
+    inputElement.setAttribute("value", `${value}`);
+
+    return inputElement;
+}
+
+function createRectangleCheckboxes(property, count) {
     let wrapperElement = document.getElementsByClassName("wrapper")[0];
 
     let detailsElement = document.createElement("details");
@@ -87,4 +175,23 @@ function createCheckboxesElement(checkbox, count) {
     return labelElement;
 }
 
-creatCheckboxes();
+async function getAllProperties() {
+    let response = await httpGet(`https://localhost:7240/GetPropertiesByHeadingTwo?headingTwoTitle=${getHeadingName()}`);
+    return response;
+}
+
+async function httpGet(url)
+{
+    let response = await fetch(url);
+    return response.json();
+}
+
+function getHeadingName() {
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
+    return urlParams.get('heading');
+}
+
+createCheckboxes().then(() => console.log("OK"));

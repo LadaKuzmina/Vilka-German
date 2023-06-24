@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Npgsql;
 
 namespace BackServer.Repositories
 {
@@ -10,6 +11,6 @@ namespace BackServer.Repositories
         Task<IEnumerable<Entity.Property>> GetPriorityByProduct(string productTitle);
         Task<IEnumerable<Entity.Property>> GetByHeadingOne(string headingOneTitle);
         Task<IEnumerable<Entity.Property>> GetByHeadingTwo(string headingTwoTitle);
-        Task<IEnumerable<Entity.Property>> GetByHeadingThree(string headingThreeTitle);
+        Task<string> GetProductPropertyValue(string productTitle, string propertyTitle);
     }
 }

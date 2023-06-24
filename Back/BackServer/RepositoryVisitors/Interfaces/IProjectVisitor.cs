@@ -9,5 +9,6 @@ namespace BackServer.Repositories
         Task<IEnumerable<Entity.Project>> GetRange(int pageNumber, int countElements);
         Task<IEnumerable<Entity.Product>> GetProductByProject(string projectTitle);
         Task<IEnumerable<Entity.Project>> GetProjectByProduct(string productTitle);
+        Task<int> GetCountPages(int countElements);
     }
 }

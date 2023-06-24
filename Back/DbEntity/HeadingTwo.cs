@@ -11,6 +11,6 @@ namespace DbEntity
         public HeadingOne HeadingOne { get; set; }
         public List<ProductFamily> ProductFamilies { get; set; }
         public List<HeadingThree> HeadingsThree { get; set; }
-
+        public List<HeadingTwoFilters> HeadingTwoFilters { get; set; }
     }
 }

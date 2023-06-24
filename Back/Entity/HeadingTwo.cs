@@ -7,7 +7,7 @@ namespace Entity
         public string Title { get; set; }
         public string? PageLink { get; set; }
         public string? ImageRef { get; set; }
-        public HeadingOne HeadingOne { get; set; }
+        public string HeadingOneTitle { get; set; }
 
         public HeadingTwo(string title, string? imageRef, string? pageLink)
         {

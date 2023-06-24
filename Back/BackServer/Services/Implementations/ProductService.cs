@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using BackServer.Repositories;
 using BackServer.RepositoryChangers.Interfaces;
 using BackServer.Services.Interfaces;
 using Entity;
+using Npgsql;
+using NpgsqlDbExtensions.Enums;
 
 namespace BackServer.Services
 {
@@ -12,13 +16,11 @@ namespace BackServer.Services
     {
         private readonly IProductVisitor _visitor;
         private readonly IProductChanger _changer;
-        private IPropertyService _propertyService;
 
-        public ProductService(IProductVisitor visitor, IProductChanger changer, IPropertyService propertyService)
+        public ProductService(IProductVisitor visitor, IProductChanger changer)
         {
             _visitor = visitor;
             _changer = changer;
-            _propertyService = propertyService;
         }
 
         public async Task<IEnumerable<Product>> GetAll()
@@ -31,38 +33,59 @@ namespace BackServer.Services
             return await _visitor.GetAvailable();
         }
 
-        public async Task<IEnumerable<Product>> GetByHeadingOne(string headingOneTitle, HashSet<Property> reqProperties,
-            int pageNumber, int countElements)
+        public async Task<Product> GetByTitle(string title)
+        {
+            return await _visitor.GetByTitle(title);
+        }
+
+        public async Task<IEnumerable<Product>> GetPageHeadingOne(string headingOneTitle, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements)
         {
             if (!CheckCorrectInput(headingOneTitle, pageNumber, countElements))
                 return Array.Empty<Product>();
 
-            var products = await _visitor.GetByHeadingOne(headingOneTitle, reqProperties, pageNumber, countElements);
-            // foreach (var product in products)
-            // {
-            //     var props = await _propertyService.GetPriorityByProduct(product.Title);
-            //     product.PriorityProperties = props;
-            // }
+
+            var products = await _visitor.GetPageHeadingOne(headingOneTitle, productOrder, reqProperties, pageNumber,
+                countElements);
 
             return products;
         }
 
-        public async Task<IEnumerable<Product>> GetByHeadingTwo(string headingTwoTitle, int pageNumber,
-            int countElements)
+        public async Task<IEnumerable<Product>> GetPageHeadingTwo(string headingTwoTitle, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements)
         {
             if (!CheckCorrectInput(headingTwoTitle, pageNumber, countElements))
                 return Array.Empty<Product>();
 
-            return await _visitor.GetByHeadingTwo(headingTwoTitle, pageNumber, countElements);
+            return await _visitor.GetPageHeadingTwo(headingTwoTitle, productOrder, reqProperties, pageNumber,
+                countElements);
         }
 
-        public async Task<IEnumerable<Product>> GetByHeadingThree(string headingThreeTitle, int pageNumber,
-            int countElements)
+        public async Task<IEnumerable<Product>> GetPageHeadingThree(string headingThreeTitle, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements)
         {
             if (!CheckCorrectInput(headingThreeTitle, pageNumber, countElements))
                 return Array.Empty<Product>();
 
-            return await _visitor.GetByHeadingThree(headingThreeTitle, pageNumber, countElements);
+            return await _visitor.GetPageHeadingThree(headingThreeTitle, productOrder, reqProperties, pageNumber,
+                countElements);
+        }
+
+        public async Task<int> GetCountPagesHeadingOne(string headingOneTitle, ProductOrders productOrder, Dictionary<string, HashSet<string>> reqProperties,
+            int countElements)
+        {
+            return await _visitor.GetCountPagesHeadingOne(headingOneTitle, productOrder, reqProperties, countElements);
+        }
+
+        public async Task<int> GetCountPagesHeadingTwo(string headingTwoTitle, ProductOrders productOrder, Dictionary<string, HashSet<string>> reqProperties,
+            int countElements)
+        {
+            return await _visitor.GetCountPagesHeadingTwo(headingTwoTitle, productOrder, reqProperties, countElements);
+        }
+
+        public async Task<bool> UpdatePopularity(string productTitle, int newPopularity)
+        {
+            return await _changer.UpdatePopularity(productTitle, newPopularity);
         }
 
         public async Task<bool> Add(Product product)

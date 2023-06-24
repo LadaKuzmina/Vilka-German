@@ -9,6 +9,7 @@ namespace BackServer.RepositoryChangers.Interfaces
         Task<bool> Add(Product product);
         Task<bool> Delete(HashSet<string> productTitles);
         Task<bool> Update(string oldProductTitle, Product product);
+        Task<bool> UpdatePopularity(string productTitle, int newPopularity);
         Task<bool> DeleteHeadingOneProducts(string headingOneTitle);
         Task<bool> DeleteHeadingTwoProducts(string headingTwoTitle);
         Task<bool> DeleteHeadingThreeProducts(string headingThreeTitle);

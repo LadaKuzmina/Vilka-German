@@ -45,24 +45,24 @@ namespace BackServer.Services
 
         public async Task<bool> AddHeadingOne(HeadingOne headingOne)
         {
-            if (!CheckCorrectHeadingOne(headingOne))
-                return false;
+            // if (!CheckCorrectHeadingOne(headingOne))
+            //     return false;
             
             return await _changer.AddHeadingOne(headingOne);
         }
 
         public async Task<bool> AddHeadingTwo(HeadingTwo headingTwo)
         {
-            if (!CheckCorrectHeadingTwo(headingTwo))
-                return false;
+            // if (!CheckCorrectHeadingTwo(headingTwo))
+            //     return false;
             
             return await _changer.AddHeadingTwo(headingTwo);
         }
 
         public async Task<bool> AddHeadingThree(HeadingThree headingThree)
         {
-            if (!CheckCorrectHeadingThree(headingThree))
-                return false;
+            // if (!CheckCorrectHeadingThree(headingThree))
+            //     return false;
             
             return await _changer.AddHeadingThree(headingThree);
         }
@@ -84,41 +84,26 @@ namespace BackServer.Services
 
         public async Task<bool> UpdateHeadingOne(string oldHeadingOneTitle, HeadingOne headingOne)
         {
-            if (!CheckCorrectHeadingOne(headingOne))
-                return false;
+            // if (!CheckCorrectHeadingOne(headingOne))
+            //     return false;
 
             return await _changer.UpdateHeadingOne(oldHeadingOneTitle, headingOne);
         }
 
         public async Task<bool> UpdateHeadingTwo(string oldHeadingTwoTitle, HeadingTwo headingTwo)
         {
-            if (!CheckCorrectHeadingTwo(headingTwo))
-                return false;
+            // if (!CheckCorrectHeadingTwo(headingTwo))
+            //     return false;
 
             return await _changer.UpdateHeadingTwo(oldHeadingTwoTitle, headingTwo);
         }
 
         public async Task<bool> UpdateHeadingThree(string oldHeadingThreeTitle, HeadingThree headingThree)
         {
-            if (!CheckCorrectHeadingThree(headingThree))
-                return false;
+            // if (!CheckCorrectHeadingThree(headingThree))
+            //     return false;
 
             return await _changer.UpdateHeadingThree(oldHeadingThreeTitle, headingThree);
-        }
-
-        private bool CheckCorrectHeadingOne(HeadingOne headingOne)
-        {
-            return headingOne.Title != null;
-        }
-
-        private bool CheckCorrectHeadingTwo(HeadingTwo headingTwo)
-        {
-            return headingTwo.Title != null && CheckCorrectHeadingOne(headingTwo.HeadingOne);
-        }
-
-        private bool CheckCorrectHeadingThree(HeadingThree headingThree)
-        {
-            return headingThree.Title != null && CheckCorrectHeadingTwo(headingThree.HeadingTwo);
         }
     }
 }

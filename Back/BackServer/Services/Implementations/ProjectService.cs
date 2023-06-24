@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BackServer.Repositories;
 using BackServer.RepositoryChangers.Interfaces;
@@ -37,6 +39,14 @@ namespace BackServer.Services
         public async Task<IEnumerable<Project>> GetProjectByProduct(string productTitle)
         {
             return await _visitor.GetProjectByProduct(productTitle);
+        }
+
+        public async Task<int> GetCountPages(int countElements)
+        {
+            if (countElements < 1)
+                throw new ArgumentException("Число элементов на странице должно быть не менее 1");
+
+            return await _visitor.GetCountPages(countElements);
         }
 
         public async Task<bool> Add(Entity.Project project)

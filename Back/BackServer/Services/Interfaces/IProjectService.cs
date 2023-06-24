@@ -9,6 +9,7 @@ namespace BackServer.Services.Interfaces
         Task<IEnumerable<Entity.Project>> GetRange(int pageNumber, int countElements);
         Task<IEnumerable<Entity.Product>> GetProductByProject(string projectTitle);
         Task<IEnumerable<Entity.Project>> GetProjectByProduct(string productTitle);
+        Task<int> GetCountPages(int countElements);
         Task<bool> Add(Entity.Project project);
         Task<bool> Delete(string projectTitle);
         Task<bool> Update(string oldProjectTitle, Entity.Project project);

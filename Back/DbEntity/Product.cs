@@ -12,7 +12,6 @@ namespace DbEntity
         public int Popularity { get; set; }
         public bool Available { get; set; }
         public string? PageLink { get; set; }
-        public string? ImageRef { get; set; }
         
         public HeadingThree? HeadingThree { get; set; }
         public int? heading_three_id { get; set; }
@@ -24,6 +23,6 @@ namespace DbEntity
         public List<ProductProperty> ProductProperties { get; set; }
         public List<ProjectMaterials> ProjectMaterials { get; set; }
         public List<Project> Projects { get; set; }
-
+        public List<ProductImages> ProductImages { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace BackServer.RepositoryChangers.Implementations
         public async Task<bool> AddHeadingTwo(Entity.HeadingTwo headingTwo)
         {
             var headingOne =
-                await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingTwo.HeadingOne.Title);
+                await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingTwo.HeadingOneTitle);
             if (headingOne == null) return false;
 
             var newHeadingTwo = new HeadingTwo() {Title = headingTwo.Title, HeadingOne = headingOne};
@@ -41,7 +41,7 @@ namespace BackServer.RepositoryChangers.Implementations
         public async Task<bool> AddHeadingThree(Entity.HeadingThree headingThree)
         {
             var headingTwo =
-                await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingThree.HeadingTwo.Title);
+                await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingThree.HeadingTwoTitle);
             if (headingTwo == null) return false;
 
             var property =
@@ -129,10 +129,10 @@ namespace BackServer.RepositoryChangers.Implementations
                 return false;
 
             oldHeadingTwo.Title = headingTwo.Title;
-            if (oldHeadingTwo.HeadingOne.Title != headingTwo.HeadingOne.Title)
+            if (oldHeadingTwo.HeadingOne.Title != headingTwo.HeadingOneTitle)
             {
                 var newHeadingOne =
-                    await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingTwo.HeadingOne.Title);
+                    await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingTwo.HeadingOneTitle);
                 if (newHeadingOne == null)
                     return false;
 
@@ -159,10 +159,10 @@ namespace BackServer.RepositoryChangers.Implementations
                 oldHeadingThree.PropertyValues = newPropertyValue;
             }
 
-            if (oldHeadingThree.HeadingTwo.Title != headingThree.HeadingTwo.Title)
+            if (oldHeadingThree.HeadingTwo.Title != headingThree.HeadingTwoTitle)
             {
                 var newHeadingTwo =
-                    await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingThree.HeadingTwo.Title);
+                    await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingThree.HeadingTwoTitle);
                 if (newHeadingTwo == null)
                     return false;
 

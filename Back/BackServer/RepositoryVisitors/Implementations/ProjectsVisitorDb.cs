@@ -24,14 +24,14 @@ namespace BackServer.Repositories
         public async Task<IEnumerable<Entity.Project>> GetAll()
         {
             return await _context.Projects
-                .Select(x => new Entity.Project(x.Title, x.RoofType, x.ImageRef, x.PageLink))
+                .Select(x => new Entity.Project(x.Title, x.RoofType, x.PageLink))
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Entity.Project>> GetRange(int pageNumber, int countElements)
         {
             var projects = new List<Entity.Project>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
             if (con.State != ConnectionState.Open)
                 await con.OpenAsync();
 
@@ -46,16 +46,24 @@ namespace BackServer.Repositories
 
             await using var cmd = new NpgsqlCommand(sql, con);
             {
-                await using NpgsqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
+                while (await rdr.ReadAsync())
                 {
-                    var project = new Entity.Project(rdr.GetString(0), rdr.GetString(1),
-                        await rdr.ReadNullOrStringAsync(2), await rdr.ReadNullOrStringAsync(3));
+                    var project = new Entity.Project(rdr.GetString(0), rdr.GetString(1), await rdr.ReadNullOrStringAsync(2));
                     projects.Add(project);
                 }
             }
 
+            await con.CloseAsync();
+
             return projects;
+        }
+
+        public async Task<int> GetCountPages(int countElements)
+        {
+            var c = await _context.Projects.CountAsync();
+            var add = c % countElements != 0 ? 1 : 0;
+            return c / countElements + add;
         }
 
         public async Task<IEnumerable<Entity.Product>> GetProductByProject(string projectTitle)

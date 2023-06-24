@@ -1,85 +1,149 @@
 const header = document.createElement('header');
 header.classList.add('header');
-// headerStyle();
 
 const logoDiv = document.createElement('div');
 logoDiv.classList.add('logo');
 
-const logoA = document.createElement('a');
-logoA.href = 'index.html';
+const dropNav = document.createElement('nav');
+dropNav.classList.add('drop_nav');
+
+const dropdown = document.createElement('div');
+dropdown.classList.add('dropdown_mobile');
+
+const dropButton = document.createElement('button');
+dropButton.classList.add('drop_button');
+
+const roofImg = document.createElement('img');
+roofImg.setAttribute('src', '../header_icons/roof.png');
+roofImg.setAttribute('alt', 'roof');
+roofImg.classList.add('roof');
+roofImg.setAttribute('height', '25');
+roofImg.setAttribute('width', '50');
+
+dropButton.appendChild(roofImg);
+
+const dropdownContent = document.createElement('div');
+dropdownContent.classList.add('mobile_content');
+
+const catalogLink = document.createElement('a');
+catalogLink.setAttribute('href', 'index.html');
+catalogLink.textContent = 'Каталог';
+dropdownContent.appendChild(catalogLink);
+
+const aboutUsLink = document.createElement('a');
+aboutUsLink.setAttribute('href', 'page_about_us.html');
+aboutUsLink.textContent = 'О нас';
+dropdownContent.appendChild(aboutUsLink);
+
+const deliveryLink = document.createElement('a');
+deliveryLink.setAttribute('href', 'delivery_page.html');
+deliveryLink.textContent = 'Доставка';
+dropdownContent.appendChild(deliveryLink);
+
+const contactLink = document.createElement('a');
+contactLink.setAttribute('href', 'contact_page.html');
+contactLink.textContent = 'Контакты';
+dropdownContent.appendChild(contactLink);
+
+const d3Div = document.createElement('div');
+d3Div.classList.add('d3');
+
+const searchForm = document.createElement('form');
+searchForm.classList.add('search');
+
+const searchInput = document.createElement('input');
+searchInput.setAttribute('type', 'text');
+searchInput.setAttribute('placeholder', 'Искать здесь...');
+
+const searchButton = document.createElement('button');
+searchButton.setAttribute('type', 'submit');
+
+searchForm.appendChild(searchInput);
+searchForm.appendChild(searchButton);
+d3Div.appendChild(searchForm);
+dropdownContent.appendChild(d3Div);
+
+dropdown.appendChild(dropButton);
+dropdown.appendChild(dropdownContent);
+dropNav.appendChild(dropdown);
+logoDiv.appendChild(dropNav);
+
+const logoLink = document.createElement('a');
+logoLink.setAttribute('href', 'index.html');
 
 const logoImg = document.createElement('img');
-logoImg.src = '../header_icons/logo.png';
-logoImg.alt = 'logo';
-logoImg.height = '50';
-logoImg.width = '230';
+logoImg.setAttribute('src', '../header_icons/logo.png');
+logoImg.setAttribute('alt', 'logo');
 logoImg.classList.add('logo_photo');
-// logoImgStyle();
+logoImg.setAttribute('height', '50');
+logoImg.setAttribute('width', '230');
 
-logoA.appendChild(logoImg);
-logoDiv.appendChild(logoA);
+logoLink.appendChild(logoImg);
+logoDiv.appendChild(logoLink);
 
 const textAboutCompanyDiv = document.createElement('div');
 textAboutCompanyDiv.classList.add('text_about_company');
-textAboutCompanyDiv.innerHTML = 'Продажа и монтаж материалов для кровли и фасада<br>в Екатеринбурге';
-// textAboutCompanyStyle();
-
+textAboutCompanyDiv.innerHTML = 'Продажа и монтаж материалов для кровли и фасада<br> в Екатеринбурге';
 logoDiv.appendChild(textAboutCompanyDiv);
 
 const infoDiv = document.createElement('div');
 infoDiv.classList.add('info');
-// infoStyle();
 
 const contactsUl = document.createElement('ul');
 contactsUl.classList.add('contacts');
-// contactsStyle();
 
 const emailLi = document.createElement('li');
-const emailA = document.createElement('a');
-emailA.href = 'mailto:3834520@mail.ru';
+const emailLink = document.createElement('a');
+emailLink.setAttribute('href', 'mailto:3834520@mail.ru');
 
 const emailImg = document.createElement('img');
-emailImg.src = '../header_icons/email_logo.png';
-emailImg.alt = 'email';
-emailImg.height = '18';
-emailImg.width = '27';
+emailImg.setAttribute('src', '../header_icons/email_logo.png');
+emailImg.setAttribute('alt', 'whatsapp');
+emailImg.setAttribute('height', '18');
+emailImg.setAttribute('width', '27');
 
-emailA.appendChild(emailImg);
-emailA.innerHTML += ' 3834520@mail.ru ';
-emailLi.appendChild(emailA);
+const emailSpan = document.createElement('span');
+emailSpan.textContent = ' 3834520@mail.ru ';
+emailLink.appendChild(emailImg);
+emailLink.appendChild(emailSpan);
+emailLi.appendChild(emailLink);
 contactsUl.appendChild(emailLi);
 
 const phoneLi = document.createElement('li');
-const phoneA = document.createElement('a');
-phoneA.href = 'tel:+73433834520';
+
+const phoneLink = document.createElement('a');
+phoneLink.setAttribute('href', 'tel:+73433834520');
 
 const phoneImg = document.createElement('img');
-phoneImg.src = '../header_icons/phone_logo.png';
-phoneImg.alt = 'whatsapp';
-phoneImg.height = '18';
-phoneImg.width = '18';
+phoneImg.setAttribute('src', '../header_icons/phone_logo.png');
+phoneImg.setAttribute('alt', 'whatsapp');
+phoneImg.setAttribute('height', '18');
+phoneImg.setAttribute('width', '18');
 
-phoneA.appendChild(phoneImg);
-phoneA.innerHTML += ' +7 (343) 383-45-20 ';
-phoneLi.appendChild(phoneA);
+const phoneSpan = document.createElement('span');
+phoneSpan.textContent = ' +7 (343) 383-45-20 ';
+phoneLink.appendChild(phoneImg);
+phoneLink.appendChild(phoneSpan);
+phoneLi.appendChild(phoneLink);
 contactsUl.appendChild(phoneLi);
 
 infoDiv.appendChild(contactsUl);
 
-const whatsappA = document.createElement('a');
-whatsappA.href = 'https://wa.me/73433834520';
+const whatsappLink = document.createElement('a');
+whatsappLink.setAttribute('href', 'https://wa.me/73433834520');
 
 const whatsappImg = document.createElement('img');
-whatsappImg.src = '../header_icons/whatsapp.png';
-whatsappImg.alt = 'whatsapp';
-whatsappImg.height = '40';
-whatsappImg.width = '40';
+whatsappImg.setAttribute('src', '../header_icons/whatsapp.png');
+whatsappImg.setAttribute('alt', 'whatsapp');
 whatsappImg.classList.add('whatsapp');
+whatsappImg.setAttribute('height', '40');
+whatsappImg.setAttribute('width', '40');
 
-whatsappA.appendChild(whatsappImg);
-infoDiv.appendChild(whatsappA);
+whatsappLink.appendChild(whatsappImg);
+infoDiv.appendChild(whatsappLink);
 
 logoDiv.appendChild(infoDiv);
+
 header.appendChild(logoDiv);
 
 const containerDiv = document.createElement('div');
@@ -90,169 +154,153 @@ headerInnerDiv.classList.add('header_inner');
 
 const nav = document.createElement('nav');
 nav.classList.add('nav');
-// navStyle();
 
-const catalogLink = document.createElement('a');
-catalogLink.classList.add('nav_link');
-catalogLink.href = 'index.html';
+const catalogNavLink = document.createElement('a');
+catalogNavLink.classList.add('nav_link');
+catalogNavLink.setAttribute('href', 'index.html');
 
-const roofImg = document.createElement('img');
-roofImg.src = '../header_icons/roof.png';
-roofImg.alt = 'roof';
-roofImg.height = '25';
-roofImg.width = '50';
-roofImg.classList.add('roof');
-// roofImgStyle();
+const catalogNavImg = document.createElement('img');
+catalogNavImg.setAttribute('src', '../header_icons/roof.png');
+catalogNavImg.setAttribute('alt', 'roof');
+catalogNavImg.classList.add('roof');
+catalogNavImg.setAttribute('height', '25');
+catalogNavImg.setAttribute('width', '50');
+catalogNavLink.appendChild(catalogNavImg);
+// catalogNavLink.appendChild(roofImg);
+catalogNavLink.innerHTML += 'Каталог';
 
-catalogLink.appendChild(roofImg);
-catalogLink.innerHTML += ' Каталог ';
-nav.appendChild(catalogLink);
+nav.appendChild(catalogNavLink);
 
-const aboutUsLink = document.createElement('a');
-aboutUsLink.classList.add('nav_link');
-aboutUsLink.href = 'page_about_us.html';
-aboutUsLink.innerHTML = ' О нас ';
-nav.appendChild(aboutUsLink);
+const aboutUsNavLink = document.createElement('a');
+aboutUsNavLink.classList.add('nav_link');
+aboutUsNavLink.setAttribute('href', 'page_about_us.html');
+aboutUsNavLink.textContent = 'О нас';
+nav.appendChild(aboutUsNavLink);
 
-// const completedProjectsLink = document.createElement('a');
-// completedProjectsLink.classList.add('nav_link');
-// completedProjectsLink.href = 'page_complited_project.html';
-// completedProjectsLink.innerHTML = ' Выполненные проекты ';
-// nav.appendChild(completedProjectsLink);
+const deliveryNavLink = document.createElement('a');
+deliveryNavLink.classList.add('nav_link');
+deliveryNavLink.setAttribute('href', 'delivery_page.html');
+deliveryNavLink.textContent = 'Доставка';
+nav.appendChild(deliveryNavLink);
 
-// const servicesLink = document.createElement('a');
-// servicesLink.classList.add('nav_link');
-// servicesLink.href = 'services_page.html';
-// servicesLink.innerHTML = ' Наши услуги ';
-// nav.appendChild(servicesLink);
+const contactNavLink = document.createElement('a');
+contactNavLink.classList.add('nav_link');
+contactNavLink.setAttribute('href', 'contact_page.html');
+contactNavLink.textContent = 'Контакты';
+nav.appendChild(contactNavLink);
 
-const deliveryLink = document.createElement('a');
-deliveryLink.classList.add('nav_link');
-deliveryLink.href = 'delivery_page.html';
-deliveryLink.innerHTML = ' Доставка ';
-nav.appendChild(deliveryLink);
+const d3NavDiv = document.createElement('div');
+d3NavDiv.classList.add('d3');
 
-const contactsLink = document.createElement('a');
-contactsLink.classList.add('nav_link');
-contactsLink.href = 'contact_page.html';
-contactsLink.innerHTML = ' Контакты ';
-nav.appendChild(contactsLink);
+const searchNavForm = document.createElement('form');
+searchNavForm.classList.add('search');
 
-const searchDiv = document.createElement('div');
-searchDiv.classList.add('d3');
+const searchNavInput = document.createElement('input');
+searchNavInput.setAttribute('type', 'text');
+searchNavInput.setAttribute('placeholder', 'Искать здесь...');
 
-const searchForm = document.createElement('form');
-searchForm.classList.add('search');
-// searchFormStyle();
+const searchNavButton = document.createElement('button');
+searchNavButton.setAttribute('type', 'submit');
 
-const searchInput = document.createElement('input');
-searchInput.type = 'text';
-searchInput.placeholder = 'Искать здесь...';
-// searchInputStyle();
-
-const searchButton = document.createElement('button');
-searchButton.type = 'submit';
-// searchButtonStyle();
-
-searchForm.appendChild(searchInput);
-searchForm.appendChild(searchButton);
-searchDiv.appendChild(searchForm);
-nav.appendChild(searchDiv);
+searchNavForm.appendChild(searchNavInput);
+searchNavForm.appendChild(searchNavButton);
+d3NavDiv.appendChild(searchNavForm);
+nav.appendChild(d3NavDiv);
 
 headerInnerDiv.appendChild(nav);
 containerDiv.appendChild(headerInnerDiv);
 header.appendChild(containerDiv);
 
-document.body.append(header);
+document.body.appendChild(header);
 
-// function headerStyle() {
-//     header.style.position = 'absolute';
-//     header.style.top = '15px';
-//     header.style.left = '30px';
-//     header.style.right = '30px';
-//     header.style.zIndex = '1000';
-// }
-//
-// function logoImgStyle() {
-//     logoImg.style.marginTop = '8px';
-// }
-//
-// function textAboutCompanyStyle() {
-//     textAboutCompanyDiv.style.display = 'inline-block';
-//     textAboutCompanyDiv.style.position = 'absolute';
-//     textAboutCompanyDiv.style.fontSize = '16px';
-//     textAboutCompanyDiv.style.margin = '15px 0 0 30px';
-//     textAboutCompanyDiv.style.fontFamily = 'Arial, Inter, serif';
-// }
-//
-// function infoStyle() {
-//     infoDiv.style.display = 'flex';
-//     infoDiv.style.alignItems = 'center';
-//     infoDiv.style.position = 'absolute';
-//     infoDiv.style.flexDirection = 'row-reverse';
-//     infoDiv.style.top = '0';
-//     infoDiv.style.right = '0';
-//     infoDiv.style.fontSize = '40px';
-//     infoDiv.style.textAlign = 'center';
-// }
-//
-// function contactsStyle() {
-//     contactsUl.style.listStyleType = 'none';
-//     contactsUl.style.fontStyle = 'normal';
-//     contactsUl.style.fontSize = '18px';
-//     contactsUl.style.lineHeight = '20px';
-// }
-//
-// function navStyle() {
-//     nav.style.display = 'flex';
-//     nav.style.position = 'absolute';
-//     nav.style.justifyContent = 'space-around';
-//     nav.style.alignItems = 'center';
-//     nav.style.fontStyle = 'normal';
-//     nav.style.fontSize = '20px';
-//     nav.style.lineHeight = '36px';
-//     nav.style.height = '70px';
-//     nav.style.left = '0';
-//     nav.style.top = '80px';
-//     nav.style.right = '0';
-//     nav.style.color = '#492D2D';
-//     nav.style.background = '#FFFFFF';
-//     nav.style.borderRadius = '12px';
-// }
-//
-// function roofImgStyle() {
-//     roofImg.style.position = 'relative';
-//     roofImg.style.top = '5px';
-//     roofImg.style.right = '5px';
-// }
-//
-// function searchFormStyle() {
-//     searchForm.style.position = 'relative';
-//     searchForm.style.right = '0';
-//     searchForm.style.maxWidth = '35rem';
-//     searchForm.style.backgroundColor = '#fff';
-//     searchForm.style.boxShadow = '0 3px 60px 0 rgba(0, 0, 0, .15)';
-//     searchForm.style.borderRadius = '12px';
-// }
-//
-// function searchInputStyle() {
-//     searchInput.style.border = 'none';
-//     searchInput.style.outline = 'none';
-//     searchInput.style.background = 'transparent';
-//     searchInput.style.width = '65%';
-//     searchInput.style.height = '53px';
-//     searchInput.style.paddingLeft = '16px';
-//     searchInput.style.fontSize = '17px';
-//     searchInput.style.color = 'black';
-// }
-//
-// function searchButtonStyle() {
-//     searchButton.style.position = 'absolute';
-//     searchButton.style.top = '0';
-//     searchButton.style.right = '5px';
-//     searchButton.style.border = 'none';
-//     searchButton.style.background = 'url("../header_icons/magnifier.png") scroll no-repeat center';
-//     searchButton.style.width = '3.5rem';
-//     searchButton.style.height = '100%';
-//     searchButton.style.cursor = 'pointer';
-// }
+function headerStyle() {
+    header.style.position = 'absolute';
+    header.style.top = '15px';
+    header.style.left = '30px';
+    header.style.right = '30px';
+    header.style.zIndex = '1000';
+}
+
+function logoImgStyle() {
+    logoImg.style.marginTop = '8px';
+}
+
+function textAboutCompanyStyle() {
+    textAboutCompanyDiv.style.display = 'inline-block';
+    textAboutCompanyDiv.style.position = 'absolute';
+    textAboutCompanyDiv.style.fontSize = '16px';
+    textAboutCompanyDiv.style.margin = '15px 0 0 30px';
+    textAboutCompanyDiv.style.fontFamily = 'Arial, Inter, serif';
+}
+
+function infoStyle() {
+    infoDiv.style.display = 'flex';
+    infoDiv.style.alignItems = 'center';
+    infoDiv.style.position = 'absolute';
+    infoDiv.style.flexDirection = 'row-reverse';
+    infoDiv.style.top = '0';
+    infoDiv.style.right = '0';
+    infoDiv.style.fontSize = '40px';
+    infoDiv.style.textAlign = 'center';
+}
+
+function contactsStyle() {
+    contactsUl.style.listStyleType = 'none';
+    contactsUl.style.fontStyle = 'normal';
+    contactsUl.style.fontSize = '18px';
+    contactsUl.style.lineHeight = '20px';
+}
+
+function navStyle() {
+    nav.style.display = 'flex';
+    nav.style.position = 'absolute';
+    nav.style.justifyContent = 'space-around';
+    nav.style.alignItems = 'center';
+    nav.style.fontStyle = 'normal';
+    nav.style.fontSize = '20px';
+    nav.style.lineHeight = '36px';
+    nav.style.height = '70px';
+    nav.style.left = '0';
+    nav.style.top = '80px';
+    nav.style.right = '0';
+    nav.style.color = '#492D2D';
+    nav.style.background = '#FFFFFF';
+    nav.style.borderRadius = '12px';
+}
+
+function roofImgStyle() {
+    roofImg.style.position = 'relative';
+    roofImg.style.top = '5px';
+    roofImg.style.right = '5px';
+}
+
+function searchFormStyle() {
+    searchForm.style.position = 'relative';
+    searchForm.style.right = '0';
+    searchForm.style.maxWidth = '35rem';
+    searchForm.style.backgroundColor = '#fff';
+    searchForm.style.boxShadow = '0 3px 60px 0 rgba(0, 0, 0, .15)';
+    searchForm.style.borderRadius = '12px';
+}
+
+function searchInputStyle() {
+    searchInput.style.border = 'none';
+    searchInput.style.outline = 'none';
+    searchInput.style.background = 'transparent';
+    searchInput.style.width = '65%';
+    searchInput.style.height = '53px';
+    searchInput.style.paddingLeft = '16px';
+    searchInput.style.fontSize = '17px';
+    searchInput.style.color = 'black';
+}
+
+function searchButtonStyle() {
+    searchButton.style.position = 'absolute';
+    searchButton.style.top = '0';
+    searchButton.style.right = '5px';
+    searchButton.style.border = 'none';
+    searchButton.style.background = 'url("../header_icons/magnifier.png") scroll no-repeat center';
+    searchButton.style.width = '3.5rem';
+    searchButton.style.height = '100%';
+    searchButton.style.cursor = 'pointer';
+}

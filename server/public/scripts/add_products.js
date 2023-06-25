@@ -1,7 +1,55 @@
 async function createProducts(json = JSON.stringify([])) {
     const goodsElement = document.getElementsByClassName("goods")[0];
     removeAllKids(goodsElement);
-    console.log(getAllProducts(json));
+    let products = await getAllProducts(json);
+    addProducts(products);
+}
+
+function addProducts(products) {
+    const goodsElement = document.getElementsByClassName("goods")[0];
+
+    for (let product of products) {
+        let productElement = document.createElement("div");
+        productElement.setAttribute("class", "product");
+
+        let imageElement = document.createElement("a");
+        imageElement.setAttribute("href", "#");
+
+        let imgElement = document.createElement("img");
+        imgElement.setAttribute("src", "../images/profnastil_goods.jpg");
+        imgElement.setAttribute("height", "200");
+        imgElement.setAttribute("alt", "photo");
+        imageElement.appendChild(imgElement);
+        productElement.appendChild(imageElement);
+
+        let nameProductElement = document.createElement("a");
+        nameProductElement.setAttribute("class", "name_product");
+        nameProductElement.textContent = product.title;
+        productElement.appendChild(nameProductElement);
+
+        let count = 1;
+        for (let priorityProperty of product.priorityProperties) {
+            productElement.appendChild(getPriorityPropertyElement(priorityProperty, count));
+            count += 1;
+        }
+
+        let priceElement = document.createElement("div");
+        priceElement.setAttribute("class", "price_product");
+        let bElement = document.createElement("b");
+        bElement.textContent = `${numberWithSpaces(product.salePrice)} ${product.unitMeasurement}`;
+        priceElement.appendChild(bElement);
+        productElement.appendChild(priceElement);
+
+        goodsElement.appendChild(productElement);
+    }
+}
+
+function getPriorityPropertyElement(priorityProperty, count) {
+    let divElement = document.createElement('div');
+    divElement.setAttribute("class", `characteristic_${count}`);
+    divElement.textContent = `${priorityProperty.title}: ${priorityProperty.values[0]}`;
+
+    return divElement;
 }
 
 function removeAllKids(goodsElement) {
@@ -11,18 +59,19 @@ function removeAllKids(goodsElement) {
 }
 
 async function getAllProducts(json) {
-    let response = await httpGet(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=0&pageNumber=1&countElements=4`, json);
+    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=0&pageNumber=1&countElements=99999`, json);
     return response;
 }
 
-async function httpGet(url, json)
+async function httpPost(url, json)
 {
-    let data = new FormData();
-    data.append( "json", json);
-    console.log(data);
     let response = await fetch(url, {
         method: 'POST',
-        body: data});
+        headers: {
+            "Accept": "text/plain",
+            "Content-Type": "application/json"
+        },
+        body: json});
     return response.json();
 }
 
@@ -31,6 +80,12 @@ function getHeadingName() {
     const urlParams = new URLSearchParams(queryString);
 
     return urlParams.get('heading');
+}
+
+function numberWithSpaces(x) {
+    let parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return parts.join(".");
 }
 
 createProducts().then(() => console.log("OK"));

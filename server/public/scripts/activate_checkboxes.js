@@ -23,7 +23,7 @@ async function activateCheckboxes(){
     }
 
     let queryJson = JSON.stringify(queryArray);
-    console.log(queryJson);
+    createProducts(queryJson);
 }
 
 function getGroupObject(detailsElement) {

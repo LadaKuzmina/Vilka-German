@@ -1195,7 +1195,7 @@ summary {
 
 .product {
     width: 225px;
-    height: 360px;
+    height: 400px;
     position: relative;
     padding: 18px;
     background-color: white;
@@ -1258,7 +1258,7 @@ summary {
 
 .products_sort {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 

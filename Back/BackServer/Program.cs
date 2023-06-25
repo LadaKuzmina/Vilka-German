@@ -62,7 +62,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(bldr => bldr.AllowAnyOrigin());
+app.UseCors(bldr =>
+{
+    bldr.AllowAnyOrigin();
+    bldr.AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 

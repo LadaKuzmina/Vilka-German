@@ -242,19 +242,19 @@ nav.appendChild(dropdownDiv);
 
 const aboutUsLink = document.createElement('a');
 aboutUsLink.classList.add('nav_link');
-aboutUsLink.setAttribute('href', 'page_about_us.html');
+aboutUsLink.setAttribute('href', '../header_page/page_about_us.html');
 aboutUsLink.textContent = 'О нас';
 nav.appendChild(aboutUsLink);
 
 const deliveryLink = document.createElement('a');
 deliveryLink.classList.add('nav_link');
-deliveryLink.setAttribute('href', 'delivery_page.html');
+deliveryLink.setAttribute('href', '../header_page/delivery_page.html');
 deliveryLink.textContent = 'Доставка';
 nav.appendChild(deliveryLink);
 
 const contactLink = document.createElement('a');
 contactLink.classList.add('nav_link');
-contactLink.setAttribute('href', 'contact_page.html');
+contactLink.setAttribute('href', '../header_page/contact_page.html');
 contactLink.textContent = 'Контакты';
 nav.appendChild(contactLink);
 

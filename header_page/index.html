@@ -8,113 +8,89 @@
 </head>
 <body>
 <div class="wrapper">
-    <!--    <script src="../scripts/header.js"></script>-->
+        <script src="../scripts/header.js"></script>
     <!--    оставлю хтмл чтобы dropdown проще было делать-->
-    <header class="header">
-        <div class="logo">
-            <nav class="drop_nav">
-                <div class="dropdown_mobile">
-                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof"
-                                                     height="25" width="50"></button>
-                    <div class="mobile_content">
-                        <a href="index.html"> Каталог </a>
-                        <a href="page_about_us.html"> О нас </a>
-                        <!--                    <a class="nav_link" href="page_complited_project.html"> Выполненные проекты </a>-->
-                        <!--                    <a class="nav_link" href="services_page.html"> Наши услуги </a>-->
-                        <a href="delivery_page.html"> Доставка </a>
-                        <a href="contact_page.html"> Контакты </a>
+<!--    <header class="header">-->
+<!--        <div class="logo">-->
+<!--            <nav class="drop_nav">-->
+<!--                <div class="dropdown_mobile">-->
+<!--                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof"-->
+<!--                                                     height="25" width="50"></button>-->
+<!--                    <div class="mobile_content">-->
+<!--                        <a href="index.html"> Каталог </a>-->
+<!--                        <a href="page_about_us.html"> О нас </a>-->
+<!--                        <a href="delivery_page.html"> Доставка </a>-->
+<!--                        <a href="contact_page.html"> Контакты </a>-->
 
-                        <div class="d3">
-                            <form class="search">
-                                <input type="text" placeholder="Искать здесь...">
-                                <button type="submit"></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+<!--                        <div class="d3">-->
+<!--                            <form class="search">-->
+<!--                                <input type="text" placeholder="Искать здесь...">-->
+<!--                                <button type="submit"></button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </nav>-->
 
-            <a href="index.html"><img class="logo_photo" src="../header_icons/logo.png" alt="logo" height="50"
-                                      width="230"></a>
+<!--            <a href="index.html"><img class="logo_photo" src="../header_icons/logo.png" alt="logo" height="50"-->
+<!--                                      width="230"></a>-->
 
-            <div class="text_about_company">
-                Продажа и монтаж материалов для кровли и фасада<br>
-                в Екатеринбурге
-            </div>
+<!--            <div class="text_about_company">-->
+<!--                Продажа и монтаж материалов для кровли и фасада<br>-->
+<!--                в Екатеринбурге-->
+<!--            </div>-->
 
-            <div class="info">
-                <ul class="contacts">
-                    <li><a href="mailto:3834520@mail.ru"><img src="../header_icons/email_logo.png" alt="whatsapp"
-                                                              height="18"
-                                                              width="27"><span> 3834520@mail.ru </span></a></li>
-                    <li><a href="tel:+73433834520"><img src="../header_icons/phone_logo.png" alt="whatsapp" height="18"
-                                                        width="18"><span> +7 (343) 383-45-20 </span></a></li>
-                </ul>
+<!--            <div class="info">-->
+<!--                <ul class="contacts">-->
+<!--                    <li><a href="mailto:3834520@mail.ru"><img src="../header_icons/email_logo.png" alt="whatsapp"-->
+<!--                                                              height="18"-->
+<!--                                                              width="27"><span> 3834520@mail.ru </span></a></li>-->
+<!--                    <li><a href="tel:+73433834520"><img src="../header_icons/phone_logo.png" alt="whatsapp" height="18"-->
+<!--                                                        width="18"><span> +7 (343) 383-45-20 </span></a></li>-->
+<!--                </ul>-->
 
-                <a href="https://wa.me/73433834520">
-                    <img src="../header_icons/whatsapp.png" alt="whatsapp" class="whatsapp" height="40" width="40">
-                </a>
-            </div>
+<!--                <a href="https://wa.me/73433834520">-->
+<!--                    <img src="../header_icons/whatsapp.png" alt="whatsapp" class="whatsapp" height="40" width="40">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        </div>
+<!--        <div class="container">-->
+<!--            <div class="header_inner">-->
+<!--                <nav class="nav">-->
+<!--                    <div class="dropdown">-->
+<!--                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/roof.png"-->
+<!--                                                                                     alt="roof" class="roof"-->
+<!--                                                                                     height="25" width="50"> Каталог-->
+<!--                        </button>-->
+<!--                        <div class="dropdown_content" id="dropdown">-->
+<!--                            <a class="nav_link" href="../catalog/roof.html"> Кровля </a>-->
+<!--                            <a class="nav_link" href="../catalog/facade.html"> Фасад </a>-->
+<!--                            <a class="nav_link" href="#"> Водосточные системы </a>-->
+<!--                            <a class="nav_link" href="../catalog/dormer_windows.html"> Мансардные окна </a>-->
+<!--                            <a class="nav_link" href="../catalog/ventilation.html"> Вентиляция </a>-->
+<!--                            <a class="nav_link" href="#"> Чердачные лестницы </a>-->
+<!--                            <a class="nav_link" href="../catalog/insulation_materials.html"> Изоляционные материалы </a>-->
+<!--                            <a class="nav_link" href="../catalog/fences.html"> Ограждения </a>-->
+<!--                            <a class="nav_link" href="../catalog/accessories.html"> Комплектующие </a>-->
+<!--                            <a class="nav_link" href="../catalog/landscaping_site.html"> Благоустройство </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-        <div class="container">
-            <div class="header_inner">
-                <nav class="nav">
-                    <div class="dropdown">
-                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/roof.png"
-                                                                                     alt="roof" class="roof"
-                                                                                     height="25" width="50"> Каталог
-                        </button>
-                        <div class="dropdown_content" id="dropdown">
-                            <a class="nav_link" href="page_about_us.html"> О нас </a>
-                            <a class="nav_link" href="page_complited_project.html"> Выполненные проекты </a>
-                            <a class="nav_link" href="services_page.html"> Наши услуги </a>
-                            <a class="nav_link" href="delivery_page.html"> Доставка </a>
-                            <a class="nav_link" href="contact_page.html"> Контакты </a>
-                        </div>
-                    </div>
+<!--                    <a class="nav_link" href="page_about_us.html"> О нас </a>-->
+<!--                    <a class="nav_link" href="delivery_page.html"> Доставка </a>-->
+<!--                    <a class="nav_link" href="contact_page.html"> Контакты </a>-->
 
-                    <a class="nav_link" href="page_about_us.html"> О нас </a>
-                    <!--                    <a class="nav_link" href="page_complited_project.html"> Выполненные проекты </a>-->
-                    <!--                    <a class="nav_link" href="services_page.html"> Наши услуги </a>-->
-                    <a class="nav_link" href="delivery_page.html"> Доставка </a>
-                    <a class="nav_link" href="contact_page.html"> Контакты </a>
-
-                    <div class="d3">
-                        <form class="search">
-                            <input type="text" placeholder="Искать здесь...">
-                            <button type="submit"></button>
-                        </form>
-                    </div>
-
-
-                    <!--                    <ul>-->
-                    <!--                        <li><a class="nav_link" href="index.html"><img src="../header_icons/roof.png" alt="roof" class="roof"-->
-                    <!--                                                                       height="25" width="50"> Каталог </a>-->
-                    <!--                            &lt;!&ndash; первый уровень выпадающего списка &ndash;&gt;-->
-                    <!--                            <ul>-->
-                    <!--                                <li><a href="#">Themes</a></li>-->
-                    <!--                                <li><a href="#">Plugins</a></li>-->
-                    <!--                                <li><a href="#">Tutorials</a></li>-->
-                    <!--                            </ul>-->
-                    <!--                        </li>-->
-                    <!--                        <li><a class="nav_link" href="page_about_us.html"> О нас </a></li>-->
-                    <!--                        <li>&lt;!&ndash;                    <a class="nav_link" href="page_complited_project.html"> Выполненные проекты </a>&ndash;&gt;</li>-->
-                    <!--                        <li><a class="nav_link" href="services_page.html"> Наши услуги </a></li>-->
-                    <!--                        <li><a class="nav_link" href="delivery_page.html"> Доставка </a></li>-->
-                    <!--                        <li><a class="nav_link" href="contact_page.html"> Контакты </a></li>-->
-                    <!--                        <li><div class="d3">-->
-                    <!--                            <form>-->
-                    <!--                                <input type="text" placeholder="Искать здесь...">-->
-                    <!--                                <button type="submit"></button>-->
-                    <!--                            </form>-->
-                    <!--                        </div></li>-->
-                    <!--                    </ul>-->
-                </nav>
-            </div>
-        </div>
-    </header>
+<!--                    <div class="d3">-->
+<!--                        <form class="search">-->
+<!--                            <input type="text" placeholder="Искать здесь...">-->
+<!--                            <button type="submit"></button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
     <div class="container_size">
         <div class="slidesshow">
             <div class="mySlides fade">

@@ -26,22 +26,22 @@ const mobileContent = document.createElement('div');
 mobileContent.classList.add('mobile_content');
 
 const catalogLink = document.createElement('a');
-catalogLink.setAttribute('href', 'index.html');
+catalogLink.setAttribute('href', '../header_page/index.html');
 catalogLink.textContent = 'Каталог';
 mobileContent.appendChild(catalogLink);
 
 const mobileAboutUsLink = document.createElement('a');
-mobileAboutUsLink.setAttribute('href', 'page_about_us.html');
+mobileAboutUsLink.setAttribute('href', '../header_page/page_about_us.html');
 mobileAboutUsLink.textContent = 'О нас';
 mobileContent.appendChild(mobileAboutUsLink);
 
 const mobileDeliveryLink = document.createElement('a');
-mobileDeliveryLink.setAttribute('href', 'delivery_page.html');
+mobileDeliveryLink.setAttribute('href', '../header_page/delivery_page.html');
 mobileDeliveryLink.textContent = 'Доставка';
 mobileContent.appendChild(mobileDeliveryLink);
 
 const mobileContactLink = document.createElement('a');
-mobileContactLink.setAttribute('href', 'contact_page.html');
+mobileContactLink.setAttribute('href', '../header_page/contact_page.html');
 mobileContactLink.textContent = 'Контакты';
 mobileContent.appendChild(mobileContactLink);
 
@@ -69,7 +69,7 @@ dropNav.appendChild(dropdownMobile);
 logoDiv.appendChild(dropNav);
 
 const logoLink = document.createElement('a');
-logoLink.setAttribute('href', 'index.html');
+logoLink.setAttribute('href', '../header_page/index.html');
 
 const logoImg = document.createElement('img');
 logoImg.setAttribute('src', '../header_icons/logo.png');

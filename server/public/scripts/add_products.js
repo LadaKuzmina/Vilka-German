@@ -13,7 +13,7 @@ function addProducts(products) {
         productElement.setAttribute("class", "product");
 
         let imageElement = document.createElement("a");
-        imageElement.setAttribute("href", "#");
+        imageElement.setAttribute("href", `../product/product.html?heading=${product.title}`);
 
         let imgElement = document.createElement("img");
         imgElement.setAttribute("src", "../images/profnastil_goods.jpg");
@@ -24,7 +24,7 @@ function addProducts(products) {
 
         let nameProductElement = document.createElement("a");
         nameProductElement.setAttribute("class", "name_product");
-        nameProductElement.setAttribute("href", "#");
+        nameProductElement.setAttribute("href", `../product/product.html?heading=${product.title}`);
         nameProductElement.textContent = product.title;
         productElement.appendChild(nameProductElement);
 

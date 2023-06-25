@@ -10,7 +10,7 @@ async function loadProduct(){
 
     let photo = document.getElementsByClassName("photo_product")[0];
     let imgElement = document.createElement("img");
-    imgElement.setAttribute("src", "../images/118302_mansardnoe-okno-fakro-ptp-v-pi-u3-.jpg");
+    imgElement.setAttribute("src", "../images/profnastil_goods.jpg");
     imgElement.setAttribute("width", "400");
     imgElement.setAttribute("height", "400");
     photo.appendChild(imgElement);

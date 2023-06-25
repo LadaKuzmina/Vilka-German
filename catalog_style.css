@@ -1379,3 +1379,49 @@ summary{
     width: 20px;
     display: inline-block;
 }
+
+.goods{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    top:-1450px;
+    left: 200px;
+    margin: auto;
+}
+
+.product{
+    width: 225px;
+    height: 360px;
+    position: relative;
+    padding: 18px;
+    background-color: white;
+    margin: 18px;
+    border-radius: 10px;
+    border: transparent solid;
+
+}
+.product .name_product{
+    font-size: 18px;
+
+}
+.product .price_product{
+    font-size: 20px;
+    padding-top: 20px;
+}
+.product span{
+    font-size: 15px;
+}
+.product .characteristic_1{
+    padding-top: 20px;
+}
+
+.product img:hover{
+    border: #333333 solid;
+}
+.product .name_product:hover{
+    color: burlywood;
+}

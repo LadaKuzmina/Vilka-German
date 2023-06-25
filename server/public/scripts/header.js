@@ -69,7 +69,7 @@ dropNav.appendChild(dropdownMobile);
 logoDiv.appendChild(dropNav);
 
 const logoLink = document.createElement('a');
-logoLink.setAttribute('href', 'index.html');
+logoLink.setAttribute('href', '../header_page/index.html');
 
 const logoImg = document.createElement('img');
 logoImg.setAttribute('src', '../header_icons/logo.png');

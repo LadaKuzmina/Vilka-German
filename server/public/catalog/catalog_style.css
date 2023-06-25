@@ -51,7 +51,7 @@
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;
@@ -528,7 +528,7 @@ summary {
 
 .products_sort {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -621,7 +621,7 @@ summary {
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;
@@ -945,7 +945,7 @@ summary {
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;
@@ -1130,7 +1130,7 @@ summary {
 
     .product {
         width: 169px;
-        height: 335px;
+        height: 400px;
         position: relative;
         padding: 18px;
         background-color: white;
@@ -1308,7 +1308,7 @@ summary {
 
     .product {
         width: 148px;
-        height: 335px;
+        height: 400px;
         position: relative;
         padding: 18px;
         background-color: white;

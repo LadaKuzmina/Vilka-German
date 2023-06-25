@@ -1425,3 +1425,24 @@ summary{
 .product .name_product:hover{
     color: burlywood;
 }
+.sort{
+    position: relative;
+    top:-1450px;
+    left: 293px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 30px;
+    align-items: center;
+    border-radius: 4px;
+    width: 370px;
+}
+.sort a{
+    padding: 10px;
+    color: black;
+
+}
+
+.sort a:hover{
+    color: chocolate;
+}

@@ -128,7 +128,7 @@ function createRectangleCheckboxes(property, count) {
     let checkboxesContainer = document.createElement("div");
     checkboxesContainer.setAttribute("class", "checkbox_container");
     for (let checkbox of property.values) {
-        let checkboxElement = createCheckboxesElement(checkbox, count, property.title === "Цвет");
+        let checkboxElement = createCheckboxesElement(checkbox, count, property.title === "Цвет" && checkbox !== "Не указано");
         checkboxesContainer.appendChild(checkboxElement);
         count++;
     }
@@ -176,11 +176,11 @@ function createCheckboxesElement(checkbox, count, is_color) {
     let spanElement = document.createElement("span");
     spanElement.setAttribute("class", "checkbox__label");
     if (is_color) {
+        spanElement.textContent = checkbox.split(' ').slice(1).join(' ');
         let squareElement = document.createElement("div");
         squareElement.setAttribute("class", "square");
         squareElement.setAttribute("style", `background-color: ${checkbox.split(' ')[0]}`);
-        spanElement.appendChild(squareElement);
-        spanElement.textContent = checkbox.split(' ').slice(1).join(' ');
+        spanElement.insertAdjacentElement('afterbegin', squareElement);
     }
     else {
         spanElement.textContent = checkbox;

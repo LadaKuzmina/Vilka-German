@@ -1,8 +1,3 @@
-/*.page-content .container {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-
 .container_size {
     max-width: 100%;
 }
@@ -194,19 +189,6 @@
     line-height: normal;
 }
 
-/*.page-content {*/
-/*    display: block;*/
-/*    !*flex-direction: column;*!*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    position: relative;*/
-/*    top: 150px;*/
-/*    left: 100px;*/
-/*    right: 30px;*/
-/*    font-size: 19px;*/
-/*    font-family: Inter, serif;*/
-/*}*/
-
 body {
     background-color: #FAE9CDFF;
     overflow-x: hidden;
@@ -230,17 +212,19 @@ a {
     font-family: Inter, serif;
 }
 
-.aboutUs{
+.aboutUs {
     width: 650px;
 }
 
-.aboutCompany{
+.aboutCompany {
+    position: relative;
+    top: 20px;
 
 }
 
-.aboutCompany table{
+.aboutCompany table {
     position: relative;
-    top:-50px;
+    top: -50px;
     border-spacing: 10px 2.5rem;
 }
 
@@ -250,7 +234,7 @@ footer > div {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 10px 10px;
-    margin-top: -220px;
+    margin-top: -102px;
     /*flex-direction: row;*/
     /*margin: auto;*/
     position: relative;
@@ -295,7 +279,7 @@ footer > div {
     text-align: left;
 }
 
-.icons{
+.icons {
     padding-top: 159px;
     gap: 15px;
     display: flex;
@@ -343,6 +327,11 @@ h3 {
     .container_size {
         width: 960px;
         margin: auto;
+    }
+
+    .aboutUs {
+        width: 400px;
+
     }
 
     .search {
@@ -533,6 +522,25 @@ h3 {
         width: 200px;
         margin: 10px 0 0 30px;
         font-family: Arial, Inter, serif;
+    }
+
+    .page-content {
+        margin-left: -90px;
+        width: 100%;
+        right: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 150px;
+        left: 0;
+        font-size: 22px;
+        font-family: Inter, serif;
+    }
+
+    .aboutCompany {
+        margin-right: -200px;
     }
 
     .nav {
@@ -842,7 +850,35 @@ h3 {
     }
 
     .page-content {
-        font-size: 16px;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 110px;
+        left: 0;
+        font-size: 20px;
+        font-family: Inter, serif;
+    }
+
+    .aboutUs {
+        width: 500px;
+    }
+
+    .aboutCompany {
+        position: relative;
+        top: -5px;
+        margin: auto;
+        font-size: 23px;
+    }
+
+    .aboutCompany table {
+        position: relative;
+        top: -20px;
+        border-spacing: 10px 1.5rem;
     }
 
     .assortImg, .availImg, .priceImg {
@@ -1095,5 +1131,389 @@ h3 {
 
     .nav {
         display: none;
+    }
+
+    .page-content {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 110px;
+        left: 0;
+        font-size: 17px;
+        font-family: Inter, serif;
+    }
+
+    .aboutUs {
+        width: 400px;
+    }
+
+    .aboutCompany {
+        position: relative;
+        top: -5px;
+        margin: auto;
+        font-size: 23px;
+    }
+
+    .aboutCompany table {
+        position: relative;
+        top: -20px;
+        border-spacing: 10px 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container_size {
+        width: auto;
+        margin: auto;
+    }
+
+    .products {
+        color: black;
+        position: relative;
+        background-color: #D6AE96;
+        /*background-color: #492D2D;*/
+        /*color: #492D2D;*/
+        /*background-color: white;*/
+        width: 15.625em;
+        height: 9.375em;
+        padding: 18px;
+        border-radius: 10px;
+        font-family: Arial, Inter, serif;
+        /*Arial,*/
+        font-size: 15px;
+        overflow: auto;
+        margin: 18px;
+    }
+
+    .d3 {
+        flex-shrink: 3;
+    }
+
+    footer > div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        justify-content: center;
+        padding: 0 5px 5px;
+        position: relative;
+        align-content: center;
+        /*height: 1187.5%;*/
+        /*width: 100%;*/
+        background: #FAE9CD;
+        font-size: 13px;
+        font-family: Arial, Inter, serif;
+    }
+
+    .wrapper {
+        margin: auto;
+    }
+
+    h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #492D2D;
+    }
+
+    .catalog {
+        /*display: inline-block;*/
+        margin: 0 10px 0 10px;
+        float: left;
+
+    }
+
+    .menu {
+        /*display: inline-block;*/
+        margin: 0 9px 0 9px;
+
+    }
+
+    .list {
+        /*display: inline-block;*/
+        margin: 0 10px 0 10px;
+    }
+
+    .footer .contacts {
+        /*display: inline-block;*/
+        display: flex;
+        flex-direction: column;
+        gap: 93.75%;
+        margin: 0 40px 0 20px;
+        text-align: left;
+    }
+
+    .icons {
+        /*padding-top: 159px;*/
+        gap: 93.75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header .info {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: row-reverse;
+        grid-gap: 10px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .header .contacts {
+        list-style-type: none;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20px;
+        padding-left: 0;
+    }
+
+    .logo_photo {
+        position: relative;
+        width: 115px;
+        height: 24px;
+        /*top: 13px;*/
+        /*margin-left: -10px;*/
+    }
+
+    .location_logo {
+        width: 30px;
+        height: 26px;
+    }
+
+    .email_logo {
+        width: 21px;
+        height: 14px;
+    }
+
+    .tel_logo {
+        width: 18px;
+        height: 18px;
+    }
+
+    .whatsapp_logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .page-content {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 110px;
+        left: 0;
+        font-size: 17px;
+        font-family: Inter, serif;
+    }
+
+    .aboutUs {
+        width: 400px;
+    }
+
+    .aboutCompany {
+        position: relative;
+        top: -5px;
+        margin: auto;
+        font-size: 23px;
+    }
+
+    .aboutCompany table {
+        position: relative;
+        top: -20px;
+        border-spacing: 10px 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container_size {
+        width: auto;
+        margin: auto;
+    }
+
+    .products {
+        color: black;
+        position: relative;
+        background-color: #D6AE96;
+        /*background-color: #492D2D;*/
+        /*color: #492D2D;*/
+        /*background-color: white;*/
+        width: 15.625em;
+        height: 9.375em;
+        padding: 18px;
+        border-radius: 10px;
+        font-family: Arial, Inter, serif;
+        /*Arial,*/
+        font-size: 15px;
+        overflow: auto;
+        margin: 18px;
+    }
+
+    .d3 {
+        flex-shrink: 3;
+    }
+
+    footer > div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        justify-content: center;
+        padding: 0 5px 5px;
+        position: relative;
+        align-content: center;
+        /*height: 1187.5%;*/
+        /*width: 100%;*/
+        background: #FAE9CD;
+        font-size: 13px;
+        font-family: Arial, Inter, serif;
+    }
+
+    .wrapper {
+        margin: auto;
+    }
+
+    h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #492D2D;
+    }
+
+    .catalog {
+        /*display: inline-block;*/
+        margin: 0 10px 0 10px;
+        float: left;
+
+    }
+
+    .menu {
+        /*display: inline-block;*/
+        margin: 0 9px 0 9px;
+
+    }
+
+    .list {
+        /*display: inline-block;*/
+        margin: 0 10px 0 10px;
+    }
+
+    .footer .contacts {
+        /*display: inline-block;*/
+        display: flex;
+        flex-direction: column;
+        gap: 93.75%;
+        margin: 0 40px 0 20px;
+        text-align: left;
+    }
+
+    .icons {
+        /*padding-top: 159px;*/
+        gap: 93.75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header .info {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: row-reverse;
+        grid-gap: 10px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .header .contacts {
+        list-style-type: none;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20px;
+        padding-left: 0;
+    }
+
+    .logo_photo {
+        position: relative;
+        width: 115px;
+        height: 24px;
+        /*top: 13px;*/
+        /*margin-left: -10px;*/
+    }
+
+    .location_logo {
+        width: 30px;
+        height: 26px;
+    }
+
+    .email_logo {
+        width: 21px;
+        height: 14px;
+    }
+
+    .tel_logo {
+        width: 18px;
+        height: 18px;
+    }
+
+    .whatsapp_logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .page-content {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 110px;
+        left: 0;
+        font-size: 15px;
+        font-family: Inter, serif;
+    }
+
+    .aboutUs {
+        width: 300px;
+    }
+
+    .aboutCompany {
+        position: relative;
+        top: -5px;
+        margin: auto;
+        font-size: 20px;
+    }
+
+    .aboutCompany table {
+        position: relative;
+        top: -20px;
+        border-spacing: 10px 1.5rem;
     }
 }

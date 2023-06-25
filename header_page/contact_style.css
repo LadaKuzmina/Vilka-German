@@ -315,6 +315,16 @@ footer > div {
         margin: auto;
     }
 
+    .map{
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        left: 400px;
+        top: 30px;
+    }
+    .page_contacts{
+        margin-left: -90px;
+    }
 }
 
 @media (max-width: 1199px) {
@@ -322,7 +332,18 @@ footer > div {
         width: 960px;
         margin: auto;
     }
-
+    .map{
+        position: absolute;
+        left: 400px;
+        top: 30px;
+    }
+    .map iframe{
+        height: 450px;
+        width: 450px;
+    }
+    .page_contacts{
+        margin-left: -110px;
+    }
     .search {
         position: relative;
         right: 0;
@@ -502,6 +523,21 @@ footer > div {
         width: 720px;
         margin: auto;
     }
+    .map{
+        position: absolute;
+        left: 300px;
+        top: 30px;
+    }
+    .map iframe{
+        height: 350px;
+        width: 350px;
+    }
+    .page_contacts{
+        margin-left: -106px;
+    }
+    .servers .page_contacts{
+        width: 300px;
+    }
 
     .logo .text_about_company {
         display: inline-block;
@@ -587,7 +623,23 @@ footer > div {
     .nav {
         display: none;
     }
+    .map{
+        position: relative;
+        left: 10px;
+        top: 30px;
+    }
+    .map iframe{
+        height: 300px;
+        width: 300px;
+    }
+    .page_contacts{
+       margin: auto;
 
+    }
+    .servers .page_contacts{
+        width: 500px;
+        font-size: 18px;
+    }
     .dropdown_mobile {
         display: block;
         position: relative;
@@ -829,6 +881,23 @@ footer > div {
         width: auto;
         margin: auto;
     }
+    .map{
+        position: relative;
+        left: 10px;
+        top: 30px;
+    }
+    .map iframe{
+        height: 300px;
+        width: 300px;
+    }
+    .page_contacts{
+        margin: auto;
+
+    }
+    .servers .page_contacts{
+        width: 500px;
+        font-size: 18px;
+    }
 
     .d3 {
         flex-shrink: 3;
@@ -924,6 +993,23 @@ footer > div {
         width: auto;
         margin: auto;
     }
+    .map{
+        position: relative;
+        left: -10px;
+        top: 30px;
+    }
+    .map iframe{
+        height: 200px;
+        width: 200px;
+    }
+    .page_contacts{
+        margin-left: -100px;
+
+    }
+    .servers .page_contacts{
+        width: 400px;
+        font-size: 15px;
+    }
 
     .products {
         color: black;
@@ -967,10 +1053,6 @@ footer > div {
         margin: auto;
     }
 
-    h3 {
-        font-size: 20px;
-        text-align: center;
-    }
 
     .footer a {
         color: #492D2D;

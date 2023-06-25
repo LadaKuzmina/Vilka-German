@@ -1659,6 +1659,7 @@ h3 {
     .slidesshow {
         margin: auto;
         width: 100%;
+        padding-top: 121px;
     }
 
     .wrapper {

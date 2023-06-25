@@ -927,20 +927,20 @@ h3 {
         width: auto;
         margin: auto;
     }
+    .container {
+        margin-left: -100px;
+        width: 300px;
+    }
 
     .products {
         color: black;
         position: relative;
         background-color: #D6AE96;
-        /*background-color: #492D2D;*/
-        /*color: #492D2D;*/
-        /*background-color: white;*/
         width: 15.625em;
         height: 9.375em;
         padding: 18px;
         border-radius: 10px;
         font-family: Arial, Inter, serif;
-        /*Arial,*/
         font-size: 15px;
         overflow: auto;
         margin: 18px;

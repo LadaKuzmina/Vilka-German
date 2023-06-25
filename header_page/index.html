@@ -8,101 +8,19 @@
 </head>
 <body>
 <div class="wrapper">
-        <script src="../scripts/header.js"></script>
-    <!--    оставлю хтмл чтобы dropdown проще было делать-->
-<!--    <header class="header">-->
-<!--        <div class="logo">-->
-<!--            <nav class="drop_nav">-->
-<!--                <div class="dropdown_mobile">-->
-<!--                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof"-->
-<!--                                                     height="25" width="50"></button>-->
-<!--                    <div class="mobile_content">-->
-<!--                        <a href="index.html"> Каталог </a>-->
-<!--                        <a href="page_about_us.html"> О нас </a>-->
-<!--                        <a href="delivery_page.html"> Доставка </a>-->
-<!--                        <a href="contact_page.html"> Контакты </a>-->
-
-<!--                        <div class="d3">-->
-<!--                            <form class="search">-->
-<!--                                <input type="text" placeholder="Искать здесь...">-->
-<!--                                <button type="submit"></button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </nav>-->
-
-<!--            <a href="index.html"><img class="logo_photo" src="../header_icons/logo.png" alt="logo" height="50"-->
-<!--                                      width="230"></a>-->
-
-<!--            <div class="text_about_company">-->
-<!--                Продажа и монтаж материалов для кровли и фасада<br>-->
-<!--                в Екатеринбурге-->
-<!--            </div>-->
-
-<!--            <div class="info">-->
-<!--                <ul class="contacts">-->
-<!--                    <li><a href="mailto:3834520@mail.ru"><img src="../header_icons/email_logo.png" alt="whatsapp"-->
-<!--                                                              height="18"-->
-<!--                                                              width="27"><span> 3834520@mail.ru </span></a></li>-->
-<!--                    <li><a href="tel:+73433834520"><img src="../header_icons/phone_logo.png" alt="whatsapp" height="18"-->
-<!--                                                        width="18"><span> +7 (343) 383-45-20 </span></a></li>-->
-<!--                </ul>-->
-
-<!--                <a href="https://wa.me/73433834520">-->
-<!--                    <img src="../header_icons/whatsapp.png" alt="whatsapp" class="whatsapp" height="40" width="40">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="container">-->
-<!--            <div class="header_inner">-->
-<!--                <nav class="nav">-->
-<!--                    <div class="dropdown">-->
-<!--                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/roof.png"-->
-<!--                                                                                     alt="roof" class="roof"-->
-<!--                                                                                     height="25" width="50"> Каталог-->
-<!--                        </button>-->
-<!--                        <div class="dropdown_content" id="dropdown">-->
-<!--                            <a class="nav_link" href="../catalog/roof.html"> Кровля </a>-->
-<!--                            <a class="nav_link" href="../catalog/facade.html"> Фасад </a>-->
-<!--                            <a class="nav_link" href="#"> Водосточные системы </a>-->
-<!--                            <a class="nav_link" href="../catalog/dormer_windows.html"> Мансардные окна </a>-->
-<!--                            <a class="nav_link" href="../catalog/ventilation.html"> Вентиляция </a>-->
-<!--                            <a class="nav_link" href="#"> Чердачные лестницы </a>-->
-<!--                            <a class="nav_link" href="../catalog/insulation_materials.html"> Изоляционные материалы </a>-->
-<!--                            <a class="nav_link" href="../catalog/fences.html"> Ограждения </a>-->
-<!--                            <a class="nav_link" href="../catalog/accessories.html"> Комплектующие </a>-->
-<!--                            <a class="nav_link" href="../catalog/landscaping_site.html"> Благоустройство </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <a class="nav_link" href="page_about_us.html"> О нас </a>-->
-<!--                    <a class="nav_link" href="delivery_page.html"> Доставка </a>-->
-<!--                    <a class="nav_link" href="contact_page.html"> Контакты </a>-->
-
-<!--                    <div class="d3">-->
-<!--                        <form class="search">-->
-<!--                            <input type="text" placeholder="Искать здесь...">-->
-<!--                            <button type="submit"></button>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </nav>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </header>-->
+    <script src="../scripts/header.js"></script>
     <div class="container_size">
         <div class="slidesshow">
             <div class="mySlides fade">
-                <img src="../images/slide1.jpg" style="width:100%">
+                <img src="../images/slide1.jpg" style="width:100%" alt="first_slide">
             </div>
 
             <div class="mySlides fade">
-                <img src="../images/slide2.jpg" style="width:100%">
+                <img src="../images/slide2.jpg" style="width:100%" alt="second_slide">
             </div>
 
             <div class="mySlides fade">
-                <img src="../images/slide3.jpeg" style="width:100%">
+                <img src="../images/slide3.jpeg" style="width:100%" alt="third_slide">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -113,8 +31,6 @@
         <div style="text-align:center">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <!--        переделать на .addEventListener-->
         </div>
         <script>
             let slideIndex = 1;
@@ -207,7 +123,6 @@
                         <a href="#">Подсистема для фасада</a>
                     </li>
                 </ul>
-                <!--        </div>-->
             </div>
             <div class="products">
                 <h4>Водосток</h4>
@@ -431,7 +346,6 @@
     </div>
     <footer>
         <div class="footer">
-            <!--            <div class="container">-->
             <div class="catalog">
                 <h4>Каталог</h4>
                 <ul>
@@ -456,18 +370,10 @@
                 <h4>Меню</h4>
                 <ul>
                     <li><a href="page_about_us.html">О нас</a></li>
-                    <!--                        <li><a href="page_complited_project.html">Выполненные проекты</a></li>-->
-                    <!--                        <li><a href="services_page.html">Наши услуги</a></li>-->
                     <li><a href="delivery_page.html">Доставка</a></li>
                     <li><a href="contact_page.html">Контакты</a></li>
                 </ul>
             </div>
-            <!--                <div class="icons">-->
-            <!--                    <img class="location_logo" src="images/location.png" height="35" width="40" alt="Иконка локации"/>-->
-            <!--                    <img class="email_logo" src="images/email.png" height="22" width="31" alt="Иконка почты"/>-->
-            <!--                    <img class="tel_logo" src="images/phone.png" height="22" width="22" alt="Иконка телефона"/>-->
-            <!--                    <img class="whatsapp_logo" src="images/whatsapp.png" height="30" width="30" alt="Логотип Whatsapp"/>-->
-            <!--                </div>-->
             <div class="contacts">
                 <table>
                     <tr>
@@ -509,26 +415,7 @@
                         </td>
                     </tr>
                 </table>
-                <!--                    <div class="location">-->
-                <!--                        &lt;!&ndash;                    <img class="location_logo" src="images/location.png" height="35" width="40" alt="Иконка локации"/>&ndash;&gt;-->
-                <!--                        <a href="https://yandex.ru/maps/54/yekaterinburg/house/ulitsa_frontovykh_brigad_15k28/YkkYcAVpTkUBQFtsfXR5cH1rZw==/?ll=60.629706%2C56.881183&z=16.72">-->
-                <!--                            Екатеринбург<br>-->
-                <!--                            ул. Фронтовых бригад, д.15, корп.28, оф.3</a>-->
-                <!--                    </div>-->
-                <!--                    <div class="email">-->
-                <!--                        &lt;!&ndash;                    <img class="email_logo" src="images/email.png" height="22" width="31" alt="Иконка почты"/>&ndash;&gt;-->
-                <!--                        <a href="mailto:3834520@mail.ru">3834520@mail.com</a>-->
-                <!--                    </div>-->
-                <!--                    <div class="phone">-->
-                <!--                        &lt;!&ndash;                    <img class="tel_logo" src="images/phone.png" height="22" width="22" alt="Иконка телефона"/>&ndash;&gt;-->
-                <!--                        <a href="tel:+73433834520">+7(343)383-45-20</a>-->
-                <!--                    </div>-->
-                <!--                    <div class="whatsapp">-->
-                <!--                        &lt;!&ndash;                    <img class="whatsapp_logo" src="images/whatsapp.png" height="30" width="30" alt="Логотип Whatsapp"/>&ndash;&gt;-->
-                <!--                        <a href="https://wa.me/73433834520">Написать в Whatsapp</a>-->
-                <!--                    </div>-->
             </div>
-            <!--            </div>-->
         </div>
     </footer>
 </div>

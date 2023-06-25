@@ -8,233 +8,207 @@
 <body>
 <div class="wrapper">
     <script src="scripts/header.js"></script>
+    <div class="content">
+        <div class="filters">
+            <div class="filters_h"><b>Фильтры</b></div>
+            <div class="button_filters">
+                <button type="submit" name="apply">
+                    Применить
+                </button>
+            </div>
+            <div class="filters_checkbox">
+                <details open>
+                    <summary><b>Цена</b></summary>
+                    <div class="price-input">
+                        <div class="field">
+                            <span>От</span>
+                            <input type="number" class="input-min" value="2500">
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field">
+                            <span>До</span>
+                            <input type="number" class="input-max" value="7500">
+                        </div>
+                    </div>
+                    <div class="slider-range">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input">
+                        <input type="range" class="range-min" min="0" max="10000" value="2500">
+                        <input type="range" class="range-max" min="0" max="10000" value="7500">
+                    </div>
+                </details>
 
-    <div class="filters_h"><b>Фильтры</b></div>
-    <details open>
-        <summary><b>Цена</b></summary>
-        <!--    <div class="check-group">-->
-        <!--            <div class="h"><b>Цена</b></div>-->
-        <div class="price-input">
-            <div class="field">
-                <span>От</span>
-                <input type="number" class="input-min" value="2500">
-            </div>
-            <div class="separator">-</div>
-            <div class="field">
-                <span>До</span>
-                <input type="number" class="input-max" value="7500">
-            </div>
-        </div>
-        <div class="slider-range">
-            <div class="progress"></div>
-        </div>
-        <div class="range-input">
-            <input type="range" class="range-min" min="0" max="10000" value="2500">
-            <input type="range" class="range-max" min="0" max="10000" value="7500">
-        </div>
-    </details>
-    <!--    </div>-->
-    <!--        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">-->
-    <!--    цвет #006F94 #6EA340  "#aa6a2c-->
-    <!--    <div class="check-group">-->
-    <details open>
-        <summary><b>Профнастил</b></summary>
-        <div class="profiled">
-            <!--            <div class="h"><b>Профнастил</b></div>-->
-        </div>
-    </details>
-    <!--    </div>-->
-    <!--    <div class="check-group">-->
-    <details open>
-        <summary><b>Толщина, мм</b></summary>
-        <div class="width">
-            <!--            <div class="h"><b>Толщина, мм</b></div>-->
+                <details open>
+                    <summary><b>Профнастил</b></summary>
+                    <div class="profiled">
 
-        </div>
-    </details>
-    <!--    </div>-->
-    <!--    <div class="check-group">-->
-    <details open>
-        <summary><b>Покрытие</b></summary>
-        <div class="coating">
-            <!--            <div class="h"><b>Покрытие</b></div>-->
-        </div>
-    </details>
-    <!--    </div>-->
-    <!--    <div class="check-group">-->
-    <details open>
-        <summary><b>Цвет</b></summary>
-        <!--        <div class="h"><b>Цвет</b></div>-->
-        <label for="myCheckbox31" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox31">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(222, 208, 159)"></div>
-                RAL 1014 Слоновая кость
-            </div>
-        </label>
-        <label for="myCheckbox32" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox32">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(234, 222, 189)"></div>
-                RAL 1015 Светлая cлоновая кость
-            </div>
-        </label>
-        <label for="myCheckbox33" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox33">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(243, 224, 59)"></div>
-                RAL 1018 Желтый цинк
-            </div>
-        </label>
-        <label for="myCheckbox34" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox34">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(231, 91, 18)"></div>
-                RAL 2004 Оранжевый
-            </div>
-        </label>
-        <label for="myCheckbox35" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox35">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(141, 29, 44)"></div>
-                RAL 3003 Рубиново-красный
-            </div>
-        </label>
-        <label for="myCheckbox36" class="checkbox">
-            <input class="checkbox__input" type="checkbox" id="myCheckbox36">
-            <svg class="checkbox__icon" viewBox="0 0 22 22">
-                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
-                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
-                      d="M4 10l5 5 9-9"/>
-            </svg>
-            <div class="checkbox__label">
-                <div class="square" style="background-color: rgb(94, 32, 40)"></div>
-                RAL 3005 Винно-красный
-            </div>
-        </label>
-        <!--    </div>-->
-    </details>
-    <details open>
-        <summary><b>Рабочая ширина, мм</b></summary>
-        <!--    <div class="check-group">-->
-        <div class="workWidth">
-            <!--            <div class="h"><b>Рабочая ширина, мм</b></div>-->
-        </div>
-    </details>
-    <!--    </div>-->
+                    </div>
+                </details>
 
-    <!--    <div class="check-group">-->
-    <details open>
-        <summary><b>Гарантия</b></summary>
-        <div class="warranty">
-            <!--            <div class="h"><b>Гарантия</b></div>-->
+                <details open>
+                    <summary><b>Толщина, мм</b></summary>
+                    <div class="width">
+
+                    </div>
+                </details>
+
+                <details open>
+                    <summary><b>Покрытие</b></summary>
+                    <div class="coating">
+
+                    </div>
+                </details>
+
+                <details open>
+                    <summary><b>Цвет</b></summary>
+                    <label for="myCheckbox31" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox31">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(222, 208, 159)"></div>
+                            RAL 1014 Слоновая кость
+                        </div>
+                    </label>
+                    <label for="myCheckbox32" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox32">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(234, 222, 189)"></div>
+                            RAL 1015 Светлая cлоновая кость
+                        </div>
+                    </label>
+                    <label for="myCheckbox33" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox33">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(243, 224, 59)"></div>
+                            RAL 1018 Желтый цинк
+                        </div>
+                    </label>
+                    <label for="myCheckbox34" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox34">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(231, 91, 18)"></div>
+                            RAL 2004 Оранжевый
+                        </div>
+                    </label>
+                    <label for="myCheckbox35" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox35">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(141, 29, 44)"></div>
+                            RAL 3003 Рубиново-красный
+                        </div>
+                    </label>
+                    <label for="myCheckbox36" class="checkbox">
+                        <input class="checkbox__input" type="checkbox" id="myCheckbox36">
+                        <svg class="checkbox__icon" viewBox="0 0 22 22">
+                            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>
+                            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"
+                                  d="M4 10l5 5 9-9"/>
+                        </svg>
+                        <div class="checkbox__label">
+                            <div class="square" style="background-color: rgb(94, 32, 40)"></div>
+                            RAL 3005 Винно-красный
+                        </div>
+                    </label>
+                </details>
+                <details open>
+                    <summary><b>Рабочая ширина, мм</b></summary>
+                    <div class="workWidth">
+                    </div>
+                </details>
+
+                <details open>
+                    <summary><b>Гарантия</b></summary>
+                    <div class="warranty">
+                    </div>
+                </details>
+            </div>
         </div>
-        <!--    </div>-->
-    </details>
-    <!--    <div class="check-group">-->
-    <!--        <div class="h"><b>Цвет</b></div>-->
-    <!--        <input class="checkbox__input" type="checkbox" id="myCheckbox31">-->
-    <!--        <svg class="checkbox__icon" viewBox="0 0 22 22">-->
-    <!--            <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>-->
-    <!--            <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"-->
-    <!--                  d="M4 10l5 5 9-9"/>-->
-    <!--        </svg>-->
-    <!--        <div class="checkbox__label">-->
-    <!--            <div class="square" style="background-color: rgb(243, 224, 59)">-->
-    <!--                <div>-->
-    <!--                    RAL 1014 Слоновая кость-->
-    <!--                </div>-->
-    <!--        <label for="myCheckbox32" class="checkbox">-->
-    <!--            <input class="checkbox__input" type="checkbox" id="myCheckbox32">-->
-    <!--            <svg class="checkbox__icon" viewBox="0 0 22 22">-->
-    <!--                <rect width="21" height="21" x=".5" y=".5" fill="#FFF" stroke="#d4aa70" rx="3"/>-->
-    <!--                <path class="tick" stroke="#6EA340" fill="none" stroke-linecap="round" stroke-width="4"-->
-    <!--                      d="M4 10l5 5 9-9"/>-->
-    <!--            </svg>-->
-    <!--            <span class="checkbox__label">RAL 1014 Слоновая кость</span>-->
-    <!--        </label>-->
-    <script src="scripts/products.js"></script>
-    <div class="sort">
-        Сортировать по
-        <div class="sort_container">
-            <a href="#">цене</a>
-            <a href="#">алфавиту</a>
-            <a href="#">популярности</a>
-        </div>
-    </div>
-    <div class="goods">
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
-        </div>
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
-        </div>
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
-        </div>
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
-        </div>
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
-        </div>
-        <div class="product">
-            <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
-            <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
-            <div class="characteristic_1">Бренд: Металл Профиль</div>
-            <div class="characteristic_2">Толщина, мм: 1</div>
-            <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
-            <div class="price_product"><b>1 530 руб./м²</b></div>
+
+        <script src="scripts/products.js"></script>
+        <div class="products_sort">
+            <div class="sort">
+                Сортировать по
+                <div class="sort_container">
+                    <a href="#">цене</a>
+                    <a href="#">алфавиту</a>
+                    <a href="#">популярности</a>
+                </div>
+            </div>
+            <div class="goods">
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+                <div class="product">
+                    <a href="#"> <img src="images/profnastil_goods.jpg" height="200" alt="photo"/></a>
+                    <a href="#" class="name_product">Профнастил Н-114x750-B (ОЦ-01-БЦ-1)</a>
+                    <div class="characteristic_1">Бренд: Металл Профиль</div>
+                    <div class="characteristic_2">Толщина, мм: 1</div>
+                    <div class="characteristic_3">Покрытие: Цинк (Zn)</div>
+                    <div class="price_product"><b>1 530 руб./м²</b></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

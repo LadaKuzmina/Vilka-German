@@ -1,14 +1,3 @@
-/*.page-content .container {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-
-/*.page-h1 {*/
-/*    font-size: 33px;*/
-/*    font-weight: 600;*/
-/*    line-height: normal;*/
-/*}*/
-
 .servers {
     display: block;
     /*flex-direction: column;*/
@@ -91,9 +80,7 @@ form {
 }
 
 .nav .d3 button:before {
-    /*content: url("header_icons/magnifier.png");*/
-    /*font-size: 10px;*/
-    /*color: white;*/
+
 }
 
 .header {
@@ -152,17 +139,12 @@ footer > div {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 10px 10px;
-    /*flex-direction: row;*/
-    /*margin: auto;*/
     position: relative;
     height: 190px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;
     font-family: Arial, Inter, serif;
-    /*position: fixed;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
 }
 
 .footer a {
@@ -170,25 +152,21 @@ footer > div {
 }
 
 .catalog {
-    /*display: inline-block;*/
     margin: 0 20px 0 57px;
     float: left;
 
 }
 
 .menu {
-    /*display: inline-block;*/
     margin: 0 100px 0 20px;
 
 }
 
 .list {
-    /*display: inline-block;*/
     margin: 50px 40px 0 20px;
 }
 
 .footer .contacts {
-    /*display: inline-block;*/
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -204,11 +182,6 @@ footer > div {
     align-items: center;
     justify-content: center;
 }
-
-
-/*.contacts a {*/
-/*    color: blue;*/
-/*}*/
 
 .catalog h4 {
     padding-top: 5px;
@@ -522,7 +495,9 @@ summary{
 /*    background-color: #d4aa70;*/
 /*    background-clip: content-box;*/
 /*}*/
+
 .square {
     height: 20px;
     width: 20px;
+    display: inline-block;
 }

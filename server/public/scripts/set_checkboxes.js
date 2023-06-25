@@ -16,15 +16,21 @@ async function createCheckboxes() {
     let maxPrice = -1;
 
     for (let property of await getAllProperties()) {
-        if (property.title === "Минимальная цена")
-            minPrice = parseInt(property.value[0]);
-        else if (property.title === "Максимальная цена")
-            maxPrice = parseInt(property.value[0]);
+        if (property.title === "Минимальная цена") {
+            minPrice = parseInt(property.values[0]);
+            if (minPrice !== -1 && maxPrice !== -1) {
+                setPricesSlider(minPrice, maxPrice);
+            }
+        }
+        else if (property.title === "Максимальная цена") {
+            maxPrice = parseInt(property.values[0]);
+            if (minPrice !== -1 && maxPrice !== -1) {
+                setPricesSlider(minPrice, maxPrice);
+            }
+        }
         else {
-            setPricesSlider(minPrice, maxPrice);
-            break;
             createRectangleCheckboxes(property, count);
-            count += property.value.length;
+            count += property.values.length;
         }
     }
 }
@@ -115,14 +121,14 @@ function createRectangleCheckboxes(property, count) {
 
     let summaryElement = document.createElement("summary");
     let bElement = document.createElement("b");
-    bElement.textContent = elementName;
+    bElement.textContent = property.title;
     summaryElement.appendChild(bElement);
     detailsElement.appendChild(summaryElement);
 
     let checkboxesContainer = document.createElement("div");
     checkboxesContainer.setAttribute("class", "checkbox_container");
-    for (let checkbox of checkboxesList) {
-        let checkboxElement = createCheckboxesElement(checkbox, count);
+    for (let checkbox of property.values) {
+        let checkboxElement = createCheckboxesElement(checkbox, count, property.title === "Цвет");
         checkboxesContainer.appendChild(checkboxElement);
         count++;
     }
@@ -131,7 +137,7 @@ function createRectangleCheckboxes(property, count) {
     wrapperElement.appendChild(detailsElement);
 }
 
-function createCheckboxesElement(checkbox, count) {
+function createCheckboxesElement(checkbox, count, is_color) {
     let labelElement = document.createElement("label");
     labelElement.setAttribute("for", `myCheckbox${count}`);
     labelElement.setAttribute("class", "checkbox");
@@ -169,7 +175,16 @@ function createCheckboxesElement(checkbox, count) {
 
     let spanElement = document.createElement("span");
     spanElement.setAttribute("class", "checkbox__label");
-    spanElement.textContent = checkbox;
+    if (is_color) {
+        let squareElement = document.createElement("div");
+        squareElement.setAttribute("class", "square");
+        squareElement.setAttribute("style", `background-color: ${checkbox.split(' ')[0]}`);
+        spanElement.appendChild(squareElement);
+        spanElement.textContent = checkbox.split(' ').slice(1).join(' ');
+    }
+    else {
+        spanElement.textContent = checkbox;
+    }
     labelElement.appendChild(spanElement);
 
     return labelElement;
@@ -188,7 +203,6 @@ async function httpGet(url)
 
 function getHeadingName() {
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     return urlParams.get('heading');

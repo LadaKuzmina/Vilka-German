@@ -12,10 +12,10 @@ function createCardOfObject(obj) {
     productsElement.setAttribute("class", "products");
 
     let imageParentElement = document.createElement("a");
-    imageParentElement.setAttribute("href", "#");
+    imageParentElement.setAttribute("href", `../catalog/catalog.html?heading=${obj.title}`);
 
     let imageElement = document.createElement("img");
-    imageElement.setAttribute("src", `${obj.imageRef}`);
+    imageElement.setAttribute("src", `../images/${obj.pageLink}`);
     imageElement.setAttribute("height", "250");
     imageElement.setAttribute("width", "250");
 
@@ -24,7 +24,7 @@ function createCardOfObject(obj) {
     productsElement.appendChild(imageParentElement);
 
     let headerParentElement = document.createElement("a");
-    headerParentElement.setAttribute("href", "#");
+    headerParentElement.setAttribute("href", "../catalog/catalog.html?heading=${headingTwoName}");
 
     let headerElement = document.createElement("h4");
     headerElement.textContent = obj.title;

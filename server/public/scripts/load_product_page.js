@@ -40,7 +40,10 @@ async function loadProperties(productName) {
         propertiesElement.appendChild(dtElement);
 
         let ddElement = document.createElement("dd");
-        ddElement.textContent = property.values[0];
+        if (property.title === 'Цвет')
+            ddElement.textContent = property.values[0].split(' ').slice(1).join(' ');
+        else
+            ddElement.textContent = property.values[0];
         propertiesElement.appendChild(ddElement);
     }
 }

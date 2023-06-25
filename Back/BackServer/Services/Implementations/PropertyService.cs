@@ -49,9 +49,14 @@ namespace BackServer.Services
             return await _visitor.GetProductPropertyValue(productTitle, propertyTitle);
         }
 
-        public async Task<bool> Add(Property property)
+        public async Task<bool> AddProperty(Property property)
         {
-            return await _changer.Add(property);
+            return await _changer.AddProperty(property);
+        }
+
+        public async Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues)
+        {
+            return await _changer.AddPropertyValue(propertyTitle, propertyValues);
         }
 
         public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue, bool isPriority)
@@ -59,14 +64,19 @@ namespace BackServer.Services
             return await _changer.AddProductPropertyValue(productTitle, propertyTitle, propertyValue,isPriority);
         }
 
-        public async Task<bool> Delete(string propertyTitle)
+        public Task<bool[]> AddProductProperties(string productTitle, Property[] properties)
         {
-            return await _changer.Delete(propertyTitle);
+            return _changer.AddProductProperties(productTitle, properties);
         }
 
-        public async Task<bool> Update(Property oldProperty, Property property)
+        public async Task<bool> DeleteProperty(string propertyTitle)
         {
-            return await _changer.Update(oldProperty, property);
+            return await _changer.DeleteProperty(propertyTitle);
+        }
+
+        public async Task<bool> UpdateProperty(Property oldProperty, Property property)
+        {
+            return await _changer.UpdateProperty(oldProperty, property);
         }
 
         public async Task<bool> DeleteProductPropertyValue(string productTitle, string propertyTitle, string propertyValue)
@@ -89,6 +99,11 @@ namespace BackServer.Services
         public async Task<bool> DeleteAllPropertyValues(string propertyTitle)
         {
             return await _changer.DeleteAllPropertyValues(propertyTitle);
+        }
+
+        public async Task<bool> DeletePropertyValue(string propertyTitle, string propertyValue)
+        {
+            return await _changer.DeletePropertyValue(propertyTitle, propertyValue);
         }
 
         public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)

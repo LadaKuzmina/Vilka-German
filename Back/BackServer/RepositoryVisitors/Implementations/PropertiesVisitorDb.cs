@@ -213,7 +213,7 @@ namespace BackServer.Repositories
                 await con.OpenAsync();
 
             var sql = @$"
-                    SELECT p2.title, pv.property_value
+                    SELECT pv.property_value
                     FROM products as p
                     JOIN product_properties pp on p.product_id = pp.product_id
                     JOIN property_values pv on pv.property_values_id = pp.property_values_id

@@ -60,25 +60,37 @@ namespace BackServer.Controllers
         [HttpPost("~/AddProperty")]
         public async Task<StatusCodeResult> Add(Property property)
         {
-            var success = await _service.Add(property);
+            var success = await _service.AddProperty(property);
             if (success)
                 return Ok();
             return BadRequest();
+        }
+        
+        [HttpPost("~/AddPropertyValues")]
+        public async Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues)
+        {
+            return await _service.AddPropertyValue(propertyTitle, propertyValues);
         }
 
         [HttpDelete("~/DeleteProperty")]
         public async Task<StatusCodeResult> Delete(string propertyTitle)
         {
-            var success = await _service.Delete(propertyTitle);
+            var success = await _service.DeleteProperty(propertyTitle);
             if (success)
                 return Ok();
             return BadRequest();
+        }
+        
+        [HttpDelete("~/DeletePropertyValue")]
+        public async Task<bool> DeletePropertyValue(string propertyTitle, string propertyValue)
+        {
+            return await _service.DeletePropertyValue(propertyTitle, propertyValue);
         }
 
         [HttpPost("~/UpdateProperty")]
         public async Task<StatusCodeResult> Update([FromQuery] Property oldProperty, Property property)
         {
-            var success = await _service.Update(oldProperty, property);
+            var success = await _service.UpdateProperty(oldProperty, property);
             if (success)
                 return Ok();
             return BadRequest();
@@ -93,6 +105,13 @@ namespace BackServer.Controllers
                 return Ok();
             return BadRequest();
         }
+        
+        [HttpPost("~/AddProductProperties")]
+        public Task<bool[]> AddProductProperties(string productTitle, Property[] properties)
+        {
+            return _service.AddProductProperties(productTitle, properties);
+        }
+        
 
         [HttpDelete("~/DeleteProductPropertyValue")]
         public async Task<StatusCodeResult> DeleteProductPropertyValue(string productTitle, string propertyTitle,

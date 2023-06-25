@@ -74,10 +74,10 @@ namespace BackServer.Repositories
         {
             var sql = @$"
                     SELECT p.title
-                    FROM heading_one as ho
-                    JOIN heading_one_filters hof on ho.heading_one_id = hof.heading_one_id
-                    JOIN properties p on hof.property_id = p.property_id
-                    WHERE ho.title='{headingTwoTitle}';";
+                    FROM heading_two as ht
+                    JOIN heading_two_filters htf on ht.heading_two_id = htf.heading_two_id
+                    JOIN properties p on htf.property_id = p.property_id
+                    WHERE ht.title='{headingTwoTitle}';";
             
             return await GetFilters(sql);
         }

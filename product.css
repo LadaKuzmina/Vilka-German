@@ -314,8 +314,35 @@ figure img{
     display: block;
     right:30px;
 }
+.price{
+    position: relative;
+    top: 180px;
+    left: 50px;
+    display: block;
+    right:30px;
+}
+
 .characteristic{
     position: relative;
     top: 180px;
     left: 30px;
+}
+dd {
+    display: inline;
+    margin: 0;
+}
+dd:after{
+    display: block;
+    content: '';
+
+}
+dt{
+    display: inline-block;
+    min-width: 100px;
+    font-weight: bold;
+    color: #492D2D;
+}
+dt, dd{
+    font-size: 20px;
+    line-height: 1.5;
 }

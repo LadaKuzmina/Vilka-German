@@ -1201,12 +1201,15 @@ summary {
     background-color: white;
     margin: 18px;
     border-radius: 10px;
-    border: transparent solid;
+}
 
+.product img {
+    border: transparent solid;
 }
 
 .product .name_product {
     font-size: 18px;
+    color: black;
 
 }
 
@@ -1277,6 +1280,7 @@ summary {
     font-weight: bold;
     transform: scale(1.1);
 }
-.filters_checkbox{
+
+.filters_checkbox {
     margin-top: -185px;
 }

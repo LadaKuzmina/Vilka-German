@@ -1,7 +1,7 @@
-async function createProducts(json = JSON.stringify([])) {
+async function createProducts(json = JSON.stringify([]), sortingParameter = 0) {
     const goodsElement = document.getElementsByClassName("goods")[0];
     removeAllKids(goodsElement);
-    let products = await getAllProducts(json);
+    let products = await getAllProducts(json, sortingParameter);
     addProducts(products);
 }
 
@@ -24,6 +24,7 @@ function addProducts(products) {
 
         let nameProductElement = document.createElement("a");
         nameProductElement.setAttribute("class", "name_product");
+        nameProductElement.setAttribute("href", "#");
         nameProductElement.textContent = product.title;
         productElement.appendChild(nameProductElement);
 
@@ -58,8 +59,8 @@ function removeAllKids(goodsElement) {
     }
 }
 
-async function getAllProducts(json) {
-    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=0&pageNumber=1&countElements=99999`, json);
+async function getAllProducts(json, sortingParameter) {
+    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=${sortingParameter}&pageNumber=1&countElements=99999`, json);
     return response;
 }
 

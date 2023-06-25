@@ -117,10 +117,12 @@ function createRectangleCheckboxes(property, count) {
     let wrapperElement = document.getElementsByClassName("wrapper")[0];
 
     let detailsElement = document.createElement("details");
+    detailsElement.setAttribute("class", "checkboxes-details");
     detailsElement.open = true;
 
     let summaryElement = document.createElement("summary");
     let bElement = document.createElement("b");
+    bElement.setAttribute("class", "checkboxes-group-name");
     bElement.textContent = property.title;
     summaryElement.appendChild(bElement);
     detailsElement.appendChild(summaryElement);

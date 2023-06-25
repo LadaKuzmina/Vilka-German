@@ -3,7 +3,7 @@ const rangeInput = document.querySelectorAll(".range-input input"),
     range = document.querySelector(".slider-range .progress");
 let priceGap = Math.round((parseInt(priceInput[1].value) - parseInt(priceInput[0].value)) / 10);
 priceInput.forEach(input =>{
-    input.addEventListener("input", e =>{
+    input.addEventListener("input", e => {
         let minPrice = parseInt(priceInput[0].value),
             maxPrice = parseInt(priceInput[1].value);
 

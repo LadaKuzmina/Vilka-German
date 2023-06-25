@@ -1,15 +1,3 @@
-let profiledCheckboxes = ["МП-20", "С-21", "МП-35", "НС-35", "С-44", "Н-60", "Н-75", "Н-114", "МП-20 Поликарбонат"];
-let widthCheckboxes = ["0,35 и менее", "0,4", "0,45", "0,5", "0,55", "0,6", "0,65", "0,7", "0,75", "0,8", "0,9", "1"];
-let coatingCheckboxes = ["Полиэстер", "Цинк (Zn)", "AGNETA®", "Atlas X", "Drap", "CLOUDY®", "Drap ST", "ECOSTEEL®", "GreenCoat Pural BT", "GreenCoat Pural BT, matt", "NormanMP®", "PurPro Matt", "PURETAN®", "PurLite Matt", "PURMAN®", "Quarzit", "Quarzit lite", "Quarzit PRO Matt", "Rooftop Matte", "Satin", "Satin Matt", "VALORI", "Velur X", "VikingMP"];
-let workWidthCheckboxes = ["1000", "1035", "1100", "600", "750", "845"];
-let warrantyCheckboxes = ["10 лет", "20 лет", "25 лет", "30 лет", "50 лет"];
-let s = new Map();
-s.set("Профнастил", profiledCheckboxes);
-s.set("Толщина, мм", widthCheckboxes);
-s.set("Покрытие", coatingCheckboxes);
-s.set("Рабочая ширина, мм", workWidthCheckboxes);
-s.set("Гарантия", warrantyCheckboxes)
-
 async function createCheckboxes() {
     let count = 1;
     let minPrice = -1;
@@ -39,7 +27,7 @@ function setPricesSlider(minPrice, maxPrice) {
     let price25 = minPrice + Math.round((maxPrice - minPrice) / 4);
     let price75 = minPrice + Math.round((maxPrice - minPrice) * 3 / 4);
 
-    let wrapperElement = document.getElementsByClassName("wrapper")[0];
+    let wrapperElement = document.getElementsByClassName("filters_checkbox")[0];
 
     let detailsElement = document.createElement("details");
     detailsElement.open = true;
@@ -114,7 +102,7 @@ function getInputElement(className, min, max, value) {
 }
 
 function createRectangleCheckboxes(property, count) {
-    let wrapperElement = document.getElementsByClassName("wrapper")[0];
+    let wrapperElement = document.getElementsByClassName("filters_checkbox")[0];
 
     let detailsElement = document.createElement("details");
     detailsElement.setAttribute("class", "checkboxes-details");

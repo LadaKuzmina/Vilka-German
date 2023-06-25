@@ -22,12 +22,32 @@ function getDropdown() {
     document.getElementById("dropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
     if (!e.target.matches('.dropdown_button')) {
-        let myDropdown = document.getElementById("dropdown");
-        if (myDropdown.classList.contains('show')) {
-            myDropdown.classList.remove('show');
+        let dropdown = document.getElementById("dropdown");
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+        }
+    }
+}
+
+function filterFunction() {
+    let input = document.getElementById("search_bar");
+    let filter = input.value.toUpperCase();
+    let content = document.getElementById("search");
+    let a = content.getElementsByTagName("a");
+    let searchBlock = document.getElementById("block");
+    searchBlock.style.display = "flex";
+
+    for (let i = 0; i < a.length; i++) {
+        let txt = a[i].text || a[i].innerText;
+        if (filter === "") {
+            searchBlock.style.display = "none";
+        }
+        if (txt.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
         }
     }
 }

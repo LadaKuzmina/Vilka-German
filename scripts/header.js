@@ -258,23 +258,78 @@ contactLink.setAttribute('href', 'contact_page.html');
 contactLink.textContent = 'Контакты';
 nav.appendChild(contactLink);
 
-const d3Div = document.createElement('div');
-d3Div.classList.add('d3');
+let searchDiv = document.createElement("div");
+searchDiv.classList.add("d3");
 
-const searchForm = document.createElement('form');
-searchForm.classList.add('search');
+let searchInput = document.createElement("input");
+searchInput.setAttribute("type", "text");
+searchInput.setAttribute("placeholder", "Искать здесь...");
+searchInput.setAttribute("id", "search_bar");
+searchInput.setAttribute("onkeyup", "filterFunction()");
 
-const searchInput = document.createElement('input');
-searchInput.setAttribute('type', 'text');
-searchInput.setAttribute('placeholder', 'Искать здесь...');
+let searchContent = document.createElement("div");
+searchContent.classList.add("search_content");
+searchContent.setAttribute("id", "block");
 
-const searchButton = document.createElement('button');
-searchButton.setAttribute('type', 'submit');
+let link1 = document.createElement("a");
+link1.setAttribute("href", "../catalog/roof.html");
+link1.textContent = "Кровля";
 
-searchForm.appendChild(searchInput);
-searchForm.appendChild(searchButton);
-d3Div.appendChild(searchForm);
-nav.appendChild(d3Div);
+let link2 = document.createElement("a");
+link2.setAttribute("href", "../catalog/facade.html");
+link2.textContent = "Фасад";
+
+let link3 = document.createElement("a");
+link3.setAttribute("href", "#");
+link3.textContent = "Водосточные системы";
+
+let link4 = document.createElement("a");
+link4.setAttribute("href", "../catalog/dormer_windows.html");
+link4.textContent = "Мансардные окна";
+
+let link5 = document.createElement("a");
+link5.setAttribute("href", "../catalog/ventilation.html");
+link5.textContent = "Вентиляция";
+
+let link6 = document.createElement("a");
+link6.setAttribute("href", "#");
+link6.textContent = "Чердачные лестницы";
+
+let link7 = document.createElement("a");
+link7.setAttribute("href", "../catalog/insulation_materials.html");
+link7.textContent = "Изоляционные материалы";
+
+let link8 = document.createElement("a");
+link8.setAttribute("href", "../catalog/fences.html");
+link8.textContent = "Ограждения";
+
+let link9 = document.createElement("a");
+link9.setAttribute("href", "../catalog/accessories.html");
+link9.textContent = "Комплектующие";
+
+let link10 = document.createElement("a");
+link10.setAttribute("href", "../catalog/landscaping_site.html");
+link10.textContent = "Благоустройство";
+
+searchContent.appendChild(link1);
+searchContent.appendChild(link2);
+searchContent.appendChild(link3);
+searchContent.appendChild(link4);
+searchContent.appendChild(link5);
+searchContent.appendChild(link6);
+searchContent.appendChild(link7);
+searchContent.appendChild(link8);
+searchContent.appendChild(link9);
+searchContent.appendChild(link10);
+
+let searchDivContent = document.createElement("div");
+searchDivContent.classList.add("search");
+searchDivContent.setAttribute("id", "search");
+searchDivContent.appendChild(searchInput);
+searchDivContent.appendChild(searchContent);
+
+searchDiv.appendChild(searchDivContent);
+nav.appendChild(searchDiv);
 
 headerInnerDiv.appendChild(nav);
 containerDiv.appendChild(headerInnerDiv);

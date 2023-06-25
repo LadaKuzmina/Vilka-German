@@ -9,12 +9,35 @@ body {
     max-width: 100%;
 }
 
+.search_content {
+    display: block;
+    position: absolute;
+    max-height: 300px;
+    overflow: auto;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.search_content a {
+    display: block;
+    padding: 10px;
+}
+
+#block {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 @media (min-width: 840px) {
     .search {
         position: relative;
         right: 0;
         max-width: 35rem;
-        background-color: #fff;
+        background: #fff url("../header_icons/magnifier.png") no-repeat scroll 180px 10px;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
         border-radius: 12px; /*1rem*/
     }
@@ -44,7 +67,7 @@ body {
         background-color: #fff;
     }
 
-    .nav .d3 input, .d3 button {
+    .nav .d3 input {
         border: none;
         outline: none;
         background: transparent;
@@ -56,23 +79,6 @@ body {
         padding-left: 16px;
         font-size: 17px;
         color: black;
-    }
-
-    .nav .d3 button {
-        position: absolute;
-        top: 0;
-        right: 5px;
-        border: none;
-        background: url("../header_icons/magnifier.png") scroll no-repeat center;
-        width: 3.5rem;
-        height: 100%;
-        cursor: pointer;
-    }
-
-    .nav .d3 button:before {
-        /*content: url("../header_icons/magnifier.png");*/
-        /*font-size: 10px;*/
-        /*color: white;*/
     }
 
     .header {
@@ -547,15 +553,6 @@ h3 {
         justify-content: center;
     }
 
-    .search {
-        position: relative;
-        right: 0;
-        max-width: 35rem;
-        background-color: #fff;
-        box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
-    }
-
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
@@ -575,7 +572,7 @@ h3 {
         background-color: #fff;
     }
 
-    .nav .d3 input, .d3 button {
+    .nav .d3 input {
         border: none;
         outline: none;
         background: transparent;
@@ -587,23 +584,6 @@ h3 {
         padding-left: 16px;
         font-size: 17px;
         color: black;
-    }
-
-    .nav .d3 button {
-        position: absolute;
-        top: 0;
-        right: 5px;
-        border: none;
-        background: url("../header_icons/magnifier.png") scroll no-repeat center;
-        width: 3.5rem;
-        height: 100%;
-        cursor: pointer;
-    }
-
-    .nav .d3 button:before {
-        /*content: url("../header_icons/magnifier.png");*/
-        /*font-size: 10px;*/
-        /*color: white;*/
     }
 
     .header {

@@ -178,61 +178,61 @@ dropdownContentDiv.setAttribute('id', 'dropdown');
 
 const roofLink = document.createElement('a');
 roofLink.classList.add('nav_link');
-roofLink.setAttribute('href', '../catalog/roof.html');
+roofLink.setAttribute('href', '../catalog/subheadings.html?heading=Кровля');
 roofLink.textContent = 'Кровля';
 dropdownContentDiv.appendChild(roofLink);
 
 const facadeLink = document.createElement('a');
 facadeLink.classList.add('nav_link');
-facadeLink.setAttribute('href', '../catalog/facade.html');
+facadeLink.setAttribute('href', '../catalog/subheadings.html?heading=Фасад');
 facadeLink.textContent = 'Фасад';
 dropdownContentDiv.appendChild(facadeLink);
 
 const waterSystemLink = document.createElement('a');
 waterSystemLink.classList.add('nav_link');
-waterSystemLink.setAttribute('href', '#');
+waterSystemLink.setAttribute('href', '../catalog/subheadings.html?heading=Водосток');
 waterSystemLink.textContent = 'Водосточные системы';
 dropdownContentDiv.appendChild(waterSystemLink);
 
 const dormerWindowLink = document.createElement('a');
 dormerWindowLink.classList.add('nav_link');
-dormerWindowLink.setAttribute('href', '../catalog/dormer_windows.html');
+dormerWindowLink.setAttribute('href', '../catalog/subheadings.html?heading=Мансардные окна');
 dormerWindowLink.textContent = 'Мансардные окна';
 dropdownContentDiv.appendChild(dormerWindowLink);
 
 const ventilationLink = document.createElement('a');
 ventilationLink.classList.add('nav_link');
-ventilationLink.setAttribute('href', '../catalog/ventilation.html');
+ventilationLink.setAttribute('href', '../catalog/subheadings.html?heading=Вентиляция');
 ventilationLink.textContent = 'Вентиляция';
 dropdownContentDiv.appendChild(ventilationLink);
 
 const atticStairsLink = document.createElement('a');
 atticStairsLink.classList.add('nav_link');
-atticStairsLink.setAttribute('href', '#');
+atticStairsLink.setAttribute('href', '../catalog/subheadings.html?heading=Чердачные лестницы');
 atticStairsLink.textContent = 'Чердачные лестницы';
 dropdownContentDiv.appendChild(atticStairsLink);
 
 const insulationMaterialsLink = document.createElement('a');
 insulationMaterialsLink.classList.add('nav_link');
-insulationMaterialsLink.setAttribute('href', '../catalog/insulation_materials.html');
+insulationMaterialsLink.setAttribute('href', '../catalog/subheadings.html?heading=Изоляционные материалы');
 insulationMaterialsLink.textContent = 'Изоляционные материалы';
 dropdownContentDiv.appendChild(insulationMaterialsLink);
 
 const fencesLink = document.createElement('a');
 fencesLink.classList.add('nav_link');
-fencesLink.setAttribute('href', '../catalog/fences.html');
+fencesLink.setAttribute('href', '../catalog/subheadings.html?heading=Ограждения');
 fencesLink.textContent = 'Ограждения';
 dropdownContentDiv.appendChild(fencesLink);
 
 const accessoriesLink = document.createElement('a');
 accessoriesLink.classList.add('nav_link');
-accessoriesLink.setAttribute('href', '../catalog/accessories.html');
+accessoriesLink.setAttribute('href', '../catalog/subheadings.html?heading=Комплектующие');
 accessoriesLink.textContent = 'Комплектующие';
 dropdownContentDiv.appendChild(accessoriesLink);
 
 const landscapingSiteLink = document.createElement('a');
 landscapingSiteLink.classList.add('nav_link');
-landscapingSiteLink.setAttribute('href', '../catalog/landscaping_site.html');
+landscapingSiteLink.setAttribute('href', '../catalog/subheadings.html?heading=Благоустройство');
 landscapingSiteLink.textContent = 'Благоустройство';
 dropdownContentDiv.appendChild(landscapingSiteLink);
 

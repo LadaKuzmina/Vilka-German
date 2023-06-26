@@ -9,8 +9,6 @@ for (let i = 0; i < catalogLinks.length; i++) {
     }
 }
 
-//всякие каталоги лучше в будущем в отдельный список
-
 for (let i = 0; i < menuLinks.length; i++) {
     if (menuLinks[i].href === currentUrl || currentUrl.includes('catalog')) {
         menuLinks[i].classList.add('active');
@@ -22,7 +20,6 @@ function getDropdown() {
     document.getElementById("dropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(e) {
     if (!e.target.matches('.dropdown_button')) {
         let myDropdown = document.getElementById("dropdown");

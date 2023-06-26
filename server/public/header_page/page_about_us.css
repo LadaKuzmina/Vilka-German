@@ -235,17 +235,12 @@ footer > div {
     justify-content: space-between;
     padding: 0 10px 10px;
     margin-top: -102px;
-    /*flex-direction: row;*/
-    /*margin: auto;*/
     position: relative;
     height: 150px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;
     font-family: Arial, Inter, serif;
-    /*position: fixed;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
 }
 
 .footer a {
@@ -253,25 +248,19 @@ footer > div {
 }
 
 .catalog {
-    /*display: inline-block;*/
     margin: 0 20px 0 57px;
     float: left;
-
 }
 
 .menu {
-    /*display: inline-block;*/
     margin: 0 100px 0 20px;
-
 }
 
 .list {
-    /*display: inline-block;*/
     margin: 50px 40px 0 20px;
 }
 
 .footer .contacts {
-    /*display: inline-block;*/
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -340,13 +329,12 @@ h3 {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        /*vertical-align: center;*/
         font-size: 16px;
         margin: 15px 0 0 30px;
         font-family: Arial, Inter, serif;
@@ -517,7 +505,6 @@ h3 {
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        /*vertical-align: center;*/
         font-size: 14px;
         width: 200px;
         margin: 10px 0 0 30px;
@@ -554,17 +541,12 @@ h3 {
         margin-top: 50px;
         justify-content: space-between;
         padding: 0 10px 10px;
-        /*flex-direction: row;*/
-        /*margin: auto;*/
         position: relative;
         height: 1187.5%;
         width: 100%;
         background: #FAE9CD;
         font-size: 17px;
         font-family: Arial, Inter, serif;
-        /*position: fixed;*/
-        /*left: 0;*/
-        /*bottom: 0;*/
     }
 
     .slidesshow {
@@ -577,25 +559,20 @@ h3 {
     }
 
     .catalog {
-        /*display: inline-block;*/
         margin: 0 10px 0 20px;
         float: left;
 
     }
 
     .menu {
-        /*display: inline-block;*/
         margin: 0 30px 0 17px;
-
     }
 
     .list {
-        /*display: inline-block;*/
         margin: 50px 20px 0 20px;
     }
 
     .footer .contacts {
-        /*display: inline-block;*/
         display: flex;
         flex-direction: column;
         gap: 93.75%;
@@ -673,7 +650,7 @@ h3 {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo {
@@ -794,25 +771,19 @@ h3 {
     }
 
     .catalog {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
         float: left;
-
     }
 
     .menu {
-        /*display: inline-block;*/
         margin: 0 9px 0 9px;
-
     }
 
     .list {
-        /*display: inline-block;*/
         margin: 37px 10px 0 10px;
     }
 
     .footer .contacts {
-        /*display: inline-block;*/
         display: flex;
         flex-direction: column;
         gap: 93.75%;
@@ -909,8 +880,6 @@ h3 {
         padding: 0 5px 5px;
         position: relative;
         align-content: center;
-        /*height: 1187.5%;*/
-        /*width: 100%;*/
         background: #FAE9CD;
         font-size: 17px;
         font-family: Arial, Inter, serif;
@@ -930,25 +899,19 @@ h3 {
     }
 
     .catalog {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
         float: left;
-
     }
 
     .menu {
-        /*display: inline-block;*/
         margin: 0 9px 0 9px;
-
     }
 
     .list {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
     }
 
     .footer .contacts {
-        /*display: inline-block;*/
         display: flex;
         flex-direction: column;
         gap: 93.75%;
@@ -957,7 +920,6 @@ h3 {
     }
 
     .icons {
-        /*padding-top: 159px;*/
         gap: 93.75%;
         display: flex;
         flex-direction: column;
@@ -1000,15 +962,11 @@ h3 {
         color: black;
         position: relative;
         background-color: #D6AE96;
-        /*background-color: #492D2D;*/
-        /*color: #492D2D;*/
-        /*background-color: white;*/
         width: 15.625em;
         height: 9.375em;
         padding: 18px;
         border-radius: 10px;
         font-family: Arial, Inter, serif;
-        /*Arial,*/
         font-size: 15px;
         overflow: auto;
         margin: 18px;
@@ -1027,8 +985,6 @@ h3 {
         padding: 0 5px 5px;
         position: relative;
         align-content: center;
-        /*height: 1187.5%;*/
-        /*width: 100%;*/
         background: #FAE9CD;
         font-size: 13px;
         font-family: Arial, Inter, serif;
@@ -1048,25 +1004,20 @@ h3 {
     }
 
     .catalog {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
         float: left;
 
     }
 
     .menu {
-        /*display: inline-block;*/
         margin: 0 9px 0 9px;
-
     }
 
     .list {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
     }
 
     .footer .contacts {
-        /*display: inline-block;*/
         display: flex;
         flex-direction: column;
         gap: 93.75%;
@@ -1075,7 +1026,6 @@ h3 {
     }
 
     .icons {
-        /*padding-top: 159px;*/
         gap: 93.75%;
         display: flex;
         flex-direction: column;
@@ -1105,184 +1055,6 @@ h3 {
         position: relative;
         width: 115px;
         height: 24px;
-        /*top: 13px;*/
-        /*margin-left: -10px;*/
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .page-content {
-        width: 100%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        height: 1000px;
-        position: relative;
-        top: 110px;
-        left: 0;
-        font-size: 17px;
-        font-family: Inter, serif;
-    }
-
-    .aboutUs {
-        width: 400px;
-    }
-
-    .aboutCompany {
-        position: relative;
-        top: -5px;
-        margin: auto;
-        font-size: 23px;
-    }
-
-    .aboutCompany table {
-        position: relative;
-        top: -20px;
-        border-spacing: 10px 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container_size {
-        width: auto;
-        margin: auto;
-    }
-
-    .products {
-        color: black;
-        position: relative;
-        background-color: #D6AE96;
-        /*background-color: #492D2D;*/
-        /*color: #492D2D;*/
-        /*background-color: white;*/
-        width: 15.625em;
-        height: 9.375em;
-        padding: 18px;
-        border-radius: 10px;
-        font-family: Arial, Inter, serif;
-        /*Arial,*/
-        font-size: 15px;
-        overflow: auto;
-        margin: 18px;
-    }
-
-    .d3 {
-        flex-shrink: 3;
-    }
-
-    footer > div {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin-top: 50px;
-        justify-content: center;
-        padding: 0 5px 5px;
-        position: relative;
-        align-content: center;
-        /*height: 1187.5%;*/
-        /*width: 100%;*/
-        background: #FAE9CD;
-        font-size: 13px;
-        font-family: Arial, Inter, serif;
-    }
-
-    .wrapper {
-        margin: auto;
-    }
-
-    h3 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .footer a {
-        color: #492D2D;
-    }
-
-    .catalog {
-        /*display: inline-block;*/
-        margin: 0 10px 0 10px;
-        float: left;
-
-    }
-
-    .menu {
-        /*display: inline-block;*/
-        margin: 0 9px 0 9px;
-
-    }
-
-    .list {
-        /*display: inline-block;*/
-        margin: 0 10px 0 10px;
-    }
-
-    .footer .contacts {
-        /*display: inline-block;*/
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 0 40px 0 20px;
-        text-align: left;
-    }
-
-    .icons {
-        /*padding-top: 159px;*/
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header .info {
-        display: flex;
-        position: relative;
-        align-items: center;
-        flex-direction: row-reverse;
-        grid-gap: 10px;
-        font-size: 40px;
-        text-align: center;
-    }
-
-    .header .contacts {
-        list-style-type: none;
-        font-style: normal;
-        font-size: 18px;
-        line-height: 20px;
-        padding-left: 0;
-    }
-
-    .logo_photo {
-        position: relative;
-        width: 115px;
-        height: 24px;
-        /*top: 13px;*/
-        /*margin-left: -10px;*/
     }
 
     .location_logo {
@@ -1352,15 +1124,11 @@ h3 {
         color: black;
         position: relative;
         background-color: #D6AE96;
-        /*background-color: #492D2D;*/
-        /*color: #492D2D;*/
-        /*background-color: white;*/
         width: 15.625em;
         height: 9.375em;
         padding: 18px;
         border-radius: 10px;
         font-family: Arial, Inter, serif;
-        /*Arial,*/
         font-size: 15px;
         overflow: auto;
         margin: 18px;
@@ -1379,8 +1147,6 @@ h3 {
         padding: 0 5px 5px;
         position: relative;
         align-content: center;
-        /*height: 1187.5%;*/
-        /*width: 100%;*/
         background: #FAE9CD;
         font-size: 13px;
         font-family: Arial, Inter, serif;
@@ -1400,25 +1166,20 @@ h3 {
     }
 
     .catalog {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
         float: left;
 
     }
 
     .menu {
-        /*display: inline-block;*/
         margin: 0 9px 0 9px;
-
     }
 
     .list {
-        /*display: inline-block;*/
         margin: 0 10px 0 10px;
     }
 
     .footer .contacts {
-        /*display: inline-block;*/
         display: flex;
         flex-direction: column;
         gap: 93.75%;
@@ -1427,7 +1188,6 @@ h3 {
     }
 
     .icons {
-        /*padding-top: 159px;*/
         gap: 93.75%;
         display: flex;
         flex-direction: column;
@@ -1457,8 +1217,167 @@ h3 {
         position: relative;
         width: 115px;
         height: 24px;
-        /*top: 13px;*/
-        /*margin-left: -10px;*/
+    }
+
+    .location_logo {
+        width: 30px;
+        height: 26px;
+    }
+
+    .email_logo {
+        width: 21px;
+        height: 14px;
+    }
+
+    .tel_logo {
+        width: 18px;
+        height: 18px;
+    }
+
+    .whatsapp_logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .page-content {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 1000px;
+        position: relative;
+        top: 110px;
+        left: 0;
+        font-size: 17px;
+        font-family: Inter, serif;
+    }
+
+    .aboutUs {
+        width: 400px;
+    }
+
+    .aboutCompany {
+        position: relative;
+        top: -5px;
+        margin: auto;
+        font-size: 23px;
+    }
+
+    .aboutCompany table {
+        position: relative;
+        top: -20px;
+        border-spacing: 10px 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container_size {
+        width: auto;
+        margin: auto;
+    }
+
+    .products {
+        color: black;
+        position: relative;
+        background-color: #D6AE96;
+        width: 15.625em;
+        height: 9.375em;
+        padding: 18px;
+        border-radius: 10px;
+        font-family: Arial, Inter, serif;
+        font-size: 15px;
+        overflow: auto;
+        margin: 18px;
+    }
+
+    .d3 {
+        flex-shrink: 3;
+    }
+
+    footer > div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        justify-content: center;
+        padding: 0 5px 5px;
+        position: relative;
+        align-content: center;
+        background: #FAE9CD;
+        font-size: 13px;
+        font-family: Arial, Inter, serif;
+    }
+
+    .wrapper {
+        margin: auto;
+    }
+
+    h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #492D2D;
+    }
+
+    .catalog {
+        margin: 0 10px 0 10px;
+        float: left;
+    }
+
+    .menu {
+        margin: 0 9px 0 9px;
+    }
+
+    .list {
+        margin: 0 10px 0 10px;
+    }
+
+    .footer .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 93.75%;
+        margin: 0 40px 0 20px;
+        text-align: left;
+    }
+
+    .icons {
+        gap: 93.75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header .info {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: row-reverse;
+        grid-gap: 10px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .header .contacts {
+        list-style-type: none;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 20px;
+        padding-left: 0;
+    }
+
+    .logo_photo {
+        position: relative;
+        width: 115px;
+        height: 24px;
     }
 
     .location_logo {

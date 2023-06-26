@@ -1,5 +1,4 @@
 body {
-    /*background-color: #FAE9CDFF;*/
     background-color: #FAE9CD;
     overflow-x: hidden;
 }
@@ -46,17 +45,12 @@ footer > div {
     margin-top: 190px;
     justify-content: space-between;
     padding: 0 10px 10px;
-    /*flex-direction: row;*/
-    /*margin: auto;*/
     position: relative;
     height: 250px;
     width: 100%;
     background: #FAE9CD;
     font-size: 17px;
     font-family: Arial, Inter, serif;
-    /*position: fixed;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
 }
 
 .footer a {
@@ -64,25 +58,19 @@ footer > div {
 }
 
 .catalog {
-    /*display: inline-block;*/
     margin: 0 20px 0 57px;
     float: left;
-
 }
 
 .menu {
-    /*display: inline-block;*/
     margin: 0 100px 0 20px;
-
 }
 
 .list {
-    /*display: inline-block;*/
     margin: 50px 40px 0 20px;
 }
 
 .footer .contacts {
-    /*display: inline-block;*/
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -98,11 +86,6 @@ footer > div {
     align-items: center;
     justify-content: center;
 }
-
-
-/*.contacts a {*/
-/*    color: blue;*/
-/*}*/
 
 .catalog h4 {
     padding-top: 5px;
@@ -216,14 +199,8 @@ footer > div {
     border-radius: 30px;
 }
 
-/*.products:hover {*/
-/*    border: #333333 solid;*/
-/*}*/
-
-
 .products a {
     color: black;
-    /*color: #492D2D;*/
 }
 
 .products h4 {
@@ -246,7 +223,6 @@ h3 {
 
 ::-webkit-scrollbar-thumb {
     background-color: #B48263;
-    /*background-color: #d4aa70;*/
     border-radius: 100px;
 }
 
@@ -424,7 +400,7 @@ dt, dd {
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;
@@ -577,7 +553,7 @@ dt, dd {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo .text_about_company {
@@ -617,7 +593,7 @@ dt, dd {
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;
@@ -922,7 +898,7 @@ dt, dd {
         top: 0;
         right: 5px;
         border: none;
-        background: url("header_icons/magnifier.png") scroll no-repeat center;
+        background: url("../header_icons/magnifier.png") scroll no-repeat center;
         width: 3.5rem;
         height: 100%;
         cursor: pointer;

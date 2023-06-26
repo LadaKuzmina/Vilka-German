@@ -8,7 +8,6 @@
     position: relative;
     top: 150px;
     left: 100px;
-    /*right: 30px;*/
     font-size: 19px;
     font-family: Inter, serif;
 }
@@ -101,7 +100,7 @@ footer > div {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo .logo_photo {
@@ -326,13 +325,12 @@ footer > div {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        /*vertical-align: center;*/
         font-size: 16px;
         margin: 15px 0 0 30px;
         font-family: Arial, Inter, serif;
@@ -522,7 +520,6 @@ footer > div {
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        /*vertical-align: center;*/
         font-size: 14px;
         width: 200px;
         margin: 10px 0 0 30px;
@@ -671,7 +668,7 @@ footer > div {
         max-width: 35rem;
         background-color: #fff;
         box-shadow: 0 3px 60px 0 rgba(0, 0, 0, .15);
-        border-radius: 12px; /*1rem*/
+        border-radius: 12px;
     }
 
     .logo {
@@ -888,8 +885,6 @@ footer > div {
         padding: 0 5px 5px;
         position: relative;
         align-content: center;
-        /*height: 1187.5%;*/
-        /*width: 100%;*/
         background: #FAE9CD;
         font-size: 17px;
         font-family: Arial, Inter, serif;

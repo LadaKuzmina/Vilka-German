@@ -164,11 +164,11 @@ dropdownButton.textContent = 'Каталог';
 dropdownButton.setAttribute('onclick', 'getDropdown()');
 
 const roofImg = document.createElement('img');
-roofImg.setAttribute('src', '../header_icons/roof.png');
+roofImg.setAttribute('src', '../header_icons/list.png');
 roofImg.setAttribute('alt', 'roof');
 roofImg.classList.add('roof');
-roofImg.setAttribute('height', '25');
-roofImg.setAttribute('width', '50');
+roofImg.setAttribute('height', '24');
+roofImg.setAttribute('width', '40');
 
 dropdownButton.prepend(roofImg);
 

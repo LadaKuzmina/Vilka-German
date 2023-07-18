@@ -1,7 +1,8 @@
 body {
-    background-color: #FAE9CD;
+    background-color: #FBFBFB;
     overflow-x: hidden;
     margin: auto;
+    font-family: Istok Web;
 }
 
 .container_size {
@@ -89,10 +90,10 @@ body {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 127px;
         right: 0;
         color: #492D2D;
-        background: #FFFFFF;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -126,8 +127,9 @@ body {
     .nav a {
         color: #492D2D;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
+        font-size: 20px;
     }
 
     .nav a:hover {
@@ -212,29 +214,61 @@ footer > div {
     flex-direction: row;
     margin-top: 50px;
     justify-content: space-between;
-    padding: 0 10px 10px;
+    /*padding: 0 10px 10px;*/
     position: relative;
     height: 1187.5%;
     width: 100%;
-    background: #FAE9CD;
+    background: #4E4E4E;
     font-size: 17px;
     font-family: Arial, Inter, serif;
 }
 
+.footer_heading {
+    color: #FEDB03;
+}
+
 .footer a {
-    color: #492D2D;
+    color: #FBFBFB;
+}
+
+.menu ul {
+    line-height: 1.5em;
+    margin: -5px 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.catalog ul {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .catalog {
     margin: 0 20px 0 57px;
     float: left;
+    width: 600px;
 }
 
 .menu {
+    display: flex;
+    flex-direction: column;
     margin: 0 100px 0 20px;
 }
 
 .list {
+    display: flex;
+    flex-direction: column;
     margin: 50px 40px 0 20px;
 }
 
@@ -244,6 +278,10 @@ footer > div {
     gap: 93.75%;
     margin: 50px 117px 0 20px;
     text-align: left;
+}
+
+.contacts table {
+    border-spacing: 19px 5px;
 }
 
 .icons {
@@ -257,18 +295,14 @@ footer > div {
 
 .catalog h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .menu h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .slidesshow {
-    padding-top: 180px;
+    padding-top: 255px;
     max-width: 95%;
     position: relative;
     margin: auto;
@@ -302,14 +336,15 @@ footer > div {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #bbb;
+    background-color: #FBFBFB;
     border-radius: 50%;
+    border: 5px solid #FEDB03;
     display: inline-block;
     transition: background-color 0.6s ease;
 }
 
 .active, .dot:hover {
-    background-color: #717171;
+    background-color: #FEDB03;
 }
 
 .fade {
@@ -378,6 +413,7 @@ footer > div {
     margin: 0 auto;
     width: 43.75rem;
     border-radius: 3%;
+    border: solid #FEDB03 20px;
     font-size: 23px;
 }
 
@@ -406,11 +442,11 @@ footer > div {
     cursor: pointer;
     padding: 10px 30px;
     height: 50px;
-    color: #fff;
-    background: #D6AE96;
+    color: black;
+    background: #FEDB03;
     border: none;
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
 }
 
@@ -428,7 +464,6 @@ footer > div {
 }
 
 .formMeasurer button:hover {
-    opacity: .80;
     font-weight: bold;
     transform: scale(1.1);
 }
@@ -446,19 +481,19 @@ h3 {
     text-align: center;
 }
 
-::-webkit-scrollbar {
-    width: 16px;
-}
+/*::-webkit-scrollbar {*/
+/*    width: 16px;*/
+/*}*/
 
-::-webkit-scrollbar-track {
-    background-color: #e4e4e4;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-track {*/
+/*    background-color: #e4e4e4;*/
+/*    border-radius: 100px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background-color: #B48263;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color: #B48263;*/
+/*    border-radius: 100px;*/
+/*}*/
 
 
 @media (max-width: 1366px) {
@@ -571,7 +606,7 @@ h3 {
         top: 80px;
         right: 0;
         color: #492D2D;
-        background: #FFFFFF;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -601,7 +636,7 @@ h3 {
     .nav a {
         color: #492D2D;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
         flex-shrink: 0;
     }

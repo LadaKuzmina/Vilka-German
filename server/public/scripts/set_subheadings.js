@@ -15,6 +15,7 @@ function createCardOfObject(obj) {
     imageParentElement.setAttribute("href", `../catalog/catalog.html?heading=${obj.title}`);
 
     let imageElement = document.createElement("img");
+    console.log(obj.pageLink);
     imageElement.setAttribute("src", `../images/${obj.pageLink}`);
     imageElement.setAttribute("height", "250");
     imageElement.setAttribute("width", "250");

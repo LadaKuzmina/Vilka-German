@@ -14,11 +14,16 @@
 
 .servers .page_contacts {
     width: 400px;
+    position: relative;
+    top: 80px;
+    font-size: 23px;
 }
 
 body {
-    background-color: #FAE9CDFF;
+    background-color: #FBFBFB;
     overflow-x: hidden;
+    margin: auto;
+    font-family: Istok Web;
 }
 
 a {
@@ -29,32 +34,63 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
+    margin-top: 90px;
     justify-content: space-between;
-    padding: 0 10px 10px;
+    /*padding: 0 10px 10px;*/
     position: relative;
-    height: 190px;
+    height: 220px;
     width: 100%;
-    background: #FAE9CD;
+    background: #4E4E4E;
     font-size: 17px;
     font-family: Arial, Inter, serif;
 }
 
+.footer_heading {
+    color: #FEDB03;
+}
+
 .footer a {
-    color: #492D2D;
+    color: #FBFBFB;
+}
+
+.menu ul {
+    line-height: 1.5em;
+    margin: -5px 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.catalog ul {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .catalog {
     margin: 0 20px 0 57px;
     float: left;
-
+    width: 600px;
 }
 
 .menu {
+    display: flex;
+    flex-direction: column;
     margin: 0 100px 0 20px;
-
 }
 
 .list {
+    display: flex;
+    flex-direction: column;
     margin: 50px 40px 0 20px;
 }
 
@@ -75,22 +111,26 @@ footer > div {
     justify-content: center;
 }
 
+.page_contacts table {
+    border-spacing: 19px 15px;
+}
+
+.contacts table {
+    border-spacing: 19px 5px;
+}
+
 .catalog h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .menu h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .map {
     position: absolute;
     left: 600px;
-    top: 30px;
+    top: 80px;
 }
 
 @media (min-width: 840px) {
@@ -171,10 +211,10 @@ footer > div {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 127px;
         right: 0;
         color: #492D2D;
-        background: #FFFFFF;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -204,9 +244,9 @@ footer > div {
     .nav a {
         color: #492D2D;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
-        flex-shrink: 0;
+        font-size: 20px;
     }
 
     .nav a:hover {

@@ -90,7 +90,7 @@ body {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 127px;
+        top: 100px;
         right: 0;
         color: #492D2D;
         background: #FEDB03;
@@ -284,6 +284,20 @@ footer > div {
     border-spacing: 19px 5px;
 }
 
+.header_table {
+    position: absolute;
+    left: 650px;
+    top: 0;
+}
+
+.header_table tr {
+    vertical-align: top;
+}
+
+.header_table td {
+    padding: 8px;
+}
+
 .icons {
     padding-top: 159px;
     gap: 93.75%;
@@ -302,7 +316,7 @@ footer > div {
 }
 
 .slidesshow {
-    padding-top: 255px;
+    padding-top: 215px;
     max-width: 95%;
     position: relative;
     margin: auto;
@@ -376,22 +390,43 @@ footer > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 3%;
+    /*width: 100%;*/
+    margin: 0 auto;
+    justify-content: center;
+    width: 96%;
+    /*display: grid;*/
+    /*grid-template-columns: repeat(auto-fill, 300px);*/
+    /*justify-content: space-between;*/
+    /*grid-gap: 10px;*/
+
 }
 
 .products {
+    text-align: center;
+    top: 10px;
+    display: inline-block;
     color: black;
     position: relative;
-    background-color: #D6AE96;
-    width: 15.625em;
-    height: 9.375em;
     padding: 18px;
-    border-radius: 10px;
     font-family: Arial, Inter, serif;
     font-size: 18px;
-    overflow: auto;
     margin: 18px;
 }
+
+/*.products {*/
+/*    display: inline-block;*/
+/*    color: black;*/
+/*    position: relative;*/
+/*    background-color: #FEDB03;*/
+/*    width: 290px;*/
+/*    height: 290px;*/
+/*    padding: 18px;*/
+/*    border-radius: 10px;*/
+/*    font-family: Arial, Inter, serif;*/
+/*    font-size: 18px;*/
+/*    overflow: auto;*/
+/*    margin: 18px;*/
+/*}*/
 
 .measurer p {
     font-size: 23px;
@@ -407,35 +442,63 @@ footer > div {
 .formMeasurer {
     display: flex;
     position: relative;
-    background-color: #fff;
+    /*background-color: #fff;*/
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 40px auto 0;
     width: 43.75rem;
     border-radius: 3%;
-    border: solid #FEDB03 20px;
+    /*border: solid lightgrey 3px;*/
+    box-shadow: 0 5px 10px gray;
     font-size: 23px;
 }
 
-.formMeasurer label {
+.form_group {
+    position: relative;
+    margin: 15px auto;
+}
+
+.form_group label {
+    position: absolute;
+    top: 0;
+    color: #9e9e9e;
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    margin: 25px;
+    /*padding-left: 10px;*/
+    /*margin: 25px;*/
+    transition: 0.3s;
+    z-index: -1;
 }
 
 .formMeasurer label[class="check"] {
     display: block;
+    font-size: 20px;
 }
 
 .formMeasurer input {
-    margin: 10px auto auto;
+    margin: 20px auto auto;
     height: 45px;
-    width: 31.25rem;
+    width: 100%;
+    padding: 0 0 1px 0;
+    /*width: 31.25rem;*/
     border: none;
-    padding-left: 15px;
-    font-size: 23px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    border-bottom: 2px solid #e0e0e0;
+    /*padding-left: 15px;*/
+    background-color: transparent;
+    outline: none;
+    font-size: 20px;
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
+    transition: 0.3s;
+}
+
+.formMeasurer input:focus {
+    border-bottom: 2px solid #FEDB03;
+}
+
+.formMeasurer input:focus ~ label,
+.formMeasurer input:not(:placeholder-shown) ~ label {
+    top: -5px;
+    font-size: 16px;
 }
 
 .formMeasurer button {
@@ -447,13 +510,28 @@ footer > div {
     border: none;
     font-size: 20px;
     margin-bottom: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+    margin-top: 10px;
+    border-radius: 4px;
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
 }
 
+/*.formMeasurer input[type="submit"] {*/
+/*    cursor: pointer;*/
+/*    padding: 10px 30px;*/
+/*    height: 50px;*/
+/*    color: black;*/
+/*    background: #FEDB03;*/
+/*    border: none;*/
+/*    font-size: 20px;*/
+/*    margin-bottom: 20px;*/
+/*    margin-top:10px;*/
+/*    border-radius: 4px;*/
+/*    !*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*!*/
+/*}*/
 .formMeasurer input[type="checkbox"] {
     width: 1.25rem;
     margin-top: 10px;
-    height: 20px;
+    height: 16px;
     padding-left: 15px;
 }
 
@@ -463,10 +541,10 @@ footer > div {
     width: 1.25rem;
 }
 
-.formMeasurer button:hover {
-    font-weight: bold;
-    transform: scale(1.1);
-}
+/*.formMeasurer button:hover {*/
+/*    font-weight: bold;*/
+/*    transform: scale(1.1);*/
+/*}*/
 
 .products a {
     color: black;

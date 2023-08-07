@@ -5,11 +5,86 @@
     <meta name="viewport" content="width=device-width">
     <title>Главстрой</title>
     <link rel="stylesheet" href="main_page.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Istok+Web" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Istok+Web"/>
 </head>
 <body>
 <div class="wrapper">
-    <script src="../scripts/header.js"></script>
+    <header class="header">
+        <div class="logo">
+            <nav class="drop_nav">
+                <div class="dropdown_mobile">
+                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof" height="25"
+                                                     width="50"></button>
+                    <div class="mobile_content"><a href="../header_page/index.html">Каталог</a><a
+                            href="../header_page/page_about_us.html">О нас</a><a
+                            href="../header_page/delivery_page.html">Доставка</a><a
+                            href="../header_page/contact_page.html">Контакты</a>
+                        <div class="d3">
+                            <form class="search"><input type="text" placeholder="Искать здесь...">
+                                <button type="submit"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <a href="../header_page/index.html"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"
+                                                     height="50" width="230"></a>
+            <div class="text_about_company">Продажа и монтаж материалов<br> для кровли и фасада в Екатеринбурге</div>
+            <table class="header_table">
+                <tbody>
+                <tr>
+                    <td><img class="location_logo" src="../images/location.png" height="35"
+                             alt="Иконка локации"/></td>
+                    <td><b>Екатеринбург, ул. Фронтовых Бригад,<br> д. 15, корп. 28, оф. 3</b><br>Наш адрес</td>
+                    <!--                    д. 15, корп. 28, оф. 3-->
+                    <td><img class="tel_logo" src="../images/phone.png" height="22" width="22"
+                             alt="Иконка телефона"/></td>
+                    <td><b>+7 (343) 383 - 45 - 20</b><br>Консультации по телефону</td>
+                    <td><img class="email_logo" src="../images/email.png" height="22" width="31"
+                             alt="Иконка почты"/></td>
+                    <td><b>3834520@mail.com</b><br>Наша почта</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class="header_inner">
+                <nav class="nav">
+                    <div class="dropdown">
+                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/list.png"
+                                                                                     alt="roof" class="roof" height="24"
+                                                                                     width="40">Каталог
+                        </button>
+                        <div class="dropdown_content" id="dropdown"><a class="nav_link"
+                                                                       href="../catalog/subheadings.html?heading=Кровля">Кровля</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Фасад">Фасад</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
+                            системы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
+                            окна</a><a class="nav_link"
+                                       href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
+                            лестницы</a><a class="nav_link"
+                                           href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
+                            материалы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a><a
+                                class="nav_link"
+                                href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
+                        </div>
+                    </div>
+                    <a class="nav_link" href="../header_page/page_about_us.html">О нас</a><a class="nav_link"
+                                                                                             href="../header_page/delivery_page.html">Доставка</a><a
+                        class="nav_link" href="../header_page/contact_page.html">Контакты</a>
+                    <div class="d3">
+                        <form class="search"><input type="text" placeholder="Искать здесь...">
+                            <button type="submit"></button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--    <script src="../scripts/header1.js"></script>-->
+    <!--    <script src="../scripts/header.js"></script>-->
     <div class="container_size">
         <div class="slidesshow">
             <div class="mySlides fade">
@@ -67,35 +142,328 @@
             }
         </script>
         <h3>Наша продукция</h3>
-        <div class="out_products"></div>
+        <div class="out_products">
+            <div class="products">
+                <img src="../images/crovlz.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/facad.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/ventilation.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/drain.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/dormer_windows.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/stairs.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/materials.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/fences.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/accessories.png" height="300" width="300">
+            </div>
+            <div class="products">
+                <img src="../images/landscaping.png" height="300" width="300">
+            </div>
+
+            <!--            <div class="products_images">-->
+            <!--                <img src="../images/crovlz.png" width="290">-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Кровля</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="../catalog.html">Профнастил</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Металлочерепица</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Гибкая черепица</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Натуральная черепица</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Керамическая черепица</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Композитная черепица</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Одулин</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Элементы безопасности</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Кровельные комплектующие</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Фасад</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Сайдинг</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Фасадные панели</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Софиты для кровли</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Софиты для кровли</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Термопанели</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Доборные элементы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Подсистема для фасада</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Водосток</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Бренд</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Цвет</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Мансардные окна</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">По бренду</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Оклады для мансардных окон</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Окна-люки для выхода на крышу</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Аварийные выходы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Карнизы для мансардных окон</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Шторы на мансардные окна</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Жалюзи на мансардных окон</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Вентиляция</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Вентиляция кровли</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Вентиляторы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Вентиляционные выходы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Проходные элементы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Приточная вентиляция</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Цокольные дефлекторы</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Кухонные вытяжки</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Уплотнители</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Чердачные лестницы</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Fakro</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Docke</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Oman</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Деревянные</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Металлические</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Утепленные Thermo</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Ножничного типа</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Изоляционные материалы</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Утеплители</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Паро-гидроизоляции</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Профилированная мембрана</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Пена монтажная</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Кровельный герметик</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Герметизирующие ленты</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Битумные материалы</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Ограждения</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Забор из профнастила</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Забор жалюзи</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Штакетник</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Модульные ограждения</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Панельные 3D ограждения Grand Line</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Временные ограждения Grand Line</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Парапетные крышки</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Планки П-образные</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Комлектующие</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Элементы безопасности кровли</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Кожух на трубу</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Козырьки Krovent</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Антисептик и огнебиозащита</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Дымники (флюгарка)</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Флюгеры Duck & Dog</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+            <!--            <div class="products">-->
+            <!--                <h4>Благоустройство</h4>-->
+            <!--                <ul>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Террасная доска</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Тротуарная плитка</a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">Дренажные системы</a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+        </div>
         <div class="measurer">
             <h3>Закажите выезд замерщика</h3>
             <p>Позвоните нам по телефону <a href="tel:+73433834520">+7(343)383-45-20</a> и наш специалист ответит на все
                 Ваши вопросы.</p>
         </div>
         <div class="formMeasurer">
-            <form>
+            <form action="../sender.php" method="POST">
                 <h3 title="form">Заполните форму</h3>
-                <label>
-                    Как к Вам обращаться?
-                    <input type="text" name="username" placeholder="Введите имя">
-                </label>
-                <label>
-                    Номер телефона*
-                    <input type="tel" name="phone"
-                           pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
-                           placeholder="+7(___)___-__-__" required>
-                </label>
-                <label>
-                    Email
-                    <input type="email" name="email">
-                </label>
-                <label>* - обязательное поле</label>
+                <div class="form_group">
+                    <input type="text" name="username" placeholder=" ">
+                    <label>Ваше Имя</label>
+                </div>
+                <div class="form_group">
+                    <input type="tel" name="phone" placeholder="+7(___) ___-__-__" class="phone"
+                           pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" minlength="17"
+                           maxlength="17"
+                           required>
+                    <label>Номер телефона</label>
+                </div>
+                <div class="form_group">
+                    <input type="email" name="email" placeholder=" ">
+                    <label>Email</label>
+                </div>
+                <!--                <label>-->
+                <!--                    Ваше имя-->
+                <!--                    <input type="text" name="username" placeholder="Введите имя">-->
+                <!--                </label>-->
+                <!--                <label>-->
+                <!--                    Номер телефона*-->
+                <!--                    <input type="tel" name="phone"-->
+                <!--                           pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"-->
+                <!--                           placeholder="+7(___)___-__-__" required>-->
+                <!--                </label>-->
+                <!--                <label>-->
+                <!--                    Email-->
+                <!--                    <input type="email" name="email">-->
+                <!--                </label>-->
+                <!--                <label>* - обязательное поле</label>-->
                 <label class="check">
                     <input type="checkbox" name="condition" value="agree" required> Я согласен на обработку персональных
-                    данных*
+                    данных
                 </label>
                 <div style="text-align: center;">
+                    <!--                    type="submit"-->
                     <button type="submit" name="registration">
                         Отправить
                     </button>
@@ -108,21 +476,31 @@
             <div class="catalog">
                 <h4 class="footer_heading">Каталог</h4>
                 <ul>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные материалы </a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные системы</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные окна</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a></li>
-<!--                </ul>-->
-<!--            </div>-->
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные
+                        материалы </a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a>
+                    </li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
+                        системы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
+                        окна</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a>
+                    </li>
+                    <!--                </ul>-->
+                    <!--            </div>-->
 
-<!--            <div class="list">-->
-<!--                <ul>-->
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные лестницы</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные материалы</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
-                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a></li>
+                    <!--            <div class="list">-->
+                    <!--                <ul>-->
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
+                        лестницы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
+                        материалы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a>
+                    </li>
+                    <li><a class="catalog_link"
+                           href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
+                    </li>
                 </ul>
             </div>
             <div class="menu">
@@ -179,6 +557,8 @@
     </footer>
 </div>
 <!--<script src="../scripts/set_main_page.js"></script>-->
+<script src="https://unpkg.com/imask"></script>
+<script src="../scripts/maskTel.js"></script>
 <script src="../scripts/menu.js"></script>
 </body>
 </html>

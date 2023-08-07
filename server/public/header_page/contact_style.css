@@ -102,6 +102,20 @@ footer > div {
     text-align: left;
 }
 
+.header_table {
+    position: absolute;
+    left: 650px;
+    top: 0;
+}
+
+.header_table tr {
+    vertical-align: top;
+}
+
+.header_table td {
+    padding: 8px;
+}
+
 .icons {
     padding-top: 159px;
     gap: 15px;
@@ -211,7 +225,7 @@ footer > div {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 127px;
+        top: 100px;
         right: 0;
         color: #492D2D;
         background: #FEDB03;

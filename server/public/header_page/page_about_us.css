@@ -88,7 +88,7 @@ body {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 127px;
+        top: 100px;
         right: 0;
         color: #492D2D;
         background: #FEDB03;
@@ -222,12 +222,12 @@ a {
 .aboutUs {
     width: 555px;
     font-size: 25px;
-    margin-top: 80px;
+    margin-top: 53px;
 }
 
 .aboutCompany {
     position: relative;
-    top: 105px;
+    top: 80px;
 
 }
 
@@ -241,7 +241,7 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    margin-top: 35px;
+    margin-top: -10px;
     justify-content: space-between;
     /*padding: 0 10px 10px;*/
     position: relative;
@@ -309,6 +309,20 @@ footer > div {
     text-align: left;
 }
 
+.header_table {
+    position: absolute;
+    left: 650px;
+    top: 0;
+}
+
+.header_table tr {
+    vertical-align: top;
+}
+
+.header_table td {
+    padding: 8px;
+}
+
 .icons {
     padding-top: 159px;
     gap: 15px;
@@ -317,6 +331,7 @@ footer > div {
     align-items: center;
     justify-content: center;
 }
+
 .contacts table {
     border-spacing: 19px 5px;
 }

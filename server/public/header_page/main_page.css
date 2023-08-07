@@ -405,12 +405,59 @@ footer > div {
     text-align: center;
     top: 10px;
     display: inline-block;
-    color: black;
+    color: transparent;
     position: relative;
     padding: 18px;
     font-family: Arial, Inter, serif;
     font-size: 18px;
     margin: 18px;
+}
+
+.prod_text {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: transparent;
+}
+
+.products a {
+    color: transparent;
+}
+
+.prod_text:hover ~ .prod_text a {
+    color: black;
+}
+
+.prod_text:hover {
+    color: black;
+}
+
+.products a:hover ~ .img_prod {
+    opacity: 50%;
+}
+
+.prod_text:hover ~ .img_prod {
+    opacity: 50%;
+}
+
+.prod_text:hover ~ .products a {
+    color: black;
+}
+
+.img_prod:hover ~ .prod_text a {
+    color: black;
+}
+
+.img_prod:hover ~ .prod_text {
+    color: black;
+}
+
+.img_prod:hover ~ .products a {
+    color: black;
+}
+
+.img_prod:hover {
+    opacity: 50%;
 }
 
 /*.products {*/
@@ -546,9 +593,6 @@ footer > div {
 /*    transform: scale(1.1);*/
 /*}*/
 
-.products a {
-    color: black;
-}
 
 .products h4 {
     margin: 5px;

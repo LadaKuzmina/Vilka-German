@@ -9,14 +9,13 @@
     top: 150px;
     left: 100px;
     font-size: 19px;
-    font-family: Inter, serif;
 }
 
 .servers .page_contacts {
     width: 400px;
     position: relative;
-    top: 80px;
-    font-size: 23px;
+    top: 28px;
+    font-size: 20px;
 }
 
 body {
@@ -256,7 +255,7 @@ footer > div {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: #FEDB03;
         border-radius: 12px;
@@ -285,7 +284,7 @@ footer > div {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;
@@ -475,7 +474,7 @@ footer > div {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: white;
         border-radius: 12px;
@@ -504,7 +503,7 @@ footer > div {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;
@@ -801,7 +800,7 @@ footer > div {
     }
 
     .drop_nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: white;
         border-radius: 12px;

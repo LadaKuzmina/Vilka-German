@@ -125,7 +125,7 @@ body {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: #FEDB03;
         border-radius: 12px;
@@ -154,7 +154,7 @@ body {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;
@@ -727,7 +727,7 @@ h3 {
         left: 0;
         top: 80px;
         right: 0;
-        color: #492D2D;
+        color: black;
         background: #FEDB03;
         border-radius: 12px;
     }
@@ -756,7 +756,7 @@ h3 {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: #FEDB03;
         border-radius: 12px;
@@ -785,7 +785,7 @@ h3 {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;

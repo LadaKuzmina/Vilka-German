@@ -149,7 +149,7 @@ function createCheckboxesElement(checkbox, count, is_color) {
     rectElement.setAttributeNS(null, "x", ".5");
     rectElement.setAttributeNS(null, "y", ".5");
     rectElement.setAttributeNS(null, "fill", "#FFF");
-    rectElement.setAttributeNS(null, "stroke", "#d4aa70");
+    rectElement.setAttributeNS(null, "stroke", "#000000");
     rectElement.setAttributeNS(null, "rx", "3");
 
     let pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");

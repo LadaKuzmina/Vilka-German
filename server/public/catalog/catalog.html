@@ -2,12 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Главстрой</title>
     <link rel="stylesheet" href="catalog_style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Istok+Web"/>
 </head>
 <body>
 <div class="wrapper">
-    <script src="../scripts/header.js"></script>
+    <header class="header">
+        <div class="logo">
+            <nav class="drop_nav">
+                <div class="dropdown_mobile">
+                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof" height="25"
+                                                     width="50"></button>
+                    <div class="mobile_content"><a href="../header_page/index.html">Каталог</a><a
+                            href="../header_page/page_about_us.html">О нас</a><a
+                            href="../header_page/delivery_page.html">Доставка</a><a
+                            href="../header_page/contact_page.html">Контакты</a>
+                        <div class="d3">
+                            <form class="search"><input type="text" placeholder="Искать здесь...">
+                                <button type="submit"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <a href="../header_page/index.html"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"
+                                                     height="50" width="230"></a>
+            <div class="text_about_company">Продажа и монтаж материалов<br> для кровли и фасада в Екатеринбурге</div>
+            <table class="header_table">
+                <tbody>
+                <tr>
+                    <td><img class="location_logo" src="../images/location.png" height="35"
+                             alt="Иконка локации"/></td>
+                    <td><b>Екатеринбург, ул. Фронтовых Бригад,<br> д. 15, корп. 28, оф. 3</b><br>Наш адрес</td>
+                    <!--                    д. 15, корп. 28, оф. 3-->
+                    <td><img class="tel_logo" src="../images/phone.png" height="22" width="22"
+                             alt="Иконка телефона"/></td>
+                    <td><b>+7 (343) 383 - 45 - 20</b><br>Консультации по телефону</td>
+                    <td><img class="email_logo" src="../images/email.png" height="22" width="31"
+                             alt="Иконка почты"/></td>
+                    <td><b>3834520@mail.com</b><br>Наша почта</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class="header_inner">
+                <nav class="nav">
+                    <div class="dropdown">
+                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/list.png"
+                                                                                     alt="roof" class="roof" height="24"
+                                                                                     width="40">Каталог
+                        </button>
+                        <div class="dropdown_content" id="dropdown"><a class="nav_link"
+                                                                       href="../catalog/subheadings.html?heading=Кровля">Кровля</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Фасад">Фасад</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
+                            системы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
+                            окна</a><a class="nav_link"
+                                       href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
+                            лестницы</a><a class="nav_link"
+                                           href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
+                            материалы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a><a
+                                class="nav_link"
+                                href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a><a
+                                class="nav_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
+                        </div>
+                    </div>
+                    <a class="nav_link" href="../header_page/page_about_us.html">О нас</a><a class="nav_link"
+                                                                                             href="../header_page/delivery_page.html">Доставка</a><a
+                        class="nav_link" href="../header_page/contact_page.html">Контакты</a>
+                    <div class="d3">
+                        <form class="search"><input type="text" placeholder="Искать здесь...">
+                            <button type="submit"></button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--    <script src="../scripts/header.js"></script>-->
     <div class="content">
         <div class="filters">
             <div class="filters_h"><b>Фильтры</b></div>
@@ -34,27 +110,37 @@
 <footer>
     <div class="footer">
         <div class="catalog">
-            <h4>Каталог</h4>
+            <h4 class="footer_heading">Каталог</h4>
             <ul>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные материалы </a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные системы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные окна</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a></li>
-            </ul>
-        </div>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные
+                    материалы </a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a>
+                </li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
+                    системы</a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
+                    окна</a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a>
+                </li>
+                <!--                </ul>-->
+                <!--            </div>-->
 
-        <div class="list">
-            <ul>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные лестницы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные материалы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a></li>
+                <!--            <div class="list">-->
+                <!--                <ul>-->
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
+                    лестницы</a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
+                    материалы</a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a>
+                </li>
+                <li><a class="catalog_link"
+                       href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
+                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
+                </li>
             </ul>
         </div>
         <div class="menu">
-            <h4>Меню</h4>
+            <h4 class="footer_heading">Меню</h4>
             <ul>
                 <li><a href="../header_page/page_about_us.html">О нас</a></li>
                 <li><a href="../header_page/delivery_page.html">Доставка</a></li>
@@ -65,7 +151,7 @@
             <table>
                 <tr>
                     <td>
-                        <img class="location_logo" src="../images/location.png" height="35" width="40"
+                        <img class="location_logo" src="../images/location.png" height="35"
                              alt="Иконка локации"/>
                     </td>
                     <td>
@@ -103,7 +189,6 @@
                 </tr>
             </table>
         </div>
-
     </div>
 </footer>
 

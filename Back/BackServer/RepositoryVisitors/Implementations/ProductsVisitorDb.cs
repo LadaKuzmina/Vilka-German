@@ -88,7 +88,7 @@ namespace BackServer.Repositories
             return products;
         }
 
-        public async Task<Entity.Product> GetByTitle(string title)
+        public async Task<Entity.Product?> GetByTitle(string title)
         {
             Entity.Product product = default!;
             var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
@@ -125,6 +125,11 @@ namespace BackServer.Repositories
 
             await con.CloseAsync();
 
+            if (product is null)
+            {
+                return null;
+            }
+            
             product.ImageRefs = await _photoVisitor.GetAllProductPhoto(product.Title);
 
             return product;

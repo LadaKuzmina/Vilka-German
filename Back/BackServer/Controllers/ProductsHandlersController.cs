@@ -37,7 +37,7 @@ namespace BackServer.Controllers
         }
 
         [HttpGet("~/GetProductByTitle")]
-        public async Task<Product> GetByTitle(string title)
+        public async Task<Product?> GetByTitle(string title)
         {
             return await _service.GetByTitle(title);
         }

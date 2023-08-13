@@ -33,7 +33,7 @@ namespace BackServer.Services
             return await _visitor.GetAvailable();
         }
 
-        public async Task<Product> GetByTitle(string title)
+        public async Task<Product?> GetByTitle(string title)
         {
             return await _visitor.GetByTitle(title);
         }

@@ -413,51 +413,39 @@ footer > div {
     margin: 18px;
 }
 
+.products .img_prod {
+    transition: 0.5s;
+}
+
 .prod_text {
     position: absolute;
     bottom: 8px;
     left: 16px;
     color: transparent;
+    transition: 0.5s;
+}
+
+.prod_text a {
+    transition: 0.5s;
 }
 
 .products a {
     color: transparent;
 }
 
-.prod_text:hover ~ .prod_text a {
+.products:hover .prod_text {
     color: black;
+    transition: 0.5s;
 }
 
-.prod_text:hover {
+.products:hover .prod_text a {
     color: black;
+    transition: 0.5s;
 }
 
-.products a:hover ~ .img_prod {
+.products:hover .img_prod {
     opacity: 50%;
-}
-
-.prod_text:hover ~ .img_prod {
-    opacity: 50%;
-}
-
-.prod_text:hover ~ .products a {
-    color: black;
-}
-
-.img_prod:hover ~ .prod_text a {
-    color: black;
-}
-
-.img_prod:hover ~ .prod_text {
-    color: black;
-}
-
-.img_prod:hover ~ .products a {
-    color: black;
-}
-
-.img_prod:hover {
-    opacity: 50%;
+    transition: 0.5s;
 }
 
 /*.products {*/

@@ -1,6 +1,8 @@
 body {
-    background-color: #FAE9CD;
+    background-color: #FBFBFB;
     overflow-x: hidden;
+    margin: auto;
+    font-family: Istok Web;
 }
 
 a {
@@ -19,42 +21,91 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    margin-top: 200px;
+    margin-top: 113px;
     justify-content: space-between;
-    padding: 0 10px 10px;
+    /*padding: 0 10px 10px;*/
     position: relative;
-    height: 190px;
+    height: 1187.5%;
     width: 100%;
-    background: #FAE9CD;
+    background: #4E4E4E;
     font-size: 17px;
     font-family: Arial, Inter, serif;
 }
 
+.footer_heading {
+    color: #FEDB03;
+}
+
 .footer a {
-    color: #492D2D;
+    color: #FBFBFB;
+}
+
+.menu ul {
+    line-height: 1.5em;
+    margin: -5px 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.catalog ul {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .catalog {
     margin: 0 20px 0 57px;
     float: left;
-
+    width: 600px;
 }
 
 .menu {
+    display: flex;
+    flex-direction: column;
     margin: 0 100px 0 20px;
-
 }
 
 .list {
+    display: flex;
+    flex-direction: column;
     margin: 50px 40px 0 20px;
 }
 
 .footer .contacts {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 93.75%;
     margin: 50px 117px 0 20px;
     text-align: left;
+}
+
+.contacts table {
+    border-spacing: 19px 5px;
+}
+
+
+.header_table {
+    position: absolute;
+    left: 650px;
+    top: 0;
+}
+
+.header_table tr {
+    vertical-align: top;
+}
+
+.header_table td {
+    padding: 8px;
 }
 
 .icons {
@@ -68,18 +119,14 @@ footer > div {
 
 .catalog h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .menu h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .list_catalog {
-    top: 170px;
+    top: 97px;
     display: inline-block;
     color: black;
     position: relative;
@@ -89,11 +136,15 @@ footer > div {
 
 .navigator {
     position: relative;
-    top: 190px;
+    top: 200px;
     left: 30px;
     font-size: 18px;
     display: flex;
     flex-direction: row;
+}
+
+.navigator a:hover {
+    color: #FEDB03;
 }
 
 .navigator a {
@@ -113,7 +164,7 @@ footer > div {
 }
 
 .head {
-    top: 180px;
+    top: 164px;
     left: 30px;
     position: relative;
 }
@@ -126,7 +177,7 @@ footer > div {
 }
 
 .products h4:hover {
-    color: #D6AE96;
+    color: #FEDB03;
 }
 
 .products img {
@@ -153,19 +204,19 @@ h3 {
     text-align: center;
 }
 
-::-webkit-scrollbar {
-    width: 16px;
-}
+/*::-webkit-scrollbar {*/
+/*    width: 16px;*/
+/*}*/
 
-::-webkit-scrollbar-track {
-    background-color: #e4e4e4;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-track {*/
+/*    background-color: #e4e4e4;*/
+/*    border-radius: 100px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background-color: #B48263;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color: #B48263;*/
+/*    border-radius: 100px;*/
+/*}*/
 
 @media (min-width: 840px) {
     .search {
@@ -245,10 +296,10 @@ h3 {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 100px;
         right: 0;
-        color: #492D2D;
-        background: #FFFFFF;
+        color: black;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -276,11 +327,11 @@ h3 {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
-        flex-shrink: 0;
+        font-size: 20px;
     }
 
     .nav a:hover {
@@ -305,7 +356,7 @@ h3 {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;
@@ -470,7 +521,7 @@ h3 {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: white;
         border-radius: 12px;
@@ -499,7 +550,7 @@ h3 {
         font-size: 20px;
         line-height: 36px;
         cursor: pointer;
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         border-radius: 12px;
         border: none;
@@ -992,7 +1043,8 @@ h3 {
         font-size: 18px;
         margin: auto;
     }
-    .products img{
+
+    .products img {
         height: 150px;
         width: 150px;
     }

@@ -1,6 +1,7 @@
 body {
-    background-color: #FAE9CD;
+    background-color: #FBFBFB;
     overflow-x: hidden;
+    font-family: Istok Web;
 }
 
 .nav a.selected {
@@ -8,7 +9,7 @@ body {
 }
 
 .nav a {
-    color: #492D2D;
+    color: black;
     padding: 10px 20px;
     background: white;
     border-radius: 12px;
@@ -20,10 +21,6 @@ body {
 
 .nav a:hover {
     background: rgba(177, 152, 145, .3);
-}
-
-.head {
-
 }
 
 a {
@@ -42,45 +39,95 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    margin-top: 190px;
+    margin-top: 50px;
     justify-content: space-between;
-    padding: 0 10px 10px;
+    /*padding: 0 10px 10px;*/
     position: relative;
-    height: 250px;
+    height: 1187.5%;
     width: 100%;
-    background: #FAE9CD;
+    background: #4E4E4E;
     font-size: 17px;
     font-family: Arial, Inter, serif;
 }
 
+.footer_heading {
+    color: #FEDB03;
+}
+
 .footer a {
-    color: #492D2D;
+    color: #FBFBFB;
+}
+
+.menu ul {
+    line-height: 1.5em;
+    margin: -5px 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.catalog ul {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .catalog {
     margin: 0 20px 0 57px;
     float: left;
+    width: 600px;
 }
 
 .menu {
+    display: flex;
+    flex-direction: column;
     margin: 0 100px 0 20px;
 }
 
 .list {
+    display: flex;
+    flex-direction: column;
     margin: 50px 40px 0 20px;
 }
 
 .footer .contacts {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 93.75%;
     margin: 50px 117px 0 20px;
     text-align: left;
 }
 
+.contacts table {
+    border-spacing: 19px 5px;
+}
+
+.header_table {
+    position: absolute;
+    left: 650px;
+    top: 0;
+}
+
+.header_table tr {
+    vertical-align: top;
+}
+
+.header_table td {
+    padding: 8px;
+}
+
 .icons {
     padding-top: 159px;
-    gap: 15px;
+    gap: 93.75%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,14 +136,10 @@ footer > div {
 
 .catalog h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .menu h4 {
     padding-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 .wr {
@@ -118,12 +161,11 @@ footer > div {
 }
 
 .link_sort {
-    text-decoration: underline;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .link_sort:hover {
-    color: #0075B2;
+    color: #FEDB03;
 }
 
 .navigator a {
@@ -143,7 +185,7 @@ footer > div {
 }
 
 .head {
-    top: 180px;
+    top: 143px;
     left: 30px;
     position: relative;
 }
@@ -212,19 +254,19 @@ h3 {
     text-align: center;
 }
 
-::-webkit-scrollbar {
-    width: 16px;
-}
+/*::-webkit-scrollbar {*/
+/*    width: 16px;*/
+/*}*/
 
-::-webkit-scrollbar-track {
-    background-color: #e4e4e4;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-track {*/
+/*    background-color: #e4e4e4;*/
+/*    border-radius: 100px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background-color: #B48263;
-    border-radius: 100px;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color: #B48263;*/
+/*    border-radius: 100px;*/
+/*}*/
 
 summary::-webkit-details-marker {
     display: none;
@@ -425,10 +467,10 @@ dt, dd {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 100px;
         right: 0;
-        color: #492D2D;
-        background: #FFFFFF;
+        color: black;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -456,9 +498,9 @@ dt, dd {
     }
 
     .nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
         flex-shrink: 0;
     }

@@ -28,3 +28,24 @@ window.onclick = function(e) {
         }
     }
 }
+
+function filterFunction() {
+    let input = document.getElementById("search_bar");
+    let filter = input.value.toUpperCase();
+    let content = document.getElementById("search");
+    let a = content.getElementsByTagName("a");
+    let searchBlock = document.getElementById("search_block");
+    searchBlock.style.display = "flex";
+
+    for (let i = 0; i < a.length; i++) {
+        let txt = a[i].text || a[i].innerText;
+        if (filter === "") {
+            searchBlock.style.display = "none";
+        }
+        if (txt.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}

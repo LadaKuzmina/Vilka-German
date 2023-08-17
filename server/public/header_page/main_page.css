@@ -5,6 +5,30 @@ body {
     font-family: Istok Web;
 }
 
+.nav .search_content {
+    display: block;
+    position: absolute;
+    max-height: 300px;
+    overflow: auto;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.nav .search_content a {
+    display: block;
+    padding: 10px;
+    background: #fff;
+}
+
+.nav #search_block {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .container_size {
     max-width: 100%;
 }

@@ -20,7 +20,7 @@
                             href="../header_page/delivery_page.html">Доставка</a><a
                             href="../header_page/contact_page.html">Контакты</a>
                         <div class="d3">
-                            <form class="search"><input type="text" placeholder="Искать здесь...">
+                            <form class="search" id="search"><input type="text" placeholder="Искать здесь...">
                                 <button type="submit"></button>
                             </form>
                         </div>
@@ -28,7 +28,7 @@
                 </div>
             </nav>
             <a href="/"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"
-                                                     height="50" width="230"></a>
+                             height="50" width="230"></a>
             <div class="text_about_company">Продажа и монтаж материалов<br> для кровли и фасада в Екатеринбурге</div>
             <table class="header_table">
                 <tbody>
@@ -72,10 +72,23 @@
                         </div>
                     </div>
                     <a class="nav_link" href="/about">О нас</a><a class="nav_link"
-                                                                                             href="../header_page/delivery_page.html">Доставка</a><a
+                                                                  href="../header_page/delivery_page.html">Доставка</a><a
                         class="nav_link" href="../header_page/contact_page.html">Контакты</a>
                     <div class="d3">
-                        <form class="search"><input type="text" placeholder="Искать здесь...">
+                        <form class="search">
+                            <input type="text" placeholder="Искать здесь..." id="search_bar" onkeyup="filterFunction()">
+                            <div class="search_content" id="search_block">
+                                <a href="../catalog/roof.html" style="">Кровля</a>
+                                <a href="../catalog/facade.html" style="">Фасад</a>
+                                <a href="#" style="">Водосточные системы</a>
+                                <a href="../catalog/dormer_windows.html" style="">Мансардные окна</a>
+                                <a href="../catalog/ventilation.html" style="">Вентиляция</a>
+                                <a href="#" style="">Чердачные лестницы</a>
+                                <a href="../catalog/insulation_materials.html" style="">Изоляционные материалы</a>
+                                <a href="../catalog/fences.html" style="">Ограждения</a>
+                                <a href="../catalog/accessories.html" style="">Комплектующие</a>
+                                <a href="../catalog/landscaping_site.html" style="">Благоустройство</a>
+                            </div>
                             <button type="submit"></button>
                         </form>
                     </div>

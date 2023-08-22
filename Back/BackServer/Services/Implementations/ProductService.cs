@@ -38,6 +38,16 @@ namespace BackServer.Services
             return await _visitor.GetByTitle(title);
         }
 
+        public async Task<IEnumerable<Product>> GetBySubstring(string substring)
+        {
+            return await _visitor.GetBySubstring(substring);
+        }
+
+        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
+        {
+            return await _visitor.GetBySubstrings(substrings);
+        }
+
         public async Task<IEnumerable<Product>> GetPageHeadingOne(string headingOneTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements)
         {

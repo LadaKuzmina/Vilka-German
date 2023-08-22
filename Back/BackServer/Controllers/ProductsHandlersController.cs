@@ -41,6 +41,18 @@ namespace BackServer.Controllers
         {
             return await _service.GetByTitle(title);
         }
+        
+        [HttpGet("~/GetProductBySubstring")]
+        public async Task<IEnumerable<Product>> GetBySubstring(string substring)
+        {
+            return await _service.GetBySubstring(substring);
+        }
+        
+        [HttpPost("~/GetProductBySubstrings")]
+        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substring)
+        {
+            return await _service.GetBySubstrings(substring);
+        }
 
         [HttpPost("~/GetPageHeadingOne")]
         public async Task<IEnumerable<Product>> GetPageHeadingOne(string headingOneTitle,

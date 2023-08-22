@@ -11,6 +11,8 @@ namespace BackServer.Repositories
         Task<IEnumerable<Product>> GetAll();
         Task<IEnumerable<Entity.Product>> GetAvailable();
         Task<Entity.Product?> GetByTitle(string title);
+        Task<IEnumerable<Product>> GetBySubstring(string substring);
+        Task<IEnumerable<Product>> GetBySubstrings(string[] substrings);
         Task<IEnumerable<Entity.Product>> GetAllHeadingOne(string headingOneTitle);
         Task<IEnumerable<Entity.Product>> GetAllHeadingTwo(string headingTwoTitle);
         Task<IEnumerable<Entity.Product>> GetPageHeadingOne(string headingOneTitle, ProductOrders productOrder,

@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using Npgsql;
 using NpgsqlDbExtensions.Enums;
+using Product = Entity.Product;
 
 namespace BackServer.Repositories
 {
@@ -133,6 +134,74 @@ namespace BackServer.Repositories
             product.ImageRefs = await _photoVisitor.GetAllProductPhoto(product.Title);
 
             return product;
+        }
+
+        public async Task<IEnumerable<Product>> GetBySubstring(string substring)
+        {
+            var products = new List<Entity.Product>();
+            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (con.State != ConnectionState.Open)
+                await con.OpenAsync();
+
+            var sql = @$"
+                    SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
+                           um.unit_measurement_value, hone.title, htwo.title, pv.property_value,
+                           CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
+                    FROM products as p
+                             JOIN product_family pf on pf.product_family_id = p.product_family_id
+                             JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
+                             JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
+                             JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
+                             LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
+                             LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
+                             LEFT JOIN sale_products sp on p.product_id = sp.product_id
+                             LEFT JOIN sales s on sp.sale_id = s.sale_id
+                    WHERE p.title LIKE '%{substring}%';";
+            await using var cmd = new NpgsqlCommand(sql, con);
+            await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
+            while (await rdr.ReadAsync())
+            {
+                products.Add(await ConvertProduct(rdr));
+            }
+
+            return products;
+        }
+
+        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
+        {
+            var productsDictionary = new Dictionary<Entity.Product, int>();
+            
+            await using var con = (NpgsqlConnection?)_context.Database.GetDbConnection();
+            if (con.State != ConnectionState.Open)
+                await con.OpenAsync();
+            
+            foreach (var substring in substrings)
+            {
+                var sql = @$"
+                    SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
+                           um.unit_measurement_value, hone.title, htwo.title, pv.property_value,
+                           CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
+                    FROM products as p
+                             JOIN product_family pf on pf.product_family_id = p.product_family_id
+                             JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
+                             JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
+                             JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
+                             LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
+                             LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
+                             LEFT JOIN sale_products sp on p.product_id = sp.product_id
+                             LEFT JOIN sales s on sp.sale_id = s.sale_id
+                    WHERE p.title LIKE '%{substring}%';";
+                await using var cmd = new NpgsqlCommand(sql, con);
+                await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
+                while (await rdr.ReadAsync())
+                {
+                    var product = await ConvertProduct(rdr);
+                    productsDictionary.TryAdd(product, 0);
+                    productsDictionary[product] += 1;
+                }
+            }
+
+            return productsDictionary.Keys.Where(product => productsDictionary[product] >= substrings.Length).ToList();
         }
 
         public async Task<IEnumerable<Entity.Product>> GetAllHeadingOne(string headingOneTitle)

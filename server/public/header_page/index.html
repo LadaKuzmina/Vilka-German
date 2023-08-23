@@ -76,19 +76,8 @@
                         class="nav_link" href="../header_page/contact_page.html">Контакты</a>
                     <div class="d3">
                         <form class="search">
-                            <input type="text" placeholder="Искать здесь..." id="search_bar" onkeyup="filterFunction()">
-                            <div class="search_content" id="search_block">
-                                <a href="../catalog/roof.html" style="">Кровля</a>
-                                <a href="../catalog/facade.html" style="">Фасад</a>
-                                <a href="#" style="">Водосточные системы</a>
-                                <a href="../catalog/dormer_windows.html" style="">Мансардные окна</a>
-                                <a href="../catalog/ventilation.html" style="">Вентиляция</a>
-                                <a href="#" style="">Чердачные лестницы</a>
-                                <a href="../catalog/insulation_materials.html" style="">Изоляционные материалы</a>
-                                <a href="../catalog/fences.html" style="">Ограждения</a>
-                                <a href="../catalog/accessories.html" style="">Комплектующие</a>
-                                <a href="../catalog/landscaping_site.html" style="">Благоустройство</a>
-                            </div>
+                            <input type="text" placeholder="Искать здесь..." id="search_bar" onkeyup="search()">
+                            <div class="search_content" id="search_block"></div>
                             <button type="submit"></button>
                         </form>
                     </div>
@@ -590,5 +579,6 @@
 <script src="https://unpkg.com/imask"></script>
 <script src="../scripts/maskTel.js"></script>
 <script src="../scripts/menu.js"></script>
+<script src="../scripts/search.js"></script>
 </body>
 </html>

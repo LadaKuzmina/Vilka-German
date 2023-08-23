@@ -43,6 +43,21 @@ namespace BackServer.Services
             return await _visitor.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
 
+        public async Task<IEnumerable<HeadingOne>> GetHeadingsOneBySubstringsAsync(string[] substrings)
+        {
+            return await _visitor.GetHeadingsOneBySubstringsAsync(substrings);
+        }
+
+        public async Task<IEnumerable<HeadingTwo>> GetHeadingsTwoBySubstringsAsync(string[] substrings)
+        {
+            return await _visitor.GetHeadingsTwoBySubstringsAsync(substrings);
+        }
+
+        public async Task<IEnumerable<HeadingThree>> GetHeadingsThreeBySubstringsAsync(string[] substrings)
+        {
+            return await _visitor.GetHeadingsThreeBySubstringsAsync(substrings);
+        }
+
         public async Task<bool> AddHeadingOne(HeadingOne headingOne)
         {
             // if (!CheckCorrectHeadingOne(headingOne))

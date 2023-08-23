@@ -9,6 +9,9 @@ using Entity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using NpgsqlDbExtensions;
+using HeadingOne = Entity.HeadingOne;
+using HeadingThree = Entity.HeadingThree;
+using HeadingTwo = Entity.HeadingTwo;
 
 namespace BackServer.Repositories
 {
@@ -56,6 +59,69 @@ namespace BackServer.Repositories
                 .Where(x => x.HeadingTwo.Title == headingTwoTitle)
                 .Select(x => new Entity.HeadingThree(x.PropertyValues.PropertyValue, x.PageLink, x.ImageRef))
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<HeadingOne>> GetHeadingsOneBySubstringsAsync(string[] substrings)
+        {
+            var headingsOneDictionary = new Dictionary<Entity.HeadingOne, int>();
+            
+            foreach (var substring in substrings.Select(substring => substring.ToLower()))
+            {
+                var headingsOne = await _context.HeadingsOne
+                    .Where(x => x.Title.ToLower().Contains(substring))
+                    .Select(x => new Entity.HeadingOne(x.Title, x.PageLink))
+                    .ToListAsync();
+                
+                foreach (var headingOne in headingsOne)
+                {
+                    headingsOneDictionary.TryAdd(headingOne, 0);
+                    headingsOneDictionary[headingOne] += 1;
+                }
+            }
+            
+            return headingsOneDictionary.Keys.Where(headingOne => headingsOneDictionary[headingOne] >= substrings.Length).ToList();
+        }
+
+        public async Task<IEnumerable<HeadingTwo>> GetHeadingsTwoBySubstringsAsync(string[] substrings)
+        {
+            var headingsTwoDictionary = new Dictionary<Entity.HeadingTwo, int>();
+            
+            foreach (var substring in substrings.Select(substring => substring.ToLower()))
+            {
+                var headingsTwo = await _context.HeadingsTwo
+                    .Where(x => x.Title.ToLower().Contains(substring))
+                    .Select(x => new Entity.HeadingTwo(x.Title, x.ImageRef, x.PageLink))
+                    .ToListAsync();
+                
+                foreach (var headingTwo in headingsTwo)
+                {
+                    headingsTwoDictionary.TryAdd(headingTwo, 0);
+                    headingsTwoDictionary[headingTwo] += 1;
+                }
+            }
+            
+            return headingsTwoDictionary.Keys.Where(headingTwo => headingsTwoDictionary[headingTwo] >= substrings.Length).ToList();
+        }
+
+        public async Task<IEnumerable<HeadingThree>> GetHeadingsThreeBySubstringsAsync(string[] substrings)
+        {
+            var headingsThreeDictionary = new Dictionary<Entity.HeadingThree, int>();
+            
+            foreach (var substring in substrings.Select(substring => substring.ToLower()))
+            {
+                var headingsThree = await _context.HeadingsThree
+                    .Where(x => x.PropertyValues.PropertyValue.ToLower().Contains(substring))
+                    .Select(x => new Entity.HeadingThree(x.PropertyValues.PropertyValue, x.ImageRef, x.PageLink))
+                    .ToListAsync();
+                
+                foreach (var headingThree in headingsThree)
+                {
+                    headingsThreeDictionary.TryAdd(headingThree, 0);
+                    headingsThreeDictionary[headingThree] += 1;
+                }
+            }
+            
+            return headingsThreeDictionary.Keys.Where(headingThree => headingsThreeDictionary[headingThree] >= substrings.Length).ToList();
         }
 
         public async Task<IEnumerable<string>> GetHeadingsOneFiltersAsync(string headingOneTitle)

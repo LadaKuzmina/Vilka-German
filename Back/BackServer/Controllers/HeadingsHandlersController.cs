@@ -49,6 +49,24 @@ namespace BackServer.Controllers
         {
             return await _service.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
+        
+        [HttpPost("~/GetHeadingsOneBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingOne>> GetHeadingsOneBySubstrings(string[] substrings)
+        {
+            return await _service.GetHeadingsOneBySubstringsAsync(substrings);
+        }
+        
+        [HttpPost("~/GetHeadingsTwoBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoBySubstrings(string[] substrings)
+        {
+            return await _service.GetHeadingsTwoBySubstringsAsync(substrings);
+        }
+        
+        [HttpPost("~/GetHeadingsThreeBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeBySubstrings(string[] substrings)
+        {
+            return await _service.GetHeadingsThreeBySubstringsAsync(substrings);
+        }
 
         [HttpPost("~/AddHeadingOne")]
         public async Task<StatusCodeResult> AddHeadingOne(HeadingOne headingOne)

@@ -109,7 +109,7 @@ namespace BackServer.Repositories
                              LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
                              LEFT JOIN sales s on sp.sale_id = s.sale_id
-                    WHERE p.title='{title}';";
+                    WHERE LOWER(p.title)='{title.ToLower()}';";
             await using var cmd = new NpgsqlCommand(sql, con);
             await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
             while (await rdr.ReadAsync())
@@ -156,7 +156,7 @@ namespace BackServer.Repositories
                              LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
                              LEFT JOIN sales s on sp.sale_id = s.sale_id
-                    WHERE p.title LIKE '%{substring}%';";
+                    WHERE LOWER(p.title) LIKE '%{substring.ToLower()}%';";
             await using var cmd = new NpgsqlCommand(sql, con);
             await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
             while (await rdr.ReadAsync())
@@ -175,7 +175,7 @@ namespace BackServer.Repositories
             if (con.State != ConnectionState.Open)
                 await con.OpenAsync();
             
-            foreach (var substring in substrings)
+            foreach (var substring in substrings.Select(substring => substring.ToLower()))
             {
                 var sql = @$"
                     SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
@@ -190,7 +190,10 @@ namespace BackServer.Repositories
                              LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
                              LEFT JOIN sales s on sp.sale_id = s.sale_id
-                    WHERE p.title LIKE '%{substring}%';";
+                    WHERE LOWER(p.title) LIKE '%{substring}%'
+                       OR LOWER(hone.title) LIKE '%{substring}%'
+                       OR LOWER(htwo.title) LIKE '%{substring}%'
+                       OR LOWER(pv.property_value) LIKE '%{substring}%';";
                 await using var cmd = new NpgsqlCommand(sql, con);
                 await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
                 while (await rdr.ReadAsync())

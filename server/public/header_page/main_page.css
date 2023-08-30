@@ -1,8 +1,12 @@
 body {
     background-color: #FBFBFB;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     margin: auto;
     font-family: Istok Web;
+}
+
+.phoneNumber {
+    display: none;
 }
 
 .nav .search_content {
@@ -114,7 +118,7 @@ body {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 100px;
+        top: 115px;
         right: 0;
         color: #492D2D;
         background: #FEDB03;
@@ -310,17 +314,21 @@ footer > div {
 
 .header_table {
     position: absolute;
-    left: 650px;
+    left: 50%;
     top: 0;
+    border-collapse: separate;
+    border-spacing: 20px 8px;
 }
 
 .header_table tr {
     vertical-align: top;
 }
 
-.header_table td {
-    padding: 8px;
-}
+/*.header_table td {*/
+/*    !*padding-left: 2%;*!*/
+/*    !*padding-right: 2%;*!*/
+/*    !*padding-top: 8px;*!*/
+/*}*/
 
 .icons {
     padding-top: 159px;
@@ -426,7 +434,7 @@ footer > div {
 }
 
 .products {
-    text-align: center;
+    /*text-align: center;*/
     top: 10px;
     display: inline-block;
     color: transparent;
@@ -437,20 +445,41 @@ footer > div {
     margin: 18px;
 }
 
+.products p {
+    position: absolute;
+    top: 245px;
+    color: #FBFBFB;
+    font-family: 'Istok Web';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 46px;
+    width: 300px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+    /*border: 1px solid #000000;*/
+}
+
 .products .img_prod {
     transition: 0.5s;
 }
 
 .prod_text {
     position: absolute;
-    bottom: 8px;
+    bottom: 50px;
     left: 16px;
     color: transparent;
     transition: 0.5s;
+    width: 300px;
 }
 
 .prod_text a {
     transition: 0.5s;
+}
+
+.prod_text h4 {
+    text-align: center;
+    width: 300px;
 }
 
 .products a {
@@ -468,8 +497,14 @@ footer > div {
 }
 
 .products:hover .img_prod {
-    opacity: 50%;
+    opacity: 15%;
     transition: 0.5s;
+}
+
+.products:hover p {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 /*.products {*/
@@ -508,7 +543,7 @@ footer > div {
     width: 43.75rem;
     border-radius: 3%;
     /*border: solid lightgrey 3px;*/
-    box-shadow: 0 5px 10px gray;
+    box-shadow: 0 5px 10px rgb(128, 128, 128);
     font-size: 23px;
 }
 
@@ -519,7 +554,7 @@ footer > div {
 
 .form_group label {
     position: absolute;
-    top: 0;
+    top: -12px;
     color: #9e9e9e;
     display: flex;
     flex-direction: column;
@@ -628,13 +663,31 @@ h3 {
 /*    background-color: #B48263;*/
 /*    border-radius: 100px;*/
 /*}*/
-
+@media (max-width: 1530px) {
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 15px;
+    }
+}
 
 @media (max-width: 1366px) {
     .logo .logo_photo {
         display: inline-block;
         position: relative;
         margin-top: 8px;
+    }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 13px;
     }
 
     .container_size {
@@ -654,6 +707,15 @@ h3 {
     .container_size {
         width: 960px;
         margin: auto;
+    }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 11px;
     }
 
     .out_products {
@@ -678,6 +740,7 @@ h3 {
         font-size: 16px;
         margin: 15px 0 0 30px;
         font-family: Arial, Inter, serif;
+        width: 200px;
     }
 
     .nav .roof {
@@ -737,7 +800,7 @@ h3 {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 115px;
         right: 0;
         color: black;
         background: #FEDB03;
@@ -848,10 +911,19 @@ h3 {
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        font-size: 14px;
-        width: 200px;
+        font-size: 12px;
+        width: 110px;
         margin: 10px 0 0 30px;
         font-family: Arial, Inter, serif;
+    }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 7px 8px;
+        font-size: 10px;
     }
 
     .nav {
@@ -864,11 +936,11 @@ h3 {
         flex-direction: row;
         margin-top: 50px;
         justify-content: space-between;
-        padding: 0 10px 10px;
+        /*padding: 0 10px 10px;*/
         position: relative;
-        height: 1187.5%;
+        height: 220px;
         width: 100%;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 17px;
         font-family: Arial, Inter, serif;
     }
@@ -927,11 +999,15 @@ h3 {
         width: 80px;
     }
 
+    .header_table {
+        display: none;
+    }
+
     .drop_button {
         display: block;
         width: 80px;
         padding: 10px;
-        background-color: #333;
+        background-color: #FEDB03;
         color: #fff;
         border: none;
         cursor: pointer;
@@ -947,6 +1023,13 @@ h3 {
         min-width: 200px;
         z-index: 1;
         border-radius: 12px;
+    }
+
+    .slidesshow {
+        padding-top: 100px;
+        max-width: 95%;
+        position: relative;
+        margin: auto;
     }
 
     .mobile_content a {
@@ -991,8 +1074,16 @@ h3 {
 
     .logo .logo_photo {
         display: inline-block;
-        position: relative;
+        position: absolute;
+        left: 25%;
+        top: -10px;
         margin-top: 8px;
+    }
+
+    .phoneNumber {
+        display: flex;
+        font-family: "Istok Web";
+        font-size: 15px;
     }
 
     .drop_nav .d3 form {
@@ -1055,7 +1146,7 @@ h3 {
     }
 
     .drop_nav a {
-        color: #492D2D;
+        color: black;
         padding: 10px 20px;
         background: white;
         border-radius: 12px;
@@ -1079,11 +1170,11 @@ h3 {
         flex-shrink: 0;
         margin-top: 50px;
         justify-content: space-between;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
         height: 1187.5%;
         width: 100%;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 11px;
         font-family: Arial, Inter, serif;
     }
@@ -1098,82 +1189,86 @@ h3 {
     }
 
     .formMeasurer {
-        display: flex;
-        position: relative;
-        background-color: #fff;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        width: 30.75rem;
-        border-radius: 3%;
-        font-size: 23px;
+        width: 30rem;
+    }
+
+    .form_group {
+        margin: 15px 30px;
     }
 
     .formMeasurer input {
-        margin: 10px auto auto;
-        height: 45px;
-        width: 26.25rem;
+        margin: 20px auto auto;
+        height: 25px;
+        /*width: 90%;*/
+        padding: 0 0 1px 0;
+        /*width: 31.25rem;*/
         border: none;
-        padding-left: 15px;
-        font-size: 23px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
+        border-bottom: 2px solid #e0e0e0;
+        /*padding-left: 15px;*/
+        background-color: transparent;
+        outline: none;
+        font-size: 16px;
+        /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
+        transition: 0.3s;
     }
 
-    .footer a {
-        color: #492D2D;
+    h3 {
+        font-size: 26px;
     }
 
-    .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
-    }
-
-    .menu {
-        margin: 0 9px 0 9px;
-
-    }
-
-    .list {
-        margin: 37px 10px 0 10px;
-    }
-
-    .footer .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 50px 40px 0 20px;
-        text-align: left;
-    }
-
-    .icons {
-        padding-top: 159px;
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
-    }
+    /*.formMeasurer input {*/
+    /*    margin: 10px auto auto;*/
+    /*    height: 45px;*/
+    /*    width: 26.25rem;*/
+    /*    border: none;*/
+    /*    padding-left: 15px;*/
+    /*    font-size: 23px;*/
+    /*    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
+    /*}*/
+    /*.footer a {*/
+    /*    color: #492D2D;*/
+    /*}*/
+    /*.catalog {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*    float: left;*/
+    /*}*/
+    /*.menu {*/
+    /*    margin: 0 9px 0 9px;*/
+    /*}*/
+    /*.list {*/
+    /*    margin: 37px 10px 0 10px;*/
+    /*}*/
+    /*.footer .contacts {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    gap: 93.75%;*/
+    /*    margin: 50px 40px 0 20px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.icons {*/
+    /*    padding-top: 159px;*/
+    /*    gap: 93.75%;*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+    /*.location_logo {*/
+    /*    width: 30px;*/
+    /*    height: 26px;*/
+    /*}*/
+    /*.email_logo {*/
+    /*    width: 21px;*/
+    /*    height: 14px;*/
+    /*}*/
+    /*.tel_logo {*/
+    /*    width: 18px;*/
+    /*    height: 18px;*/
+    /*}*/
+    /*.whatsapp_logo {*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*}*/
 }
 
 @media (max-width: 575px) {
@@ -1192,10 +1287,10 @@ h3 {
         flex-wrap: wrap;
         margin-top: 50px;
         justify-content: center;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
         align-content: center;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 17px;
         font-family: Arial, Inter, serif;
     }
@@ -1203,6 +1298,7 @@ h3 {
     .slidesshow {
         margin: auto;
         width: 100%;
+        padding-top: 120px;
     }
 
     .wrapper {
@@ -1210,91 +1306,138 @@ h3 {
     }
 
     .formMeasurer {
+        width: 36rem;
+    }
+
+    /*.formMeasurer {*/
+    /*    display: flex;*/
+    /*    position: relative;*/
+    /*    background-color: #fff;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*    margin: auto;*/
+    /*    width: 25.75rem;*/
+    /*    border-radius: 3%;*/
+    /*    font-size: 17px;*/
+    /*}*/
+    /*.formMeasurer input {*/
+    /*    margin: 10px auto auto;*/
+    /*    height: 30px;*/
+    /*    width: 20.25rem;*/
+    /*    border: none;*/
+    /*    padding-left: 15px;*/
+    /*    font-size: 17px;*/
+    /*    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);*/
+    /*}*/
+    /*.footer a {*/
+    /*    color: #492D2D;*/
+    /*}*/
+    /*.catalog {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*    float: left;*/
+    /*}*/
+    /*.menu {*/
+    /*    margin: 0 9px 0 9px;*/
+    /*}*/
+    /*.list {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*}*/
+    /*.footer .contacts {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    gap: 93.75%;*/
+    /*    margin: 0 40px 0 20px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.icons {*/
+    /*    gap: 93.75%;*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+    /*.location_logo {*/
+    /*    width: 30px;*/
+    /*    height: 26px;*/
+    /*}*/
+    /*.email_logo {*/
+    /*    width: 21px;*/
+    /*    height: 14px;*/
+    /*}*/
+    /*.tel_logo {*/
+    /*    width: 18px;*/
+    /*    height: 18px;*/
+    /*}*/
+    /*.whatsapp_logo {*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*}*/
+    /*.measurer p {*/
+    /*    font-size: 17px;*/
+    /*    font-family: Arial, Inter, serif;*/
+    /*    position: relative;*/
+    /*    text-align: center;*/
+    /*}*/
+    .nav {
+        display: none;
+    }
+
+    .catalog {
+        width: 300px;
+    }
+
+    .menu {
+        width: 100px;
+    }
+
+    .list {
+        width: 100px;
+    }
+
+    .footer .contacts {
+        width: 100px;
+    }
+
+    .phoneNumber {
+        display: flex;
+        font-family: "Istok Web";
+        position: absolute;
+        top: 70px;
+        left: 30%;
+        font-size: 18px;
+    }
+
+    .formMeasurer {
         display: flex;
         position: relative;
-        background-color: #fff;
         justify-content: center;
         align-items: center;
         margin: auto;
-        width: 25.75rem;
+        width: 23rem;
         border-radius: 3%;
         font-size: 17px;
     }
 
-    .formMeasurer input {
-        margin: 10px auto auto;
-        height: 30px;
-        width: 20.25rem;
-        border: none;
-        padding-left: 15px;
-        font-size: 17px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
-    }
-
-    .footer a {
-        color: #492D2D;
-    }
-
-    .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
-    }
-
-    .menu {
-        margin: 0 9px 0 9px;
-
-    }
-
-    .list {
-        margin: 0 10px 0 10px;
-    }
-
-    .footer .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 0 40px 0 20px;
-        text-align: left;
-    }
-
-    .icons {
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
+    h3 {
+        font-size: 20px;
+        text-align: center;
     }
 
     .measurer p {
-        font-size: 17px;
+        font-size: 14px;
         font-family: Arial, Inter, serif;
         position: relative;
         text-align: center;
     }
 
-    .nav {
-        display: none;
+    .formMeasurer label[class="check"] {
+        font-size: 14px;
+        margin: 15px;
+    }
+
+    .formMeasurer button {
+        font-size: 16px;
+        height: 35px;
     }
 }
 
@@ -1304,20 +1447,19 @@ h3 {
         margin: auto;
     }
 
-    .products {
-        color: black;
-        position: relative;
-        background-color: #D6AE96;
-        width: 15.625em;
-        height: 9.375em;
-        padding: 18px;
-        border-radius: 10px;
-        font-family: Arial, Inter, serif;
-        font-size: 15px;
-        overflow: auto;
-        margin: 18px;
-    }
-
+    /*.products {*/
+    /*    color: black;*/
+    /*    position: relative;*/
+    /*    background-color: #D6AE96;*/
+    /*    width: 15.625em;*/
+    /*    height: 9.375em;*/
+    /*    padding: 18px;*/
+    /*    border-radius: 10px;*/
+    /*    font-family: Arial, Inter, serif;*/
+    /*    font-size: 15px;*/
+    /*    overflow: auto;*/
+    /*    margin: 18px;*/
+    /*}*/
     .d3 {
         flex-shrink: 3;
     }
@@ -1328,10 +1470,10 @@ h3 {
         flex-wrap: wrap;
         margin-top: 50px;
         justify-content: center;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
         align-content: center;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 13px;
         font-family: Arial, Inter, serif;
     }
@@ -1339,6 +1481,7 @@ h3 {
     .slidesshow {
         margin: auto;
         width: 100%;
+        padding-top: 120px;
     }
 
     .wrapper {
@@ -1348,25 +1491,12 @@ h3 {
     .formMeasurer {
         display: flex;
         position: relative;
-        background-color: #fff;
         justify-content: center;
         align-items: center;
         margin: auto;
-        width: 17.75rem;
+        width: 20rem;
         border-radius: 3%;
         font-size: 17px;
-    }
-
-    .formMeasurer button {
-        cursor: pointer;
-        padding: 4px 30px;
-        height: 25px;
-        color: #fff;
-        background: #D6AE96;
-        border: none;
-        font-size: 15px;
-        margin-bottom: 15px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
     }
 
     h3 {
@@ -1374,100 +1504,50 @@ h3 {
         text-align: center;
     }
 
-    .formMeasurer input {
-        margin: 2px auto auto;
-        height: 20px;
-        width: 13.25rem;
-        border: none;
-        padding-left: 15px;
-        font-size: 15px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.82);
-    }
-
-    .footer a {
-        color: #492D2D;
-    }
-
     .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
+        width: 300px;
     }
 
     .menu {
-        margin: 0 9px 0 9px;
-
+        width: 100px;
     }
 
     .list {
-        margin: 0 10px 0 10px;
+        width: 100px;
     }
 
     .footer .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 0 40px 0 20px;
-        text-align: left;
-    }
-
-    .icons {
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header .info {
-        display: flex;
-        position: relative;
-        align-items: center;
-        flex-direction: row-reverse;
-        grid-gap: 10px;
-        font-size: 40px;
-        text-align: center;
-    }
-
-    .header .contacts {
-        list-style-type: none;
-        font-style: normal;
-        font-size: 18px;
-        line-height: 20px;
-        padding-left: 0;
-    }
-
-    .logo_photo {
-        position: relative;
-        width: 115px;
-        height: 24px;
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
+        width: 100px;
     }
 
     .measurer p {
-        font-size: 15px;
+        font-size: 14px;
         font-family: Arial, Inter, serif;
         position: relative;
         text-align: center;
+    }
+
+    .formMeasurer label[class="check"] {
+        font-size: 14px;
+        margin: 15px;
+    }
+
+    .formMeasurer button {
+        font-size: 16px;
+        height: 35px;
+    }
+
+    .phoneNumber {
+        display: flex;
+        font-family: "Istok Web";
+        position: absolute;
+        top: 70px;
+        left: 30%;
+        font-size: 18px;
+    }
+
+    .drop_button {
+        width: 60px;
     }
 
     .nav {

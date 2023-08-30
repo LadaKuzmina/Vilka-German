@@ -12,9 +12,9 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class SaleChangerDb : ISaleChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public SaleChangerDb(TestContext context)
+        public SaleChangerDb(GsDbContext context)
         {
             _context = context;
         }

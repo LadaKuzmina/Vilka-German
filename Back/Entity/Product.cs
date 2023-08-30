@@ -6,13 +6,21 @@ namespace Entity
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+
+        private double price;
+
+        public double Price
+        {
+            get => price;
+            set => price = Math.Round(value, 2);
+        }
+
         public int SalePrice { get; set; }
         public int Popularity { get; set; }
         public bool Available { get; set; }
         public int Quantity { get; set; }
         public string? PageLink { get; set; }
-        public IEnumerable<string> ImageRefs { get; set; }
+        public List<string> ImageRefs { get; set; }
         public string HeadingOne { get; set; }
         public string HeadingTwo { get; set; }
         public string? HeadingThree { get; set; }
@@ -24,7 +32,8 @@ namespace Entity
 
         private readonly int _hashValue;
 
-        public Product(string title, string description, int price, int quantity, int popularity, bool available, string? pageLink, string unitMeasurement)
+        public Product(string title, string description, int price, int quantity, int popularity, bool available,
+            string? pageLink, string unitMeasurement)
         {
             Title = title;
             Description = description;
@@ -35,17 +44,23 @@ namespace Entity
             PageLink = pageLink;
             UnitMeasurement = unitMeasurement;
             _hashValue = GetFNVHashCode();
+            ImageRefs = new List<string>();
+            Properties = new List<Property>();
         }
 
         public Product(string title)
         {
             Title = title;
             _hashValue = GetFNVHashCode();
+            ImageRefs = new List<string>();
+            Properties = new List<Property>();
         }
 
         public Product()
         {
             _hashValue = GetFNVHashCode();
+            ImageRefs = new List<string>();
+            Properties = new List<Property>();
         }
 
         private int GetFNVHashCode()

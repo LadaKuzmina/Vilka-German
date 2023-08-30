@@ -14,8 +14,8 @@ namespace BackServer.Services.Interfaces
         Task<string> GetProductPropertyValue(string productTitle, string propertyTitle);
         
         
-        Task<bool> AddProperty(Entity.Property property);
-        Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues);
+        Task<bool> AddProperty(string propertyTitle);
+        Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues);
         Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue,
             bool isPriority);
 

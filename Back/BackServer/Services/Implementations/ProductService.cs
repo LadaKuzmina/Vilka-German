@@ -100,6 +100,9 @@ namespace BackServer.Services
 
         public async Task<bool> Add(Product product)
         {
+            if (await _visitor.GetByTitle(product.Title) != null)
+                return true;
+            
             return await _changer.Add(product);
         }
 

@@ -12,9 +12,9 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class ProjectChangerDb : IProjectChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public ProjectChangerDb(TestContext context)
+        public ProjectChangerDb(GsDbContext context)
         {
             _context = context;
         }

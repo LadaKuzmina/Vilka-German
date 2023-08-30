@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.51" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.3.23174.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.3.23174.2" />
         <PackageReference Include="MiniProfiler.AspNetCore" Version="4.2.22" />
@@ -20,7 +21,12 @@
 <!--      <ProjectReference Include="..\DbEntityConverter\DbEntityConverter.csproj" />-->
       <ProjectReference Include="..\DbEntity\DbEntity.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
-      <ProjectReference Include="..\NpgsqlDbExtensions\NpgsqlDbExtensions.csproj" />
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+      <Folder Include="TEST\" />
     </ItemGroup>
 
 </Project>

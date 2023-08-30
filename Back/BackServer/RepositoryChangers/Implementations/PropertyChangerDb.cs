@@ -10,47 +10,33 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class PropertyChangerDb : IPropertyChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
         private readonly string defaultPropertyValue = "Не указано";
 
-        public PropertyChangerDb(TestContext context)
+        public PropertyChangerDb(GsDbContext context)
         {
             _context = context;
         }
 
-        public async Task<bool> AddProperty(Property property)
+        public async Task<bool> AddProperty(string propertyTitle)
         {
-            var propertyDb = new DbEntity.Property() {Title = property.Title};
-            if (!await _context.Properties.AnyAsync(x => x.Title == property.Title))
+            if (!await _context.Properties.AnyAsync(x => x.Title == propertyTitle))
             {
+                var propertyDb = new DbEntity.Property() {Title = propertyTitle};
                 await _context.Properties.AddAsync(propertyDb);
                 await _context.SaveChangesAsync();
             }
 
-            propertyDb = await _context.Properties.FirstAsync(x => x.Title == property.Title);
-            foreach (var value in property.Values)
-            {
-                if (!await _context.PropertyValues.AnyAsync(x =>
-                    x.Property.Id == propertyDb.Id && x.PropertyValue == value))
-                {
-                    var propertyValues = new DbEntity.PropertyValues()
-                        {Property = propertyDb, PropertyValue = value};
-                    await _context.PropertyValues.AddAsync(propertyValues);
-                    await _context.SaveChangesAsync();
-                }
-            }
-
-
-            await _context.SaveChangesAsync();
             return true;
         }
         
-        public async Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues)
+        public async Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues)
         {
             var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
             if (property == null)
             {
-                return false;
+                await AddProperty(propertyTitle);
+                property = await _context.Properties.FirstAsync(x => x.Title == propertyTitle);
             }
             
             foreach (var value in propertyValues)
@@ -158,17 +144,24 @@ namespace BackServer.RepositoryChangers.Implementations
         public async Task<bool> AddProductPropertyValue(string productTitle, string propertyTitle, string propertyValue,
             bool isPriority)
         {
-            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
-            if (property == null)
-                return false;
-
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Title == productTitle);
             if (product == null)
                 return false;
-
-            if (await _context.ProductProperties.FirstOrDefaultAsync(x =>
-                x.Product == product && x.PropertyValues.Property == property) != null)
+            
+            
+            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
+            if (property == null)
             {
+                await AddProperty(propertyTitle);
+                property = await _context.Properties.FirstAsync(x => x.Title == propertyTitle);
+            }
+
+            var productProperty = await _context.ProductProperties.FirstOrDefaultAsync(x =>
+                x.Product == product && x.PropertyValues.Property == property);
+            if (productProperty != null)
+            {
+                productProperty.IsPriority = isPriority;
+                await _context.SaveChangesAsync();
                 return true;
             }
 
@@ -265,7 +258,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 .FirstOrDefaultAsync(x => x.Property.Title == propertyTitle && x.PropertyValue == defaultPropertyValue);
             if (defaultPV == null)
             {
-                await AddProperty(new Property(propertyTitle, new[] {defaultPropertyValue}));
+                await AddPropertyValue(propertyTitle, new[] {defaultPropertyValue});
             }
             
             defaultPV = await _context.PropertyValues

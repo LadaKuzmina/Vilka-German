@@ -9,9 +9,9 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class PhotoChangerDb : IPhotoChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public PhotoChangerDb(TestContext context)
+        public PhotoChangerDb(GsDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace BackServer.RepositoryChangers.Implementations
             if (productImage != null)
                 return true;
 
-            productImage = new ProductImages() {Product = product, ImageRef = imageRef, IsPriority = isPriority};
+            productImage = new ProductImages() {Product = product, ImageRef = imageRef, IsPrimary = isPriority};
             await _context.ProductImages.AddAsync(productImage);
             await _context.SaveChangesAsync();
             return true;
@@ -57,7 +57,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 return false;
 
             productImage.ImageRef = newImageRef;
-            productImage.IsPriority = isPriority;
+            productImage.IsPrimary = isPriority;
             await _context.SaveChangesAsync();
             return true;
         }

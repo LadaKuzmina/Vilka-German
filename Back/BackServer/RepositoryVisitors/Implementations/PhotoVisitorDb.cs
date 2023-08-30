@@ -4,110 +4,115 @@ using System.Threading.Tasks;
 using BackServer.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using NpgsqlDbExtensions;
+using NpgsqlTypes;
 
 namespace BackServer.Repositories
 {
     public class PhotoVisitorDb : IPhotoVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public PhotoVisitorDb(TestContext context)
+        private readonly string getAllProjectImage = @"SELECT pi.image_ref FROM project_images as pi JOIN projects p on pi.project_id = p.project_id";
+        private readonly string getAllProductImage =  @"SELECT pi.image_ref FROM product_images as pi JOIN products p on pi.product_id = p.product_id";
+
+        public PhotoVisitorDb(GsDbContext context)
         {
             _context = context;
         }
 
         public async Task<string?> GetPrimaryProductPhoto(string productTitle)
         {
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
 
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
-            var sql = @$"
-                    SELECT pi.image_ref
-                    FROM project_images as pi
-                             JOIN projects p on pi.project_id = p.project_id
-                    WHERE p.title = '{productTitle}' AND pi.is_primary
-                    LIMIT 1;";
+            var sql = $"{getAllProductImage} WHERE p.title = @TITLE AND pi.is_primary LIMIT 1;";
 
-            await using var cmd = new NpgsqlCommand(sql, con);
-            await using NpgsqlDataReader rdr = cmd.ExecuteReader();
-            if (!await rdr.ReadAsync()) return null;
-            var imageRefs = rdr.GetString(0);
+            await using var cmd = new NpgsqlCommand(sql, dbConnection);
+            var parameters = new[]
+            {
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = productTitle}
+            };
+            
+            var imageRefs = await ExecuteSqlCommand(sql, dbConnection, parameters);
 
-            await con.CloseAsync();
+            await dbConnection.CloseAsync();
 
-            return imageRefs;
+            return imageRefs.First();
         }
 
         public async Task<IEnumerable<string>> GetAllProductPhoto(string productTitle)
         {
-            var imageRefs = new List<string>();
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
-            var sql = @$"
-                    SELECT pi.image_ref
-                    FROM project_images as pi
-                             JOIN projects p on pi.project_id = p.project_id
-                    WHERE p.title = '{productTitle}';";
+            var sql = $"{getAllProductImage} WHERE p.title = @TITLE;";
 
-            await using var cmd = new NpgsqlCommand(sql, con);
+            var parameters = new[]
             {
-                await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-                while (await rdr.ReadAsync())
-                {
-                    imageRefs.Add(rdr.GetString(0));
-                }
-            }
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = productTitle}
+            };
+            
+            var imageRefs = await ExecuteSqlCommand(sql, dbConnection, parameters);
 
-            await con.CloseAsync();
+            await dbConnection.CloseAsync();
 
             return imageRefs;
         }
 
         public async Task<string?> GetPrimaryProjectPhoto(string projectTitle)
         {
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+           var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
-            var sql = @$"
-                    SELECT pi.image_ref
-                    FROM project_images as pi
-                             JOIN projects p on pi.project_id = p.project_id
-                    WHERE p.title = '{projectTitle}' AND pi.is_primary
-                    LIMIT 1;";
+            var sql = $"{getAllProjectImage} WHERE p.title = @TITLE AND pi.is_primary LIMIT 1;";
 
-            await using var cmd = new NpgsqlCommand(sql, con);
-            await using NpgsqlDataReader rdr = cmd.ExecuteReader();
-            if (!await rdr.ReadAsync()) return null;
-            var imageRefs = rdr.GetString(0);
+            var parameters = new[]
+            {
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = projectTitle}
+            };
+            
+            var imageRefs = await ExecuteSqlCommand(sql, dbConnection, parameters);
+            await dbConnection.CloseAsync();
 
-            return imageRefs;
+            return imageRefs.First();
         }
 
 
         public async Task<IEnumerable<string>> GetAllProjectPhoto(string projectTitle)
         {
-            var imageRefs = new List<string>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
-            var sql = @$"
-                    SELECT pi.image_ref
-                    FROM project_images as pi
-                             JOIN projects p on pi.project_id = p.project_id
-                    WHERE p.title = '{projectTitle}';";
+            var sql = $"{getAllProjectImage} WHERE p.title = @TITLE AND pi.is_primary LIMIT 1;";
 
-            await using var cmd = new NpgsqlCommand(sql, con);
+            var parameters = new[]
             {
-                await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-                while (await rdr.ReadAsync())
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = projectTitle}
+            };
+            
+            var imageRefs = await ExecuteSqlCommand(sql, dbConnection, parameters);
+            await dbConnection.CloseAsync();
+
+            return imageRefs;
+        }
+        
+        private async Task<IEnumerable<string>> ExecuteSqlCommand(string sql,
+            NpgsqlConnection dbConnection, IEnumerable<NpgsqlParameter> parameters)
+        {
+            var imageRefs = new List<string>();
+            await using var command = new NpgsqlCommand(sql, dbConnection);
+            {
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    imageRefs.Add(rdr.GetString(0));
+                    imageRefs.Add( reader.GetString(0));
                 }
             }
 

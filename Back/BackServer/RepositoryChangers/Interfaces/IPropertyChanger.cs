@@ -5,7 +5,7 @@ namespace BackServer.RepositoryChangers.Interfaces
 {
     public interface IPropertyChanger
     {
-        Task<bool> AddProperty(Entity.Property property);
+        Task<bool> AddProperty(string propertyTitle);
         Task<bool> DeleteProperty(string propertyTitle);
         Task<bool> UpdateProperty(Property oldProperty, Property property);
 
@@ -20,7 +20,7 @@ namespace BackServer.RepositoryChangers.Interfaces
         Task<bool> DeleteAllProductProperties(string productTitle);
         Task<bool> DeleteAllPropertyValues(string propertyTitle);
         Task<bool> DeletePropertyValue(string propertyTitle, string propertyValue);
-        Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues);
+        Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues);
 
         Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle);
         Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle);

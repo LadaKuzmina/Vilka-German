@@ -21,10 +21,10 @@ namespace BackServer.Repositories
 {
     public class PropertiesVisitorDb : IPropertyVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
         private readonly IHeadersVisitor _headersVisitor;
 
-        public PropertiesVisitorDb(TestContext context, IHeadersVisitor headersVisitor)
+        public PropertiesVisitorDb(GsDbContext context, IHeadersVisitor headersVisitor)
         {
             _context = context;
             _headersVisitor = headersVisitor;

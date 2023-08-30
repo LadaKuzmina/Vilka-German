@@ -4,9 +4,9 @@ using DbEntity;
 
 namespace BackServer.Contexts
 {
-    public class TestContext : DbContext
+    public class GsDbContext : DbContext
     {
-        public TestContext(DbContextOptions<TestContext> options) : base(options)
+        public GsDbContext(DbContextOptions<GsDbContext> options) : base(options)
         {
         }
 
@@ -304,7 +304,7 @@ namespace BackServer.Contexts
                 entity.HasKey(x => new {x.ImageRef, ProductId = x.product_id});
 
                 entity.Property(e => e.ImageRef).IsRequired().HasColumnName("image_ref");
-                entity.Property(e => e.IsPriority).IsRequired().HasColumnName("is_priority");
+                entity.Property(e => e.IsPrimary).IsRequired().HasColumnName("is_primary");
                 entity.Property(e => e.product_id).IsRequired().HasColumnName("product_id");
 
                 entity

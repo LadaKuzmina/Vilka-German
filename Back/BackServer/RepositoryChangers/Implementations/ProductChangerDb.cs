@@ -12,15 +12,18 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class ProductChangerDb : IProductChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public ProductChangerDb(TestContext context)
+        public ProductChangerDb(GsDbContext context)
         {
             _context = context;
         }
 
         public async Task<bool> Add(Product product)
         {
+            if (await _context.Products.FirstOrDefaultAsync(x => x.Title == product.Title) != null)
+                return true;
+            
             var headingOne = await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == product.HeadingOne);
             var headingTwo = await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == product.HeadingTwo);
             var unitMeasurement =

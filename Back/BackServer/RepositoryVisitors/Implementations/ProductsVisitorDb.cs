@@ -17,86 +17,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using Npgsql;
 using NpgsqlDbExtensions.Enums;
+using NpgsqlTypes;
 using Product = Entity.Product;
 
 namespace BackServer.Repositories
 {
     public class ProductsVisitorDb : IProductVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
         private readonly IPropertyVisitor _propertyVisitor;
         private readonly IPhotoVisitor _photoVisitor;
 
-        public ProductsVisitorDb(TestContext context, IPropertyVisitor propertyVisitor, IPhotoVisitor photoVisitor)
-        {
-            _context = context;
-            _propertyVisitor = propertyVisitor;
-            _photoVisitor = photoVisitor;
-        }
-
-        public async Task<IEnumerable<Entity.Product>> GetAll()
-        {
-            var products = new List<Entity.Product>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
-
-            var sql = @$"
-                SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link, um.unit_measurement_value,
-                    hone.title, htwo.title, pv.property_value 
-                FROM products as p
-                         JOIN product_family pf on pf.product_family_id = p.product_family_id
-                         JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
-                         JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
-                         JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
-                         LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
-                         LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id";
-            await using var cmd = new NpgsqlCommand(sql, con);
-            await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-            while (await rdr.ReadAsync())
-            {
-                products.Add(await ConvertProduct(rdr));
-            }
-
-            return products;
-        }
-
-        public async Task<IEnumerable<Entity.Product>> GetAvailable()
-        {
-            var products = new List<Entity.Product>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
-
-            var sql = @$"
-                SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link, um.unit_measurement_value,
-                    hone.title, htwo.title, pv.property_value 
-                FROM products as p
-                         JOIN product_family pf on pf.product_family_id = p.product_family_id
-                         JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
-                         JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
-                         JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
-                         LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
-                         LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
-                WHERE p.available=true;";
-            await using var cmd = new NpgsqlCommand(sql, con);
-            await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-            while (await rdr.ReadAsync())
-            {
-                products.Add(await ConvertProduct(rdr));
-            }
-
-            return products;
-        }
-
-        public async Task<Entity.Product?> GetByTitle(string title)
-        {
-            Entity.Product product = default!;
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
-
-            var sql = @$"
+        private readonly string sqlGetAllProduct = @"
                     SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
                            um.unit_measurement_value, hone.title, htwo.title, pv.property_value,
                            CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
@@ -108,30 +40,62 @@ namespace BackServer.Repositories
                              LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
                              LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
-                             LEFT JOIN sales s on sp.sale_id = s.sale_id
-                    WHERE LOWER(p.title)='{title.ToLower()}';";
-            await using var cmd = new NpgsqlCommand(sql, con);
-            await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-            while (await rdr.ReadAsync())
-            {
-                product = new Entity.Product(rdr.GetString(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3),
-                    rdr.GetInt32(4), rdr.GetBoolean(5), await rdr.ReadNullOrStringAsync(6), rdr.GetString(7))
-                {
-                    HeadingOne = rdr.GetString(8),
-                    HeadingTwo = rdr.GetString(9),
-                    HeadingThree = await rdr.ReadNullOrStringAsync(10),
-                    SalePrice = rdr.GetInt32(11)
-                };
-            }
+                             LEFT JOIN sales s on sp.sale_id = s.sale_id";
 
-            await con.CloseAsync();
+        public ProductsVisitorDb(GsDbContext context, IPropertyVisitor propertyVisitor, IPhotoVisitor photoVisitor)
+        {
+            _context = context;
+            _propertyVisitor = propertyVisitor;
+            _photoVisitor = photoVisitor;
+        }
 
-            if (product is null)
+        public async Task<IEnumerable<Entity.Product>> GetAll()
+        {
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var products =
+                await ExecuteSqlCommand($"{sqlGetAllProduct};", dbConnection, Array.Empty<NpgsqlParameter>());
+
+            return products;
+        }
+
+        public async Task<IEnumerable<Entity.Product>> GetAvailable()
+        {
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var sql = $"{sqlGetAllProduct}\n WHERE p.available=true;";
+
+            var products = await ExecuteSqlCommand(sql, dbConnection, Array.Empty<NpgsqlParameter>());
+
+            return products;
+        }
+
+        public async Task<Entity.Product?> GetByTitle(string title)
+        {
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var sql = $"{sqlGetAllProduct}\n  WHERE p.title=@TITLE;";
+
+            var parameters = new[]
             {
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = title}
+            };
+
+            var products = await ExecuteSqlCommand(sql, dbConnection, parameters);
+
+            await dbConnection.CloseAsync();
+
+            if (products.Count == 0)
                 return null;
-            }
-            
-            product.ImageRefs = await _photoVisitor.GetAllProductPhoto(product.Title);
+
+            var product = products[0];
+            product.ImageRefs = (await _photoVisitor.GetAllProductPhoto(product.Title)).ToList();
 
             return product;
         }
@@ -250,76 +214,67 @@ namespace BackServer.Repositories
         public async Task<int> GetCountPagesHeadingOne(string headingOneTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int countElements)
         {
-            var products = await GetHeadingsPage(headingOneTitle, Headings.HeadingOne, productOrder, reqProperties, 1,
-                countElements);
-            return products.Count;
+            var products = (await GetAllHeadingOne(headingOneTitle)).ToList();
+            products = await GetByRequirements(products, reqProperties, 0, products.Count());
+            return products.Count / countElements + (products.Count() % countElements == 0 ? 0 : 1);
         }
 
         public async Task<int> GetCountPagesHeadingTwo(string headingTwoTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int countElements)
         {
-            var products = await GetHeadingsPage(headingTwoTitle, Headings.HeadingTwo, productOrder, reqProperties, 1,
-                countElements);
-            return products.Count;
+            var products = (await GetAllHeadingTwo(headingTwoTitle)).ToList();
+            products = await GetByRequirements(products, reqProperties, 0, products.Count());
+            return products.Count / countElements + (products.Count() % countElements == 0 ? 0 : 1);
         }
 
         public async Task<List<Entity.Product>> GetHeadingsPage(string headingTitle, Headings heading,
             ProductOrders productOrder, Dictionary<string, HashSet<string>> reqProperties, int pageNumber,
             int countElements)
         {
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
 
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
             var sql = new StringBuilder();
-            sql.Append(@$"
-                SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
-                       um.unit_measurement_value,
-                       CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
-                FROM products as p
-                         JOIN product_family pf on pf.product_family_id = p.product_family_id
-                         JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
-                         LEFT JOIN sale_products sp on p.product_id = sp.product_id
-                         LEFT JOIN sales s on sp.sale_id = s.sale_id");
-
+            sql.Append(sqlGetAllProduct);
             sql.Append($" {JoinByHeading(heading)}");
-            sql.Append($" {WhereByHeading(heading, headingTitle)}");
+            sql.Append($" {WhereByHeading(heading)}");
             sql.Append($" {SelectOrder(productOrder)};");
 
-            var products = await ExecuteSqlCommand(sql.ToString(), con);
-            await con.CloseAsync();
+            var parameters = new[]
+            {
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingTitle}
+            };
+
+            var products = await ExecuteSqlCommand(sql.ToString(), dbConnection, parameters);
+            await dbConnection.CloseAsync();
 
             products = await GetByRequirements(products, reqProperties, (pageNumber - 1) * countElements,
                 countElements);
-
 
             return products;
         }
 
         public async Task<List<Entity.Product>> GetAllByHeading(string headingTitle, Headings heading)
         {
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
 
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
             var sql = new StringBuilder();
-            sql.Append(@$"
-                SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
-                       um.unit_measurement_value,
-                       CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
-                FROM products as p
-                         JOIN product_family pf on pf.product_family_id = p.product_family_id
-                         JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
-                         LEFT JOIN sale_products sp on p.product_id = sp.product_id
-                         LEFT JOIN sales s on sp.sale_id = s.sale_id");
-
+            sql.Append(sqlGetAllProduct);
             sql.Append($" {JoinByHeading(heading)}");
-            sql.Append($" {WhereByHeading(heading, headingTitle)};");
+            sql.Append($" {WhereByHeading(heading)};");
 
-            var products = await ExecuteSqlCommand(sql.ToString(), con);
-            await con.CloseAsync();
+            var parameters = new[]
+            {
+                new NpgsqlParameter() {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingTitle}
+            };
+
+            var products = await ExecuteSqlCommand(sql.ToString(), dbConnection, parameters);
+            await dbConnection.CloseAsync();
 
 
             return products;
@@ -331,31 +286,31 @@ namespace BackServer.Repositories
             {
                 case Headings.HeadingOne:
                     return
-                        $"JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id";
+                        "JOIN heading_one ho on ho.heading_one_id = pf.heading_one_id";
                 case Headings.HeadingTwo:
                     return
-                        $"JOIN heading_two ht on ht.heading_two_id = pf.heading_two_id";
+                        "JOIN heading_two ht on ht.heading_two_id = pf.heading_two_id";
                 case Headings.HeadingThree:
                     return
-                        $@"JOIN heading_three ht on p.heading_three_id = ht.heading_three_id
+                        @"JOIN heading_three ht on p.heading_three_id = ht.heading_three_id
                           JOIN property_values pv on ht.property_values_id = pv.property_values_id";
                 default:
                     return "";
             }
         }
 
-        private string WhereByHeading(Headings heading, string headingTitle)
+        private string WhereByHeading(Headings heading)
         {
             switch (heading)
             {
                 case Headings.HeadingOne:
                     return
-                        $"Where p.available AND ho.title = '{headingTitle}'";
+                        "Where p.available AND ho.title = @TITLE";
                 case Headings.HeadingTwo:
                     return
-                        $"WHERE p.available AND ht.title = '{headingTitle}'";
+                        "WHERE p.available AND ht.title = @TITLE";
                 case Headings.HeadingThree:
-                    return $"WHERE p.available AND pv.property_value='{headingTitle}'";
+                    return "WHERE p.available AND pv.property_value=@TITLE";
                 default:
                     return "";
             }
@@ -384,15 +339,17 @@ namespace BackServer.Repositories
             }
         }
 
-        private async Task<List<Entity.Product>> ExecuteSqlCommand(string sql, NpgsqlConnection? con)
+        private async Task<List<Product>> ExecuteSqlCommand(string sql, NpgsqlConnection? dbConnection,
+            IEnumerable<NpgsqlParameter> parameters)
         {
             var products = new List<Entity.Product>();
-            await using var cmd = new NpgsqlCommand(sql, con);
+            await using var command = new NpgsqlCommand(sql, dbConnection);
             {
-                await using NpgsqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    var product = await ConvertProductWithSale(rdr);
+                    var product = await ConvertProduct(reader);
                     products.Add(product);
                 }
             }
@@ -431,7 +388,7 @@ namespace BackServer.Repositories
                         break;
                     }
                 }
-                
+
 
                 if (meetsRequirements)
                 {
@@ -452,23 +409,15 @@ namespace BackServer.Repositories
             return await _propertyVisitor.GetAllByProduct(product.Title);
         }
 
-        private async Task<Entity.Product> ConvertProduct(NpgsqlDataReader rdr)
+        private async Task<Entity.Product> ConvertProduct(NpgsqlDataReader reader)
         {
-            return new Entity.Product(rdr.GetString(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3),
-                rdr.GetInt32(4), rdr.GetBoolean(5), await rdr.ReadNullOrStringAsync(6), rdr.GetString(7))
+            return new Entity.Product(reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetInt32(3),
+                reader.GetInt32(4), reader.GetBoolean(5), await reader.ReadNullOrStringAsync(6), reader.GetString(7))
             {
-                HeadingOne = rdr.GetString(8),
-                HeadingTwo = rdr.GetString(9),
-                HeadingThree = await rdr.ReadNullOrStringAsync(10)
-            };
-        }
-
-        private async Task<Entity.Product> ConvertProductWithSale(NpgsqlDataReader rdr)
-        {
-            return new Entity.Product(rdr.GetString(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3),
-                rdr.GetInt32(4), rdr.GetBoolean(5), await rdr.ReadNullOrStringAsync(6), rdr.GetString(7))
-            {
-                SalePrice = rdr.GetInt32(8)
+                HeadingOne = reader.GetString(8),
+                HeadingTwo = reader.GetString(9),
+                HeadingThree = await reader.ReadNullOrStringAsync(10),
+                SalePrice = reader.GetInt32(11)
             };
         }
     }

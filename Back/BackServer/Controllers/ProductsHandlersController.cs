@@ -78,14 +78,14 @@ namespace BackServer.Controllers
                 requiredProperties.ToDictionary(x => x.Title, x => x.Values.ToHashSet()), pageNumber, countElements);
         }
 
-        [HttpGet("~/GetCountPagesHeadingOne")]
+        [HttpPost("~/GetCountPagesHeadingOne")]
         public async Task<int> GetCountPagesHeadingOne(string headingOneTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int countElements)
         {
             return await _service.GetCountPagesHeadingOne(headingOneTitle, productOrder, reqProperties, countElements);
         }
 
-        [HttpGet("~/GetCountPagesHeadingTwo")]
+        [HttpPost("~/GetCountPagesHeadingTwo")]
         public async Task<int> GetCountPagesHeadingTwo(string headingTwoTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int countElements)
         {

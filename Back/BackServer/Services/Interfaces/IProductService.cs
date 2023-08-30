@@ -11,7 +11,8 @@ namespace BackServer.Services.Interfaces
         Task<IEnumerable<Entity.Product>> GetAvailable();
         Task<Entity.Product?> GetByTitle(string title);
         Task<IEnumerable<Entity.Product>> GetBySubstring(string substring);
-        Task<IEnumerable<Entity.Product>> GetBySubstrings(string[] substrings);
+        Task<IEnumerable<Entity.Product>> GetBySubstrings(string[] substrings, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements);
         Task<IEnumerable<Entity.Product>> GetPageHeadingOne(string headingOneTitle, ProductOrders productOrder,
             Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements);
         Task<IEnumerable<Entity.Product>> GetPageHeadingTwo(string headingTwoTitle, ProductOrders productOrder,

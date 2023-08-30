@@ -8,11 +8,11 @@ async function search() {
         searchBlock.textContent = '';
 
         words = new_words;
-        let json = JSON.stringify(words);
+        let substrings = words.join(' ');
 
-        let headingsOne = await getAllHeadingsOne(json);
-        let headingsTwo = await getAllHeadingsTwo(json);
-        let products = await getAllProducts(json);
+        let headingsOne = await getAllHeadingsOne(substrings);
+        let headingsTwo = await getAllHeadingsTwo(substrings);
+        let products = await getAllProducts(substrings);
 
         let counter = 0;
 
@@ -55,22 +55,29 @@ async function search() {
     }
 }
 
-async function getAllHeadingsOne(json) {
-    let response = await httpPost(`https://localhost:7240/GetHeadingsOneBySubstrings`, json);
+async function getAllHeadingsOne(substrings) {
+    let response = await httpGet(`https://localhost:7240/GetHeadingsOneBySubstrings?substrings=${substrings}`);
 
     return response;
 }
 
-async function getAllHeadingsTwo(json) {
-    let response = await httpPost(`https://localhost:7240/GetHeadingsTwoBySubstrings`, json);
+async function getAllHeadingsTwo(substrings) {
+    let response = await httpGet(`https://localhost:7240/GetHeadingsTwoBySubstrings?substrings=${substrings}`);
 
     return response;
 }
 
-async function getAllProducts(json) {
-    let response = await httpPost(`https://localhost:7240/GetProductBySubstrings`, json);
+async function getAllProducts(substrings) {
+    let response = await httpPost(`https://localhost:7240/GetProductBySubstrings?substrings=${substrings}&productOrder=0&pageNumber=1&countElements=${search_limit}`, '[]');
 
     return response;
+}
+
+async function httpGet(url, json)
+{
+    let response = await fetch(url);
+
+    return response.json();
 }
 
 async function httpPost(url, json)
@@ -82,5 +89,6 @@ async function httpPost(url, json)
             "Content-Type": "application/json"
         },
         body: json});
+
     return response.json();
 }

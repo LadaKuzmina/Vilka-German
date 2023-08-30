@@ -47,6 +47,8 @@ namespace BackServer.Repositories
 
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOneAsync(string headingOneTitle)
         {
+            var a = _context.HeadingsTwo;
+            
             return await _context.HeadingsTwo
                 .Where(x => x.HeadingOne.Title == headingOneTitle)
                 .Select(x => new Entity.HeadingTwo(x.Title, x.PageLink, x.ImageRef))

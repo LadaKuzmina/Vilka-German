@@ -23,7 +23,7 @@ async function activateCheckboxes(sortingParameter = 0){
     }
 
     let queryJson = JSON.stringify(queryArray);
-    createProducts(queryJson, sortingParameter);
+    await createProducts(queryJson, sortingParameter);
 }
 
 function getGroupObject(detailsElement) {

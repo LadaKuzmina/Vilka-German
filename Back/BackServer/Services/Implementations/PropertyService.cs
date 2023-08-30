@@ -34,6 +34,11 @@ namespace BackServer.Services
             return await _visitor.GetPriorityByProduct(productTitle);
         }
 
+        public async Task<IEnumerable<Property>> GetBySubstrings(string[] substrings)
+        {
+            return await _visitor.GetBySubstrings(substrings);
+        }
+
         public async Task<IEnumerable<Property>> GetByHeadingOne(string headingOneTitle)
         {
             return await _visitor.GetByHeadingOne(headingOneTitle);
@@ -42,6 +47,21 @@ namespace BackServer.Services
         public async Task<IEnumerable<Property>> GetByHeadingTwo(string headingTwoTitle)
         {
             return await _visitor.GetByHeadingTwo(headingTwoTitle);
+        }
+        
+        public async Task<IEnumerable<Property>> GetBySubstringsAtLeastOne(string[] substrings)
+        {
+            return await _visitor.GetBySubstringsAtLeastOne(substrings);
+        }
+
+        public async Task<IEnumerable<Property>> GetByHeadingOneAtLeastOne(string headingOneTitle)
+        {
+            return await _visitor.GetByHeadingOneAtLeastOne(headingOneTitle);
+        }
+
+        public async Task<IEnumerable<Property>> GetByHeadingTwoAtLeastOne(string headingTwoTitle)
+        {
+            return await _visitor.GetByHeadingTwoAtLeastOne(headingTwoTitle);
         }
 
         public async Task<string> GetProductPropertyValue(string productTitle, string propertyTitle)

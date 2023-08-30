@@ -43,9 +43,14 @@ namespace BackServer.Services
             return await _visitor.GetBySubstring(substring);
         }
 
-        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
+        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings, ProductOrders productOrder, Dictionary<string, HashSet<string>> reqProperties, int pageNumber,
+            int countElements)
         {
-            return await _visitor.GetBySubstrings(substrings);
+            if (!CheckCorrectInput(substrings, pageNumber, countElements))
+                return Array.Empty<Product>();
+
+            return await _visitor.GetBySubstrings(substrings, productOrder, reqProperties, pageNumber,
+                countElements);
         }
 
         public async Task<IEnumerable<Product>> GetPageHeadingOne(string headingOneTitle, ProductOrders productOrder,
@@ -131,6 +136,11 @@ namespace BackServer.Services
         private bool CheckCorrectInput(string title, int pageNumber, int countElements)
         {
             return title != "" && pageNumber >= 1 && countElements >= 1;
+        }
+        
+        private bool CheckCorrectInput(IEnumerable<string> substrings, int pageNumber, int countElements)
+        {
+            return substrings.All(substring => substring != "") && pageNumber >= 1 && countElements >= 1;
         }
     }
 }

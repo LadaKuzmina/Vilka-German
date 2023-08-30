@@ -1,4 +1,5 @@
 async function createProducts(json = JSON.stringify([]), sortingParameter = 0) {
+    console.log(json);
     const goodsElement = document.getElementsByClassName("goods")[0];
     removeAllKids(goodsElement);
     let products = await getAllProducts(json, sortingParameter);
@@ -60,8 +61,14 @@ function removeAllKids(goodsElement) {
 }
 
 async function getAllProducts(json, sortingParameter) {
-    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=${sortingParameter}&pageNumber=1&countElements=99999`, json);
-    return response;
+    let headingName = getUrlParam('heading');
+    let searchQuery = getUrlParam('search');
+
+    if (searchQuery !== null) {
+        return await httpPost(`https://localhost:7240/GetProductBySubstrings?substrings=${searchQuery}&productOrder=${sortingParameter}&pageNumber=1&countElements=99999`, json);
+    }
+
+    return await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${headingName}&productOrder=${sortingParameter}&pageNumber=1&countElements=99999`, json);
 }
 
 async function httpPost(url, json)
@@ -76,11 +83,11 @@ async function httpPost(url, json)
     return response.json();
 }
 
-function getHeadingName() {
+function getUrlParam(urlParam) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    return urlParams.get('heading');
+    return urlParams.get(urlParam);
 }
 
 function numberWithSpaces(x) {
@@ -89,4 +96,4 @@ function numberWithSpaces(x) {
     return parts.join(".");
 }
 
-createProducts().then(() => console.log("OK"));
+createProducts().then();

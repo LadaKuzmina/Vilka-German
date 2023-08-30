@@ -27,6 +27,12 @@ namespace BackServer.Controllers
             return await _service.GetAllTitles();
         }
         
+        [HttpGet("~/GetPropertiesBySubstrings")]
+        public async Task<IEnumerable<Property>> GetPropertiesBySubstringsAsync(string substrings)
+        {
+            return await _service.GetBySubstrings(substrings.Split().Where(substring => substring != "").ToArray());
+        }
+        
         [HttpGet("~/GetPropertiesByHeadingOne")]
         public async Task<IEnumerable<Property>> GetPropertiesByHeadingOne(string headingOneTitle)
         {
@@ -43,6 +49,30 @@ namespace BackServer.Controllers
         public async Task<IEnumerable<Property>> GetPropertiesByHeadingThree(string headingThreeTitle)
         {
             return await _service.GetByHeadingTwo(headingThreeTitle);
+        }
+        
+        [HttpGet("~/GetPropertiesBySubstringsAtLeastOne")]
+        public async Task<IEnumerable<Property>> GetPropertiesBySubstringsAtLeastOneAsync(string substrings)
+        {
+            return await _service.GetBySubstringsAtLeastOne(substrings.Split().Where(substring => substring != "").ToArray());
+        }
+        
+        [HttpGet("~/GetPropertiesByHeadingOneAtLeastOne")]
+        public async Task<IEnumerable<Property>> GetPropertiesByHeadingOneAtLeastOneAsync(string headingOneTitle)
+        {
+            return await _service.GetByHeadingOneAtLeastOne(headingOneTitle);
+        }
+
+        [HttpGet("~/GetPropertiesByHeadingTwoAtLeastOne")]
+        public async Task<IEnumerable<Property>> GetPropertiesByHeadingTwoAtLeastOneAsync(string headingTwoTitle)
+        {
+            return await _service.GetByHeadingTwoAtLeastOne(headingTwoTitle);
+        }
+        
+        [HttpGet("~/GetPropertiesByHeadingThreeAtLeastOne")]
+        public async Task<IEnumerable<Property>> GetPropertiesByHeadingThreeAtLeastOneAsync(string headingThreeTitle)
+        {
+            return await _service.GetByHeadingTwoAtLeastOne(headingThreeTitle);
         }
 
         [HttpGet("~/GetAllPropertiesByProduct")]

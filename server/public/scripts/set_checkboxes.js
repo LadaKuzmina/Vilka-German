@@ -182,8 +182,14 @@ function createCheckboxesElement(checkbox, count, is_color) {
 }
 
 async function getAllProperties() {
-    let response = await httpGet(`https://localhost:7240/GetPropertiesByHeadingTwo?headingTwoTitle=${getHeadingName()}`);
-    return response;
+    let headingName = getUrlParam('heading');
+    let searchQuery = getUrlParam('search');
+
+    if (searchQuery !== null) {
+        return await httpGet(`https://localhost:7240/GetPropertiesBySubstrings?substrings=${searchQuery}`);
+    }
+
+    return await httpGet(`https://localhost:7240/GetPropertiesByHeadingTwo?headingTwoTitle=${headingName}`);
 }
 
 async function httpGet(url)
@@ -192,11 +198,4 @@ async function httpGet(url)
     return response.json();
 }
 
-function getHeadingName() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-
-    return urlParams.get('heading');
-}
-
-createCheckboxes().then(() => console.log("OK"));
+createCheckboxes().then();

@@ -1,7 +1,9 @@
-function setHeading() {
+async function setHeading() {
     let heading = getHeadingName();
 
     document.getElementsByClassName('headText')[0].textContent = heading;
+
+    await createCards();
 }
 
 function getHeadingName() {
@@ -12,4 +14,4 @@ function getHeadingName() {
     return urlParams.get('heading');
 }
 
-setHeading();
+setHeading().then();

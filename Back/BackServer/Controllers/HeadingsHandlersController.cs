@@ -50,22 +50,22 @@ namespace BackServer.Controllers
             return await _service.GetHeadingsThreeByHeadingsTwoAsync(headingTwoTitle);
         }
         
-        [HttpPost("~/GetHeadingsOneBySubstrings")]
-        public async Task<IEnumerable<Entity.HeadingOne>> GetHeadingsOneBySubstrings(string[] substrings)
+        [HttpGet("~/GetHeadingsOneBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingOne>> GetHeadingsOneBySubstrings(string substrings)
         {
-            return await _service.GetHeadingsOneBySubstringsAsync(substrings);
+            return await _service.GetHeadingsOneBySubstringsAsync(substrings.Split().Where(substring => substring != "").ToArray());
         }
         
-        [HttpPost("~/GetHeadingsTwoBySubstrings")]
-        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoBySubstrings(string[] substrings)
+        [HttpGet("~/GetHeadingsTwoBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoBySubstrings(string substrings)
         {
-            return await _service.GetHeadingsTwoBySubstringsAsync(substrings);
+            return await _service.GetHeadingsTwoBySubstringsAsync(substrings.Split().Where(substring => substring != "").ToArray());
         }
         
-        [HttpPost("~/GetHeadingsThreeBySubstrings")]
-        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeBySubstrings(string[] substrings)
+        [HttpGet("~/GetHeadingsThreeBySubstrings")]
+        public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeBySubstrings(string substrings)
         {
-            return await _service.GetHeadingsThreeBySubstringsAsync(substrings);
+            return await _service.GetHeadingsThreeBySubstringsAsync(substrings.Split().Where(substring => substring != "").ToArray());
         }
 
         [HttpPost("~/AddHeadingOne")]

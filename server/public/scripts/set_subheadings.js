@@ -47,5 +47,3 @@ async function httpGet(url)
     let response = await fetch(url);
     return response.json();
 }
-
-createCards().then();

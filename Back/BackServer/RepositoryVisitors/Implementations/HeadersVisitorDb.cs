@@ -10,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using NpgsqlDbExtensions;
 using NpgsqlTypes;
+using HeadingOne = Entity.HeadingOne;
+using HeadingThree = Entity.HeadingThree;
+using HeadingTwo = Entity.HeadingTwo;
 
 namespace BackServer.Repositories
 {
@@ -118,6 +121,21 @@ namespace BackServer.Repositories
             await dbConnection.CloseAsync();
 
             return headingsThree;
+        }
+
+        public Task<IEnumerable<HeadingOne>> GetHeadingsOneBySubstringsAsync(string[] substrings)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<HeadingTwo>> GetHeadingsTwoBySubstringsAsync(string[] substrings)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<HeadingThree>> GetHeadingsThreeBySubstringsAsync(string[] substrings)
+        {
+            throw new NotImplementedException();
         }
 
         private async Task<IEnumerable<Entity.HeadingOne>> ExecuteSqlCommandHeadingOne(string sql,

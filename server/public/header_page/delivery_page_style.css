@@ -8,6 +8,10 @@
     line-height: normal;
 }
 
+.phoneNumber {
+    display: none;
+}
+
 html {
     height: 100%;
 }
@@ -54,6 +58,10 @@ footer > div {
 
 .footer_heading {
     color: #FEDB03;
+}
+
+.contacts table {
+    border-spacing: 19px 5px;
 }
 
 .footer a {
@@ -114,7 +122,7 @@ footer > div {
     left: 50%;
     top: 0;
     border-collapse: separate;
-    border-spacing: 10px 8px;
+    border-spacing: 20px 8px;
 }
 
 .header_table tr {
@@ -337,11 +345,31 @@ h3 {
     }
 }
 
+@media (max-width: 1530px) {
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 1366px) {
     .logo .logo_photo {
         display: inline-block;
         position: relative;
         margin-top: 8px;
+    }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 13px;
     }
 
     .container_size {
@@ -356,6 +384,16 @@ h3 {
         width: 960px;
         margin: auto;
     }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 10px 8px;
+        font-size: 11px;
+    }
+
 
     .search {
         position: relative;
@@ -372,6 +410,7 @@ h3 {
         font-size: 16px;
         margin: 15px 0 0 30px;
         font-family: Arial, Inter, serif;
+        width: 200px;
     }
 
     .nav .roof {
@@ -428,10 +467,10 @@ h3 {
         line-height: 36px;
         height: 70px;
         left: 0;
-        top: 80px;
+        top: 115px;
         right: 0;
-        color: #492D2D;
-        background: #FFFFFF;
+        color: black;
+        background: #FEDB03;
         border-radius: 12px;
     }
 
@@ -461,7 +500,7 @@ h3 {
     .nav a {
         color: black;
         padding: 10px 20px;
-        background: white;
+        background: #FEDB03;
         border-radius: 12px;
         flex-shrink: 0;
     }
@@ -539,10 +578,19 @@ h3 {
     .logo .text_about_company {
         display: inline-block;
         position: absolute;
-        font-size: 14px;
-        width: 200px;
+        font-size: 12px;
+        width: 110px;
         margin: 10px 0 0 30px;
         font-family: Arial, Inter, serif;
+    }
+
+    .header_table {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        border-collapse: separate;
+        border-spacing: 7px 8px;
+        font-size: 10px;
     }
 
     .nav {
@@ -555,13 +603,18 @@ h3 {
         flex-direction: row;
         margin-top: 50px;
         justify-content: space-between;
-        padding: 0 10px 10px;
+        /*padding: 0 10px 10px;*/
         position: relative;
-        height: 1187.5%;
+        /*height: 220px;*/
         width: 100%;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 17px;
         font-family: Arial, Inter, serif;
+    }
+
+    .page-content {
+        left: 0;
+        width: 100%;
     }
 
     .slidesshow {
@@ -611,6 +664,10 @@ h3 {
         display: none;
     }
 
+    .page-content {
+        top: 80px;
+    }
+
     .dropdown_mobile {
         display: block;
         position: relative;
@@ -621,7 +678,7 @@ h3 {
         display: block;
         width: 80px;
         padding: 10px;
-        background-color: #333;
+        background-color: #FEDB03;
         color: #fff;
         border: none;
         cursor: pointer;
@@ -681,8 +738,16 @@ h3 {
 
     .logo .logo_photo {
         display: inline-block;
-        position: relative;
+        position: absolute;
+        left: 25%;
+        top: -10px;
         margin-top: 8px;
+    }
+
+    .phoneNumber {
+        display: flex;
+        font-family: "Istok Web";
+        font-size: 15px;
     }
 
     .drop_nav .d3 form {
@@ -769,11 +834,11 @@ h3 {
         flex-shrink: 0;
         margin-top: 50px;
         justify-content: space-between;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
-        height: 1187.5%;
+        /*height: 1187.5%;*/
         width: 100%;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 11px;
         font-family: Arial, Inter, serif;
     }
@@ -782,62 +847,54 @@ h3 {
         margin: auto;
     }
 
-    .footer a {
-        color: #492D2D;
+    .header_table {
+        display: none;
     }
 
-    .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
-    }
-
-    .menu {
-        margin: 0 9px 0 9px;
-
-    }
-
-    .list {
-        margin: 37px 10px 0 10px;
-    }
-
-    .footer .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 50px 40px 0 20px;
-        text-align: left;
-    }
-
-    .icons {
-        padding-top: 159px;
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
-    }
-
+    /*.footer a {*/
+    /*    color: #492D2D;*/
+    /*}*/
+    /*.catalog {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*    float: left;*/
+    /*}*/
+    /*.menu {*/
+    /*    margin: 0 9px 0 9px;*/
+    /*}*/
+    /*.list {*/
+    /*    margin: 37px 10px 0 10px;*/
+    /*}*/
+    /*.footer .contacts {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    gap: 93.75%;*/
+    /*    margin: 50px 40px 0 20px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.icons {*/
+    /*    padding-top: 159px;*/
+    /*    gap: 93.75%;*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+    /*.location_logo {*/
+    /*    width: 30px;*/
+    /*    height: 26px;*/
+    /*}*/
+    /*.email_logo {*/
+    /*    width: 21px;*/
+    /*    height: 14px;*/
+    /*}*/
+    /*.tel_logo {*/
+    /*    width: 18px;*/
+    /*    height: 18px;*/
+    /*}*/
+    /*.whatsapp_logo {*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*}*/
     .container .page-h1 {
         font-size: 26px;
     }
@@ -864,10 +921,10 @@ h3 {
         flex-wrap: wrap;
         margin-top: 50px;
         justify-content: center;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
         align-content: center;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 17px;
         font-family: Arial, Inter, serif;
     }
@@ -876,61 +933,79 @@ h3 {
         margin: auto;
     }
 
-    .footer a {
-        color: #492D2D;
-    }
-
     .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
+        width: 300px;
     }
 
     .menu {
-        margin: 0 9px 0 9px;
-
+        width: 100px;
     }
 
     .list {
-        margin: 0 10px 0 10px;
+        width: 100px;
     }
 
     .footer .contacts {
+        width: 100px;
+    }
+
+    .phoneNumber {
         display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 0 40px 0 20px;
-        text-align: left;
+        font-family: "Istok Web";
+        position: absolute;
+        top: 70px;
+        left: 30%;
+        font-size: 18px;
     }
 
-    .icons {
-        gap: 93.75%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .page-content {
+        top: 135px;
+        /*left: 50px;*/
     }
 
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
-    }
-
+    /*.footer a {*/
+    /*    color: #492D2D;*/
+    /*}*/
+    /*.catalog {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*    float: left;*/
+    /*}*/
+    /*.menu {*/
+    /*    margin: 0 9px 0 9px;*/
+    /*}*/
+    /*.list {*/
+    /*    margin: 0 10px 0 10px;*/
+    /*}*/
+    /*.footer .contacts {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    gap: 93.75%;*/
+    /*    margin: 0 40px 0 20px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.icons {*/
+    /*    gap: 93.75%;*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+    /*.location_logo {*/
+    /*    width: 30px;*/
+    /*    height: 26px;*/
+    /*}*/
+    /*.email_logo {*/
+    /*    width: 21px;*/
+    /*    height: 14px;*/
+    /*}*/
+    /*.tel_logo {*/
+    /*    width: 18px;*/
+    /*    height: 18px;*/
+    /*}*/
+    /*.whatsapp_logo {*/
+    /*    width: 20px;*/
+    /*    height: 20px;*/
+    /*}*/
     .nav {
         display: none;
     }
@@ -971,10 +1046,10 @@ h3 {
         flex-wrap: wrap;
         margin-top: 50px;
         justify-content: center;
-        padding: 0 5px 5px;
+        /*padding: 0 5px 5px;*/
         position: relative;
         align-content: center;
-        background: #FAE9CD;
+        background: #4E4E4E;
         font-size: 13px;
         font-family: Arial, Inter, serif;
     }

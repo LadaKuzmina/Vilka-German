@@ -938,12 +938,13 @@ h3 {
         justify-content: space-between;
         /*padding: 0 10px 10px;*/
         position: relative;
-        height: 220px;
+        /*height: 220px;*/
         width: 100%;
         background: #4E4E4E;
         font-size: 17px;
         font-family: Arial, Inter, serif;
     }
+
 
     .slidesshow {
         margin: auto;
@@ -1172,7 +1173,7 @@ h3 {
         justify-content: space-between;
         /*padding: 0 5px 5px;*/
         position: relative;
-        height: 1187.5%;
+        /*height: 1187.5%;*/
         width: 100%;
         background: #4E4E4E;
         font-size: 11px;
@@ -1276,6 +1277,7 @@ h3 {
         width: auto;
         margin: auto;
     }
+
 
     .d3 {
         flex-shrink: 3;

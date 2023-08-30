@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Entity
 {
@@ -6,7 +7,7 @@ namespace Entity
     {
         public string Title { get; set; }
         public IEnumerable<string> Values { get; set; }
-        public bool IsPriority { get; set; }
+        [JsonIgnore] public bool IsPriority { get; set; }
 
         public Property(string title, IEnumerable<string> values)
         {

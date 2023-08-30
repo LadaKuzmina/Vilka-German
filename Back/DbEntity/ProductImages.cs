@@ -4,7 +4,7 @@
     {
         public int product_id { get; set; }
         public string ImageRef { get; set; }
-        public bool IsPriority { get; set; }
+        public bool IsPrimary { get; set; }
         public Product Product { get; set; }
     }
 }

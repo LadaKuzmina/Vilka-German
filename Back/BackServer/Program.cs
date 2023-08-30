@@ -1,7 +1,9 @@
+using BackServer.Config;
 using BackServer.Contexts;
 using BackServer.Repositories;
 using BackServer.RepositoryChangers.Implementations;
 using BackServer.RepositoryChangers.Interfaces;
+using BackServer.Scripts;
 using BackServer.Services;
 using BackServer.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -12,15 +14,19 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<TestContext>(options =>
-{
+var connectionString = builder.Configuration.GetSection("Settings:DefaultConnection").Get<string>();
+builder.Services.AddSingleton(new DbConfigurations() {ConnectString = connectionString});
 
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions =>
-    {
-        sqlOptions.EnableRetryOnFailure();
-    });
+var imageDirectory = builder.Configuration.GetSection("Settings:ImageDirectory").Get<string>();
+builder.Services.AddSingleton(new DownloadConfigurations() {ImageDirectory = imageDirectory});
+
+builder.Services.AddDbContext<GsDbContext>(options =>
+{
+    options.UseNpgsql(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); });
 });
+
+
+builder.Services.AddSingleton<DbAutoInsert>();
 
 builder.Services.AddTransient<IHeadersVisitor, HeadersVisitorDb>();
 builder.Services.AddTransient<IProductVisitor, ProductsVisitorDb>();
@@ -42,7 +48,6 @@ builder.Services.AddTransient<IProjectService, ProjectService>();
 builder.Services.AddTransient<IPropertyService, PropertyService>();
 builder.Services.AddTransient<ISaleService, SaleService>();
 builder.Services.AddTransient<IPhotoService, PhotoService>();
-
 
 
 // Add services to the container.

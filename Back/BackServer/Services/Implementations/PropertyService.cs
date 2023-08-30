@@ -49,12 +49,12 @@ namespace BackServer.Services
             return await _visitor.GetProductPropertyValue(productTitle, propertyTitle);
         }
 
-        public async Task<bool> AddProperty(Property property)
+        public async Task<bool> AddProperty(string propertyTitle)
         {
-            return await _changer.AddProperty(property);
+            return await _changer.AddProperty(propertyTitle);
         }
 
-        public async Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues)
+        public async Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues)
         {
             return await _changer.AddPropertyValue(propertyTitle, propertyValues);
         }

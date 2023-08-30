@@ -7,9 +7,10 @@
         public string? ImageRef { get; set; }
         public string HeadingTwoTitle { get; set; }
 
-        public HeadingThree(string title, string? imageRef, string? pageLink)
+        public HeadingThree(string title, string headingTwoTitle, string? imageRef, string? pageLink)
         {
             Title = title;
+            HeadingTwoTitle = headingTwoTitle;
             ImageRef = imageRef;
             PageLink = pageLink;
         }

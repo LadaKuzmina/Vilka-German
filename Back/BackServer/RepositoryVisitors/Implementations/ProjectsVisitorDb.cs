@@ -14,9 +14,9 @@ namespace BackServer.Repositories
 {
     public class ProjectsVisitorDb : IProjectVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public ProjectsVisitorDb(TestContext context)
+        public ProjectsVisitorDb(GsDbContext context)
         {
             _context = context;
         }

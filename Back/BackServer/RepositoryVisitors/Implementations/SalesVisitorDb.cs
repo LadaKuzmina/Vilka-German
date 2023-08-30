@@ -10,9 +10,9 @@ namespace BackServer.Repositories
 {
     public class SalesVisitorDb : ISaleVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public SalesVisitorDb(TestContext context)
+        public SalesVisitorDb(GsDbContext context)
         {
             _context = context;
         }

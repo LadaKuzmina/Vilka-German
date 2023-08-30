@@ -9,97 +9,243 @@ using Entity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using NpgsqlDbExtensions;
+using NpgsqlTypes;
 
 namespace BackServer.Repositories
 {
     public class HeadersVisitorDb : IHeadersVisitor
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public HeadersVisitorDb(TestContext context)
+        private readonly string getAllHeadingOne = "SELECT title, page_link FROM heading_one";
+
+        private readonly string getAllHeadingTwo = @"
+            SELECT ht.title, ho.title, ht.image_ref, ht.page_link
+            FROM heading_two ht 
+            JOIN public.heading_one ho on ho.heading_one_id = ht.heading_one_id";
+
+        private readonly string getAllHeadingThree = @"
+        SELECT pv.property_value, ht.title, hth.image_ref, hth.page_link
+        FROM heading_three hth
+        JOIN property_values pv on pv.property_values_id = hth.property_values_id
+        JOIN public.heading_two ht on ht.heading_two_id = hth.heading_two_id";
+
+        public HeadersVisitorDb(GsDbContext context)
         {
             _context = context;
         }
 
         public async Task<IEnumerable<Entity.HeadingOne>> GetAllHeadingsOneAsync()
         {
-            return await _context.HeadingsOne
-                .Select(x => new Entity.HeadingOne(x.Title, x.PageLink))
-                .ToListAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var headingsOne =
+                await ExecuteSqlCommandHeadingOne($"{getAllHeadingOne};", dbConnection, Array.Empty<NpgsqlParameter>());
+
+            await dbConnection.CloseAsync();
+
+            return headingsOne;
         }
 
         public async Task<IEnumerable<Entity.HeadingTwo>> GetAllHeadingsTwoAsync()
         {
-            return await _context.HeadingsTwo
-                .Select(x => new Entity.HeadingTwo(x.Title, x.ImageRef, x.PageLink))
-                .ToListAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var headingsTwo =
+                await ExecuteSqlCommandHeadingTwo($"{getAllHeadingTwo};", dbConnection, Array.Empty<NpgsqlParameter>());
+            
+            await dbConnection.CloseAsync();
+            
+            return headingsTwo;
         }
 
         public async Task<IEnumerable<Entity.HeadingThree>> GetAllHeadingsThree()
         {
-            return await _context.HeadingsThree
-                .Select(x => new Entity.HeadingThree(x.PropertyValues.PropertyValue, x.ImageRef, x.PageLink))
-                .ToListAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var headingsThree =
+                await ExecuteSqlCommandHeadingThree($"{getAllHeadingThree};", dbConnection,
+                    Array.Empty<NpgsqlParameter>());
+            
+            await dbConnection.CloseAsync();
+
+            return headingsThree;
         }
 
         public async Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoByHeadingsOneAsync(string headingOneTitle)
         {
-            return await _context.HeadingsTwo
-                .Where(x => x.HeadingOne.Title == headingOneTitle)
-                .Select(x => new Entity.HeadingTwo(x.Title, x.PageLink, x.ImageRef))
-                .ToListAsync();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var sql = $"{getAllHeadingTwo} WHERE ho.title=@TITLE;";
+            var parameters = new[]
+            {
+                new NpgsqlParameter()
+                    {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingOneTitle}
+            };
+
+            var headingsTwo =
+                await ExecuteSqlCommandHeadingTwo(sql, dbConnection, parameters);
+            
+            await dbConnection.CloseAsync();
+
+            return headingsTwo;
         }
 
         public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwoAsync(string headingTwoTitle)
+        { 
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            var sql = $"{getAllHeadingThree} WHERE ht.title=@TITLE;";
+            var parameters = new[]
+            {
+                new NpgsqlParameter()
+                    {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingTwoTitle}
+            };
+
+            var headingsThree =
+                await ExecuteSqlCommandHeadingThree(sql, dbConnection, parameters);
+            
+            await dbConnection.CloseAsync();
+
+            return headingsThree;
+        }
+
+        private async Task<IEnumerable<Entity.HeadingOne>> ExecuteSqlCommandHeadingOne(string sql,
+            NpgsqlConnection dbConnection, IEnumerable<NpgsqlParameter> parameters)
         {
-            return await _context.HeadingsThree
-                .Where(x => x.HeadingTwo.Title == headingTwoTitle)
-                .Select(x => new Entity.HeadingThree(x.PropertyValues.PropertyValue, x.PageLink, x.ImageRef))
-                .ToListAsync();
+            var headingsOne = new List<Entity.HeadingOne>();
+            await using var command = new NpgsqlCommand(sql, dbConnection);
+            {
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var headingOne = ConvertHeadingOne(reader);
+                    headingsOne.Add(await headingOne);
+                }
+            }
+
+            return headingsOne;
+        }
+
+        private async Task<IEnumerable<Entity.HeadingTwo>> ExecuteSqlCommandHeadingTwo(string sql,
+            NpgsqlConnection dbConnection, IEnumerable<NpgsqlParameter> parameters)
+        {
+            var headingsTwo = new List<Entity.HeadingTwo>();
+            await using var command = new NpgsqlCommand(sql, dbConnection);
+            {
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var headingTwo = ConvertHeadingTwo(reader);
+                    headingsTwo.Add(await headingTwo);
+                }
+            }
+
+            return headingsTwo;
+        }
+
+        private async Task<IEnumerable<Entity.HeadingThree>> ExecuteSqlCommandHeadingThree(string sql,
+            NpgsqlConnection dbConnection, IEnumerable<NpgsqlParameter> parameters)
+        {
+            var headingsThree = new List<Entity.HeadingThree>();
+            await using var command = new NpgsqlCommand(sql, dbConnection);
+            {
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var headingThree = ConvertHeadingThree(reader);
+                    headingsThree.Add(await headingThree);
+                }
+            }
+
+            return headingsThree;
+        }
+
+        private async Task<Entity.HeadingOne> ConvertHeadingOne(NpgsqlDataReader reader)
+        {
+            return new Entity.HeadingOne(reader.GetString(0), await reader.ReadNullOrStringAsync(1));
+        }
+
+        private async Task<Entity.HeadingTwo> ConvertHeadingTwo(NpgsqlDataReader reader)
+        {
+            return new Entity.HeadingTwo(reader.GetString(0), await reader.ReadNullOrStringAsync(2),
+                    await reader.ReadNullOrStringAsync(3))
+                {HeadingOneTitle = reader.GetString(1)};
+        }
+
+        private async Task<Entity.HeadingThree> ConvertHeadingThree(NpgsqlDataReader reader)
+        {
+            return new Entity.HeadingThree(reader.GetString(0), reader.GetString(1),
+                await reader.ReadNullOrStringAsync(2),
+                await reader.ReadNullOrStringAsync(3));
         }
 
         public async Task<IEnumerable<string>> GetHeadingsOneFiltersAsync(string headingOneTitle)
         {
-            var sql = @$"
+            var sql = @"
                     SELECT p.title
                     FROM heading_one as ho
                     JOIN heading_one_filters hof on ho.heading_one_id = hof.heading_one_id
                     JOIN properties p on hof.property_id = p.property_id
-                    WHERE ho.title='{headingOneTitle}';";
-            
-            return await GetFilters(sql);
+                    WHERE ho.title=@TITLE;";
+
+            return await GetFilters(sql,
+                new[]
+                {
+                    new NpgsqlParameter()
+                        {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingOneTitle}
+                });
         }
 
         public async Task<IEnumerable<string>> GetHeadingsTwoFiltersAsync(string headingTwoTitle)
         {
-            var sql = @$"
+            var sql = @"
                     SELECT p.title
                     FROM heading_two as ht
                     JOIN heading_two_filters htf on ht.heading_two_id = htf.heading_two_id
                     JOIN properties p on htf.property_id = p.property_id
-                    WHERE ht.title='{headingTwoTitle}';";
-            
-            return await GetFilters(sql);
+                    WHERE ht.title=@TITLE;";
+
+            return await GetFilters(sql,
+                new[]
+                {
+                    new NpgsqlParameter()
+                        {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingTwoTitle}
+                });
         }
 
-        private async Task<IEnumerable<string>> GetFilters(string sql)
+        private async Task<IEnumerable<string>> GetFilters(string sql, IEnumerable<NpgsqlParameter> parameters)
         {
             var propertyTitles = new List<string>();
-            var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
 
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
-            
-            await using var cmd = new NpgsqlCommand(sql, con);
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
+            await using var command = new NpgsqlCommand(sql, dbConnection);
             {
-                await using NpgsqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                NpgsqlFunctions.AddParameters(command, parameters);
+                await using NpgsqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    propertyTitles.Add(rdr.GetString(0));
+                    propertyTitles.Add(reader.GetString(0));
                 }
             }
 
-            await con.CloseAsync();
+            await dbConnection.CloseAsync();
             return propertyTitles;
         }
     }

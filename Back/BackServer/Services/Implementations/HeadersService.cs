@@ -45,24 +45,24 @@ namespace BackServer.Services
 
         public async Task<bool> AddHeadingOne(HeadingOne headingOne)
         {
-            // if (!CheckCorrectHeadingOne(headingOne))
-            //     return false;
-            
+            if ((await _visitor.GetAllHeadingsOneAsync()).FirstOrDefault(x => x.Title == headingOne.Title) != null)
+                return true;
+
             return await _changer.AddHeadingOne(headingOne);
         }
 
         public async Task<bool> AddHeadingTwo(HeadingTwo headingTwo)
         {
-            // if (!CheckCorrectHeadingTwo(headingTwo))
-            //     return false;
+            if ((await _visitor.GetAllHeadingsTwoAsync()).FirstOrDefault(x => x.Title == headingTwo.Title) != null)
+                return true;
             
             return await _changer.AddHeadingTwo(headingTwo);
         }
 
         public async Task<bool> AddHeadingThree(HeadingThree headingThree)
         {
-            // if (!CheckCorrectHeadingThree(headingThree))
-            //     return false;
+            if ((await _visitor.GetAllHeadingsThree()).FirstOrDefault(x => x.Title == headingThree.Title) != null)
+                return true;
             
             return await _changer.AddHeadingThree(headingThree);
         }

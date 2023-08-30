@@ -11,9 +11,9 @@ namespace BackServer.RepositoryChangers.Implementations
 {
     public class HeadersChangerDb : IHeadersChanger
     {
-        private readonly TestContext _context;
+        private readonly GsDbContext _context;
 
-        public HeadersChangerDb(TestContext context)
+        public HeadersChangerDb(GsDbContext context)
         {
             _context = context;
         }

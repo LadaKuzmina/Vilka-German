@@ -58,9 +58,9 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/AddProperty")]
-        public async Task<StatusCodeResult> Add(Property property)
+        public async Task<StatusCodeResult> Add(string propertyTitle)
         {
-            var success = await _service.AddProperty(property);
+            var success = await _service.AddProperty(propertyTitle);
             if (success)
                 return Ok();
             return BadRequest();

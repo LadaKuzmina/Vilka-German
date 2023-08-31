@@ -60,7 +60,7 @@ function removeAllKids(goodsElement) {
 }
 
 async function getAllProducts(json, sortingParameter) {
-    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=${sortingParameter}&pageNumber=1&countElements=99999`, json);
+    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=${sortingParameter}&pageNumber=1&countElements=50`, json);
     return response;
 }
 

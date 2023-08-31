@@ -906,11 +906,10 @@ h3 {
 }
 
 @media (max-width: 575px) {
-    .container_size {
-        width: auto;
-        margin: auto;
-    }
-
+    /*.container_size {*/
+    /*    width: auto;*/
+    /*    margin: auto;*/
+    /*}*/
     .d3 {
         flex-shrink: 3;
     }
@@ -924,15 +923,14 @@ h3 {
         /*padding: 0 5px 5px;*/
         position: relative;
         align-content: center;
-        background: #4E4E4E;
         font-size: 17px;
+        background: #4E4E4E;
         font-family: Arial, Inter, serif;
     }
 
-    .wrapper {
-        margin: auto;
-    }
-
+    /*.wrapper {*/
+    /*    margin: auto;*/
+    /*}*/
     .catalog {
         width: 300px;
     }
@@ -956,6 +954,10 @@ h3 {
         top: 70px;
         left: 30%;
         font-size: 18px;
+    }
+
+    body {
+        height: auto;
     }
 
     .page-content {
@@ -1022,20 +1024,6 @@ h3 {
         width: 300px;
     }
 
-    .products {
-        color: black;
-        position: relative;
-        background-color: #D6AE96;
-        width: 15.625em;
-        height: 9.375em;
-        padding: 18px;
-        border-radius: 10px;
-        font-family: Arial, Inter, serif;
-        font-size: 15px;
-        overflow: auto;
-        margin: 18px;
-    }
-
     .d3 {
         flex-shrink: 3;
     }
@@ -1058,88 +1046,33 @@ h3 {
         margin: auto;
     }
 
-    h3 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .footer a {
-        color: #492D2D;
-    }
-
     .catalog {
-        margin: 0 10px 0 10px;
-        float: left;
-
+        width: 300px;
     }
 
     .menu {
-        margin: 0 9px 0 9px;
-
+        width: 100px;
     }
 
     .list {
-        margin: 0 10px 0 10px;
+        width: 100px;
     }
 
     .footer .contacts {
-        display: flex;
-        flex-direction: column;
-        gap: 93.75%;
-        margin: 0 40px 0 20px;
-        text-align: left;
+        width: 100px;
     }
 
-    .icons {
-        gap: 93.75%;
+    .phoneNumber {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .header .info {
-        display: flex;
-        position: relative;
-        align-items: center;
-        flex-direction: row-reverse;
-        grid-gap: 10px;
-        font-size: 40px;
-        text-align: center;
-    }
-
-    .header .contacts {
-        list-style-type: none;
-        font-style: normal;
+        font-family: "Istok Web";
+        position: absolute;
+        top: 70px;
+        left: 30%;
         font-size: 18px;
-        line-height: 20px;
-        padding-left: 0;
     }
 
-    .logo_photo {
-        position: relative;
-        width: 115px;
-        height: 24px;
-    }
-
-    .location_logo {
-        width: 30px;
-        height: 26px;
-    }
-
-    .email_logo {
-        width: 21px;
-        height: 14px;
-    }
-
-    .tel_logo {
-        width: 18px;
-        height: 18px;
-    }
-
-    .whatsapp_logo {
-        width: 20px;
-        height: 20px;
+    .drop_button {
+        width: 60px;
     }
 
     .nav {

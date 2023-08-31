@@ -373,7 +373,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 .ToListAsync();
             foreach (var product in products)
             {
-                await AddProductPropertyValue(product.Title, propertyTitle, "Не указано", false);
+                await AddProductPropertyValue(product.Title, propertyTitle, "Не указано", property.IsPriority);
             }
 
             await _context.SaveChangesAsync();

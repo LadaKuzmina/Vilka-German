@@ -3,7 +3,6 @@ using BackServer.Contexts;
 using BackServer.Repositories;
 using BackServer.RepositoryChangers.Implementations;
 using BackServer.RepositoryChangers.Interfaces;
-using BackServer.Scripts;
 using BackServer.Services;
 using BackServer.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -24,9 +23,6 @@ builder.Services.AddDbContext<GsDbContext>(options =>
 {
     options.UseNpgsql(connectionString, sqlOptions => { sqlOptions.EnableRetryOnFailure(); });
 });
-
-
-builder.Services.AddSingleton<DbAutoInsert>();
 
 builder.Services.AddTransient<IHeadersVisitor, HeadersVisitorDb>();
 builder.Services.AddTransient<IProductVisitor, ProductsVisitorDb>();

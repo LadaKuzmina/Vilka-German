@@ -49,7 +49,7 @@ footer > div {
     justify-content: space-between;
     /*padding: 0 10px 10px;*/
     position: relative;
-    height: 220px;
+    /*height: 220px;*/
     width: 100%;
     background: #4E4E4E;
     font-size: 17px;
@@ -1020,8 +1020,14 @@ h3 {
     }
 
     .container {
-        margin-left: -100px;
-        width: 300px;
+        margin-left: 0;
+        width: auto;
+        font-size: 14px;
+    }
+
+    .container .page-h1 {
+        font-size: 20px;
+        margin-left: 20px;
     }
 
     .d3 {

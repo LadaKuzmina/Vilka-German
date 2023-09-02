@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Главстрой</title>
-    <link rel="stylesheet" href="product.css">
+    <title>Главстрой в Екатеринбурге</title>
+    <meta name="description"
+          content="Главстрой. Предлагаем широкий ассортимент материалов для кровли, фасада, а также изоляции. Замер и расчет материала бесплатно."/>
+    <link rel="stylesheet" href="../product/product.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Istok+Web"/>
 </head>
 <body>
@@ -13,24 +15,22 @@
         <div class="logo">
             <nav class="drop_nav">
                 <div class="dropdown_mobile">
-                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof" height="25"
-                                                     width="50"></button>
+                    <button class="drop_button"><img src="../header_icons/list.png" alt="roof" class="roof" height="25"
+                                                     width="40"></button>
                     <div class="mobile_content"><a href="../header_page/index.html">Каталог</a><a
-                            href="../header_page/page_about_us.html">О нас</a><a
+                            href="/about">О нас</a><a
                             href="../header_page/delivery_page.html">Доставка</a><a
                             href="../header_page/contact_page.html">Контакты</a>
                         <div class="d3">
-                            <form class="search"><label>
-                                <input type="text" placeholder="Искать здесь...">
-                            </label>
+                            <form class="search" id="search"><input type="text" placeholder="Искать здесь...">
                                 <button type="submit"></button>
                             </form>
                         </div>
                     </div>
                 </div>
             </nav>
-            <a href="../header_page/index.html"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"
-                                                     height="50" width="230"></a>
+            <a href="/"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"
+                             height="50" width="230"></a>
             <div class="text_about_company">Продажа и монтаж материалов<br> для кровли и фасада в Екатеринбурге</div>
             <table class="header_table">
                 <tbody>
@@ -48,6 +48,9 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="phoneNumber"><img class="tel_logo" src="../images/phone.png" height="22" width="22"
+                                          alt="Иконка телефона"/>+7 (343) 383-45-20
+            </div>
         </div>
         <div class="container">
             <div class="header_inner">
@@ -73,11 +76,13 @@
                                 class="nav_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
                         </div>
                     </div>
-                    <a class="nav_link" href="../header_page/page_about_us.html">О нас</a><a class="nav_link"
-                                                                                             href="../header_page/delivery_page.html">Доставка</a><a
+                    <a class="nav_link" href="/about">О нас</a><a class="nav_link"
+                                                                  href="../header_page/delivery_page.html">Доставка</a><a
                         class="nav_link" href="../header_page/contact_page.html">Контакты</a>
                     <div class="d3">
-                        <form class="search"><input type="text" placeholder="Искать здесь...">
+                        <form class="search">
+                            <input type="text" placeholder="Искать здесь..." id="search_bar" onkeyup="search()">
+                            <div class="search_content" id="search_block"></div>
                             <button type="submit"></button>
                         </form>
                     </div>
@@ -85,149 +90,416 @@
             </div>
         </div>
     </header>
-    <!--    <script src="../scripts/header.js"></script>-->
-    <div class="navigator">
-        <a href="../header_page/index.html" class="link_sort"><b>Главная</b></a>
-        <div class="sep"><p> — </p></div>
-        <a href="#" class="link_sort"><b>Каталог</b></a>
-        <div class="sep"><p> — </p></div>
-        <a href="#" class="link_sort"><b>Кровля</b></a>
-        <!--        <div class="sep"><p> — </p></div>-->
-        <!--        <a href="#" class="link_sort"><b>Название товара</b></a>-->
-    </div>
-    <div class="head"></div>
-    <div class="content">
-        <div class="photo_product"></div>
-        <div class="definition">
-            <div class="price"></div>
-            <details open class="description">
-                <summary>Описание</summary>
-            </details>
-            <details class="characteristic">
-                <summary>Характеристика</summary>
-                <dl class="characteristic_dl"></dl>
-            </details>
+    <div class="content_page">
+        <div class="navigator">
+            <a href="../header_page/index.html"><b>Главная</b></a>
+            <div class="sep"><p> — </p></div>
+            <a href="#"><b>Каталог</b></a>
+            <div class="sep"><p> — </p></div>
+            <a href="#"><b>Страница</b></a>
+            <div class="sep"><p> — </p></div>
+            <div class="productName"><b>Название товара</b></div>
         </div>
-    </div>
-    <div class="recommendation">
-        <h2>Возможно вам будет интересно
-            <hr>
-        </h2>
-        <div class="product">
-            <a href="#">
-                <figure>
-                    <img src="../images/118597_kartochka_krovelnye-lyuki.png"/>
-                    <figcaption>Люк: 1&nbsp440 руб/шт</figcaption>
-                </figure>
-            </a>
+        <div class="photoProduct">
+            <h2>Название товара</h2>
+            <img src="../images/crovlz.png" height="300">
         </div>
-        <div class="product">
-            <a href="#">
-                <figure>
-                    <img src="../images/109677_terrasnaya-doska.png"/>
-                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>
-                </figure>
-            </a>
+        <div class="priceProduct">
+            <h3>Цена: 1607.00 ₽</h3>
         </div>
-        <div class="product">
-            <a href="#">
-                <figure>
-                    <img src="../images/109677_terrasnaya-doska.png"/>
-                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>
-                </figure>
-            </a>
+        <div class="descriptionProduct">
+            <h3>Описание:</h3>
+            <p>Профнастил Н-114x750-B (ОЦ-01-БЦ-1) можно купить в компании Ваша Кровля с доставкой или самовывозом в
+                Екатеринбурге. Оформить заказ можно на сайте: для этого добавьте товар в корзину, выберете количество
+                товара, способ доставки, желаемый способ оплаты и контактные данные. Мы получим вашу заявку и в рабочее
+                время созвонимся для уточнения данных и подтверждения покупки.</p>
         </div>
-        <div class="product">
-            <a href="#">
-                <figure>
-                    <img src="../images/109677_terrasnaya-doska.png" width="300" height="300"/>
-                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>
-                </figure>
-            </a>
-        </div>
-    </div>
-</div>
-<footer>
-    <div class="footer">
-        <div class="catalog">
-            <h4 class="footer_heading">Каталог</h4>
-            <ul>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные
-                    материалы </a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a>
-                </li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
-                    системы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
-                    окна</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a>
-                </li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
-                    лестницы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
-                    материалы</a></li>
-                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a>
-                </li>
-                <li><a class="catalog_link"
-                       href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
-                <li><a class="catalog_link"
-                       href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
-                </li>
-            </ul>
-        </div>
-        <div class="menu">
-            <h4 class="footer_heading">Меню</h4>
-            <ul>
-                <li><a href="../header_page/page_about_us.html">О нас</a></li>
-                <li><a href="../header_page/delivery_page.html">Доставка</a></li>
-                <li><a href="../header_page/contact_page.html">Контакты</a></li>
-            </ul>
-        </div>
-        <div class="contacts">
+        <div class="characteristicProduct">
+            <h3>Характеристика:</h3>
             <table>
                 <tr>
-                    <td>
-                        <img class="location_logo" src="../images/location.png" height="35"
-                             alt="Иконка локации"/>
-                    </td>
-                    <td>
-                        <a href="https://yandex.ru/maps/54/yekaterinburg/house/ulitsa_frontovykh_brigad_15k28/YkkYcAVpTkUBQFtsfXR5cH1rZw==/?ll=60.629706%2C56.881183&z=16.72">
-                            Екатеринбург<br>
-                            ул. Фронтовых бригад, д.15, корп.28, оф.3</a>
-                    </td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
                 </tr>
                 <tr>
-                    <td>
-                        <img class="email_logo" src="../images/email.png" height="22" width="31"
-                             alt="Иконка почты"/>
-                    </td>
-                    <td>
-                        <a href="mailto:3834520@mail.ru">3834520@mail.com</a>
-                    </td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
                 </tr>
                 <tr>
-                    <td>
-                        <img class="tel_logo" src="../images/phone.png" height="22" width="22"
-                             alt="Иконка телефона"/>
-                    </td>
-                    <td>
-                        <a href="tel:+73433834520">+7(343)383-45-20</a>
-                    </td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
                 </tr>
                 <tr>
-                    <td>
-                        <img class="whatsapp_logo" src="../images/whatsapp.png" height="30" width="30"
-                             alt="Логотип Whatsapp"/>
-                    </td>
-                    <td>
-                        <a href="https://wa.me/73433834520">Написать в Whatsapp</a>
-                    </td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
+                    <td>Бренд:</td>
+                    <td>МеталлПрофиль</td>
                 </tr>
             </table>
+            <!--            <ul>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <div>Бренд:</div>-->
+            <!--                    <div class="answer">МеталлПрофиль</div>-->
+            <!--                </li>-->
+            <!--            </ul>-->
         </div>
     </div>
-</footer>
+    <footer>
+        <div class="footer">
+            <div class="catalog">
+                <h4 class="footer_heading">Каталог</h4>
+                <ul>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные
+                        материалы </a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a>
+                    </li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
+                        системы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
+                        окна</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a>
+                    </li>
+                    <!--                </ul>-->
+                    <!--            </div>-->
+
+                    <!--            <div class="list">-->
+                    <!--                <ul>-->
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
+                        лестницы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
+                        материалы</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a>
+                    </li>
+                    <li><a class="catalog_link"
+                           href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>
+                    <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu">
+                <h4 class="footer_heading">Меню</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="delivery_page.html">Доставка</a></li>
+                    <li><a href="contact_page.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <table>
+                    <tr>
+                        <td>
+                            <img class="location_logo" src="../images/location.png" height="35"
+                                 alt="Иконка локации"/>
+                        </td>
+                        <td>
+                            <a href="https://yandex.ru/maps/54/yekaterinburg/house/ulitsa_frontovykh_brigad_15k28/YkkYcAVpTkUBQFtsfXR5cH1rZw==/?ll=60.629706%2C56.881183&z=16.72">
+                                Екатеринбург<br>
+                                ул. Фронтовых бригад, д.15, корп.28, оф.3</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="email_logo" src="../images/email.png" height="22" width="31"
+                                 alt="Иконка почты"/>
+                        </td>
+                        <td>
+                            <a href="mailto:3834520@mail.ru">3834520@mail.com</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="tel_logo" src="../images/phone.png" height="22" width="22"
+                                 alt="Иконка телефона"/>
+                        </td>
+                        <td>
+                            <a href="tel:+73433834520">+7(343)383-45-20</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="whatsapp_logo" src="../images/whatsapp.png" height="30" width="30"
+                                 alt="Логотип Whatsapp"/>
+                        </td>
+                        <td>
+                            <a href="https://wa.me/73433834520">Написать в Whatsapp</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </footer>
+</div>
+<!--<script src="../scripts/set_main_page.js"></script>-->
+<script src="https://unpkg.com/imask"></script>
+<script src="../scripts/maskTel.js"></script>
 <script src="../scripts/menu.js"></script>
-<script src="../scripts/load_product_page.js"></script>
+<script src="../scripts/search.js"></script>
 </body>
 </html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width">-->
+<!--    <title>Главстрой</title>-->
+<!--    <link rel="stylesheet" href="product.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Istok+Web"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrapper">-->
+<!--    <header class="header">-->
+<!--        <div class="logo">-->
+<!--            <nav class="drop_nav">-->
+<!--                <div class="dropdown_mobile">-->
+<!--                    <button class="drop_button"><img src="../header_icons/roof.png" alt="roof" class="roof" height="25"-->
+<!--                                                     width="50"></button>-->
+<!--                    <div class="mobile_content"><a href="../header_page/index.html">Каталог</a><a-->
+<!--                            href="../header_page/page_about_us.html">О нас</a><a-->
+<!--                            href="../header_page/delivery_page.html">Доставка</a><a-->
+<!--                            href="../header_page/contact_page.html">Контакты</a>-->
+<!--                        <div class="d3">-->
+<!--                            <form class="search"><label>-->
+<!--                                <input type="text" placeholder="Искать здесь...">-->
+<!--                            </label>-->
+<!--                                <button type="submit"></button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </nav>-->
+<!--            <a href="../header_page/index.html"><img src="../header_icons/logo.png" alt="logo" class="logo_photo"-->
+<!--                                                     height="50" width="230"></a>-->
+<!--            <div class="text_about_company">Продажа и монтаж материалов<br> для кровли и фасада в Екатеринбурге</div>-->
+<!--            <table class="header_table">-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td><img class="location_logo" src="../images/location.png" height="35"-->
+<!--                             alt="Иконка локации"/></td>-->
+<!--                    <td><b>Екатеринбург, ул. Фронтовых Бригад,<br> д. 15, корп. 28, оф. 3</b><br>Наш адрес</td>-->
+<!--                    &lt;!&ndash;                    д. 15, корп. 28, оф. 3&ndash;&gt;-->
+<!--                    <td><img class="tel_logo" src="../images/phone.png" height="22" width="22"-->
+<!--                             alt="Иконка телефона"/></td>-->
+<!--                    <td><b>+7 (343) 383 - 45 - 20</b><br>Консультации по телефону</td>-->
+<!--                    <td><img class="email_logo" src="../images/email.png" height="22" width="31"-->
+<!--                             alt="Иконка почты"/></td>-->
+<!--                    <td><b>3834520@mail.com</b><br>Наша почта</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--            <div class="header_inner">-->
+<!--                <nav class="nav">-->
+<!--                    <div class="dropdown">-->
+<!--                        <button class="dropdown_button" onclick="getDropdown()"><img src="../header_icons/list.png"-->
+<!--                                                                                     alt="roof" class="roof" height="24"-->
+<!--                                                                                     width="40">Каталог-->
+<!--                        </button>-->
+<!--                        <div class="dropdown_content" id="dropdown"><a class="nav_link"-->
+<!--                                                                       href="../catalog/subheadings.html?heading=Кровля">Кровля</a><a-->
+<!--                                class="nav_link" href="../catalog/subheadings.html?heading=Фасад">Фасад</a><a-->
+<!--                                class="nav_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные-->
+<!--                            системы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные-->
+<!--                            окна</a><a class="nav_link"-->
+<!--                                       href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a><a-->
+<!--                                class="nav_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные-->
+<!--                            лестницы</a><a class="nav_link"-->
+<!--                                           href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные-->
+<!--                            материалы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a><a-->
+<!--                                class="nav_link"-->
+<!--                                href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a><a-->
+<!--                                class="nav_link" href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="nav_link" href="../header_page/page_about_us.html">О нас</a><a class="nav_link"-->
+<!--                                                                                             href="../header_page/delivery_page.html">Доставка</a><a-->
+<!--                        class="nav_link" href="../header_page/contact_page.html">Контакты</a>-->
+<!--                    <div class="d3">-->
+<!--                        <form class="search"><input type="text" placeholder="Искать здесь...">-->
+<!--                            <button type="submit"></button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--    &lt;!&ndash;    <script src="../scripts/header.js"></script>&ndash;&gt;-->
+<!--    <div class="navigator">-->
+<!--        <a href="../header_page/index.html" class="link_sort"><b>Главная</b></a>-->
+<!--        <div class="sep"><p> — </p></div>-->
+<!--        <a href="#" class="link_sort"><b>Каталог</b></a>-->
+<!--        <div class="sep"><p> — </p></div>-->
+<!--        <a href="#" class="link_sort"><b>Кровля</b></a>-->
+<!--        &lt;!&ndash;        <div class="sep"><p> — </p></div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <a href="#" class="link_sort"><b>Название товара</b></a>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="head"></div>-->
+<!--    <div class="content">-->
+<!--        <div class="photo_product"></div>-->
+<!--        <div class="definition">-->
+<!--            <div class="price"></div>-->
+<!--            <details open class="description">-->
+<!--                <summary>Описание</summary>-->
+<!--            </details>-->
+<!--            <details class="characteristic">-->
+<!--                <summary>Характеристика</summary>-->
+<!--                <dl class="characteristic_dl"></dl>-->
+<!--            </details>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="recommendation">-->
+<!--        <h2>Возможно вам будет интересно-->
+<!--            <hr>-->
+<!--        </h2>-->
+<!--        <div class="product">-->
+<!--            <a href="#">-->
+<!--                <figure>-->
+<!--                    <img src="../images/118597_kartochka_krovelnye-lyuki.png"/>-->
+<!--                    <figcaption>Люк: 1&nbsp440 руб/шт</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="product">-->
+<!--            <a href="#">-->
+<!--                <figure>-->
+<!--                    <img src="../images/109677_terrasnaya-doska.png"/>-->
+<!--                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="product">-->
+<!--            <a href="#">-->
+<!--                <figure>-->
+<!--                    <img src="../images/109677_terrasnaya-doska.png"/>-->
+<!--                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="product">-->
+<!--            <a href="#">-->
+<!--                <figure>-->
+<!--                    <img src="../images/109677_terrasnaya-doska.png" width="300" height="300"/>-->
+<!--                    <figcaption>Профнастил: 1&nbsp730 руб/шт</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<footer>-->
+<!--    <div class="footer">-->
+<!--        <div class="catalog">-->
+<!--            <h4 class="footer_heading">Каталог</h4>-->
+<!--            <ul>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Кровля">Кровельные-->
+<!--                    материалы </a></li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Фасад">Фасадные материалы</a>-->
+<!--                </li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные-->
+<!--                    системы</a></li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные-->
+<!--                    окна</a></li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a>-->
+<!--                </li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные-->
+<!--                    лестницы</a></li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные-->
+<!--                    материалы</a></li>-->
+<!--                <li><a class="catalog_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a>-->
+<!--                </li>-->
+<!--                <li><a class="catalog_link"-->
+<!--                       href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a></li>-->
+<!--                <li><a class="catalog_link"-->
+<!--                       href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="menu">-->
+<!--            <h4 class="footer_heading">Меню</h4>-->
+<!--            <ul>-->
+<!--                <li><a href="../header_page/page_about_us.html">О нас</a></li>-->
+<!--                <li><a href="../header_page/delivery_page.html">Доставка</a></li>-->
+<!--                <li><a href="../header_page/contact_page.html">Контакты</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="contacts">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <img class="location_logo" src="../images/location.png" height="35"-->
+<!--                             alt="Иконка локации"/>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a href="https://yandex.ru/maps/54/yekaterinburg/house/ulitsa_frontovykh_brigad_15k28/YkkYcAVpTkUBQFtsfXR5cH1rZw==/?ll=60.629706%2C56.881183&z=16.72">-->
+<!--                            Екатеринбург<br>-->
+<!--                            ул. Фронтовых бригад, д.15, корп.28, оф.3</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <img class="email_logo" src="../images/email.png" height="22" width="31"-->
+<!--                             alt="Иконка почты"/>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a href="mailto:3834520@mail.ru">3834520@mail.com</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <img class="tel_logo" src="../images/phone.png" height="22" width="22"-->
+<!--                             alt="Иконка телефона"/>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a href="tel:+73433834520">+7(343)383-45-20</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <img class="whatsapp_logo" src="../images/whatsapp.png" height="30" width="30"-->
+<!--                             alt="Логотип Whatsapp"/>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a href="https://wa.me/73433834520">Написать в Whatsapp</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+<!--<script src="../scripts/menu.js"></script>-->
+<!--<script src="../scripts/load_product_page.js"></script>-->
+<!--</body>-->
+<!--</html>-->

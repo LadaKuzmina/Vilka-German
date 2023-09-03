@@ -67,7 +67,7 @@ namespace BackServer.Controllers
         }
         
         [HttpPost("~/AddPropertyValues")]
-        public async Task<bool> AddPropertyValue(string propertyTitle, string[] propertyValues)
+        public async Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues)
         {
             return await _service.AddPropertyValue(propertyTitle, propertyValues);
         }

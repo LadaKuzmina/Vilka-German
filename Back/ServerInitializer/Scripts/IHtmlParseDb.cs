@@ -5,5 +5,5 @@ namespace ServerInitializer.Scripts;
 public interface IHtmlParseDb
 {
     Product GetProduct();
-    List<string> GetHeadingTwoFilters();
+    List<string> GetHeadingFilters();
 }

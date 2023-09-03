@@ -160,8 +160,6 @@ namespace BackServer.RepositoryChangers.Implementations
                 x.Product == product && x.PropertyValues.Property == property);
             if (productProperty != null)
             {
-                productProperty.IsPriority = isPriority;
-                await _context.SaveChangesAsync();
                 return true;
             }
 
@@ -300,7 +298,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 .ToListAsync();
             foreach (var product in products)
             {
-                await AddProductPropertyValue(product.Title, propertyTitle, "Не указано", false);
+                await AddProductPropertyValue(product.Title, propertyTitle, defaultPropertyValue, false);
             }
 
             await _context.SaveChangesAsync();
@@ -358,13 +356,13 @@ namespace BackServer.RepositoryChangers.Implementations
             if (headingTwo == null)
                 return false;
 
-            var headingOneFilter = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x =>
+            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x =>
                 x.heading_two_id == headingTwo.Id && x.property_id == property.Id);
-            if (headingOneFilter != null)
+            if (headingTwoFilters != null)
                 return true;
 
-            headingOneFilter = new HeadingTwoFilters() {HeadingTwo = headingTwo, Property = property};
-            await _context.HeadingTwoFilters.AddAsync(headingOneFilter);
+            headingTwoFilters = new HeadingTwoFilters() {HeadingTwo = headingTwo, Property = property};
+            await _context.HeadingTwoFilters.AddAsync(headingTwoFilters);
 
             var products = await _context.ProductFamilies
                 .Where(x => x.HeadingTwo.Title == headingTwoTitle)
@@ -373,7 +371,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 .ToListAsync();
             foreach (var product in products)
             {
-                await AddProductPropertyValue(product.Title, propertyTitle, "Не указано", property.IsPriority);
+                await AddProductPropertyValue(product.Title, propertyTitle, defaultPropertyValue, false);
             }
 
             await _context.SaveChangesAsync();

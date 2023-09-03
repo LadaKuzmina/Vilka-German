@@ -67,16 +67,16 @@ public class ParseHtml : IHtmlParseDb
         return properties;
     }
 
-    public List<string> GetHeadingTwoFilters()
+    public List<string> GetHeadingFilters()
     {
-        var headingTwoFilters = new List<string>();
-        foreach (var headingTwoFilterNode in _htmlDocument.DocumentNode.SelectNodes(
-                     "//div[@class='links-list']//span"))
+        var headingFilters = new List<string>();
+        foreach (var headingFilterNode in _htmlDocument.DocumentNode.SelectNodes(
+                     "//div[@class='filternsv_search_param_name-group']"))
         {
-            headingTwoFilters.Add(headingTwoFilterNode.InnerText.Remove(':'));
+            headingFilters.Add(headingFilterNode.InnerText);
         }
 
-        return headingTwoFilters;
+        return headingFilters;
     }
 }
 

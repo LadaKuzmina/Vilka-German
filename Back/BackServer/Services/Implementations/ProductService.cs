@@ -16,11 +16,13 @@ namespace BackServer.Services
     {
         private readonly IProductVisitor _visitor;
         private readonly IProductChanger _changer;
+        private readonly IPropertyService _propertyService;
 
-        public ProductService(IProductVisitor visitor, IProductChanger changer)
+        public ProductService(IProductVisitor visitor, IProductChanger changer, IPropertyService propertyService)
         {
             _visitor = visitor;
             _changer = changer;
+            _propertyService = propertyService;
         }
 
         public async Task<IEnumerable<Product>> GetAll()

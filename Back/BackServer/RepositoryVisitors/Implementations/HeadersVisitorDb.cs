@@ -23,7 +23,7 @@ namespace BackServer.Repositories
         private readonly string getAllHeadingOne = "SELECT title, page_link FROM heading_one";
 
         private readonly string getAllHeadingTwo = @"
-            SELECT ht.title, ho.title, ht.image_ref, ht.page_link
+            SELECT ht.title, ho.title, ht.image_ref, ht.page_link, ht.is_visible
             FROM heading_two ht 
             JOIN public.heading_one ho on ho.heading_one_id = ht.heading_one_id";
 
@@ -201,7 +201,7 @@ namespace BackServer.Repositories
         {
             return new Entity.HeadingTwo(reader.GetString(0), await reader.ReadNullOrStringAsync(2),
                     await reader.ReadNullOrStringAsync(3))
-                {HeadingOneTitle = reader.GetString(1)};
+                {HeadingOneTitle = reader.GetString(1), IsVisible = reader.GetBoolean(4)};
         }
 
         private async Task<Entity.HeadingThree> ConvertHeadingThree(NpgsqlDataReader reader)

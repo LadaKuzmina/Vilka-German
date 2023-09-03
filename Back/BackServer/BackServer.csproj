@@ -22,6 +22,12 @@
       <ProjectReference Include="..\DbEntity\DbEntity.csproj" />
       <ProjectReference Include="..\Entity\Entity.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="TEST\" />
+    </ItemGroup>
+
+    
 
 
 

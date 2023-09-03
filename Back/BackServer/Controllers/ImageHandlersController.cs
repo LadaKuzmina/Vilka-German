@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BackServer.Services.Interfaces;
-using Entity;
-using Microsoft.Extensions.Logging;
-using NpgsqlDbExtensions.Enums;
+
 
 namespace BackServer.Controllers
 {
     [ApiController]
     [Microsoft.AspNetCore.Components.Route("[controller]")]
-    public class PhotoHandlersController : ControllerBase
+    public class ImageHandlersController : ControllerBase
     {
         private readonly ILogger<HeadingsHandlersController> _logger;
         private readonly IPhotoService _service;
 
-        public PhotoHandlersController(ILogger<HeadingsHandlersController> logger, IPhotoService service)
+        public ImageHandlersController(ILogger<HeadingsHandlersController> logger, IPhotoService service)
         {
             _logger = logger;
             _service = service;
         }
-        
+
         [HttpGet("~/GetProductPrimaryPhoto")]
         public async Task<ObjectResult> GetPrimaryProductPhoto(string productTitle)
         {
             try
             {
-                var t = await _service.GetPrimaryProductPhoto(productTitle);
-                return StatusCode(200, t);
+                var photo = await _service.GetPrimaryProductPhoto(productTitle);
+                return StatusCode(200, photo);
             }
             catch (ArgumentException e)
             {
@@ -42,22 +36,22 @@ namespace BackServer.Controllers
         {
             try
             {
-                var t = await _service.GetAllProductPhoto(productTitle);
-                return StatusCode(200, t);
+                var allProductPhoto = await _service.GetAllProductPhoto(productTitle);
+                return StatusCode(200, allProductPhoto);
             }
             catch (ArgumentException e)
             {
                 return StatusCode(204, null);
             }
         }
-        
+
         [HttpGet("~/GetProjectPrimaryPhoto")]
         public async Task<ObjectResult> GetPrimaryProjectPhoto(string projectTitle)
         {
             try
             {
-                var t = await _service.GetPrimaryProjectPhoto(projectTitle);
-                return StatusCode(200, t);
+                var photo = await _service.GetPrimaryProjectPhoto(projectTitle);
+                return StatusCode(200, photo);
             }
             catch (ArgumentException e)
             {
@@ -70,19 +64,27 @@ namespace BackServer.Controllers
         {
             try
             {
-                var t = await _service.GetAllProjectPhoto(projectTitle);
-                return StatusCode(200, t);
+                var allProjectPhoto = await _service.GetAllProjectPhoto(projectTitle);
+                return StatusCode(200, allProjectPhoto);
             }
             catch (ArgumentException e)
             {
                 return StatusCode(204, null);
             }
         }
-        
+
         [HttpPost("~/AddProductPhoto")]
-        public async Task<bool> AddProductPhoto(string productTitle, string imageRef, bool isPriority)
+        public async Task<ObjectResult> AddProductPhoto(string productTitle, string imageRef, bool isPriority)
         {
-            return await _service.AddProductPhoto(productTitle, imageRef, isPriority);
+            try
+            {
+                var t = await _service.AddProductPhoto(productTitle, imageRef, isPriority);
+                return StatusCode(200, t);
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode(400, null);
+            }
         }
 
         [HttpDelete("~/DeleteProductPhoto")]
@@ -92,7 +94,8 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/UpdateProductPhoto")]
-        public async Task<bool> UpdateProductPhoto(string productTitle, string oldImageRef, string newImageRef, bool isPriority)
+        public async Task<bool> UpdateProductPhoto(string productTitle, string oldImageRef, string newImageRef,
+            bool isPriority)
         {
             return await _service.UpdateProductPhoto(productTitle, oldImageRef, newImageRef, isPriority);
         }
@@ -110,7 +113,8 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/UpdateProjectPhoto")]
-        public async Task<bool> UpdateProjectPhoto(string projectTitle, string oldImageRef, string newImageRef, bool isPriority)
+        public async Task<bool> UpdateProjectPhoto(string projectTitle, string oldImageRef, string newImageRef,
+            bool isPriority)
         {
             return await _service.UpdateProjectPhoto(projectTitle, oldImageRef, newImageRef, isPriority);
         }

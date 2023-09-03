@@ -1,4 +1,4 @@
-﻿namespace BackServer.Config;
+﻿namespace ServerInitializer.Config;
 
 public class DownloadConfigurations
 {

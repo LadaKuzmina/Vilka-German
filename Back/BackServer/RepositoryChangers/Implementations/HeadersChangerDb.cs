@@ -32,7 +32,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingTwo.HeadingOneTitle);
             if (headingOne == null) return false;
 
-            var newHeadingTwo = new HeadingTwo() {Title = headingTwo.Title, HeadingOne = headingOne};
+            var newHeadingTwo = new HeadingTwo() {Title = headingTwo.Title, HeadingOne = headingOne, IsVisible = headingTwo.IsVisible};
             await _context.HeadingsTwo.AddAsync(newHeadingTwo);
             await _context.SaveChangesAsync();
             return true;
@@ -129,6 +129,7 @@ namespace BackServer.RepositoryChangers.Implementations
                 return false;
 
             oldHeadingTwo.Title = headingTwo.Title;
+            oldHeadingTwo.IsVisible = headingTwo.IsVisible;
             if (oldHeadingTwo.HeadingOne.Title != headingTwo.HeadingOneTitle)
             {
                 var newHeadingOne =

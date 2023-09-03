@@ -93,13 +93,13 @@ namespace BackServer.Controllers
         }
 
         [HttpPost("~/AddProduct")]
-        public async Task<StatusCodeResult> AddProduct(Product product)
+        public async Task<ObjectResult> AddProduct(Product product)
         {
             var success = await _service.Add(product);
             if (success)
-                return Ok();
+                return StatusCode(200, "");
 
-            return BadRequest();
+            return StatusCode(400, "");
         }
 
         [HttpDelete("~/DeleteProducts")]

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BackServer.Config;
+using Microsoft.EntityFrameworkCore;
 using DbEntity;
 
 
@@ -6,13 +7,16 @@ namespace BackServer.Contexts
 {
     public class GsDbContext : DbContext
     {
-        public GsDbContext(DbContextOptions<GsDbContext> options) : base(options)
+        private readonly DbConfigurations _configurations;
+
+        public GsDbContext(DbContextOptions<GsDbContext> options, DbConfigurations configurations) : base(options)
         {
+            _configurations = configurations;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Database=test;User Id=postgres;Password=postgres");
+            optionsBuilder.UseNpgsql(_configurations.ConnectString);
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -87,6 +91,7 @@ namespace BackServer.Contexts
                     .HasColumnName("heading_two_id")
                     .HasDefaultValueSql("nextval('account.item_id_seq'::regclass)");
 
+                entity.Property(e => e.IsVisible).IsRequired().HasColumnName("is_visible");
                 entity.Property(e => e.Title).IsRequired().HasColumnName("title");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
                 entity.Property(e => e.ImageRef).HasColumnName("image_ref");

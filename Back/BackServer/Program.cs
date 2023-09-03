@@ -1,15 +1,6 @@
 using BackServer;
 using BackServer.Config;
 using BackServer.Contexts;
-using BackServer.Repositories;
-using BackServer.RepositoryChangers.Implementations;
-using BackServer.RepositoryChangers.Interfaces;
-using BackServer.Services;
-using BackServer.Services.Interfaces;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

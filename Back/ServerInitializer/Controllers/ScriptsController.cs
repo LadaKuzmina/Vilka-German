@@ -55,15 +55,6 @@ public class ScriptsController : ControllerBase
         var map = new Dictionary<HeadingOne, ImportProductClass[]>()
         {
             {
-                new HeadingOne("Комплектующие", "https://vk196.ru/catalog/ehlementi-krovli"), new[]
-                {
-                    new ImportProductClass("https://vk196.ru/catalog/ehlementi-krovli/flyugery-duck--dog",
-                        "Флюгеры DUCK & DOG", null),
-                    new ImportProductClass("https://vk196.ru/catalog/ehlementi-krovli/kozyrki-krovent-iz-polikarbonata",
-                        "Козырьки", null)
-                }
-            },
-            {
                 new HeadingOne("Кровля", "https://vk196.ru/catalog/krovlya"), new[]
                 {
                     new ImportProductClass("https://vk196.ru/catalog/profnastil", "Профнастил", "Профнастил"),
@@ -85,6 +76,35 @@ public class ScriptsController : ControllerBase
                     new ImportProductClass("https://vk196.ru/catalog/krovlya/dobornye-elementy",
                         "Доборные элементы кровли", null),
                     new ImportProductClass("https://vk196.ru/catalog/ehlementi-krovli/sofity", "Софиты", null)
+                }
+            },
+            {
+                new HeadingOne("Ограждения", "https://vk196.ru/catalog/zabor"), new[]
+                {
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/modulnye-ograzhdeniya",
+                        "Модульные ограждения", null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/panelnye-ograzhdeniya",
+                        "Панельные 3D ограждения", null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/shtaketnik-metallicheskiy", "Штакетники",
+                        "Вид штакетника"),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/zabor-zhalyuzi", "Заборы Жалюзи", null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/vremennye-ograzhdeniya",
+                        "Временные ограждения", null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/planki-p-obraznye-zabornye",
+                        "Планки П-образные", null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/parapetnye-kryshki", "Парапетные крышки",
+                        null),
+                    new ImportProductClass("https://vk196.ru/catalog/zabor/komplektuyuschie-dlya-zabora",
+                        "Комплектующие для забора", null)
+                }
+            },
+            {
+                new HeadingOne("Комплектующие", "https://vk196.ru/catalog/ehlementi-krovli"), new[]
+                {
+                    new ImportProductClass("https://vk196.ru/catalog/ehlementi-krovli/flyugery-duck--dog",
+                        "Флюгеры DUCK & DOG", null),
+                    new ImportProductClass("https://vk196.ru/catalog/ehlementi-krovli/kozyrki-krovent-iz-polikarbonata",
+                        "Козырьки", null)
                 }
             },
             {
@@ -173,26 +193,6 @@ public class ScriptsController : ControllerBase
                     new ImportProductClass("https://vk196.ru/catalog/uteplenie-i-izolyatsiya/germetiziruyuschie-lenty",
                         "Герметизирующие ленты",
                         "Бренд")
-                }
-            },
-            {
-                new HeadingOne("Ограждения", "https://vk196.ru/catalog/zabor"), new[]
-                {
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/modulnye-ograzhdeniya",
-                        "Модульные ограждения", null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/panelnye-ograzhdeniya",
-                        "Панельные 3D ограждения", null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/shtaketnik-metallicheskiy", "Штакетники",
-                        "Вид штакетника"),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/zabor-zhalyuzi", "Заборы Жалюзи", null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/vremennye-ograzhdeniya",
-                        "Временные ограждения", null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/planki-p-obraznye-zabornye",
-                        "Планки П-образные", null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/parapetnye-kryshki", "Парапетные крышки",
-                        null),
-                    new ImportProductClass("https://vk196.ru/catalog/zabor/komplektuyuschie-dlya-zabora",
-                        "Комплектующие для забора", null)
                 }
             },
             {

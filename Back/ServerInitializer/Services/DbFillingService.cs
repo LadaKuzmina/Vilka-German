@@ -193,7 +193,7 @@ public class DbFillingService : IDbFillingService
     {
         var htmlParse = new ParseHtml(htmlDocument);
         var product = htmlParse.GetProduct();
-        if (product.Title == null)
+        if (product == null)
             throw new ArgumentException("Не удалось получить продукт");
 
         product.ImageRefs = htmlParse.GetProductImageRefs();

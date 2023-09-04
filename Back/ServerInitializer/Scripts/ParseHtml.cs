@@ -12,22 +12,34 @@ public class ParseHtml : IHtmlParseDb
         _htmlDocument = htmlDocument;
     }
 
-    public Product GetProduct()
+    public Product? GetProduct()
     {
-        var productPrice = _htmlDocument.DocumentNode
-            .SelectSingleNode("//div[@class='card-cost-value']")
-            .InnerText
-            .Trim()
-            .Replace("&nbsp;", "")
-            .Replace(".", ",")
-            .Replace("руб.", "₽")
-            .Replace("м2", "м\u00b2")
-            .Split(" ");
-        
+        var priceNode = _htmlDocument.DocumentNode.SelectSingleNode("//div[@class='card-cost-value']");
+        string[] productPrice;
+        if (priceNode != null)
+        {
+            productPrice = priceNode
+                .InnerText
+                .Trim()
+                .Replace("&nbsp;", "")
+                .Replace(".", ",")
+                .Replace("руб.", "₽")
+                .Replace("м2", "м\u00b2")
+                .Split(" ");
+        }
+        else
+        {
+            productPrice = new[] {"0", "₽"};
+        }
+
+        var titleNode = _htmlDocument.DocumentNode.SelectSingleNode("//h1[@class='card-name']");
+        if (titleNode == null)
+            return null;
+
+
         var product = new Product
         {
-            Title = _htmlDocument.DocumentNode
-                .SelectSingleNode("//h1[@class='card-name']")
+            Title = titleNode
                 .InnerText
                 .Replace("&quot;", "\"")
                 .Split("\n")[0],
@@ -43,8 +55,12 @@ public class ParseHtml : IHtmlParseDb
     public List<string> GetProductImageRefs()
     {
         var imageRefs = new List<string>();
-        foreach (var imageNode in _htmlDocument.DocumentNode.SelectNodes(
-                     "//div[@class='card-photos-nav-item']//img"))
+        var imageNodes = _htmlDocument.DocumentNode.SelectNodes(
+            "//div[@class='card-photos-nav-item']//img");
+
+        if (imageNodes == null) return imageRefs;
+
+        foreach (var imageNode in imageNodes)
         {
             var imageRef = imageNode.Attributes["data-src"].Value;
             imageRefs.Add(imageRef);
@@ -52,12 +68,16 @@ public class ParseHtml : IHtmlParseDb
 
         return imageRefs;
     }
-    
+
     public List<Property> GetProductProperties()
     {
         var properties = new List<Property>();
-        foreach (var propertyNode in _htmlDocument.DocumentNode.SelectNodes(
-                     "//div[@class='id-param-list']//ul[@class='shop_param__list']//li"))
+        var propertyNodes = _htmlDocument.DocumentNode.SelectNodes(
+            "//div[@class='id-param-list']//ul[@class='shop_param__list']//li");
+
+        if (propertyNodes == null) return properties;
+
+        foreach (var propertyNode in propertyNodes)
         {
             var text = propertyNode.InnerText.Split(":");
             var property = new Property(text[0], new[] {text[1]});
@@ -70,8 +90,12 @@ public class ParseHtml : IHtmlParseDb
     public List<string> GetHeadingFilters()
     {
         var headingFilters = new List<string>();
-        foreach (var headingFilterNode in _htmlDocument.DocumentNode.SelectNodes(
-                     "//div[@class='filternsv_search_param_name-group']"))
+        var filterNodes = _htmlDocument.DocumentNode
+            .SelectNodes("//div[@class='filternsv_search_param_name-group']");
+
+        if (filterNodes == null) return headingFilters;
+
+        foreach (var headingFilterNode in filterNodes)
         {
             headingFilters.Add(headingFilterNode.InnerText);
         }
@@ -79,4 +103,3 @@ public class ParseHtml : IHtmlParseDb
         return headingFilters;
     }
 }
-

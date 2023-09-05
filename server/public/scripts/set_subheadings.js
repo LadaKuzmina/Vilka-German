@@ -6,16 +6,17 @@ async function createCards() {
 }
 
 function createCardOfObject(obj) {
+    console.log(obj);
     let listCatalog = document.getElementsByClassName("list_catalog")[0];
 
     let productsElement = document.createElement("div");
     productsElement.setAttribute("class", "products");
 
     let imageParentElement = document.createElement("a");
-    imageParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLing}`);
+    imageParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLink}`);
 
     let imageElement = document.createElement("img");
-    imageElement.setAttribute("src", `../images/${obj.pageLink}`);
+    imageElement.setAttribute("src", `../images/${obj.imageRef}`);
     imageElement.setAttribute("height", "250");
     imageElement.setAttribute("width", "250");
 
@@ -24,7 +25,7 @@ function createCardOfObject(obj) {
     productsElement.appendChild(imageParentElement);
 
     let headerParentElement = document.createElement("a");
-    headerParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLing}`);
+    headerParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLink}`);
 
     let headerElement = document.createElement("h4");
     headerElement.textContent = obj.title;

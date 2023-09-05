@@ -2,6 +2,18 @@ currentPage = -1;
 maxPage = 500;
 blocksCount = 7;
 
+async function init_pages() {
+    let headingOne = getUrlParam('headingOne');
+    let headingTwo = getUrlParam('headingTwo');
+
+    if (headingTwo !== null)
+        maxPage = await httpPost(`https://localhost:7240/GetCountPagesHeadingTwo?headingTwoTitle=${headingTwo}&productOrder=0&countElements=50`, '{}');
+    else
+        maxPage = await httpPost(`https://localhost:7240/GetCountPagesHeadingOne?headingOneTitle=${headingOne}&productOrder=0&countElements=50`, '{}');
+
+    setPageWidget(1);
+}
+
 function setPageWidget(page) {
     if (page !== currentPage) {
         let newPage = page;
@@ -94,7 +106,7 @@ function getPageSwitcherArrow(textContent, page) {
     let pageSwitcherArrowElement = document.createElement("div");
     pageSwitcherArrowElement.setAttribute("class", "page_switcher_arrow");
     pageSwitcherArrowElement.onclick = function () {
-        setPageWidget(page)
+        setPage(page)
     };
     pageSwitcherArrowElement.textContent = textContent;
 
@@ -133,11 +145,16 @@ function getPageSwitcherButton(page) {
         pageSwitcherButton.setAttribute("style", styleAttribute);
     }
     pageSwitcherButton.onclick = function () {
-        setPageWidget(page)
+        setPage(page)
     };
     pageSwitcherButton.textContent = page;
 
     return pageSwitcherButton;
 }
 
-setPageWidget(1);
+function setPage(page) {
+    setPageWidget(page);
+    createProducts(QUERY_JSON, SORTING_PARAMETER, currentPage);
+}
+
+init_pages().then();

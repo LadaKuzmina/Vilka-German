@@ -1,3 +1,6 @@
+let QUERY_JSON;
+let SORTING_PARAMETER;
+
 async function activateCheckboxes(sortingParameter = 0){
     let detailsElements = document.getElementsByClassName("checkboxes-details");
 
@@ -22,8 +25,9 @@ async function activateCheckboxes(sortingParameter = 0){
         }
     }
 
-    let queryJson = JSON.stringify(queryArray);
-    createProducts(queryJson, sortingParameter);
+    QUERY_JSON = JSON.stringify(queryArray);
+    SORTING_PARAMETER = sortingParameter;
+    createProducts(QUERY_JSON, SORTING_PARAMETER, currentPage);
 }
 
 function getGroupObject(detailsElement) {

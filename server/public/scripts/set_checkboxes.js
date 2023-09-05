@@ -182,15 +182,20 @@ function createCheckboxesElement(checkbox, count, is_color) {
 }
 
 async function getAllProperties() {
-    let response = await httpGet(`https://localhost:7240/GetPropertiesByHeadingTwo?headingTwoTitle=${getHeadingName()}`);
-    return response;
+    let headingOne = getUrlParam('headingOne');
+    let headingTwo = getUrlParam('headingTwo');
+
+    if (headingTwo !== null)
+        return await httpGet(`https://localhost:7240/GetPropertiesByHeadingTwo?headingTwoTitle=${headingTwo}`);
+    else
+        return await httpGet(`https://localhost:7240/GetPropertiesByHeadingOne?headingOneTitle=${headingOne}`);
 }
 
-function getHeadingName() {
+function getUrlParam(param) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    return urlParams.get('headingTwo');
+    return urlParams.get(param);
 }
 
 createCheckboxes().then();

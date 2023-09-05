@@ -1,7 +1,7 @@
-async function createProducts(json = JSON.stringify([]), sortingParameter = 0) {
+async function createProducts(json = JSON.stringify([]), sortingParameter = 0, page = 1) {
     const goodsElement = document.getElementsByClassName("goods")[0];
     removeAllKids(goodsElement);
-    let products = await getAllProducts(json, sortingParameter);
+    let products = await getAllProducts(json, sortingParameter, page);
     addProducts(products);
 }
 
@@ -60,16 +60,14 @@ function removeAllKids(goodsElement) {
     }
 }
 
-async function getAllProducts(json, sortingParameter) {
-    let response = await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${getHeadingName()}&productOrder=${sortingParameter}&pageNumber=1&countElements=50`, json);
-    return response;
-}
+async function getAllProducts(json, sortingParameter, page) {
+    let headingOne = getUrlParam('headingOne');
+    let headingTwo = getUrlParam('headingTwo');
 
-function getHeadingName() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-
-    return urlParams.get('headingTwo');
+    if (headingTwo !== null)
+        return await httpPost(`https://localhost:7240/GetPageHeadingTwo?headingTwoTitle=${headingTwo}&productOrder=${sortingParameter}&pageNumber=${page}&countElements=50`, json);
+    else
+        return await httpPost(`https://localhost:7240/GetPageHeadingOne?headingOneTitle=${headingOne}&productOrder=${sortingParameter}&pageNumber=${page}&countElements=50`, json);
 }
 
 function numberWithSpaces(x) {

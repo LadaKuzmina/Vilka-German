@@ -253,6 +253,11 @@ namespace BackServer.Repositories
             products = await GetByRequirements(products, reqProperties, (pageNumber - 1) * countElements,
                 countElements);
 
+            foreach (var product in products)
+            {
+                product.ImageRefs = new List<string?>() {await _photoVisitor.GetPrimaryProductPhoto(product.Title)};
+            }
+
             return products;
         }
 

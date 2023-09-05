@@ -6,6 +6,7 @@ namespace Entity
     {
         public string Title { get; set; }
         public string? PageLink { get; set; }
+        public string? ImageRef { get; set; }
 
         private readonly int _hashValue;
 
@@ -13,6 +14,15 @@ namespace Entity
         {
             Title = title;
             PageLink = pageLink;
+        
+            _hashValue = GetFNVHashCode();
+        }
+        
+        public HeadingOne(string title, string? pageLink, string? imageRef)
+        {
+            Title = title;
+            PageLink = pageLink;
+            ImageRef = imageRef;
 
             _hashValue = GetFNVHashCode();
         }

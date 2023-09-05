@@ -17,7 +17,7 @@ function addProducts(products) {
 
         let imgElement = document.createElement("img");
         imgElement.setAttribute("src", "../images/profnastil_goods.jpg");
-        imgElement.setAttribute("height", "200");
+        imgElement.setAttribute("width", "200");
         imgElement.setAttribute("alt", "photo");
         imageElement.appendChild(imgElement);
         productElement.appendChild(imageElement);
@@ -64,23 +64,11 @@ async function getAllProducts(json, sortingParameter) {
     return response;
 }
 
-async function httpPost(url, json)
-{
-    let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            "Accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: json});
-    return response.json();
-}
-
 function getHeadingName() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    return urlParams.get('heading');
+    return urlParams.get('headingTwo');
 }
 
 function numberWithSpaces(x) {

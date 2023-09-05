@@ -1,5 +1,5 @@
 currentPage = -1;
-maxPage = 103;
+maxPage = 500;
 blocksCount = 7;
 
 function setPageWidget(page) {

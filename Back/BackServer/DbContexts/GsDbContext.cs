@@ -73,6 +73,7 @@ namespace BackServer.Contexts
                     .HasDefaultValueSql("nextval('account.item_id_seq'::regclass)");
                 entity.Property(e => e.Title).IsRequired().HasColumnName("title");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
+                entity.Property(e => e.PageLink).HasColumnName("image_ref");
             });
         }
 

@@ -72,15 +72,3 @@ async function getAllProducts(json) {
 
     return response;
 }
-
-async function httpPost(url, json)
-{
-    let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            "Accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: json});
-    return response.json();
-}

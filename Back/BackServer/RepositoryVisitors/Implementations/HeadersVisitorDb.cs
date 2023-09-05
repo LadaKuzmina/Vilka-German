@@ -20,7 +20,7 @@ namespace BackServer.Repositories
     {
         private readonly GsDbContext _context;
 
-        private readonly string getAllHeadingOne = "SELECT title, page_link FROM heading_one";
+        private readonly string getAllHeadingOne = "SELECT title, page_link, image_ref FROM heading_one";
 
         private readonly string getAllHeadingTwo = @"
             SELECT ht.title, ho.title, ht.image_ref, ht.page_link, ht.is_visible
@@ -99,7 +99,7 @@ namespace BackServer.Repositories
             
             await dbConnection.CloseAsync();
 
-            return headingsTwo;
+            return headingsTwo.Where(headingTwo => headingTwo.IsVisible);
         }
 
         public async Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeByHeadingsTwoAsync(string headingTwoTitle)
@@ -194,7 +194,7 @@ namespace BackServer.Repositories
 
         private async Task<Entity.HeadingOne> ConvertHeadingOne(NpgsqlDataReader reader)
         {
-            return new Entity.HeadingOne(reader.GetString(0), await reader.ReadNullOrStringAsync(1));
+            return new Entity.HeadingOne(reader.GetString(0), await reader.ReadNullOrStringAsync(1), await reader.ReadNullOrStringAsync(2));
         }
 
         private async Task<Entity.HeadingTwo> ConvertHeadingTwo(NpgsqlDataReader reader)

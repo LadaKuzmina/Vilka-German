@@ -186,17 +186,11 @@ async function getAllProperties() {
     return response;
 }
 
-async function httpGet(url)
-{
-    let response = await fetch(url);
-    return response.json();
-}
-
 function getHeadingName() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    return urlParams.get('heading');
+    return urlParams.get('headingTwo');
 }
 
-createCheckboxes().then(() => console.log("OK"));
+createCheckboxes().then();

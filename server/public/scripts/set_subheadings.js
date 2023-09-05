@@ -12,11 +12,10 @@ function createCardOfObject(obj) {
     productsElement.setAttribute("class", "products");
 
     let imageParentElement = document.createElement("a");
-    imageParentElement.setAttribute("href", `../catalog/catalog.html?heading=${obj.title}`);
+    imageParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLing}`);
 
     let imageElement = document.createElement("img");
-    console.log(obj.pageLink);
-    imageElement.setAttribute("src", `../images/${obj.imageRef}`);
+    imageElement.setAttribute("src", `../images/${obj.pageLink}`);
     imageElement.setAttribute("height", "250");
     imageElement.setAttribute("width", "250");
 
@@ -25,7 +24,7 @@ function createCardOfObject(obj) {
     productsElement.appendChild(imageParentElement);
 
     let headerParentElement = document.createElement("a");
-    headerParentElement.setAttribute("href", `../catalog/catalog.html?heading=${obj.pageLink}`);
+    headerParentElement.setAttribute("href", `../catalog/catalog.html?headingTwo=${obj.pageLing}`);
 
     let headerElement = document.createElement("h4");
     headerElement.textContent = obj.title;
@@ -40,12 +39,6 @@ function createCardOfObject(obj) {
 async function getAllSubheaders() {
     let response = await httpGet(`https://localhost:7240/GetHeadingsTwoByHeadingsOne?headingOneTitle=${document.getElementsByClassName('headText')[0].textContent}`);
     return response;
-}
-
-async function httpGet(url)
-{
-    let response = await fetch(url);
-    return response.json();
 }
 
 createCards().then();

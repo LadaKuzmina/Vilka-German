@@ -16,7 +16,6 @@ function addProducts(products) {
         imageElement.setAttribute("href", `../product/product.html?heading=${product.title}`);
 
         let imgElement = document.createElement("img");
-        console.log(product.imageRefs)
         imgElement.setAttribute("src", `../images/${product.imageRefs[0]}`);
         // imgElement.setAttribute("height", "200");
         imgElement.setAttribute("width", "200");
@@ -66,23 +65,11 @@ async function getAllProducts(json, sortingParameter) {
     return response;
 }
 
-async function httpPost(url, json)
-{
-    let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            "Accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: json});
-    return response.json();
-}
-
 function getHeadingName() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    return urlParams.get('heading');
+    return urlParams.get('headingTwo');
 }
 
 function numberWithSpaces(x) {

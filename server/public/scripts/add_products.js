@@ -16,8 +16,10 @@ function addProducts(products) {
         imageElement.setAttribute("href", `../product/product.html?heading=${product.title}`);
 
         let imgElement = document.createElement("img");
-        imgElement.setAttribute("src", "../images/profnastil_goods.jpg");
-        imgElement.setAttribute("height", "200");
+        console.log(product.imageRefs)
+        imgElement.setAttribute("src", `../images/${product.imageRefs[0]}`);
+        // imgElement.setAttribute("height", "200");
+        imgElement.setAttribute("width", "200");
         imgElement.setAttribute("alt", "photo");
         imageElement.appendChild(imgElement);
         productElement.appendChild(imageElement);

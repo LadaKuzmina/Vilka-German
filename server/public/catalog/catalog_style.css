@@ -627,7 +627,7 @@ summary {
 
 .product {
     width: 230px;
-    height: 436px;
+    /*height: 436px;*/
     position: relative;
     padding: 18px;
     background-color: white;

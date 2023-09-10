@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
+﻿using System.Data;
 using System.Text;
-using System.Threading.Tasks;
 using BackServer.Contexts;
-using BackServer.RepositoryChangers.Implementations;
-using BackServer.Services;
-using BackServer.Services.Interfaces;
-using DbEntity;
-using NpgsqlDbExtensions;
-using Entity;
+using BackServer.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using Npgsql;
+using NpgsqlDbExtensions;
 using NpgsqlDbExtensions.Enums;
 using NpgsqlTypes;
 using Product = Entity.Product;
 
-namespace BackServer.Repositories
+namespace BackServer.RepositoryVisitors.Implementations
 {
     public class ProductsVisitorDb : IProductVisitor
     {
@@ -58,6 +47,7 @@ namespace BackServer.Repositories
             var products =
                 await ExecuteSqlCommand($"{sqlGetAllProduct};", dbConnection, Array.Empty<NpgsqlParameter>());
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
@@ -71,6 +61,7 @@ namespace BackServer.Repositories
 
             var products = await ExecuteSqlCommand(sql, dbConnection, Array.Empty<NpgsqlParameter>());
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
@@ -103,9 +94,9 @@ namespace BackServer.Repositories
         public async Task<IEnumerable<Product>> GetBySubstring(string substring)
         {
             var products = new List<Entity.Product>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
             var sql = @$"
                     SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
@@ -121,13 +112,14 @@ namespace BackServer.Repositories
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
                              LEFT JOIN sales s on sp.sale_id = s.sale_id
                     WHERE LOWER(p.title) LIKE '%{substring.ToLower()}%';";
-            await using var cmd = new NpgsqlCommand(sql, con);
+            await using var cmd = new NpgsqlCommand(sql, dbConnection);
             await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
             while (await rdr.ReadAsync())
             {
                 products.Add(await ConvertProduct(rdr));
             }
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
@@ -135,9 +127,9 @@ namespace BackServer.Repositories
         {
             var productsDictionary = new Dictionary<Entity.Product, int>();
             
-            await using var con = (NpgsqlConnection?)_context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            await using var dbConnection = (NpgsqlConnection?)_context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
             
             foreach (var substring in substrings.Select(substring => substring.ToLower()))
             {
@@ -158,7 +150,7 @@ namespace BackServer.Repositories
                        OR LOWER(hone.title) LIKE '%{substring}%'
                        OR LOWER(htwo.title) LIKE '%{substring}%'
                        OR LOWER(pv.property_value) LIKE '%{substring}%';";
-                await using var cmd = new NpgsqlCommand(sql, con);
+                await using var cmd = new NpgsqlCommand(sql, dbConnection);
                 await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
                 while (await rdr.ReadAsync())
                 {
@@ -168,6 +160,7 @@ namespace BackServer.Repositories
                 }
             }
 
+            await dbConnection.CloseAsync();
             return productsDictionary.Keys.Where(product => productsDictionary[product] >= substrings.Length).ToList();
         }
 

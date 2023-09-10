@@ -26,7 +26,8 @@ public class DbInitializeService : IDbInitializerService
     heading_one_id serial
         primary key,
     title          varchar(255) not null,
-    page_link      text
+    page_link      text,
+    image_ref      text
 );
 
 create table if not exists heading_two
@@ -207,23 +208,23 @@ create table if not exists project_images
 
 create table if not exists heading_one_filters
 (
-    heading_one_id integer not null
+    heading_one_id     integer           not null
         references heading_one,
-    property_id    integer not null
-        references properties,
-    primary key (heading_one_id, property_id)
+    property_values_id integer           not null
+        references property_values,
+    count_products     integer default 0 not null,
+    primary key (heading_one_id, property_values_id)
 );
 
 create table if not exists heading_two_filters
 (
-    heading_two_id integer not null
+    heading_two_id     integer           not null
         references heading_two,
-    property_id    integer not null
-        references properties,
-    primary key (heading_two_id, property_id)
-);
-
-";
+    property_values_id integer           not null
+        references property_values,
+    count_products     integer default 0 not null,
+    primary key (heading_two_id, property_values_id)
+);";
 
         await using var command = new NpgsqlCommand(sql, dbConnection);
         {
@@ -240,17 +241,17 @@ create table if not exists heading_two_filters
         if (dbConnection.State != ConnectionState.Open)
             await dbConnection.OpenAsync();
 
-        var sql = @"insert into public.heading_one (title, page_link)
-values  ('Кровля', null),
-        ('Фасад', null),
-        ('Вентиляция', null),
-        ('Водосток', null),
-        ('Мансардные окна', null),
-        ('Чердачные лестницы', null),
-        ('Изоляционные материалы', null),
-        ('Ограждения', null),
-        ('Комплектующие', null),
-        ('Благоустройство', null);";
+        var sql = @"insert into public.heading_one (title, page_link, image_ref)
+values  ('Кровля', null, 'crovlz.png'),
+        ('Фасад', null, 'facad.png'),
+        ('Вентиляция', null, 'ventilation.png'),
+        ('Водосток', null, 'drain.png'),
+        ('Мансардные окна', null, 'dormer_windows.png'),
+        ('Чердачные лестницы', null, 'stairs.png'),
+        ('Изоляционные материалы', null, 'materials.png'),
+        ('Ограждения', null, 'fences.png'),
+        ('Комплектующие', null, 'accessories.png'),
+        ('Благоустройство', null, 'landscaping.png');";
 
         await using var command = new NpgsqlCommand(sql, dbConnection);
         {

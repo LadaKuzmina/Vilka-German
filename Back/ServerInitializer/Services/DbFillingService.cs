@@ -16,13 +16,16 @@ public class DbFillingService : IDbFillingService
     private readonly PropertiesHandlersController _propertiesController;
     private readonly ImageHandlersController _imageController;
     private readonly UnitMeasurementController _unitMeasurementController;
+    private readonly FiltersHandlersController _filtersHandlersController;
     private readonly ILogger<DbFillingService> _logger;
 
     public DbFillingService(DbDataRequests dbDataRequests, ProductsHandlersController productsController,
         HeadingsHandlersController headingsController,
         PropertiesHandlersController propertiesController,
         ImageHandlersController imageController,
-        UnitMeasurementController unitMeasurementController, ILogger<DbFillingService> logger)
+        UnitMeasurementController unitMeasurementController,
+        FiltersHandlersController filtersHandlersController,
+        ILogger<DbFillingService> logger)
     {
         _dbDataRequests = dbDataRequests;
         _productsController = productsController;
@@ -30,6 +33,7 @@ public class DbFillingService : IDbFillingService
         _propertiesController = propertiesController;
         _imageController = imageController;
         _unitMeasurementController = unitMeasurementController;
+        _filtersHandlersController = filtersHandlersController;
         _logger = logger;
     }
 
@@ -59,13 +63,15 @@ public class DbFillingService : IDbFillingService
             case Headings.HeadingOne:
                 foreach (var filter in filters)
                 {
-                    await _propertiesController.AddFilterHeadingOne(filter, headingTitle);
+                    if (filter=="Цена") continue;
+                    await _filtersHandlersController.AddFilterHeadingOne(headingTitle, filter);
                 }
                 break;
             case Headings.HeadingTwo:
                 foreach (var filter in filters)
                 {
-                    await _propertiesController.AddFilterHeadingTwo(filter, headingTitle);
+                    if (filter=="Цена") continue;
+                    await _filtersHandlersController.AddFilterHeadingTwo(headingTitle, filter);
                 }
                 break;
         }

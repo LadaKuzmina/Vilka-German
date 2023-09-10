@@ -39,6 +39,7 @@ builder.Services.AddTransient<ImageHandlersController>();
 builder.Services.AddTransient<ProductsHandlersController>();
 builder.Services.AddTransient<PropertiesHandlersController>();
 builder.Services.AddTransient<UnitMeasurementController>();
+builder.Services.AddTransient<FiltersHandlersController>();
 
 builder.Services.AddSingleton<DbDataRequests>();
 builder.Services.AddTransient<IDbInitializerService, DbInitializeService>();

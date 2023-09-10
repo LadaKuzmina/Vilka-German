@@ -2,7 +2,7 @@
 
 namespace DbEntity
 {
-    public class HeadingTwo
+    public class HeadingTwo : IHeading
     {
         public int Id { get; set; }
         public string Title { get; set; }

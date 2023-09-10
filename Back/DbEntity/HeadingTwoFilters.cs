@@ -1,10 +1,12 @@
 ﻿namespace DbEntity
 {
-    public class HeadingTwoFilters
+    public class HeadingTwoFilters : IHeadingFilter
     {
-        public int heading_two_id { get; set; }
-        public int property_id { get; set; }
+        public int heading_id { get; set; }
+        public int property_values_id { get; set; }
+        public int Count { get; set; }
         public HeadingTwo HeadingTwo { get; set; }
-        public Property Property { get; set; }
+        public PropertyValues PropertyValues { get; set; }
+
     }
 }

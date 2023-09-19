@@ -45,7 +45,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsOne =
-                await ExecuteSqlCommandHeadingOne($"{getAllHeadingOne};", dbConnection, Array.Empty<NpgsqlParameter>());
+                await ExecuteSqlCommandHeadingOne($"{getAllHeadingOne} ORDER BY heading_one_id;", dbConnection, Array.Empty<NpgsqlParameter>());
 
             await dbConnection.CloseAsync();
 
@@ -59,7 +59,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsTwo =
-                await ExecuteSqlCommandHeadingTwo($"{getAllHeadingTwo};", dbConnection, Array.Empty<NpgsqlParameter>());
+                await ExecuteSqlCommandHeadingTwo($"{getAllHeadingTwo} ORDER BY heading_two_id;", dbConnection, Array.Empty<NpgsqlParameter>());
             
             await dbConnection.CloseAsync();
             
@@ -73,7 +73,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsThree =
-                await ExecuteSqlCommandHeadingThree($"{getAllHeadingThree};", dbConnection,
+                await ExecuteSqlCommandHeadingThree($"{getAllHeadingThree} ORDER BY heading_three_id;", dbConnection,
                     Array.Empty<NpgsqlParameter>());
             
             await dbConnection.CloseAsync();
@@ -87,7 +87,7 @@ namespace BackServer.Repositories
             if (dbConnection.State != ConnectionState.Open)
                 await dbConnection.OpenAsync();
 
-            var sql = $"{getAllHeadingTwo} WHERE ho.title=@TITLE;";
+            var sql = $"{getAllHeadingTwo} WHERE ho.title=@TITLE ORDER BY heading_two_id;";
             var parameters = new[]
             {
                 new NpgsqlParameter()
@@ -108,7 +108,7 @@ namespace BackServer.Repositories
             if (dbConnection.State != ConnectionState.Open)
                 await dbConnection.OpenAsync();
 
-            var sql = $"{getAllHeadingThree} WHERE ht.title=@TITLE;";
+            var sql = $"{getAllHeadingThree} WHERE ht.title=@TITLE ORDER BY heading_three_id;";
             var parameters = new[]
             {
                 new NpgsqlParameter()

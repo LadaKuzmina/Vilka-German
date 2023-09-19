@@ -126,11 +126,11 @@ namespace BackServer.RepositoryVisitors.Implementations
         public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
         {
             var productsDictionary = new Dictionary<Entity.Product, int>();
-            
-            await using var dbConnection = (NpgsqlConnection?)_context.Database.GetDbConnection();
+
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
             if (dbConnection.State != ConnectionState.Open)
                 await dbConnection.OpenAsync();
-            
+
             foreach (var substring in substrings.Select(substring => substring.ToLower()))
             {
                 var sql = @$"
@@ -245,10 +245,10 @@ namespace BackServer.RepositoryVisitors.Implementations
 
             products = await GetByRequirements(products, reqProperties, (pageNumber - 1) * countElements,
                 countElements);
+
             foreach (var product in products)
-            {
                 product.ImageRefs = new List<string?>() {await _photoVisitor.GetPrimaryProductPhoto(product.Title)};
-            }
+
             return products;
         }
 
@@ -398,6 +398,37 @@ namespace BackServer.RepositoryVisitors.Implementations
             }
 
             return resultProducts;
+        }
+
+        // private async Task<List<Entity.Product>> GetByRequirements(string headingTitle, Headings heading,
+        //     Dictionary<string, HashSet<string>> properties)
+        // {
+        //     var resultProducts = new HashSet<Entity.Product>();
+        //     foreach (var property in properties)
+        //     {
+        //         GetPropertyProducts(property.Key, headingTitle, heading);
+        //     }
+        //
+        //     foreach (var product in products)
+        //     {
+        //         if (properties.ContainsKey("Максимальная цена") &&
+        //             product.SalePrice > int.Parse(properties["Максимальная цена"].First()) ||
+        //             properties.ContainsKey("Минимальная цена") &&
+        //             product.SalePrice < int.Parse(properties["Минимальная цена"].First()))
+        //         {
+        //             continue;
+        //         }
+        //     }
+        //
+        //     return resultProducts;
+        // }
+
+        private void GetPropertyProducts(string propertyTitle, string headingTitle, Headings heading)
+        {
+            var sql = new StringBuilder();
+            sql.Append(sqlGetAllProduct);
+            sql.Append($" {JoinByHeading(heading)} \n JOIN");
+            sql.Append($" {WhereByHeading(heading)} AND p.title;");
         }
 
         private async Task<IEnumerable<Entity.Property>> GetAllProperties(Entity.Product product)

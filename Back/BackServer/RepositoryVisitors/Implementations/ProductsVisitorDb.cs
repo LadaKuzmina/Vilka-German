@@ -360,25 +360,27 @@ namespace BackServer.RepositoryVisitors.Implementations
         }
 
         private async Task<List<Entity.Product>> GetByRequirements(IEnumerable<Entity.Product> products,
-            Dictionary<string, HashSet<string>> properties, int numberSkip, int numberTake)
+            Dictionary<string, HashSet<string>> reqProperties, int numberSkip, int numberTake)
         {
             var resultProducts = new List<Entity.Product>();
             foreach (var product in products)
             {
-                var productProperties = await GetAllProperties(product);
-                var meetsRequirements = true;
-
-                if (properties.ContainsKey("Максимальная цена") &&
-                    product.SalePrice > int.Parse(properties["Максимальная цена"].First()) ||
-                    properties.ContainsKey("Минимальная цена") &&
-                    product.SalePrice < int.Parse(properties["Минимальная цена"].First()))
+                if (reqProperties.ContainsKey("Максимальная цена") &&
+                    product.SalePrice > int.Parse(reqProperties["Максимальная цена"].First()) ||
+                    reqProperties.ContainsKey("Минимальная цена") &&
+                    product.SalePrice < int.Parse(reqProperties["Минимальная цена"].First()))
                 {
                     continue;
                 }
 
-                foreach (var pp in productProperties)
+                var meetsRequirements = true;
+                
+                foreach (var (property, values) in reqProperties)
                 {
-                    if (properties.ContainsKey(pp.Title) && !properties[pp.Title].Contains(pp.Values.First()))
+                    if (property is "Максимальная цена" or "Минимальная цена") continue;
+                    
+                    var value = await _propertyVisitor.GetProductPropertyValue(product.Title, property);
+                    if (!values.Contains(value))
                     {
                         meetsRequirements = false;
                         break;

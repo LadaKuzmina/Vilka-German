@@ -198,6 +198,7 @@
     position: relative;
     width: 475px;
     left: 39.2%;
+    margin-top: 222px;
 }
 
 .page_switcher .page_switcher_button {
@@ -315,7 +316,7 @@ footer > div {
     display: flex;
     flex-shrink: 0;
     flex-direction: row;
-    /*margin-top: 222px;*/
+    margin-top: 222px;
     justify-content: space-between;
     /*padding: 0 10px 10px;*/
     position: relative;

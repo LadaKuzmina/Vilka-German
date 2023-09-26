@@ -482,6 +482,10 @@ footer > div {
     width: 300px;
 }
 
+.prod_text li:hover {
+    color: #FEDB03;
+}
+
 .products a {
     color: transparent;
 }

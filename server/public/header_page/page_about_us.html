@@ -19,12 +19,13 @@
             <div class="dropdown_mobile">
                 <button class="drop_button"><img src="../header_icons/list.png" alt="roof" class="roof" height="25"
                                                  width="40"></button>
-                <div class="mobile_content"><a href="../header_page/index.html">Каталог</a><a
-                        href="/about">О нас</a><a
-                        href="../header_page/delivery_page.html">Доставка</a><a
-                        href="../header_page/contact_page.html">Контакты</a>
+                <div class="mobile_content">
+                    <a href="../header_page/index.html">Каталог</a>
+                    <a href="/about">О нас</a>
+                    <a href="../header_page/delivery_page.html">Доставка</a>
+                    <a href="../header_page/contact_page.html">Контакты</a>
                     <div class="d3">
-                        <form class="search"><input type="text" placeholder="Искать здесь...">
+                        <form class="search" id="search"><input type="text" placeholder="Искать здесь...">
                             <button type="submit"></button>
                         </form>
                     </div>
@@ -62,28 +63,15 @@
                                                                                  alt="roof" class="roof" height="24"
                                                                                  width="40">Каталог
                     </button>
-                    <div class="dropdown_content" id="dropdown"><a class="nav_link"
-                                                                   href="../catalog/subheadings.html?heading=Кровля">Кровля</a><a
-                            class="nav_link" href="../catalog/subheadings.html?heading=Фасад">Фасад</a><a
-                            class="nav_link" href="../catalog/subheadings.html?heading=Водосток">Водосточные
-                        системы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Мансардные окна">Мансардные
-                        окна</a><a class="nav_link"
-                                   href="../catalog/subheadings.html?heading=Вентиляция">Вентиляция</a><a
-                            class="nav_link" href="../catalog/subheadings.html?heading=Чердачные лестницы">Чердачные
-                        лестницы</a><a class="nav_link"
-                                       href="../catalog/subheadings.html?heading=Изоляционные материалы">Изоляционные
-                        материалы</a><a class="nav_link" href="../catalog/subheadings.html?heading=Ограждения">Ограждения</a><a
-                            class="nav_link"
-                            href="../catalog/subheadings.html?heading=Комплектующие">Комплектующие</a><a
-                            class="nav_link"
-                            href="../catalog/subheadings.html?heading=Благоустройство">Благоустройство</a>
-                    </div>
+                    <div class="dropdown_content" id="dropdown"></div>
                 </div>
-                <a class="nav_link" href="../header_page/page_about_us.html">О нас</a><a class="nav_link"
-                                                                                         href="../header_page/delivery_page.html">Доставка</a><a
+                <a class="nav_link" href="/about">О нас</a><a class="nav_link"
+                                                              href="../header_page/delivery_page.html">Доставка</a><a
                     class="nav_link" href="../header_page/contact_page.html">Контакты</a>
                 <div class="d3">
-                    <form class="search"><input type="text" placeholder="Искать здесь...">
+                    <form class="search">
+                        <input type="text" placeholder="Искать здесь..." id="search_bar" onkeyup="search()">
+                        <div class="search_content" id="search_block"></div>
                         <button type="submit"></button>
                     </form>
                 </div>
@@ -226,5 +214,6 @@
 </footer>
 <script src="../scripts/http_functions.js"></script>
 <script src="../scripts/menu.js"></script>
+<script src="../scripts/configure_dropdown_content.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ public class DbInitializeService : IDbInitializerService
 
     public async Task CreateDb()
     {
-        var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+        var dbConnection = (NpgsqlConnection?)_context.Database.GetDbConnection();
 
         if (dbConnection.State != ConnectionState.Open)
             await dbConnection.OpenAsync();
@@ -235,7 +235,7 @@ create table if not exists heading_two_filters
 
     public async Task AddHeadingsOne()
     {
-        var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+        var dbConnection = (NpgsqlConnection?)_context.Database.GetDbConnection();
 
         if (dbConnection.State != ConnectionState.Open)
             await dbConnection.OpenAsync();
@@ -262,7 +262,7 @@ values  ('Кровля', null),
 
     public async Task AddHeadingsTwo()
     {
-        var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+        var dbConnection = (NpgsqlConnection?)_context.Database.GetDbConnection();
 
         if (dbConnection.State != ConnectionState.Open)
             await dbConnection.OpenAsync();

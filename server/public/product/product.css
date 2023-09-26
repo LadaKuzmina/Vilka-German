@@ -31,9 +31,11 @@ body {
 
 .priceProduct {
     font-family: "Istok Web";
-    position: absolute;
-    top: 10px;
-    left: 400px;
+    position: relative;
+    color: #8745f1;
+    /*top: 100px;*/
+    /*left: 400px;*/
+    font-size: 36px;
 }
 
 .square {
@@ -49,7 +51,7 @@ h3 {
 .descriptionProduct {
     font-family: "Istok Web";
     position: absolute;
-    top: 50px;
+    top: 150px;
     left: 400px;
 }
 

@@ -499,7 +499,10 @@ footer > div {
     color: black;
     transition: 0.5s;
 }
-
+.prod_text a:hover{
+    color: #FEDB03;
+    text-decoration: underline #FEDB03;
+}
 .products:hover .img_prod {
     opacity: 15%;
     transition: 0.5s;

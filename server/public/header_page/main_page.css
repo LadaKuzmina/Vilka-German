@@ -474,16 +474,18 @@ footer > div {
 }
 
 .prod_text a {
-    transition: 0.5s;
+    /*transition: 0.5s;*/
+    text-decoration: none;
+    background-image: linear-gradient(#FEDB03, #FEDB03);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size 0.5s, all 0.5s;
 }
 
 .prod_text h4 {
     text-align: center;
     width: 300px;
-}
-
-.prod_text li:hover {
-    color: #FEDB03;
 }
 
 .products a {
@@ -497,12 +499,9 @@ footer > div {
 
 .products:hover .prod_text a {
     color: black;
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 }
-.prod_text a:hover{
-    color: #FEDB03;
-    text-decoration: underline #FEDB03;
-}
+
 .products:hover .img_prod {
     opacity: 15%;
     transition: 0.5s;
@@ -512,6 +511,12 @@ footer > div {
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s, opacity 0.5s linear;
+}
+
+.prod_text a:hover {
+    /*text-decoration: underline #FEDB03;*/
+    /*transition: 0s;*/
+    background-size: 100% 2px;
 }
 
 /*.products {*/

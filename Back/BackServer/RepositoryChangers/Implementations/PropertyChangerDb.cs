@@ -71,10 +71,10 @@ namespace BackServer.RepositoryChangers.Implementations
             }
             
             var headingsOneFilters = await _context.HeadingOneFilters
-                .Where(x => x.property_id == property.Id)
+                .Where(x => x.property_values_id == property.Id)
                 .ToArrayAsync();
             var headingsTwoFilters = await _context.HeadingTwoFilters
-                .Where(x => x.property_id == property.Id)
+                .Where(x => x.property_values_id == property.Id)
                 .ToArrayAsync();
 
             
@@ -273,150 +273,6 @@ namespace BackServer.RepositoryChangers.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)
-        {
-            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
-            if (property == null)
-                return false;
 
-            var headingOne = await _context.HeadingsOne.FirstOrDefaultAsync(x => x.Title == headingOneTitle);
-            if (headingOne == null)
-                return false;
-
-            var headingOneFilter = await _context.HeadingOneFilters.FirstOrDefaultAsync(x =>
-                x.heading_one_id == headingOne.Id && x.property_id == property.Id);
-            if (headingOneFilter != null)
-                return true;
-
-            headingOneFilter = new HeadingOneFilters() {HeadingOne = headingOne, Property = property};
-            await _context.HeadingOneFilters.AddAsync(headingOneFilter);
-
-            var products = await _context.ProductFamilies
-                .Where(x => x.HeadingOne.Title == headingOneTitle)
-                .Join(_context.Products, family => family.Id, product => product.product_family_id,
-                    (family, product) => new {product.Title})
-                .ToListAsync();
-            foreach (var product in products)
-            {
-                await AddProductPropertyValue(product.Title, propertyTitle, defaultPropertyValue, false);
-            }
-
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle)
-        {
-            var headingOneFilter = await _context.HeadingOneFilters.FirstOrDefaultAsync(x =>
-                x.HeadingOne.Title == headingOneTitle && x.Property.Title == propertyTitle);
-            if (headingOneFilter == null)
-                return true;
-
-            _context.HeadingOneFilters.Remove(headingOneFilter);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle)
-        {
-            var headingOneFilters = await _context.HeadingOneFilters.Where(x => x.HeadingOne.Title == headingOneTitle)
-                .ToArrayAsync();
-            if (headingOneFilters.Length == 0)
-                return true;
-
-            _context.HeadingOneFilters.RemoveRange(headingOneFilters);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle,
-            string newPropertyTitle)
-        {
-            var headingOneFilters = await _context.HeadingOneFilters.FirstOrDefaultAsync(x =>
-                x.HeadingOne.Title == headingOneFilter && x.Property.Title == oldPropertyTitle);
-            if (headingOneFilters == null)
-                return false;
-
-            var newProperty = await _context.Properties.FirstOrDefaultAsync(x => x.Title == newPropertyTitle);
-            if (newProperty == null)
-                return false;
-
-            headingOneFilters.Property = newProperty;
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle)
-        {
-            var property = await _context.Properties.FirstOrDefaultAsync(x => x.Title == propertyTitle);
-            if (property == null)
-                return false;
-
-            var headingTwo = await _context.HeadingsTwo.FirstOrDefaultAsync(x => x.Title == headingTwoTitle);
-            if (headingTwo == null)
-                return false;
-
-            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x =>
-                x.heading_two_id == headingTwo.Id && x.property_id == property.Id);
-            if (headingTwoFilters != null)
-                return true;
-
-            headingTwoFilters = new HeadingTwoFilters() {HeadingTwo = headingTwo, Property = property};
-            await _context.HeadingTwoFilters.AddAsync(headingTwoFilters);
-
-            var products = await _context.ProductFamilies
-                .Where(x => x.HeadingTwo.Title == headingTwoTitle)
-                .Join(_context.Products, family => family.Id, product => product.product_family_id,
-                    (family, product) => new {product.Title})
-                .ToListAsync();
-            foreach (var product in products)
-            {
-                await AddProductPropertyValue(product.Title, propertyTitle, defaultPropertyValue, false);
-            }
-
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle)
-        {
-            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x =>
-                x.HeadingTwo.Title == headingTwoTitle && x.Property.Title == propertyTitle);
-            if (headingTwoFilters == null)
-                return true;
-
-            _context.HeadingTwoFilters.Remove(headingTwoFilters);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle)
-        {
-            var headingTwoFilters = await _context.HeadingTwoFilters.Where(x => x.HeadingTwo.Title == headingTwoTitle)
-                .ToArrayAsync();
-            if (headingTwoFilters.Length == 0)
-                return true;
-
-            _context.HeadingTwoFilters.RemoveRange(headingTwoFilters);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle,
-            string newPropertyTitle)
-        {
-            var headingTwoFilters = await _context.HeadingTwoFilters.FirstOrDefaultAsync(x =>
-                x.HeadingTwo.Title == headingTwoFilter && x.Property.Title == oldPropertyTitle);
-            if (headingTwoFilters == null)
-                return false;
-
-            var newProperty = await _context.Properties.FirstOrDefaultAsync(x => x.Title == newPropertyTitle);
-            if (newProperty == null)
-                return false;
-
-            headingTwoFilters.Property = newProperty;
-            await _context.SaveChangesAsync();
-            return true;
-        }
     }
 }

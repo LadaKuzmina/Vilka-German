@@ -21,16 +21,5 @@ namespace BackServer.RepositoryChangers.Interfaces
         Task<bool> DeleteAllPropertyValues(string propertyTitle);
         Task<bool> DeletePropertyValue(string propertyTitle, string propertyValue);
         Task<bool> AddPropertyValue(string propertyTitle, IEnumerable<string> propertyValues);
-
-        Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle);
-        Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle);
-        Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle);
-        Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle,
-            string newPropertyTitle);
-        Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle);
-        Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle);
-        Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle);
-        Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle,
-            string newPropertyTitle);
     }
 }

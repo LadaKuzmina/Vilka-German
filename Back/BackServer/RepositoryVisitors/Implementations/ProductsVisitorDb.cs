@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
+﻿using System.Data;
 using System.Text;
-using System.Threading.Tasks;
 using BackServer.Contexts;
-using BackServer.RepositoryChangers.Implementations;
-using BackServer.Services;
-using BackServer.Services.Interfaces;
-using DbEntity;
-using NpgsqlDbExtensions;
-using Entity;
+using BackServer.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using Npgsql;
+using NpgsqlDbExtensions;
 using NpgsqlDbExtensions.Enums;
 using NpgsqlTypes;
 using Product = Entity.Product;
 
-namespace BackServer.Repositories
+namespace BackServer.RepositoryVisitors.Implementations
 {
     public class ProductsVisitorDb : IProductVisitor
     {
@@ -58,6 +47,7 @@ namespace BackServer.Repositories
             var products =
                 await ExecuteSqlCommand($"{sqlGetAllProduct};", dbConnection, Array.Empty<NpgsqlParameter>());
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
@@ -71,6 +61,7 @@ namespace BackServer.Repositories
 
             var products = await ExecuteSqlCommand(sql, dbConnection, Array.Empty<NpgsqlParameter>());
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
@@ -103,9 +94,9 @@ namespace BackServer.Repositories
         public async Task<IEnumerable<Product>> GetBySubstring(string substring)
         {
             var products = new List<Entity.Product>();
-            await using var con = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
 
             var sql = @$"
                     SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
@@ -121,24 +112,25 @@ namespace BackServer.Repositories
                              LEFT JOIN sale_products sp on p.product_id = sp.product_id
                              LEFT JOIN sales s on sp.sale_id = s.sale_id
                     WHERE LOWER(p.title) LIKE '%{substring.ToLower()}%';";
-            await using var cmd = new NpgsqlCommand(sql, con);
+            await using var cmd = new NpgsqlCommand(sql, dbConnection);
             await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
             while (await rdr.ReadAsync())
             {
                 products.Add(await ConvertProduct(rdr));
             }
 
+            await dbConnection.CloseAsync();
             return products;
         }
 
         public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
         {
             var productsDictionary = new Dictionary<Entity.Product, int>();
-            
-            await using var con = (NpgsqlConnection?)_context.Database.GetDbConnection();
-            if (con.State != ConnectionState.Open)
-                await con.OpenAsync();
-            
+
+            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
+            if (dbConnection.State != ConnectionState.Open)
+                await dbConnection.OpenAsync();
+
             foreach (var substring in substrings.Select(substring => substring.ToLower()))
             {
                 var sql = @$"
@@ -158,7 +150,7 @@ namespace BackServer.Repositories
                        OR LOWER(hone.title) LIKE '%{substring}%'
                        OR LOWER(htwo.title) LIKE '%{substring}%'
                        OR LOWER(pv.property_value) LIKE '%{substring}%';";
-                await using var cmd = new NpgsqlCommand(sql, con);
+                await using var cmd = new NpgsqlCommand(sql, dbConnection);
                 await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
                 while (await rdr.ReadAsync())
                 {
@@ -168,6 +160,7 @@ namespace BackServer.Repositories
                 }
             }
 
+            await dbConnection.CloseAsync();
             return productsDictionary.Keys.Where(product => productsDictionary[product] >= substrings.Length).ToList();
         }
 
@@ -252,10 +245,10 @@ namespace BackServer.Repositories
 
             products = await GetByRequirements(products, reqProperties, (pageNumber - 1) * countElements,
                 countElements);
+
             foreach (var product in products)
-            {
                 product.ImageRefs = new List<string?>() {await _photoVisitor.GetPrimaryProductPhoto(product.Title)};
-            }
+
             return products;
         }
 
@@ -367,25 +360,27 @@ namespace BackServer.Repositories
         }
 
         private async Task<List<Entity.Product>> GetByRequirements(IEnumerable<Entity.Product> products,
-            Dictionary<string, HashSet<string>> properties, int numberSkip, int numberTake)
+            Dictionary<string, HashSet<string>> reqProperties, int numberSkip, int numberTake)
         {
             var resultProducts = new List<Entity.Product>();
             foreach (var product in products)
             {
-                var productProperties = await GetAllProperties(product);
-                var meetsRequirements = true;
-
-                if (properties.ContainsKey("Максимальная цена") &&
-                    product.SalePrice > int.Parse(properties["Максимальная цена"].First()) ||
-                    properties.ContainsKey("Минимальная цена") &&
-                    product.SalePrice < int.Parse(properties["Минимальная цена"].First()))
+                if (reqProperties.ContainsKey("Максимальная цена") &&
+                    product.SalePrice > int.Parse(reqProperties["Максимальная цена"].First()) ||
+                    reqProperties.ContainsKey("Минимальная цена") &&
+                    product.SalePrice < int.Parse(reqProperties["Минимальная цена"].First()))
                 {
                     continue;
                 }
 
-                foreach (var pp in productProperties)
+                var meetsRequirements = true;
+                
+                foreach (var (property, values) in reqProperties)
                 {
-                    if (properties.ContainsKey(pp.Title) && !properties[pp.Title].Contains(pp.Values.First()))
+                    if (property is "Максимальная цена" or "Минимальная цена") continue;
+                    
+                    var value = await _propertyVisitor.GetProductPropertyValue(product.Title, property);
+                    if (!values.Contains(value))
                     {
                         meetsRequirements = false;
                         break;
@@ -405,6 +400,37 @@ namespace BackServer.Repositories
             }
 
             return resultProducts;
+        }
+
+        // private async Task<List<Entity.Product>> GetByRequirements(string headingTitle, Headings heading,
+        //     Dictionary<string, HashSet<string>> properties)
+        // {
+        //     var resultProducts = new HashSet<Entity.Product>();
+        //     foreach (var property in properties)
+        //     {
+        //         GetPropertyProducts(property.Key, headingTitle, heading);
+        //     }
+        //
+        //     foreach (var product in products)
+        //     {
+        //         if (properties.ContainsKey("Максимальная цена") &&
+        //             product.SalePrice > int.Parse(properties["Максимальная цена"].First()) ||
+        //             properties.ContainsKey("Минимальная цена") &&
+        //             product.SalePrice < int.Parse(properties["Минимальная цена"].First()))
+        //         {
+        //             continue;
+        //         }
+        //     }
+        //
+        //     return resultProducts;
+        // }
+
+        private void GetPropertyProducts(string propertyTitle, string headingTitle, Headings heading)
+        {
+            var sql = new StringBuilder();
+            sql.Append(sqlGetAllProduct);
+            sql.Append($" {JoinByHeading(heading)} \n JOIN");
+            sql.Append($" {WhereByHeading(heading)} AND p.title;");
         }
 
         private async Task<IEnumerable<Entity.Property>> GetAllProperties(Entity.Product product)

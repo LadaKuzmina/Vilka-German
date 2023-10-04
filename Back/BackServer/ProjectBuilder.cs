@@ -1,6 +1,8 @@
 using BackServer.Repositories;
 using BackServer.RepositoryChangers.Implementations;
 using BackServer.RepositoryChangers.Interfaces;
+using BackServer.RepositoryVisitors;
+using BackServer.RepositoryVisitors.Implementations;
 using BackServer.Services;
 using BackServer.Services.Interfaces;
 
@@ -24,6 +26,8 @@ public class ProjectBuilder
         builder.Services.AddTransient<ISaleVisitor, SalesVisitorDb>();
         builder.Services.AddTransient<IPhotoVisitor, PhotoVisitorDb>();
         builder.Services.AddTransient<IUnitMeasurementVisitor, UnitMeasurementVisitorDb>();
+        builder.Services.AddTransient<IFilterVisitor, FilterVisitorDb>();
+        builder.Services.AddTransient<DbEntityGetter>();
     }
     
     public static void ChangerBuild(WebApplicationBuilder builder)
@@ -35,6 +39,7 @@ public class ProjectBuilder
         builder.Services.AddTransient<IPropertyChanger, PropertyChangerDb>();
         builder.Services.AddTransient<IPhotoChanger, PhotoChangerDb>();
         builder.Services.AddTransient<IUnitMeasurementChanger, UnitMeasurementChangerDb>();
+        builder.Services.AddTransient<IFilterChanger, FilterChangerDb>();
     }
 
     public static void ServiceBuild(WebApplicationBuilder builder)
@@ -46,5 +51,6 @@ public class ProjectBuilder
         builder.Services.AddTransient<ISaleService, SaleService>();
         builder.Services.AddTransient<IPhotoService, PhotoService>();
         builder.Services.AddTransient<IUnitMeasurementService, UnitMeasurementService>();
+        builder.Services.AddTransient<IFilterService, FilterService>();
     }
 }

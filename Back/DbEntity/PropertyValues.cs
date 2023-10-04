@@ -9,5 +9,7 @@ namespace DbEntity
         public string PropertyValue { get; set; }
         public HeadingThree HeadingThree { get; set; }
         public List<ProductProperty> ProductProperties { get; set; }
+        public List<HeadingOneFilters> HeadingOneFilters { get; set; }
+        public List<HeadingTwoFilters> HeadingTwoFilters { get; set; }
     }
 }

@@ -14,7 +14,5 @@ namespace BackServer.Repositories
         Task<IEnumerable<Entity.HeadingOne>> GetHeadingsOneBySubstringsAsync(string[] substrings);
         Task<IEnumerable<Entity.HeadingTwo>> GetHeadingsTwoBySubstringsAsync(string[] substrings);
         Task<IEnumerable<Entity.HeadingThree>> GetHeadingsThreeBySubstringsAsync(string[] substrings);
-        Task<IEnumerable<string>> GetHeadingsOneFiltersAsync(string headingOneTitle);
-        Task<IEnumerable<string>> GetHeadingsTwoFiltersAsync(string headingTwoTitle);
     }
 }

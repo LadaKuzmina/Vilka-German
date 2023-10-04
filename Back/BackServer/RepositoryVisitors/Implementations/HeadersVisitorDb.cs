@@ -45,7 +45,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsOne =
-                await ExecuteSqlCommandHeadingOne($"{getAllHeadingOne};", dbConnection, Array.Empty<NpgsqlParameter>());
+                await ExecuteSqlCommandHeadingOne($"{getAllHeadingOne} ORDER BY heading_one_id;", dbConnection, Array.Empty<NpgsqlParameter>());
 
             await dbConnection.CloseAsync();
 
@@ -59,7 +59,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsTwo =
-                await ExecuteSqlCommandHeadingTwo($"{getAllHeadingTwo};", dbConnection, Array.Empty<NpgsqlParameter>());
+                await ExecuteSqlCommandHeadingTwo($"{getAllHeadingTwo} ORDER BY heading_two_id;", dbConnection, Array.Empty<NpgsqlParameter>());
             
             await dbConnection.CloseAsync();
             
@@ -73,7 +73,7 @@ namespace BackServer.Repositories
                 await dbConnection.OpenAsync();
 
             var headingsThree =
-                await ExecuteSqlCommandHeadingThree($"{getAllHeadingThree};", dbConnection,
+                await ExecuteSqlCommandHeadingThree($"{getAllHeadingThree} ORDER BY heading_three_id;", dbConnection,
                     Array.Empty<NpgsqlParameter>());
             
             await dbConnection.CloseAsync();
@@ -87,7 +87,7 @@ namespace BackServer.Repositories
             if (dbConnection.State != ConnectionState.Open)
                 await dbConnection.OpenAsync();
 
-            var sql = $"{getAllHeadingTwo} WHERE ho.title=@TITLE;";
+            var sql = $"{getAllHeadingTwo} WHERE ho.title=@TITLE ORDER BY heading_two_id;";
             var parameters = new[]
             {
                 new NpgsqlParameter()
@@ -108,7 +108,7 @@ namespace BackServer.Repositories
             if (dbConnection.State != ConnectionState.Open)
                 await dbConnection.OpenAsync();
 
-            var sql = $"{getAllHeadingThree} WHERE ht.title=@TITLE;";
+            var sql = $"{getAllHeadingThree} WHERE ht.title=@TITLE ORDER BY heading_three_id;";
             var parameters = new[]
             {
                 new NpgsqlParameter()
@@ -209,62 +209,6 @@ namespace BackServer.Repositories
             return new Entity.HeadingThree(reader.GetString(0), reader.GetString(1),
                 await reader.ReadNullOrStringAsync(2),
                 await reader.ReadNullOrStringAsync(3));
-        }
-
-        public async Task<IEnumerable<string>> GetHeadingsOneFiltersAsync(string headingOneTitle)
-        {
-            var sql = @"
-                    SELECT p.title
-                    FROM heading_one as ho
-                    JOIN heading_one_filters hof on ho.heading_one_id = hof.heading_one_id
-                    JOIN properties p on hof.property_id = p.property_id
-                    WHERE ho.title=@TITLE;";
-
-            return await GetFilters(sql,
-                new[]
-                {
-                    new NpgsqlParameter()
-                        {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingOneTitle}
-                });
-        }
-
-        public async Task<IEnumerable<string>> GetHeadingsTwoFiltersAsync(string headingTwoTitle)
-        {
-            var sql = @"
-                    SELECT p.title
-                    FROM heading_two as ht
-                    JOIN heading_two_filters htf on ht.heading_two_id = htf.heading_two_id
-                    JOIN properties p on htf.property_id = p.property_id
-                    WHERE ht.title=@TITLE;";
-
-            return await GetFilters(sql,
-                new[]
-                {
-                    new NpgsqlParameter()
-                        {ParameterName = "@TITLE", NpgsqlDbType = NpgsqlDbType.Text, Value = headingTwoTitle}
-                });
-        }
-
-        private async Task<IEnumerable<string>> GetFilters(string sql, IEnumerable<NpgsqlParameter> parameters)
-        {
-            var propertyTitles = new List<string>();
-            var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
-
-            if (dbConnection.State != ConnectionState.Open)
-                await dbConnection.OpenAsync();
-
-            await using var command = new NpgsqlCommand(sql, dbConnection);
-            {
-                NpgsqlFunctions.AddParameters(command, parameters);
-                await using NpgsqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    propertyTitles.Add(reader.GetString(0));
-                }
-            }
-
-            await dbConnection.CloseAsync();
-            return propertyTitles;
         }
     }
 }

@@ -34,16 +34,6 @@ namespace BackServer.Services
             return await _visitor.GetPriorityByProduct(productTitle);
         }
 
-        public async Task<IEnumerable<Property>> GetByHeadingOne(string headingOneTitle)
-        {
-            return await _visitor.GetByHeadingOne(headingOneTitle);
-        }
-
-        public async Task<IEnumerable<Property>> GetByHeadingTwo(string headingTwoTitle)
-        {
-            return await _visitor.GetByHeadingTwo(headingTwoTitle);
-        }
-
         public async Task<string> GetProductPropertyValue(string productTitle, string propertyTitle)
         {
             return await _visitor.GetProductPropertyValue(productTitle, propertyTitle);
@@ -104,46 +94,6 @@ namespace BackServer.Services
         public async Task<bool> DeletePropertyValue(string propertyTitle, string propertyValue)
         {
             return await _changer.DeletePropertyValue(propertyTitle, propertyValue);
-        }
-
-        public async Task<bool> AddFilterHeadingOne(string propertyTitle, string headingOneTitle)
-        {
-            return await _changer.AddFilterHeadingOne(propertyTitle, headingOneTitle);
-        }
-
-        public async Task<bool> DeleteHeadingOneFilter(string propertyTitle, string headingOneTitle)
-        {
-            return await _changer.DeleteHeadingOneFilter(propertyTitle, headingOneTitle);
-        }
-
-        public async Task<bool> DeleteAllHeadingOneFilters(string headingOneTitle)
-        {
-            return await _changer.DeleteAllHeadingOneFilters(headingOneTitle);
-        }
-
-        public async Task<bool> UpdateHeadingOneFilter(string headingOneFilter, string oldPropertyTitle, string newPropertyTitle)
-        {
-            return await _changer.UpdateHeadingOneFilter(headingOneFilter, oldPropertyTitle, newPropertyTitle);
-        }
-
-        public async Task<bool> AddFilterHeadingTwo(string propertyTitle, string headingTwoTitle)
-        {
-            return await _changer.AddFilterHeadingTwo(propertyTitle, headingTwoTitle);
-        }
-
-        public async Task<bool> DeleteHeadingTwoFilter(string propertyTitle, string headingTwoTitle)
-        {
-            return await _changer.DeleteHeadingTwoFilter(propertyTitle, headingTwoTitle);
-        }
-
-        public async Task<bool> DeleteAllHeadingTwoFilters(string headingTwoTitle)
-        {
-            return await _changer.DeleteAllHeadingTwoFilters(headingTwoTitle);
-        }
-
-        public async Task<bool> UpdateHeadingTwoFilter(string headingTwoFilter, string oldPropertyTitle, string newPropertyTitle)
-        {
-            return await _changer.UpdateHeadingTwoFilter(headingTwoFilter, oldPropertyTitle, newPropertyTitle);
         }
     }
 }

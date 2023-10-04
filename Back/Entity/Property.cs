@@ -6,13 +6,17 @@ namespace Entity
     public class Property
     {
         public string Title { get; set; }
-        public IEnumerable<string> Values { get; set; }
-        [JsonIgnore] public bool IsPriority { get; set; }
+        public List<string> Values { get; set; }
+        public bool IsPriority { get; set; }
 
         public Property(string title, IEnumerable<string> values)
         {
             Title = title;
-            Values = values;
+            Values = values.ToList();
+        }
+        
+        public Property()
+        {
         }
     }
 }

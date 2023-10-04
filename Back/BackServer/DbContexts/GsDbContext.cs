@@ -73,7 +73,7 @@ namespace BackServer.Contexts
                     .HasDefaultValueSql("nextval('account.item_id_seq'::regclass)");
                 entity.Property(e => e.Title).IsRequired().HasColumnName("title");
                 entity.Property(e => e.PageLink).HasColumnName("page_link");
-                entity.Property(e => e.PageLink).HasColumnName("image_ref");
+                entity.Property(e => e.ImageRef).HasColumnName("image_ref");
             });
         }
 
@@ -104,7 +104,7 @@ namespace BackServer.Contexts
             modelBuilder.Entity<HeadingOneFilters>(e => e.ToTable("heading_one_filters"));
             modelBuilder.Entity<HeadingOneFilters>(entity =>
             {
-                entity.HasKey(x => new {HeadingsOneId = x.heading_one_id, PropertyId = x.property_id});
+                entity.HasKey(x => new {HeadingsOneId = x.heading_id, PropertyValuesId = x.property_values_id});
 
                 entity
                     .HasOne(e => e.HeadingOne)
@@ -112,9 +112,11 @@ namespace BackServer.Contexts
                     .HasForeignKey("heading_one_id");
                 
                 entity
-                    .HasOne(e => e.Property)
+                    .HasOne(e => e.PropertyValues)
                     .WithMany(e => e.HeadingOneFilters)
-                    .HasForeignKey("property_id");
+                    .HasForeignKey("property_values_id");
+                
+                entity.Property(e => e.Count).HasColumnName("count_products");
             });
         }
         
@@ -123,7 +125,7 @@ namespace BackServer.Contexts
             modelBuilder.Entity<HeadingTwoFilters>(e => e.ToTable("heading_two_filters"));
             modelBuilder.Entity<HeadingTwoFilters>(entity =>
             {
-                entity.HasKey(x => new {HeadingsTwoId = x.heading_two_id, PropertyId = x.property_id});
+                entity.HasKey(x => new {HeadingsTwoId = x.heading_id, PropertyValuesId = x.property_values_id});
 
                 entity
                     .HasOne(e => e.HeadingTwo)
@@ -131,9 +133,11 @@ namespace BackServer.Contexts
                     .HasForeignKey("heading_two_id");
                 
                 entity
-                    .HasOne(e => e.Property)
+                    .HasOne(e => e.PropertyValues)
                     .WithMany(e => e.HeadingTwoFilters)
-                    .HasForeignKey("property_id");
+                    .HasForeignKey("property_values_id");
+                
+                entity.Property(e => e.Count).HasColumnName("count_products");
             });
         }
 

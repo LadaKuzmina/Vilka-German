@@ -198,7 +198,7 @@
     position: relative;
     width: 475px;
     left: 39.2%;
-    margin-top: 222px;
+    /*margin-top: 222px;*/
 }
 
 .page_switcher .page_switcher_button {
@@ -1633,11 +1633,12 @@ summary {
     .product img {
         border: #333333 solid;
         height: 121px;
+        width: 160px;
     }
 
     .product {
-        width: 148px;
-        height: 400px;
+        /*width: 148px;*/
+        /*height: 400px;*/
         position: relative;
         padding: 18px;
         background-color: white;

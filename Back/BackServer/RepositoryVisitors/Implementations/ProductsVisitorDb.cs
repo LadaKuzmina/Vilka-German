@@ -123,45 +123,64 @@ namespace BackServer.RepositoryVisitors.Implementations
             return products;
         }
 
-        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings)
+        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substrings, ProductOrders productOrder,
+            Dictionary<string, HashSet<string>> reqProperties, int pageNumber, int countElements)
         {
-            var productsDictionary = new Dictionary<Entity.Product, int>();
-
-            await using var dbConnection = (NpgsqlConnection?) _context.Database.GetDbConnection();
-            if (dbConnection.State != ConnectionState.Open)
-                await dbConnection.OpenAsync();
-
-            foreach (var substring in substrings.Select(substring => substring.ToLower()))
+            var products = new List<Product>();
+            
+            await using var con = (NpgsqlConnection?)_context.Database.GetDbConnection();
+            if (con.State != ConnectionState.Open)
+                await con.OpenAsync();
+            
+            var sql = new StringBuilder();
+            sql.Append(@$"
+                SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
+                       um.unit_measurement_value, hone.title, htwo.title, pv.property_value,
+                       CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
+                FROM products as p
+                        JOIN product_family pf on pf.product_family_id = p.product_family_id
+                        JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
+                        JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
+                        JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
+                        LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
+                        LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
+                        LEFT JOIN sale_products sp on p.product_id = sp.product_id
+                        LEFT JOIN sales s on sp.sale_id = s.sale_id");
+           
+            sql.Append($" {SelectOrder(productOrder)};");
+            
+            await using var cmd = new NpgsqlCommand(sql.ToString(), con);
+            await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
+            while (await rdr.ReadAsync())
             {
-                var sql = @$"
-                    SELECT p.title, p.description, p.price, p.quantity, p.popularity, p.available, p.page_link,
-                           um.unit_measurement_value, hone.title, htwo.title, pv.property_value,
-                           CASE WHEN s.percent ISNULL THEN p.price ELSE p.price * (100-s.percent)/100 END
-                    FROM products as p
-                             JOIN product_family pf on pf.product_family_id = p.product_family_id
-                             JOIN units_measurement um on um.unit_measurement_id = pf.unit_measurement_id
-                             JOIN heading_one hone on hone.heading_one_id = pf.heading_one_id
-                             JOIN heading_two htwo on pf.heading_two_id=htwo.heading_two_id
-                             LEFT JOIN heading_three hthree on p.heading_three_id=hthree.heading_three_id
-                             LEFT JOIN property_values pv on hthree.property_values_id = pv.property_values_id
-                             LEFT JOIN sale_products sp on p.product_id = sp.product_id
-                             LEFT JOIN sales s on sp.sale_id = s.sale_id
-                    WHERE LOWER(p.title) LIKE '%{substring}%'
-                       OR LOWER(hone.title) LIKE '%{substring}%'
-                       OR LOWER(htwo.title) LIKE '%{substring}%'
-                       OR LOWER(pv.property_value) LIKE '%{substring}%';";
-                await using var cmd = new NpgsqlCommand(sql, dbConnection);
-                await using NpgsqlDataReader rdr = await cmd.ExecuteReaderAsync();
-                while (await rdr.ReadAsync())
+                var product = new Product(rdr.GetString(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3),
+                    rdr.GetInt32(4), rdr.GetBoolean(5), await rdr.ReadNullOrStringAsync(6), rdr.GetString(7))
                 {
-                    var product = await ConvertProduct(rdr);
-                    productsDictionary.TryAdd(product, 0);
-                    productsDictionary[product] += 1;
-                }
+                    HeadingOne = rdr.GetString(8),
+                    HeadingTwo = rdr.GetString(9),
+                    HeadingThree = await rdr.ReadNullOrStringAsync(10),
+                    SalePrice = rdr.GetInt32(11)
+                };
+                
+                products.Add(product);
             }
 
-            await dbConnection.CloseAsync();
-            return productsDictionary.Keys.Where(product => productsDictionary[product] >= substrings.Length).ToList();
+            await con.CloseAsync();
+
+            products = products.Where(product => substrings
+                .Select(substring => substring.ToLower())
+                .All(substring => product.Title.ToLower().Contains(substring) 
+                                  || product.HeadingOne.ToLower().Contains(substring)
+                                  || product.HeadingTwo.ToLower().Contains(substring)
+                                  || (product.HeadingThree != null && product.HeadingThree.ToLower()
+                                      .Contains(substring)))).ToList();
+
+            products = await GetByRequirements(products, reqProperties, (pageNumber - 1) * countElements,
+                countElements);
+            
+            await GetPriorityProperties(products);
+
+            return products;
         }
 
         public async Task<IEnumerable<Entity.Product>> GetAllHeadingOne(string headingOneTitle)

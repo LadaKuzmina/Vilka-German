@@ -8,67 +8,80 @@ async function search() {
         searchBlock.textContent = '';
 
         words = new_words;
-        let json = JSON.stringify(words);
+        let substrings = words.join(' ');
 
-        let headingsOne = await getAllHeadingsOne(json);
-        let headingsTwo = await getAllHeadingsTwo(json);
-        let products = await getAllProducts(json);
+        if (substrings !== '') {
+            let headingsOne = await getAllHeadingsOneBySubstrings(substrings);
+            let headingsTwo = await getAllHeadingsTwoBySubstrings(substrings);
+            let products = await getAllProductsBySubstrings(substrings);
 
-        let counter = 0;
+            console.log(headingsOne);
 
-        for (let headingOne of headingsOne) {
-            let aElement = document.createElement('a');
-            aElement.setAttribute('href', `http://localhost:3000/catalog/subheadings.html?heading=${headingOne.title}`);
-            aElement.setAttribute('style', '')
-            aElement.textContent = headingOne.title;
+            let counter = 0;
 
-            searchBlock.appendChild(aElement);
-            counter++;
-        }
+            for (let headingOne of headingsOne) {
+                if (counter === search_limit) {
+                    break;
+                }
+                let headingsTwo = await getAllHeadingsTwoByHeadingOne(headingOne.title);
+                let aElement = document.createElement('a');
+                if (headingsTwo.length === 0) {
+                    aElement.setAttribute("href", `/catalog?headingOne=${headingOne.title}`);
+                }
+                else {
+                    aElement.setAttribute("href", `/subheadings?heading=${headingOne.title}`);
+                }
+                aElement.setAttribute('style', '')
+                aElement.textContent = headingOne.title;
 
-        for (let headingTwo of headingsTwo) {
-            if (counter === search_limit) {
-                break;
-            }
-            let aElement = document.createElement('a');
-            aElement.setAttribute('href', `http://localhost:3000/catalog/catalog.html?heading=${headingTwo.title}`);
-            aElement.setAttribute('style', '')
-            aElement.textContent = headingTwo.title;
-
-            searchBlock.appendChild(aElement);
-            counter++;
-        }
-
-        for (let product of products) {
-            if (counter === search_limit) {
-                break;
+                searchBlock.appendChild(aElement);
+                counter++;
             }
 
-            let aElement = document.createElement('a');
-            aElement.setAttribute('href', `http://localhost:3000/product/product.html?heading=${product.title}`);
-            aElement.setAttribute('style', '')
-            aElement.textContent = product.title;
+            for (let headingTwo of headingsTwo) {
+                if (counter === search_limit) {
+                    break;
+                }
+                let aElement = document.createElement('a');
+                aElement.setAttribute('href', `http://localhost:3000/catalog/catalog.html?heading=${headingTwo.title}`);
+                aElement.setAttribute('style', '')
+                aElement.textContent = headingTwo.title;
 
-            searchBlock.appendChild(aElement);
-            counter++;
+                searchBlock.appendChild(aElement);
+                counter++;
+            }
+
+            for (let product of products) {
+                if (counter === search_limit) {
+                    break;
+                }
+
+                let aElement = document.createElement('a');
+                aElement.setAttribute('href', `http://localhost:3000/product/product.html?heading=${product.title}`);
+                aElement.setAttribute('style', '')
+                aElement.textContent = product.title;
+
+                searchBlock.appendChild(aElement);
+                counter++;
+            }
         }
     }
 }
 
-async function getAllHeadingsOne(json) {
-    let response = await httpPost(`https://localhost:7240/GetHeadingsOneBySubstrings`, json);
+async function getAllHeadingsOneBySubstrings(substrings) {
+    let response = await httpGet(`https://localhost:7240/GetHeadingsOneBySubstrings?substrings=${substrings}`);
 
     return response;
 }
 
-async function getAllHeadingsTwo(json) {
-    let response = await httpPost(`https://localhost:7240/GetHeadingsTwoBySubstrings`, json);
+async function getAllHeadingsTwoBySubstrings(substrings) {
+    let response = await httpGet(`https://localhost:7240/GetHeadingsTwoBySubstrings?substrings=${substrings}`);
 
     return response;
 }
 
-async function getAllProducts(json) {
-    let response = await httpPost(`https://localhost:7240/GetProductBySubstrings`, json);
+async function getAllProductsBySubstrings(substrings) {
+    let response = await httpPost(`https://localhost:7240/GetProductBySubstrings?substrings=${substrings}&productOrder=0&pageNumber=1&countElements=${search_limit}`, '[]');
 
     return response;
 }

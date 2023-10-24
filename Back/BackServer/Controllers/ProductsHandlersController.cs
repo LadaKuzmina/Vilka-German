@@ -49,9 +49,14 @@ namespace BackServer.Controllers
         }
         
         [HttpPost("~/GetProductBySubstrings")]
-        public async Task<IEnumerable<Product>> GetBySubstrings(string[] substring)
+        public async Task<IEnumerable<Product>> GetBySubstrings(string substrings,
+            ProductOrders productOrder,
+            Property[] requiredProperties,
+            int pageNumber,
+            int countElements)
         {
-            return await _service.GetBySubstrings(substring);
+            return await _service.GetBySubstrings(substrings.Split().Where(substring => substring != "").ToArray(), productOrder,
+                requiredProperties.ToDictionary(x => x.Title, x => x.Values.ToHashSet()), pageNumber, countElements);
         }
 
         [HttpPost("~/GetPageHeadingOne")]
